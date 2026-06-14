@@ -479,9 +479,9 @@
             <li><i data-lucide="check"></i> Full PLR license included</li>
           </ul>
 
-          <button class="btn-primary" onclick="openCheckoutModal()">
+          <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
             GET INSTANT ACCESS <i data-lucide="arrow-right"></i>
-          </button>
+          </a>
         </div>
       </div>
     </div>
@@ -572,48 +572,48 @@
     </div>
   </footer>
 
-  <!-- PhonePe Checkout Modal Overlay -->
-  <div id="checkout-modal" class="checkout-modal-overlay">
+  <!-- Timed Lead Capture Modal Overlay -->
+  <div id="lead-modal" class="checkout-modal-overlay">
     <div class="checkout-modal-content">
-      <button class="checkout-close-btn" onclick="closeCheckoutModal()" aria-label="Close modal">
+      <button class="checkout-close-btn" onclick="closeLeadModal()" aria-label="Close modal">
         <i data-lucide="x"></i>
       </button>
       
       <div class="checkout-header">
-        <h3 class="checkout-title">Secure Checkout</h3>
-        <p class="checkout-subtitle">Fill in details to proceed to secure payment via PhonePe.</p>
+        <h3 class="checkout-title">Fill This Form to Get Random Premium Digital Rewards 🎁</h3>
+        <p class="checkout-subtitle">Enter your details to unlock the automation vault and proceed.</p>
       </div>
       
-      <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+      <form id="lead-form" onsubmit="handleLeadSubmit(event)">
         <div class="checkout-form-group">
-          <label for="checkout-name">Full Name <span class="required-asterisk">*</span></label>
+          <label for="lead-name">Full Name <span class="required-asterisk">*</span></label>
           <div class="input-wrapper">
             <i data-lucide="user" class="input-icon"></i>
-            <input type="text" id="checkout-name" name="name" placeholder="John Doe" required autocomplete="name">
+            <input type="text" id="lead-name" name="name" placeholder="John Doe" required autocomplete="name">
           </div>
         </div>
         
         <div class="checkout-form-group">
-          <label for="checkout-email">Email Address <span class="required-asterisk">*</span></label>
+          <label for="lead-email">Email Address <span class="required-asterisk">*</span></label>
           <div class="input-wrapper">
             <i data-lucide="mail" class="input-icon"></i>
-            <input type="email" id="checkout-email" name="email" placeholder="john@example.com" required autocomplete="email">
+            <input type="email" id="lead-email" name="email" placeholder="john@example.com" required autocomplete="email">
           </div>
         </div>
         
         <div class="checkout-form-group">
-          <label for="checkout-phone">WhatsApp / Phone Number <span class="required-asterisk">*</span></label>
+          <label for="lead-phone">WhatsApp / Phone Number <span class="required-asterisk">*</span></label>
           <div class="input-wrapper">
             <i data-lucide="phone" class="input-icon"></i>
-            <input type="tel" id="checkout-phone" name="phone" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
+            <input type="tel" id="lead-phone" name="phone" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
           </div>
         </div>
         
         <div class="checkout-form-group">
-          <label for="checkout-profession">Profession <span class="required-asterisk">*</span></label>
+          <label for="lead-profession">Profession <span class="required-asterisk">*</span></label>
           <div class="input-wrapper">
             <i data-lucide="briefcase" class="input-icon"></i>
-            <select id="checkout-profession" name="profession" required>
+            <select id="lead-profession" name="profession" required>
               <option value="" disabled selected>Select your profession</option>
               <option value="Student">Student</option>
               <option value="Freelancer">Freelancer</option>
@@ -625,14 +625,14 @@
           </div>
         </div>
         
-        <button type="submit" class="btn-primary btn-checkout-submit" id="checkout-submit-btn">
-          <span>Pay ₹349 Securely</span> <i data-lucide="lock" class="btn-icon"></i>
+        <button type="submit" class="btn-primary btn-checkout-submit" id="lead-submit-btn">
+          <span>Unlock Vault &amp; Proceed</span> <i data-lucide="unlock" class="btn-icon"></i>
         </button>
       </form>
       
       <div class="checkout-footer">
-        <span class="security-note"><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary);"></i> 256-bit SSL Encrypted Payment</span>
-        <span class="provider-note"><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary);"></i> Powered by PhonePe</span>
+        <span class="security-note"><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary);"></i> 100% Safe &amp; Secure Information</span>
+        <span class="provider-note"><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary);"></i> Powered by FutureWithAi</span>
       </div>
     </div>
   </div>
@@ -1410,82 +1410,85 @@
       }
     }
 
-    // Checkout Modal functions
-    function openCheckoutModal() {
-      const modal = document.getElementById('checkout-modal');
-      modal.style.display = 'flex';
-      // Trigger a small reflow to make the transition work
-      modal.offsetHeight;
-      modal.classList.add('show');
-      document.body.style.overflow = 'hidden';
+    // Timed Lead Capture Popup Functions
+    window.addEventListener('DOMContentLoaded', () => {
+      // Show lead popup after 5 seconds if not already shown in this session
+      const leadShown = sessionStorage.getItem('ae_lead_shown');
+      if (!leadShown) {
+        setTimeout(openLeadModal, 5000);
+      }
+    });
+
+    function openLeadModal() {
+      const modal = document.getElementById('lead-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        modal.offsetHeight; // reflow
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        sessionStorage.setItem('ae_lead_shown', 'true');
+      }
     }
 
-    function closeCheckoutModal() {
-      const modal = document.getElementById('checkout-modal');
-      modal.classList.remove('show');
-      // Wait for transition to end before hiding display
-      setTimeout(() => {
-        if (!modal.classList.contains('show')) {
-          modal.style.display = 'none';
-        }
-      }, 300);
-      document.body.style.overflow = '';
-      
-      // Reset form if not currently submitting
-      const submitBtn = document.getElementById('checkout-submit-btn');
-      if (!submitBtn.disabled) {
-        document.getElementById('checkout-form').reset();
+    function closeLeadModal() {
+      const modal = document.getElementById('lead-modal');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          if (!modal.classList.contains('show')) {
+            modal.style.display = 'none';
+          }
+        }, 300);
+        document.body.style.overflow = '';
       }
     }
 
     // Close modal on outside click
     window.addEventListener('click', function(event) {
-      const modal = document.getElementById('checkout-modal');
+      const modal = document.getElementById('lead-modal');
       if (event.target === modal) {
-        // Only close if not currently submitting
-        const submitBtn = document.getElementById('checkout-submit-btn');
+        const submitBtn = document.getElementById('lead-submit-btn');
         if (!submitBtn || !submitBtn.disabled) {
-          closeCheckoutModal();
+          closeLeadModal();
         }
       }
     });
 
-    async function handleCheckoutSubmit(event) {
+    async function handleLeadSubmit(event) {
       event.preventDefault();
       
-      const form = document.getElementById('checkout-form');
+      const form = document.getElementById('lead-form');
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
       
-      const name = document.getElementById('checkout-name').value.trim();
-      const email = document.getElementById('checkout-email').value.trim();
-      const phone = document.getElementById('checkout-phone').value.trim();
-      const profession = document.getElementById('checkout-profession').value;
+      const name = document.getElementById('lead-name').value.trim();
+      const email = document.getElementById('lead-email').value.trim();
+      const phone = document.getElementById('lead-phone').value.trim();
+      const profession = document.getElementById('lead-profession').value;
       
-      const submitBtn = document.getElementById('checkout-submit-btn');
+      const submitBtn = document.getElementById('lead-submit-btn');
       const submitBtnText = submitBtn.querySelector('span');
       const submitBtnIcon = submitBtn.querySelector('i');
       
-      // Store original contents
       const originalText = submitBtnText.textContent;
       
       // Change to loading state
       submitBtn.disabled = true;
-      submitBtnText.textContent = 'Processing Payment...';
+      submitBtnText.textContent = 'Unlocking Vault...';
       if (submitBtnIcon) {
         submitBtnIcon.className = 'spinner';
         submitBtnIcon.setAttribute('data-lucide', 'loader-2');
         lucide.createIcons();
       }
       
-      // Keep close button and input fields disabled
+      // Disable close button and form inputs
       const closeBtn = document.querySelector('.checkout-close-btn');
       if (closeBtn) closeBtn.disabled = true;
       Array.from(form.elements).forEach(el => el.disabled = true);
       
-      // Save customer details in sessionStorage for post-payment verification
+      // Save customer details in sessionStorage
       try {
         sessionStorage.setItem('ae_pg_customer_name', name);
         sessionStorage.setItem('ae_pg_customer_email', email);
@@ -1494,9 +1497,9 @@
         console.warn('sessionStorage write failed:', e);
       }
 
-      // Send checkout details to Web3Forms in the background
+      // Send lead details to Web3Forms
       try {
-        fetch('https://api.web3forms.com/submit', {
+        await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1504,60 +1507,27 @@
           },
           body: JSON.stringify({
             access_key: "2455552c-6b95-483c-96ee-65271c8719f3", // Replace with your Web3Forms Access Key
-            subject: `Checkout Form Submitted - ${name}`,
-            from_name: "FutureWithAi Checkout System",
+            subject: `New Lead Captured - ${name}`,
+            from_name: "FutureWithAi Lead System",
             name: name,
             email: email,
             whatsapp: phone,
             profession: profession,
-            message: `User details submitted at checkout:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}\n\nThis user has been redirected to PhonePe for completing the payment.`
+            message: `User details submitted in automatic lead popup:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}\n\nUser is now being redirected to the secure checkout page on anshumanenterprises.online to complete their payment.`
           })
         });
       } catch (e) {
-        console.warn('Web3Forms checkout log failed:', e);
+        console.warn('Web3Forms lead log failed:', e);
       }
 
-      try {
-        const response = await fetch('https://ae-payment-server.vercel.app/initiate-phonepe-payment', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            whatsapp: phone,
-            bizType: profession,
-            goals: ""
-          })
-        });
+      // Redirect to main domain checkout page with pre-filled query params
+      const checkoutUrl = `https://anshumanenterprises.online/futurewithai/checkout.html` + 
+        `?name=${encodeURIComponent(name)}` +
+        `&email=${encodeURIComponent(email)}` +
+        `&phone=${encodeURIComponent(phone)}` +
+        `&profession=${encodeURIComponent(profession)}`;
         
-        const data = await response.json();
-        
-        if (data.success && data.redirectUrl) {
-          // Store Order ID in session
-          try { sessionStorage.setItem('ae_pg_order_id', data.merchantOrderId || ''); } catch(e){}
-          // Redirect to PhonePe payment gateway
-          window.location.href = data.redirectUrl;
-        } else {
-          throw new Error(data.message || 'Payment initiation failed.');
-        }
-      } catch (error) {
-        console.error('Error initiating payment:', error);
-        alert('Payment Error: ' + error.message + '\n\nPlease try again or contact support.');
-        
-        // Reset loading state
-        submitBtn.disabled = false;
-        submitBtnText.textContent = originalText;
-        if (submitBtnIcon) {
-          submitBtnIcon.className = 'btn-icon';
-          submitBtnIcon.setAttribute('data-lucide', 'lock');
-          lucide.createIcons();
-        }
-        
-        if (closeBtn) closeBtn.disabled = false;
-        Array.from(form.elements).forEach(el => el.disabled = false);
-      }
+      window.location.href = checkoutUrl;
     }
   </script>
 </body>
