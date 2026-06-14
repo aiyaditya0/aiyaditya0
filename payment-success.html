@@ -335,11 +335,15 @@
     let pollTimer = null;
     let orderIdFromUrl = null;
     let customerName = '';
+    let customerEmail = '';
+    let customerPhone = '';
 
     // ── Read orderId from URL params ──────────────────────────
     const params = new URLSearchParams(window.location.search);
     orderIdFromUrl = params.get('orderId') || sessionStorage.getItem('ae_pg_order_id');
     customerName   = sessionStorage.getItem('ae_pg_customer_name') || '';
+    customerEmail  = sessionStorage.getItem('ae_pg_customer_email') || '';
+    customerPhone  = sessionStorage.getItem('ae_pg_customer_phone') || '';
 
     // Start polling when page loads
     window.addEventListener('DOMContentLoaded', () => {
@@ -419,6 +423,32 @@
 
       // Launch confetti 🎉
       launchConfetti();
+
+      // Send payment details to Web3Forms in the background
+      try {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: "YOUR_WEB3FORMS_ACCESS_KEY_HERE", // Replace with your Web3Forms Access Key
+            subject: `🎉 SUCCESSFUL PAYMENT: ${customerName} (₹${amtInr})`,
+            from_name: "FutureWithAi Checkout System",
+            name: customerName || "Customer",
+            email: customerEmail || "No Email Provided",
+            whatsapp: customerPhone || "No WhatsApp Provided",
+            order_id: orderId || data.merchantOrderId || "N/A",
+            txn_id: payment.transactionId || "N/A",
+            amount: `₹${amtInr}`,
+            payment_mode: payment.paymentMode || "UPI",
+            message: `A client has successfully paid for the Ultimate n8n AI Automation Pack.\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${customerPhone}\nOrder ID: ${orderId}\nTransaction ID: ${payment.transactionId || "N/A"}\nAmount Paid: ₹${amtInr}\n\nPlease verify and send Google Drive and Community Access to their email/WhatsApp.`
+          })
+        });
+      } catch (e) {
+        console.warn('Web3Forms success log failed:', e);
+      }
 
       // Clear session
       try { sessionStorage.removeItem('ae_pg_order_id'); } catch(e){}
