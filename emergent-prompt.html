@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emergent AI Company OS Blueprint Prompt – FutureWithAi</title>
+  <meta name="robots" content="noindex,nofollow">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom styles for prompt display portal */
+    :root {
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Giant Centered Logo Styling */
+    .giant-logo-container {
+      max-width: 1100px;
+      width: 100%;
+      margin: 40px auto 20px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .giant-logo {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0px 0px 30px rgba(255, 138, 0, 0.15));
+    }
+
+    .portal-container {
+      max-width: 1000px;
+      margin: 0 auto 80px auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .welcome-card {
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.4) 0%, rgba(5, 5, 5, 0.8) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      box-shadow: var(--glow-primary);
+    }
+
+    .welcome-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .welcome-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    /* Control buttons section */
+    .action-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .action-buttons-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Code Block Area Styling */
+    .code-card {
+      background: rgba(13, 13, 13, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .code-card-header {
+      background: rgba(20, 20, 20, 0.7);
+      border-bottom: 1px solid var(--border-color);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .code-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--text-white);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-indicators {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot-ind {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .dot-red { background-color: #ff5f56; }
+    .dot-yellow { background-color: #ffbd2e; }
+    .dot-green { background-color: #27c93f; }
+
+    .code-block-wrapper {
+      padding: 24px;
+      position: relative;
+    }
+
+    .code-viewer {
+      width: 100%;
+      height: 550px;
+      background: #080808;
+      border: 1px solid rgba(255, 138, 0, 0.15);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-y: auto;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      word-break: break-word;
+      text-align: left;
+    }
+
+    /* Scrollbar Styling */
+    .code-viewer::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .code-viewer::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+    .code-viewer::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 10px;
+      border: 2px solid #080808;
+    }
+    .code-viewer::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-container);
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, var(--primary-container), #ffb77f);
+      color: #000;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 30px;
+      box-shadow: var(--glow-primary);
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Actions Footer */
+    .actions-footer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Print Stylesheets */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print, header, footer, button, .btn-primary, .btn-secondary, .actions-footer, .action-header-row, .dot-indicators {
+        display: none !important;
+      }
+      .giant-logo-container {
+        margin: 20px auto !important;
+      }
+      .giant-logo {
+        max-width: 600px !important;
+      }
+      .welcome-card, .code-card {
+        background: #ffffff !important;
+        border: 1px solid #dddddd !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        margin-bottom: 24px !important;
+        padding: 24px !important;
+      }
+      .welcome-title, .code-card-title {
+        color: #000000 !important;
+      }
+      .welcome-sub {
+        color: #333333 !important;
+      }
+      .code-viewer {
+        height: auto !important;
+        overflow: visible !important;
+        border: 1px solid #dddddd !important;
+        background: #fafafa !important;
+        color: #000000 !important;
+        font-size: 11px !important;
+        padding: 0 !important;
+        white-space: pre-wrap !important;
+      }
+      a::after {
+        content: " (" attr(href) ")";
+        font-size: 10px;
+        color: #555555;
+        font-family: monospace;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .action-header-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .action-buttons-group {
+        flex-direction: column;
+      }
+      .actions-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body style="display: none;">
+
+  <!-- Large Brand Logo -->
+  <div class="giant-logo-container">
+    <img src="primary-logo.png" alt="FutureWithAi Brand Logo" class="giant-logo">
+  </div>
+
+  <main class="portal-container">
+    
+    <!-- Welcome Notice -->
+    <div class="welcome-card">
+      <h2 class="welcome-title">Your Custom AI Agent OS Prompt Is Ready! 🚀</h2>
+      <p class="welcome-sub">
+        Thank you for verifying your number. Below is the blueprint prompt to construct a full-stack SaaS application called <strong>AI Company OS</strong>. Copy the prompt and run it in your Emergent workspace to build the app.
+      </p>
+    </div>
+
+    <!-- Actions Row -->
+    <div class="action-header-row">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; color: var(--text-white); margin: 0; padding-left: 4px;">SaaS Architecture Blueprint</h3>
+      
+      <div class="action-buttons-group">
+        <!-- Copy Button -->
+        <button onclick="copyPromptToClipboard()" class="btn-primary" id="main-copy-btn" style="gap: 8px; font-size: 14px; cursor: pointer; padding: 12px 24px; border-radius: 12px;">
+          <span>Copy Blueprint Prompt</span> <i data-lucide="copy"></i>
+        </button>
+
+        <!-- Emergent Link Button -->
+        <a href="https://app.emergent.sh/landing/" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; padding: 12px 24px; border-radius: 12px; border-color: rgba(255, 138, 0, 0.4); color: var(--primary);">
+          <span>Open Emergent Landing</span> <i data-lucide="external-link"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Code viewer block -->
+    <div class="code-card">
+      <div class="code-card-header">
+        <div class="code-card-title">
+          <i data-lucide="file-code" style="width: 18px; height: 18px; color: var(--primary);"></i>
+          <span>emergent-prompt.txt</span>
+        </div>
+        <div class="dot-indicators">
+          <div class="dot-ind dot-red"></div>
+          <div class="dot-ind dot-yellow"></div>
+          <div class="dot-ind dot-green"></div>
+        </div>
+      </div>
+      <div class="code-block-wrapper">
+        <div class="code-viewer" id="prompt-code-content">Build a full-stack SaaS web application called AI Company OS.
+The idea is that a single founder can manage an entire business with a team of AI employees.
+The system should support multiple AI departments that collaborate with each other, break down goals into tasks, perform research, generate outputs, and ask for approval before executing important actions.
+This should be a production-quality application with both frontend and backend.
+________________
+
+
+CORE CONCEPT
+The user acts as the Owner.
+The Owner gives a high-level objective.
+Example:
+* Grow my business
+* Find new clients
+* Build a marketing strategy
+* Launch a SaaS
+* Generate content
+* Research competitors
+A CEO AI receives the goal.
+The CEO AI breaks the goal into subtasks and delegates them to specialized AI employees.
+Each AI employee works independently and sends updates back to the CEO.
+The CEO combines the results and presents them to the Owner.
+Sensitive actions require approval.
+________________
+
+
+AI EMPLOYEES
+Create these default agents:
+CEO AI
+Responsibilities:
+* Understand business goals
+* Break work into tasks
+* Delegate tasks
+* Monitor all departments
+* Review outputs
+* Coordinate execution
+________________
+
+
+Marketing AI
+Responsibilities:
+* Analyze social media
+* Generate content ideas
+* Create scripts
+* Write blog posts
+* Create marketing plans
+* Study competitors
+Outputs:
+* Reports
+* Calendars
+* Scripts
+* Campaign plans
+________________
+
+
+Sales AI
+Responsibilities:
+* Research prospects
+* Build lead lists
+* Score leads
+* Generate outreach drafts
+* Prepare follow-up sequences
+The system should generate email drafts but require user approval before any message is sent.
+________________
+
+
+Research AI
+Responsibilities:
+* Market research
+* Competitor analysis
+* Industry trends
+* Product ideas
+* Opportunity reports
+________________
+
+
+Developer AI
+Responsibilities:
+* Build software plans
+* Generate code
+* Create APIs
+* Create documentation
+* Build internal tools
+________________
+
+
+Operations AI
+Responsibilities:
+* Track projects
+* Manage workflows
+* Monitor deadlines
+* Organize tasks
+________________
+
+
+Finance AI
+Responsibilities:
+* Budget planning
+* Revenue forecasting
+* Expense tracking
+* ROI calculations
+________________
+
+
+HR AI
+Responsibilities:
+* Create SOPs
+* Organize team structure
+* Maintain knowledge base
+* Recommend new AI agents
+________________
+
+
+FRONTEND
+Create a premium SaaS dashboard.
+Style:
+* Dark mode
+* Glassmorphism
+* Modern typography
+* Animated dashboards
+* Responsive
+* Beautiful charts
+* Real-time updates
+________________
+
+
+DASHBOARD
+Show:
+Total AI Employees
+Active Tasks
+Completed Tasks
+Goals Running
+Reports Generated
+Leads Researched
+Content Created
+Projects Running
+System Status
+________________
+
+
+AGENT CARDS
+Every AI employee should have:
+Avatar
+Role
+Current status
+Current task
+Completed tasks
+Performance score
+Recent activity
+View workspace button
+________________
+
+
+CEO PAGE
+User enters a business objective.
+Example:
+"Help me grow my AI business."
+CEO AI should:
+Analyze objective
+Break into departments
+Generate execution plan
+Assign tasks
+Display workflow graph
+Monitor progress
+Collect reports
+Return final summary
+________________
+
+
+TASK SYSTEM
+Create:
+Task database
+Task priority
+Dependencies
+Status tracking
+Assignments
+Progress bars
+Task history
+Statuses:
+Pending
+Planning
+Running
+Waiting Approval
+Completed
+Cancelled
+________________
+
+
+APPROVAL SYSTEM
+High-impact actions should require approval.
+Examples:
+Send emails
+Publish content
+Delete data
+Deploy projects
+Modify settings
+Show:
+Approve
+Reject
+Edit
+Reschedule
+________________
+
+
+MARKETING WORKSPACE
+Include:
+Content planner
+Script generator
+Trend analysis
+Competitor dashboard
+Campaign planner
+Idea vault
+Analytics dashboard
+Calendar
+Store generated outputs.
+________________
+
+
+SALES WORKSPACE
+Include:
+Lead database
+Lead scoring
+Company profiles
+Outreach drafts
+Pipeline tracking
+Meeting tracker
+CRM dashboard
+No automatic outreach without approval.
+________________
+
+
+RESEARCH WORKSPACE
+Include:
+Market reports
+Competitor reports
+Trend tracker
+Industry summaries
+SWOT analysis
+Opportunity database
+________________
+
+
+DEVELOPER WORKSPACE
+Include:
+Project manager
+Code generator
+API planner
+Architecture diagrams
+Documentation generator
+Deployment tracker
+________________
+
+
+OPERATIONS WORKSPACE
+Include:
+Kanban board
+Timeline
+Project tracking
+Workflow automation
+Task dependencies
+Execution reports
+________________
+
+
+FINANCE WORKSPACE
+Include:
+Revenue dashboard
+Expense dashboard
+Forecasts
+Cash flow
+ROI reports
+Business metrics
+________________
+
+
+HR WORKSPACE
+Include:
+Knowledge base
+SOP manager
+Training documents
+AI employee library
+Performance reports
+________________
+
+
+LIVE ACTIVITY FEED
+Display events such as:
+Marketing AI generated report
+Research AI completed analysis
+CEO AI assigned tasks
+Developer AI created documentation
+Sales AI prepared outreach draft
+Finance AI updated forecast
+Operations AI completed workflow
+HR AI updated SOP
+________________
+
+
+DATABASE
+Create backend models for:
+Users
+Organizations
+AI Employees
+Goals
+Tasks
+Projects
+Reports
+Leads
+Campaigns
+Documents
+Notifications
+Approvals
+Settings
+Activity Logs
+________________
+
+
+AUTHENTICATION
+Support:
+Email login
+Google login
+Password reset
+User profiles
+Organization workspaces
+Role permissions
+________________
+
+
+API LAYER
+Create REST APIs for all resources.
+Support future integration with AI models and external services.
+________________
+
+
+AI ORCHESTRATION
+Implement an orchestration layer where:
+Owner
+↓
+CEO AI
+↓
+Department AI Employees
+↓
+Outputs
+↓
+CEO Review
+↓
+Approval (if needed)
+↓
+Execution
+↓
+Results
+Maintain memory of previous tasks and conversations.
+________________
+
+
+KNOWLEDGE BASE
+Allow users to upload:
+PDFs
+Word documents
+CSV files
+Notes
+Website URLs
+The AI employees should use this information as business context.
+________________
+
+
+AUTOMATION ENGINE
+Allow users to create workflows.
+Example:
+If new lead added
+↓
+Research AI analyzes company
+↓
+Sales AI prepares draft
+↓
+CEO AI reviews
+↓
+User approves
+↓
+Email can be sent
+________________
+
+
+NOTIFICATIONS
+Support:
+In-app notifications
+Email notifications
+Task reminders
+Approval requests
+Daily summaries
+________________
+
+
+ADMIN PANEL
+Create admin dashboard for:
+Managing users
+Managing AI employees
+System analytics
+Logs
+Billing
+Feature flags
+________________
+
+
+FUTURE READY
+Structure the application so future integrations can be added for:
+OpenAI
+Anthropic
+Google Gemini
+Gmail
+Google Calendar
+Slack
+Notion
+HubSpot
+Salesforce
+Zapier
+n8n
+Webhooks
+________________
+
+
+FINAL GOAL
+Build a complete AI Operating System where one person can coordinate multiple AI employees through a single dashboard.
+The product should feel like having an executive team that researches, plans, organizes, and prepares work continuously, while keeping the human in control of important decisions and external actions.</div>
+      </div>
+    </div>
+
+    <!-- Printable/Download Footer Actions -->
+    <div class="actions-footer">
+      <button onclick="window.print()" class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; cursor: pointer; padding: 14px 28px; border-radius: 12px; border: 1px solid var(--border-color); color: var(--text-secondary); background: transparent; transition: all 0.3s ease;">
+        <i data-lucide="download" style="width: 16px; height: 16px;"></i> Download Page as PDF
+      </button>
+      <a href="index.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; padding: 14px 28px; border-radius: 12px; border: 1px solid var(--border-color); color: var(--text-secondary); background: transparent;">
+        <i data-lucide="home" style="width: 16px; height: 16px;"></i> Return to Homepage
+      </a>
+    </div>
+
+  </main>
+
+  <footer style="margin-top: auto; border-top: 1px solid var(--border-color); padding: 24px; text-align: center; font-size: 12px; color: var(--text-muted); background: rgba(0,0,0,0.2);">
+    &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises. All Rights Reserved.
+  </footer>
+
+  <!-- Copy Toast Notification Alert -->
+  <div class="copy-toast" id="copy-toast">
+    <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+    <span>Prompt Copied to Clipboard!</span>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // ── Authorization Check ───────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const isVerified = params.get('verified') === 'true' || sessionStorage.getItem('ae_lead_verified') === 'true';
+
+      if (!isVerified) {
+        // No verification found -> redirect to home page
+        window.location.replace('index.html');
+      } else {
+        // Save verification in session storage and reveal the body
+        sessionStorage.setItem('ae_lead_verified', 'true');
+        document.body.style.display = 'block';
+      }
+    });
+
+    // ── Copy Prompt Functionality ──────────────────────────────────
+    function copyPromptToClipboard() {
+      const promptText = document.getElementById('prompt-code-content').innerText;
+      
+      navigator.clipboard.writeText(promptText).then(() => {
+        // Visual micro-feedback on button
+        const btn = document.getElementById('main-copy-btn');
+        const btnText = btn.querySelector('span');
+        const btnIcon = btn.querySelector('i');
+        
+        const originalText = btnText.textContent;
+        btnText.textContent = 'Copied! ✓';
+        if (btnIcon) {
+          btnIcon.setAttribute('data-lucide', 'check');
+          lucide.createIcons();
+        }
+        
+        // Show toast alert
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          btnText.textContent = originalText;
+          if (btnIcon) {
+            btnIcon.setAttribute('data-lucide', 'copy');
+            lucide.createIcons();
+          }
+          toast.classList.remove('show');
+        }, 2500);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('Could not copy prompt automatically. Please select the text inside the box and copy manually.');
+      });
+    }
+  </script>
+</body>
+</html>

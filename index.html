@@ -35,7 +35,7 @@
         <a href="#categories">Categories</a>
         <a href="#pricing">Pricing</a>
       </nav>
-      <a href="#pricing" class="nav-cta" id="nav-cta-btn">
+      <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="nav-cta" id="nav-cta-btn">
         Get Pack <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
       </a>
     </div>
@@ -54,7 +54,7 @@
             Get access to a curated collection of ready-to-import n8n workflow templates designed to help you launch automations faster.
           </p>
           <div class="hero-actions">
-            <a href="#pricing" class="btn-primary" id="hero-cta-primary">
+            <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="btn-primary" id="hero-cta-primary">
               Get Instant Access <i data-lucide="arrow-right"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
@@ -579,56 +579,86 @@
         <i data-lucide="x"></i>
       </button>
       
-      <div class="checkout-header">
-        <h3 class="checkout-title">Fill This Form to Get Random Premium Digital Rewards 🎁</h3>
-        <p class="checkout-subtitle">Enter your details to unlock the automation vault and proceed.</p>
+      <!-- Step 1: Lead Capture Form -->
+      <div id="lead-form-container" style="width: 100%;">
+        <div class="checkout-header">
+          <h3 class="checkout-title">Fill This Form to Get Random Premium Digital Rewards 🎁</h3>
+          <p class="checkout-subtitle">Enter your details to unlock the automation vault and proceed.</p>
+        </div>
+        
+        <form id="lead-form" onsubmit="handleLeadSubmit(event)">
+          <div class="checkout-form-group">
+            <label for="lead-name">Full Name <span class="required-asterisk">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="user" class="input-icon"></i>
+              <input type="text" id="lead-name" name="name" placeholder="John Doe" required autocomplete="name">
+            </div>
+          </div>
+          
+          <div class="checkout-form-group">
+            <label for="lead-email">Email Address <span class="required-asterisk">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input type="email" id="lead-email" name="email" placeholder="john@example.com" required autocomplete="email">
+            </div>
+          </div>
+          
+          <div class="checkout-form-group">
+            <label for="lead-phone">WhatsApp / Phone Number <span class="required-asterisk">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="phone" class="input-icon"></i>
+              <input type="tel" id="lead-phone" name="phone" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
+            </div>
+          </div>
+          
+          <div class="checkout-form-group">
+            <label for="lead-profession">Profession <span class="required-asterisk">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="briefcase" class="input-icon"></i>
+              <select id="lead-profession" name="profession" required>
+                <option value="" disabled selected>Select your profession</option>
+                <option value="Student">Student</option>
+                <option value="Freelancer">Freelancer</option>
+                <option value="Businessman">Businessman</option>
+                <option value="Content Creator">Content Creator</option>
+                <option value="Agency Owner">Agency Owner</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn-primary btn-checkout-submit" id="lead-submit-btn">
+            <span>Unlock Vault &amp; Proceed</span> <i data-lucide="unlock" class="btn-icon"></i>
+          </button>
+        </form>
       </div>
-      
-      <form id="lead-form" onsubmit="handleLeadSubmit(event)">
-        <div class="checkout-form-group">
-          <label for="lead-name">Full Name <span class="required-asterisk">*</span></label>
-          <div class="input-wrapper">
-            <i data-lucide="user" class="input-icon"></i>
-            <input type="text" id="lead-name" name="name" placeholder="John Doe" required autocomplete="name">
-          </div>
+
+      <!-- Step 2: OTP Verification Card (Hidden by default) -->
+      <div id="lead-otp-container" style="display: none; width: 100%;">
+        <div class="checkout-header">
+          <h3 class="checkout-title">Verify WhatsApp Number 📱</h3>
+          <p class="checkout-subtitle">Enter the 4-digit code to verify your WhatsApp number and unlock access.</p>
         </div>
         
-        <div class="checkout-form-group">
-          <label for="lead-email">Email Address <span class="required-asterisk">*</span></label>
-          <div class="input-wrapper">
-            <i data-lucide="mail" class="input-icon"></i>
-            <input type="email" id="lead-email" name="email" placeholder="john@example.com" required autocomplete="email">
+        <form id="otp-form" onsubmit="handleOtpSubmit(event)">
+          <div class="checkout-form-group" style="margin-bottom: 20px;">
+            <label for="otp-code">Verification Code <span class="required-asterisk">*</span></label>
+            <div class="input-wrapper">
+              <i data-lucide="key" class="input-icon"></i>
+              <input type="text" id="otp-code" placeholder="----" required maxlength="4" autocomplete="off" style="letter-spacing: 0.5em; text-align: center; font-size: 20px; font-weight: 700;">
+            </div>
           </div>
-        </div>
-        
-        <div class="checkout-form-group">
-          <label for="lead-phone">WhatsApp / Phone Number <span class="required-asterisk">*</span></label>
-          <div class="input-wrapper">
-            <i data-lucide="phone" class="input-icon"></i>
-            <input type="tel" id="lead-phone" name="phone" placeholder="e.g. +91 98765 43210" required autocomplete="tel">
-          </div>
-        </div>
-        
-        <div class="checkout-form-group">
-          <label for="lead-profession">Profession <span class="required-asterisk">*</span></label>
-          <div class="input-wrapper">
-            <i data-lucide="briefcase" class="input-icon"></i>
-            <select id="lead-profession" name="profession" required>
-              <option value="" disabled selected>Select your profession</option>
-              <option value="Student">Student</option>
-              <option value="Freelancer">Freelancer</option>
-              <option value="Businessman">Businessman</option>
-              <option value="Content Creator">Content Creator</option>
-              <option value="Agency Owner">Agency Owner</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
-        
-        <button type="submit" class="btn-primary btn-checkout-submit" id="lead-submit-btn">
-          <span>Unlock Vault &amp; Proceed</span> <i data-lucide="unlock" class="btn-icon"></i>
-        </button>
-      </form>
+          
+          <button type="button" onclick="requestWhatsAppCode()" class="btn-secondary" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px; margin-bottom: 16px; border-color: rgba(255,138,0,0.3); background: rgba(255,138,0,0.05); color: var(--primary);">
+            <span>Get Code on WhatsApp</span> <i data-lucide="message-circle" class="btn-icon"></i>
+          </button>
+          
+          <button type="submit" class="btn-primary btn-checkout-submit" id="otp-submit-btn" style="width: 100%; justify-content: center; gap: 8px;">
+            <span>Verify &amp; Open Prompt</span> <i data-lucide="shield-check" class="btn-icon"></i>
+          </button>
+          <p id="otp-error" style="color: #ff6b6b; font-size: 13.5px; text-align: center; margin-top: 12px; display: none; font-weight: 500;"></p>
+        </form>
+      </div>
       
       <div class="checkout-footer">
         <span class="security-note"><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary);"></i> 100% Safe &amp; Secure Information</span>
@@ -1472,8 +1502,6 @@
       const submitBtnText = submitBtn.querySelector('span');
       const submitBtnIcon = submitBtn.querySelector('i');
       
-      const originalText = submitBtnText.textContent;
-      
       // Change to loading state
       submitBtn.disabled = true;
       submitBtnText.textContent = 'Unlocking Vault...';
@@ -1497,6 +1525,10 @@
         console.warn('sessionStorage write failed:', e);
       }
 
+      // Generate random 4-digit OTP code and store in sessionStorage
+      const generatedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+      sessionStorage.setItem('ae_otp_code', generatedOtp);
+
       // Send lead details to Web3Forms
       try {
         await fetch('https://api.web3forms.com/submit', {
@@ -1507,27 +1539,77 @@
           },
           body: JSON.stringify({
             access_key: "2455552c-6b95-483c-96ee-65271c8719f3", // Replace with your Web3Forms Access Key
-            subject: `New Lead Captured - ${name}`,
+            subject: `New Lead Captured (OTP: ${generatedOtp}) - ${name}`,
             from_name: "FutureWithAi Lead System",
             name: name,
             email: email,
             whatsapp: phone,
             profession: profession,
-            message: `User details submitted in automatic lead popup:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}\n\nUser is now being redirected to the secure checkout page on anshumanenterprises.online to complete their payment.`
+            message: `User details submitted in lead popup:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}\n\nGenerated OTP for WhatsApp Verification: ${generatedOtp}`
           })
         });
       } catch (e) {
         console.warn('Web3Forms lead log failed:', e);
       }
 
-      // Redirect to main domain checkout page with pre-filled query params
-      const checkoutUrl = `https://anshumanenterprises.online/futurewithai/checkout.html` + 
-        `?name=${encodeURIComponent(name)}` +
-        `&email=${encodeURIComponent(email)}` +
-        `&phone=${encodeURIComponent(phone)}` +
-        `&profession=${encodeURIComponent(profession)}`;
+      // Transition to Step 2: OTP Verification
+      if (closeBtn) closeBtn.disabled = false; // Re-enable close button
+      document.getElementById('lead-form-container').style.display = 'none';
+      document.getElementById('lead-otp-container').style.display = 'block';
+    }
+
+    function requestWhatsAppCode() {
+      const otpCode = sessionStorage.getItem('ae_otp_code');
+      const phone = sessionStorage.getItem('ae_pg_customer_phone') || '';
+      const name = sessionStorage.getItem('ae_pg_customer_name') || '';
+      if (!otpCode) {
+        alert('Something went wrong. Please refresh the page and try again.');
+        return;
+      }
+      
+      const message = `Hi Aditya, I filled the form on FutureWithAi. Please verify my WhatsApp number. My verification OTP code is: ${otpCode}. (Name: ${name}, Phone: ${phone})`;
+      const waUrl = `https://wa.me/917065815743?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank');
+    }
+
+    function handleOtpSubmit(event) {
+      event.preventDefault();
+      
+      const userInput = document.getElementById('otp-code').value.trim();
+      const actualOtp = sessionStorage.getItem('ae_otp_code');
+      const errorEl = document.getElementById('otp-error');
+      const submitBtn = document.getElementById('otp-submit-btn');
+      
+      if (userInput === actualOtp) {
+        // Correct OTP! Save verification flag in sessionStorage
+        sessionStorage.setItem('ae_lead_verified', 'true');
         
-      window.location.href = checkoutUrl;
+        // Disable submit button and show success state
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          const textSpan = submitBtn.querySelector('span');
+          if (textSpan) textSpan.textContent = 'Verified! Opening Portal...';
+        }
+        
+        // Hide error message if any
+        if (errorEl) errorEl.style.display = 'none';
+        
+        // Redirect to the custom prompt page
+        window.location.href = 'emergent-prompt.html?verified=true';
+      } else {
+        // Incorrect OTP! Show error message
+        if (errorEl) {
+          errorEl.textContent = 'Invalid verification code. Please check the code sent or click "Get Code on WhatsApp" again.';
+          errorEl.style.display = 'block';
+        }
+        
+        // Clear inputs and refocus
+        const inputEl = document.getElementById('otp-code');
+        if (inputEl) {
+          inputEl.value = '';
+          inputEl.focus();
+        }
+      }
     }
   </script>
 </body>

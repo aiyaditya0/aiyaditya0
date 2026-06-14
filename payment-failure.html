@@ -318,7 +318,7 @@
     <!-- Logo -->
     <div style="margin-bottom:24px; animation: fadeUp 0.4s ease both;">
       <a href="index.html">
-        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height:52px; object-fit:contain;">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height:144px; object-fit:contain;">
       </a>
     </div>
 
@@ -330,19 +330,19 @@
 
       <h1 class="fail-title">Payment Failed</h1>
       <p class="fail-subtitle">
-        Koi baat nahi! Aap dobara try kar sakte hain.<br>
-        Aapke account se koi amount deduct <strong>nahin</strong> hua hai.
+        No worries! You can try making the payment again.<br>
+        <strong>No amount</strong> has been deducted from your account.
       </p>
 
       <!-- Error Reason -->
       <div class="reason-box" id="reasonBox">
         <strong>Possible Reason:</strong>
-        <span id="reasonText">Payment session cancel ya timeout ho gaya.</span>
+        <span id="reasonText">Payment session cancelled or timed out.</span>
       </div>
 
       <!-- Common Causes -->
       <div class="reasons-list">
-        <h4>Aam Wajahaat:</h4>
+        <h4>Common Causes:</h4>
         <div class="reason-item">
           <div class="reason-dot"></div>
           <span>Insufficient balance in bank account / wallet</span>
@@ -369,7 +369,7 @@
       <div class="cta-row">
         <a href="index.html" class="btn-retry">
           <span class="material-symbols-outlined" style="font-size:18px;">refresh</span>
-          Dobara Try Karo
+          Try Again
         </a>
         <a href="#" class="btn-wa-small" onclick="openWhatsApp()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -381,7 +381,7 @@
 
       <!-- Manual UPI Fallback -->
       <div class="upi-fallback">
-        <p>Ya, seedha UPI transfer karein (faster option):</p>
+        <p>Or, transfer directly via UPI (faster option):</p>
         <div class="upi-id-display">
           <span class="upi-id">7065815743@ybl</span>
           <button class="copy-btn" onclick="copyUPI()" id="copyBtn">Copy</button>
@@ -404,7 +404,7 @@
     }
 
     function openWhatsApp() {
-      const msg = `Hello Support,\n\nMera payment fail ho gaya hai.\n*Product:* Ultimate n8n AI Automation Pack\n*Amount:* ₹349\n\nKripya help karein.`;
+      const msg = `Hello Support,\n\nMy payment has failed.\n*Product:* Ultimate n8n AI Automation Pack\n*Amount:* ₹349\n\nPlease assist me.`;
       window.open(`https://wa.me/917065815743?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
