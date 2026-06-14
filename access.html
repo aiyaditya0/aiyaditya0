@@ -312,7 +312,7 @@
     }
   </style>
 </head>
-<body>
+<body style="display: none;">
 
   <!-- Large Brand Logo -->
   <div class="giant-logo-container">
@@ -429,6 +429,47 @@
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
+
+    // ── Payment Verification Check ─────────────────────────────────
+    window.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('orderId') || sessionStorage.getItem('ae_verified_order_id');
+
+      if (!orderId) {
+        // No order ID -> not paid, redirect to home
+        window.location.replace('index.html');
+        return;
+      }
+
+      // Check if session is already verified to save API load
+      const isSessionVerified = sessionStorage.getItem('ae_payment_verified') === 'true' && 
+                                sessionStorage.getItem('ae_verified_order_id') === orderId;
+
+      if (isSessionVerified) {
+        document.body.style.display = 'block';
+        return;
+      }
+
+      // Perform server-side status verification
+      try {
+        const response = await fetch(`https://ae-payment-server.vercel.app/status/${encodeURIComponent(orderId)}`);
+        const data = await response.json();
+
+        if (response.ok && data.success && data.isPaid) {
+          // Payment confirmed -> save in session and show page
+          sessionStorage.setItem('ae_payment_verified', 'true');
+          sessionStorage.setItem('ae_verified_order_id', orderId);
+          document.body.style.display = 'block';
+        } else {
+          // Unpaid or invalid order ID -> redirect to homepage
+          window.location.replace('index.html');
+        }
+      } catch (error) {
+        console.error('Payment verification failed:', error);
+        // Fallback: in case of temporary API server issue, redirect to home
+        window.location.replace('index.html');
+      }
+    });
   </script>
 </body>
 </html>

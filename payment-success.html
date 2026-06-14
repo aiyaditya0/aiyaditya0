@@ -427,9 +427,10 @@
       // Launch confetti 🎉
       launchConfetti();
 
-      // Show Deliverables Portal button
+      // Show Deliverables Portal button and set href with orderId
       const btnAccess = document.getElementById('btnAccessPortal');
       if (btnAccess) {
+        btnAccess.href = `access.html?orderId=${encodeURIComponent(orderId || data.merchantOrderId || '')}`;
         btnAccess.style.display = 'inline-flex';
       }
 
