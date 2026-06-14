@@ -228,7 +228,7 @@
         </a>
         
         <!-- Orange Boundary Community Card -->
-        <div style="width: 100%; max-width: 600px; padding: 24px; border: 1.5px solid var(--primary-container); border-radius: 16px; background: rgba(40, 29, 21, 0.2); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: var(--transition-smooth); text-align: left;" onmouseover="this.style.boxShadow='var(--glow-primary)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none'; this.style.transform='translateY(0)'">
+        <div class="whatsapp-community-card">
           <div>
             <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-white); margin-bottom: 4px;">Join WhatsApp Community</h4>
             <p style="font-size: 13px; color: var(--text-secondary);">Get daily new workflows and AI updates.</p>
@@ -1622,10 +1622,10 @@ The product should feel like having an executive team that researches, plans, or
       const header = document.getElementById('navbar');
       if (window.scrollY > 50) {
         header.style.padding = '8px 0';
-        header.style.background = 'rgba(5, 5, 5, 0.9)';
+        header.style.background = 'rgba(5, 5, 5, 0.85)';
       } else {
         header.style.padding = '0';
-        header.style.background = 'rgba(5, 5, 5, 0.75)';
+        header.style.background = 'rgba(5, 5, 5, 0.2)';
       }
     });
 
@@ -2232,13 +2232,13 @@ The product should feel like having an executive team that researches, plans, or
 
       previewPane.innerHTML = `
         <div class="repo-preview-header">
-          <div>
+          <div class="repo-preview-header-left">
             <span class="workflow-tag ${categoryTagClass}" style="margin-bottom: 8px; display: inline-block;">${wf.category}</span>
             <h3 class="repo-preview-title">${wf.title}</h3>
           </div>
-          <div style="text-align: right; min-width: 120px;">
-            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">COMPLEXITY</div>
-            <div style="font-size: 16px; font-weight: 700; color: var(--primary-container);">${wf.complexity}%</div>
+          <div class="repo-preview-header-right">
+            <div class="complexity-label">COMPLEXITY</div>
+            <div class="complexity-value">${wf.complexity}%</div>
           </div>
         </div>
 
@@ -2250,16 +2250,16 @@ The product should feel like having an executive team that researches, plans, or
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: start;">
+        <div class="repo-preview-grid">
           <div class="workflow-files">
-            <span class="workflow-file-heading">Package Structure (4 Files)</span>
+            <span class="workflow-file-heading">Package Structure (${wf.files.length} Files)</span>
             <div class="workflow-file-list" style="margin-top: 10px;">
               ${filesHtml}
             </div>
           </div>
           <div>
             <span class="workflow-file-heading">Functional Scope</span>
-            <p style="font-size: 14px; line-height: 1.6; color: var(--text-secondary); margin-top: 10px; background: rgba(0,0,0,0.2); padding: 16px; border-radius: 12px; border-left: 2px solid var(--primary-container);">
+            <p class="workflow-scope-desc">
               ${wf.description}
             </p>
           </div>

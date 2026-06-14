@@ -84,10 +84,10 @@ header {
   left: 0;
   width: 100%;
   z-index: 100;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(5, 5, 5, 0.75);
-  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(5, 5, 5, 0.2); /* Premium glassmorphism transparent background */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: var(--transition-smooth);
 }
 
@@ -96,10 +96,10 @@ header {
   justify-content: space-between;
   align-items: center;
   height: auto;
-  min-height: 160px;
+  min-height: 90px; /* Reduced navbar height on desktop for a cleaner layout */
   max-width: 1320px;
   margin: 0 auto;
-  padding: 16px 64px;
+  padding: 12px 48px; /* Slightly tighter padding */
 }
 
 .logo-wrapper {
@@ -110,7 +110,7 @@ header {
 }
 
 .logo-img {
-  height: 144px;
+  height: 80px; /* Modern scaled logo on desktop */
   width: auto;
   object-fit: contain;
 }
@@ -210,7 +210,7 @@ nav a:hover {
 
 /* Hero Section */
 .hero {
-  padding-top: 180px;
+  padding-top: 130px;
   padding-bottom: 80px;
   position: relative;
 }
@@ -987,6 +987,7 @@ footer {
 .footer-right {
   display: flex;
   gap: 32px;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
 }
 
 .footer-link {
@@ -1088,14 +1089,14 @@ footer {
   }
   .header-container {
     height: auto;
-    min-height: 90px;
-    padding: 10px 24px;
+    min-height: 85px;
+    padding: 8px 16px;
   }
   .logo-img {
-    height: 64px;
+    height: 80px; /* Make logo larger on mobile */
   }
   .hero {
-    padding-top: 160px;
+    padding-top: 120px; /* Reduced vertical gap */
   }
 }
 
@@ -1669,5 +1670,135 @@ footer {
   }
   100% {
     box-shadow: 0 0 0 0 rgba(39, 201, 63, 0);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE LAYOUT ADDITIONS & EXPLORER PREVIEW
+   ============================================================ */
+
+/* Root overflow lock */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* WhatsApp Community Card Styling */
+.whatsapp-community-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 24px;
+  border: 1.5px solid var(--primary-container);
+  border-radius: 16px;
+  background: rgba(40, 29, 21, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: var(--transition-smooth);
+  text-align: left;
+}
+
+.whatsapp-community-card:hover {
+  box-shadow: var(--glow-primary);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .whatsapp-community-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    gap: 16px;
+  }
+  .whatsapp-community-card .nav-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive Grid for Explorer Detailed Preview */
+.repo-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.workflow-scope-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 2px solid var(--primary-container);
+}
+
+/* Responsive Explorer Preview Header */
+.repo-preview-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.repo-preview-header-right {
+  text-align: right;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.complexity-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.complexity-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-container);
+}
+
+.repo-preview-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--text-white);
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .repo-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .repo-preview-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .repo-preview-header-right {
+    text-align: left;
+    min-width: auto;
+  }
+  .repo-preview-title {
+    font-size: 20px;
+  }
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  .footer-right {
+    justify-content: center;
+    gap: 12px 20px;
   }
 }
