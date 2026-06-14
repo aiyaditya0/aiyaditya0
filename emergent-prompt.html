@@ -285,7 +285,7 @@
     }
   </style>
 </head>
-<body style="display: none;">
+<body>
 
   <!-- Large Brand Logo -->
   <div class="giant-logo-container">
@@ -784,21 +784,6 @@ The product should feel like having an executive team that researches, plans, or
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
-
-    // ── Authorization Check ───────────────────────────────────────
-    window.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const isVerified = params.get('verified') === 'true' || sessionStorage.getItem('ae_lead_verified') === 'true';
-
-      if (!isVerified) {
-        // No verification found -> redirect to home page
-        window.location.replace('index.html');
-      } else {
-        // Save verification in session storage and reveal the body
-        sessionStorage.setItem('ae_lead_verified', 'true');
-        document.body.style.display = 'block';
-      }
-    });
 
     // ── Copy Prompt Functionality ──────────────────────────────────
     function copyPromptToClipboard() {
