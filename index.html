@@ -2385,7 +2385,8 @@ The product should feel like having an executive team that researches, plans, or
       }
     }
 
-    const WHATSAPP_API_URL = 'https://ae-payment-server.vercel.app/send-gift'; // Vercel API endpoint on your payment server
+    // ⚠️ REPLACE THIS WITH YOUR GOOGLE WEB APP URL AFTER DEPLOYMENT
+    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
 
     async function handleLeadSubmit(event) {
       event.preventDefault();
@@ -2454,24 +2455,25 @@ The product should feel like having an executive team that researches, plans, or
         console.warn('Web3Forms lead log failed:', e);
       }
 
-      // 2. Submit to WhatsApp API on Vercel
-      if (WHATSAPP_API_URL) {
+      // 2. Submit to Google Apps Script Web App directly
+      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
         try {
-          const p2 = fetch(WHATSAPP_API_URL, {
+          const p2 = fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
+            mode: 'no-cors', // Bypasses browser CORS restrictions for script execution
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+              action: "lead_capture",
               name: name,
               email: email,
-              whatsapp: phone,
               profession: profession
             })
           });
           submitPromises.push(p2);
         } catch (e) {
-          console.warn('WhatsApp API trigger failed:', e);
+          console.warn('Google Apps Script trigger failed:', e);
         }
       }
 
