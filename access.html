@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Deliverables Access Portal – FutureWithAi</title>
+  <meta name="robots" content="noindex,nofollow">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Access Portal Specific Styles */
+    :root {
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+    }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Giant Centered Logo Styling */
+    .giant-logo-container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 40px auto 20px auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .giant-logo {
+      width: 100%;
+      max-width: 1000px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0px 0px 30px rgba(255, 138, 0, 0.15));
+    }
+
+    .portal-container {
+      max-width: 900px;
+      margin: 0 auto 80px auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    .welcome-card {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.4) 0%, rgba(5, 5, 5, 0.8) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      box-shadow: var(--glow-primary);
+    }
+
+    .welcome-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .welcome-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Grid of Main Assets */
+    .assets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .asset-card {
+      background: rgba(20, 20, 20, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .asset-card:hover {
+      border-color: rgba(255, 138, 0, 0.3);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-2px);
+    }
+
+    .asset-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 138, 0, 0.1);
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-container);
+      margin-bottom: 20px;
+    }
+
+    .asset-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+
+    .asset-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 28px;
+      flex-grow: 1;
+    }
+
+    /* Bonus Card Layout */
+    .bonus-card {
+      background: linear-gradient(135deg, rgba(40, 20, 10, 0.3) 0%, rgba(10, 5, 0, 0.7) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bonus-card::after {
+      content: 'BONUS';
+      position: absolute;
+      top: 24px; right: -32px;
+      background: var(--primary-container);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 6px 36px;
+      transform: rotate(45deg);
+      letter-spacing: 0.1em;
+    }
+
+    .bonus-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--text-white);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .bonus-desc {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .bonus-tasks-list {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      padding: 16px 20px;
+      border-radius: 12px;
+    }
+
+    .task-number {
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 138, 0, 0.15);
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .task-details {
+      flex-grow: 1;
+    }
+
+    .task-details span {
+      font-size: 14px;
+      color: var(--text-white);
+      display: block;
+      font-weight: 500;
+    }
+
+    .task-link {
+      font-size: 12px;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .task-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Actions Footer */
+    .actions-footer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Print Stylesheets */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print, header, footer, button, .btn-primary, .btn-secondary, .btn-wa, .actions-footer {
+        display: none !important;
+      }
+      .giant-logo-container {
+        margin: 20px auto !important;
+      }
+      .giant-logo {
+        max-width: 600px !important;
+      }
+      .welcome-card, .asset-card, .bonus-card {
+        background: #ffffff !important;
+        border: 1px solid #dddddd !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        margin-bottom: 24px !important;
+        padding: 24px !important;
+      }
+      .assets-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .welcome-title, .asset-title, .bonus-title {
+        color: #000000 !important;
+      }
+      .welcome-sub, .asset-desc, .bonus-desc, .task-details span {
+        color: #333333 !important;
+      }
+      .task-item {
+        background: #fdfdfd !important;
+        border: 1px solid #e0e0e0 !important;
+        color: #000000 !important;
+      }
+      .task-number {
+        background: #f5f5f5 !important;
+        border: 1px solid #cccccc !important;
+        color: #000000 !important;
+      }
+      /* Auto print URLs next to anchors */
+      a::after {
+        content: " (" attr(href) ")";
+        font-size: 12px;
+        color: #555555;
+        font-family: monospace;
+      }
+      .bonus-card::after {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .assets-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .actions-footer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Large Brand Logo -->
+  <div class="giant-logo-container">
+    <img src="primary-logo.png" alt="FutureWithAi Brand Logo" class="giant-logo">
+  </div>
+
+  <main class="portal-container">
+    
+    <!-- Welcome Notice -->
+    <div class="welcome-card">
+      <h2 class="welcome-title">Congratulations on Your Purchase! 🎉</h2>
+      <p class="welcome-sub">
+        Thank you for purchasing the <strong>Cinematic n8n Automation Pack</strong>. Below you will find the access links to your items and a special bonus trick to get free premium n8n access.
+      </p>
+    </div>
+
+    <!-- Main Assets Section -->
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-white); margin-bottom: 24px; padding-left: 4px;">Your Purchased Assets</h3>
+    <div class="assets-grid">
+      
+      <!-- Pack Download Card -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <i data-lucide="folder-git-2" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4 class="asset-title">n8n Workflow Vault</h4>
+        <p class="asset-desc">
+          Get direct access to our GitHub repository containing 2000+ premium, ready-to-import JSON workflow files.
+        </p>
+        <a href="https://github.com/anshumanenterprises1119/futurewithai" target="_blank" class="btn-primary" style="text-decoration: none; width: 100%; justify-content: center; gap: 8px; font-size: 14px;">
+          <span>Access GitHub Repository</span> <i data-lucide="github"></i>
+        </a>
+      </div>
+
+      <!-- WhatsApp Community Card -->
+      <div class="asset-card">
+        <div class="asset-icon">
+          <i data-lucide="users-2" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h4 class="asset-title">Insider Access Community</h4>
+        <p class="asset-desc">
+          Join our exclusive private WhatsApp community. Connect with other creators, developers, and agency owners to share automation setups.
+        </p>
+        <a href="https://chat.whatsapp.com/EyFuaWsWiL895ON4cHtVl6" target="_blank" class="btn-primary" style="text-decoration: none; width: 100%; justify-content: center; gap: 8px; font-size: 14px; background: #25D366; color: #fff; border-color: #25D366;">
+          <span>Join WhatsApp Group</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Special Bonus Section -->
+    <div class="bonus-card">
+      <h3 class="bonus-title"><i data-lucide="gift" style="width: 28px; height: 28px; color: var(--primary);"></i> Bonus: Get Free Premium n8n Access Trick 🔑</h3>
+      <p class="bonus-desc">
+        n8n normally charges a monthly subscription or restricts local cloud instances to 14 days. Complete these 3 quick tasks to get our custom step-by-step trick to get free premium n8n access!
+      </p>
+
+      <div class="bonus-tasks-list">
+        
+        <!-- Task 1 -->
+        <div class="task-item">
+          <div class="task-number">1</div>
+          <div class="task-details">
+            <span>Follow Future with AI on Instagram</span>
+            <a href="https://www.instagram.com/futurewithai2026/" target="_blank" class="task-link">Open Instagram Profile <i data-lucide="external-link" style="width: 12px; height: 12px;"></i></a>
+          </div>
+        </div>
+
+        <!-- Task 2 -->
+        <div class="task-item">
+          <div class="task-number">2</div>
+          <div class="task-details">
+            <span>Follow Aditya Tiwari (Founder) on Instagram</span>
+            <a href="https://www.instagram.com/about.aaditya/" target="_blank" class="task-link">Open Founder Profile <i data-lucide="external-link" style="width: 12px; height: 12px;"></i></a>
+          </div>
+        </div>
+
+        <!-- Task 3 -->
+        <div class="task-item">
+          <div class="task-number">3</div>
+          <div class="task-details">
+            <span>Give 5-Star Review to Anshuman Enterprises (Parent Company)</span>
+            <a href="https://g.page/r/CdZ99l9ezVvlEBE/review" target="_blank" class="task-link">Leave Google Map Review <i data-lucide="external-link" style="width: 12px; height: 12px;"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; font-style: italic;">
+        <strong>Instructions:</strong> Complete all three steps above, take a screenshot of each proof (following profiles + submitted review), and click the WhatsApp button below to submit them.
+      </p>
+
+      <a href="https://wa.me/917065815743?text=Hi%20Aditya%21%20Maine%20teeno%20tasks%20poore%20kar%20liye%20hain%20%28Instagram%20Follows%20%26%20Google%20Review%29.%20Mera%20screenshots%20verify%20karke%20n8n%20free%20trick%20send%20kar%20dein.%20Dhanyawad%21" target="_blank" class="btn-primary" style="text-decoration: none; width: 100%; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700; background: linear-gradient(135deg, #ff8a00, #ffb77f); color: #000; border: none; box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);">
+        <span>Submit Screenshots on WhatsApp</span> <i data-lucide="message-circle"></i>
+      </a>
+    </div>
+
+    <!-- Printable/Download Footer Actions -->
+    <div class="actions-footer">
+      <button onclick="window.print()" class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; cursor: pointer; padding: 14px 28px; border-radius: 12px; border: 1px solid var(--border-color); color: var(--text-secondary); background: transparent; transition: all 0.3s ease;">
+        <i data-lucide="download" style="width: 16px; height: 16px;"></i> Download Page as PDF
+      </button>
+      <a href="index.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; padding: 14px 28px; border-radius: 12px; border: 1px solid var(--border-color); color: var(--text-secondary); background: transparent;">
+        <i data-lucide="home" style="width: 16px; height: 16px;"></i> Return to Homepage
+      </a>
+    </div>
+
+  </main>
+
+  <footer style="margin-top: auto; border-top: 1px solid var(--border-color); padding: 24px; text-align: center; font-size: 12px; color: var(--text-muted); background: rgba(0,0,0,0.2);">
+    &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
