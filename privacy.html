@@ -4,115 +4,471 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | FutureWithAi</title>
+  <meta name="description" content="Read the Privacy Policy for FutureWithAi's Cinematic n8n Automation Pack. Understand how we collect, use, and protect your information.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /* ── Design Tokens ── */
     :root {
-      --bg: #050506;
-      --primary: #ffffff;
-      --accent: #4B6BFF;
-      --soft: #B5BBC7;
-      --border: rgba(255, 255, 255, 0.08);
-      --card-bg: rgba(255, 255, 255, 0.02);
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --border-hover: rgba(255, 138, 0, 0.4);
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+      --glow-intense: 0px 0px 25px rgba(255, 138, 0, 0.4);
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --transition-smooth: 600ms cubic-bezier(.22,.61,.36,1);
     }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      background-color: var(--bg);
-      color: var(--soft);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.7;
-      margin: 0;
-      padding: 0;
+      font-family: var(--font-sans);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(255, 138, 0, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(67, 55, 46, 0.12) 0px, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
     }
-    .container {
-      max-width: 800px;
+
+    /* ── Header ── */
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 5, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 24px;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
       margin: 0 auto;
-      padding: 80px 24px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    h1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--primary);
-      font-size: clamp(32px, 5vw, 42px);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .meta {
-      font-size: 13px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 40px;
-    }
-    h2 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: var(--primary);
-      font-size: 20px;
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-    p, li {
-      font-size: 15px;
-      margin-bottom: 16px;
-    }
-    ul {
-      padding-left: 20px;
-      margin-bottom: 24px;
-    }
-    a {
-      color: var(--accent);
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .logo-wrap img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
     }
-    .footer {
-      margin-top: 80px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
       font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+      border-color: var(--border-hover);
+      background: rgba(255, 138, 0, 0.05);
+    }
+
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* ── Hero Banner ── */
+    .doc-hero {
       text-align: center;
+      margin-bottom: 64px;
+      padding: 64px 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.18);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow-primary);
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-container), var(--primary), transparent);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+      margin-bottom: 16px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 20px;
+      background: rgba(255, 138, 0, 0.08);
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .doc-title span {
+      color: var(--primary-container);
+      background: linear-gradient(135deg, #ff8a00, #ffb77f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* ── Section Cards ── */
+    .policy-section {
+      background: rgba(20, 20, 20, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .policy-section:hover {
+      border-color: rgba(255, 138, 0, 0.18);
+      box-shadow: var(--glow-primary);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 138, 0, 0.1);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary-container);
+    }
+
+    .section-head-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+    }
+
+    .policy-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .policy-body p:last-child { margin-bottom: 0; }
+
+    .policy-body strong { color: var(--text-primary); font-weight: 600; }
+
+    .policy-body ul {
+      padding-left: 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .policy-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .policy-body ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .page-footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .container { padding: 48px 16px 80px; }
+      .doc-hero { padding: 48px 24px; }
+      .policy-section { padding: 28px 20px; }
+      .page-footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <a href="index.html" style="margin-bottom: 24px; display: inline-block;">&larr; Back to Home</a>
-    <h1>Privacy Policy</h1>
-    <div class="meta">Last Updated: June 2026</div>
 
-    <p>At FutureWithAi, hosted under anshumanenterprises.online, we respect your privacy and are committed to protecting the personal data you share with us. This Privacy Policy explains how we collect, use, and safeguard your information when you purchase our n8n AI Automation Pack or use our website.</p>
-
-    <h2>1. Information We Collect</h2>
-    <p>We collect information you provide directly to us when you make a purchase or submit an enquiry:</p>
-    <ul>
-      <li><strong>Personal Information:</strong> Name, email address, WhatsApp number, and business details.</li>
-      <li><strong>Payment Details:</strong> All payment transactions are processed securely via the PhonePe Payment Gateway. We do not store your credit card or bank credentials on our servers.</li>
-      <li><strong>GitHub Accounts:</strong> On successful payment, we collect your GitHub account email address solely to grant access to the private repository containing the workflows.</li>
-    </ul>
-
-    <h2>2. How We Use Your Information</h2>
-    <p>We use the collected information for the following purposes:</p>
-    <ul>
-      <li>To deliver the n8n AI Automation Pack and grant private GitHub access.</li>
-      <li>To send invoice confirmations, updates, and customer support notifications.</li>
-      <li>To respond to your enquiries submitted via our website form.</li>
-      <li>To provide community support in our WhatsApp/Telegram support groups.</li>
-    </ul>
-
-    <h2>3. Data Protection and Security</h2>
-    <p>We implement industry-standard security measures, including SSL encryption, to protect your personal information. Your email address and contact details are never sold, rented, or shared with third-party advertisers.</p>
-
-    <h2>4. Cookies and Compliance</h2>
-    <p>Our website uses basic cookies to facilitate the checkout session flow, track order status, and analyze general website traffic. You can customize cookie consents using the compliance banner on our homepage.</p>
-
-    <h2>5. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-    <p><strong>Email:</strong> anshumanenterprises1119@gmail.com<br>
-    <strong>Address:</strong> A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP - 203207</p>
-
-    <div class="footer">
-      &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises.
+  <!-- ── Sticky Header ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" onerror="this.style.display='none'">
+      </a>
+      <a href="index.html" class="back-link" id="back-to-home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Home
+      </a>
     </div>
-  </div>
+  </header>
+
+  <!-- ── Page Content ── -->
+  <main>
+    <div class="container">
+
+      <!-- Hero Banner -->
+      <div class="doc-hero">
+        <div class="doc-label">Legal Document</div>
+        <h1 class="doc-title">Privacy <span>Policy</span></h1>
+        <p class="doc-meta">Last Updated: June 2026 &nbsp;·&nbsp; FutureWithAi / Anshuman Enterprises</p>
+      </div>
+
+      <!-- Introduction paragraph -->
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">
+        At FutureWithAi (hosted under <a href="https://anshumanenterprises.online" style="color: var(--primary); text-decoration: none;">anshumanenterprises.online</a>), we respect your privacy and are committed to protecting the personal data you share with us. This Privacy Policy explains how we collect, use, and safeguard your information when you purchase our n8n AI Automation Pack or use our website.
+      </p>
+
+      <!-- Section 1: Information We Collect -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 01</span>
+            <h2 class="section-heading">Information We Collect</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>We collect information you provide directly to us when you make a purchase or submit an enquiry:</p>
+          <ul>
+            <li><strong>Personal Information:</strong> Name, email address, WhatsApp number, and business details.</li>
+            <li><strong>Payment Details:</strong> All payment transactions are processed securely via the PhonePe Payment Gateway. We do not store your credit card, UPI details, or bank credentials on our servers.</li>
+            <li><strong>Google Drive Access:</strong> On successful payment, a private Google Drive link containing all product files is sent to your registered email address. We do not collect any GitHub credentials.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 2: How We Use Your Information -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 02</span>
+            <h2 class="section-heading">How We Use Your Information</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>We use the collected information for the following purposes:</p>
+          <ul>
+            <li>To deliver the n8n AI Automation Pack via a private Google Drive link sent to your registered email, and to grant access to the FutureWithAi Insider Community.</li>
+            <li>To send invoice confirmations, updates, and customer support notifications.</li>
+            <li>To respond to your enquiries submitted via our website form.</li>
+            <li>To provide community support in our WhatsApp/Telegram support groups.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 3: Data Protection and Security -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 03</span>
+            <h2 class="section-heading">Data Protection &amp; Security</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>We implement industry-standard security measures, including SSL encryption, to protect your personal information. Your email address and contact details are never sold, rented, or shared with third-party advertisers or external services.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: Cookies and Compliance -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 0-7 7c0 1.7.6 3.3 1.7 4.5"/><path d="M18 13.5A7 7 0 0 0 12 2"/>
+              <circle cx="9" cy="8" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="12" cy="14" r="1"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 04</span>
+            <h2 class="section-heading">Cookies &amp; Compliance</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>Our website uses basic session cookies to facilitate the checkout session flow, track order status, and analyze general website traffic. You can customize cookie consents using your browser settings or privacy settings.</p>
+        </div>
+      </section>
+
+      <!-- Section 5: Contact Us -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 05</span>
+            <h2 class="section-heading">Contact Us</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>If you have any questions or concerns about this Privacy Policy, please reach out to us at:</p>
+          <ul>
+            <li><strong>Email:</strong> anshumanenterprises1119@gmail.com</li>
+            <li><strong>Address:</strong> A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP - 203207, India</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Page Footer ── -->
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span class="footer-copy">© 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" aria-current="page">Privacy Policy</a>
+        <a href="refund.html">Refund Policy</a>
+      </nav>
+    </div>
+  </footer>
+
 </body>
 </html>

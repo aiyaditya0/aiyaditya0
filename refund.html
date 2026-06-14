@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund Policy & Terms | FutureWithAi</title>
+  <meta name="description" content="Read the Refund Policy and Terms & Conditions for FutureWithAi's Cinematic n8n Automation Pack. Understand our digital product policy and your rights as a customer.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --border-hover: rgba(255, 138, 0, 0.4);
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+      --glow-intense: 0px 0px 25px rgba(255, 138, 0, 0.4);
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --transition-smooth: 600ms cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(255, 138, 0, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(67, 55, 46, 0.12) 0px, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+    }
+
+    /* ── Header ── */
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 5, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 24px;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-wrap img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+      border-color: var(--border-hover);
+      background: rgba(255, 138, 0, 0.05);
+    }
+
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* ── Hero Banner ── */
+    .doc-hero {
+      text-align: center;
+      margin-bottom: 64px;
+      padding: 64px 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.18);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow-primary);
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-container), var(--primary), transparent);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+      margin-bottom: 16px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 20px;
+      background: rgba(255, 138, 0, 0.08);
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .doc-title span {
+      color: var(--primary-container);
+      background: linear-gradient(135deg, #ff8a00, #ffb77f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* ── Alert Box ── */
+    .alert-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      margin-bottom: 48px;
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      background: rgba(255, 138, 0, 0.05);
+    }
+
+    .alert-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 138, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .alert-icon svg { color: var(--primary-container); }
+
+    .alert-text p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    .alert-text strong { color: var(--primary); }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+
+    .toc-title {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 24px;
+    }
+
+    .toc-list li a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+      padding: 4px 0;
+    }
+
+    .toc-list li a:hover { color: var(--primary); }
+
+    .toc-list li a .toc-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--primary-container);
+      background: rgba(255, 138, 0, 0.12);
+      border-radius: 4px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+    }
+
+    /* ── Section Cards ── */
+    .policy-section {
+      background: rgba(20, 20, 20, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      transition: var(--transition-smooth);
+      scroll-margin-top: 100px;
+    }
+
+    .policy-section:hover {
+      border-color: rgba(255, 138, 0, 0.18);
+      box-shadow: var(--glow-primary);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 138, 0, 0.1);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary-container);
+    }
+
+    .section-head-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+    }
+
+    .policy-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .policy-body p:last-child { margin-bottom: 0; }
+
+    .policy-body strong { color: var(--text-primary); font-weight: 600; }
+
+    .policy-body ul, .policy-body ol {
+      padding-left: 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .policy-body ul li, .policy-body ol li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .policy-body ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .policy-body ol { counter-reset: list-counter; }
+    .policy-body ol li { counter-increment: list-counter; }
+    .policy-body ol li::before {
+      content: counter(list-counter);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--bg-void);
+      background: var(--primary-container);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* ── Highlight / Callout Box ── */
+    .callout {
+      background: rgba(255, 138, 0, 0.06);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      border-left: 3px solid var(--primary-container);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .callout strong { color: var(--primary); }
+
+    /* ── Denied / Approved Table ── */
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .eligibility-col {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .eligibility-col.approved { border: 1px solid rgba(34, 197, 94, 0.25); }
+    .eligibility-col.denied   { border: 1px solid rgba(239, 68, 68, 0.25); }
+
+    .eligibility-col-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+
+    .eligibility-col.approved .eligibility-col-title { color: #4ade80; }
+    .eligibility-col.denied   .eligibility-col-title { color: #f87171; }
+
+    .eligibility-items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .eligibility-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+    }
+
+    .eligibility-item .dot-approved { color: #4ade80; font-size: 16px; line-height: 1; margin-top: 1px; }
+    .eligibility-item .dot-denied   { color: #f87171; font-size: 16px; line-height: 1; margin-top: 1px; }
+
+    /* ── Contact Card ── */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.85) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.25);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-top: 48px;
+      text-align: center;
+      box-shadow: var(--glow-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary-container), transparent);
+    }
+
+    .contact-card h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-btn.email {
+      background: var(--primary-container);
+      color: var(--bg-void);
+      box-shadow: var(--glow-primary);
+    }
+
+    .contact-btn.email:hover {
+      background: #ff9f24;
+      transform: translateY(-2px);
+      box-shadow: var(--glow-intense);
+    }
+
+    .contact-btn.whatsapp {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-btn.whatsapp:hover {
+      border-color: var(--border-hover);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .page-footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    /* ── Contact Grid & Form Styles ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 138, 0, 0.08);
+      border: 1px solid rgba(255, 138, 0, 0.15);
+      border-radius: 8px;
+      color: var(--primary-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-item div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 14px;
+    }
+
+    .info-item div strong {
+      color: var(--text-white);
+      font-weight: 600;
+    }
+
+    .info-item div span, .info-item div a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      line-height: 1.4;
+    }
+
+    .info-item div a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .contact-form-wrap {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--glow-primary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary-container);
+      box-shadow: 0 0 10px rgba(255, 138, 0, 0.15);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .required-asterisk {
+      color: var(--primary-container);
+      margin-left: 2px;
+    }
+
+    .form-submit-btn {
+      cursor: pointer;
+      border: none;
+    }
+
+    .form-status-msg {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      line-height: 1.5;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .container { padding: 48px 16px 80px; }
+      .doc-hero { padding: 48px 24px; }
+      .policy-section { padding: 28px 20px; }
+      .toc-list { grid-template-columns: 1fr; }
+      .eligibility-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 28px 20px; }
+      .page-footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky Header ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" onerror="this.style.display='none'">
+      </a>
+      <a href="index.html" class="back-link" id="back-to-home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- ── Page Content ── -->
+  <main>
+    <div class="container">
+
+      <!-- Hero Banner -->
+      <div class="doc-hero">
+        <div class="doc-label">Legal Document</div>
+        <h1 class="doc-title">Refund Policy &amp; <span>Terms of Service</span></h1>
+        <p class="doc-meta">Last Updated: June 2026 &nbsp;·&nbsp; FutureWithAi / Anshuman Enterprises</p>
+      </div>
+
+      <!-- Important Alert -->
+      <div class="alert-box" role="alert">
+        <div class="alert-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="alert-text">
+          <p>
+            <strong>Please read this document carefully</strong> before purchasing. By completing your payment, you agree to be bound by these Terms of Service and our Refund Policy. This is a <strong>digital product</strong> — all sales are processed via PhonePe and are subject to the conditions below.
+          </p>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <nav class="toc" aria-label="Table of contents">
+        <div class="toc-title">Contents</div>
+        <ul class="toc-list">
+          <li><a href="#product-description"><span class="toc-num">01</span> Product Description</a></li>
+          <li><a href="#refund-policy"><span class="toc-num">02</span> Refund Policy</a></li>
+          <li><a href="#eligibility"><span class="toc-num">03</span> Refund Eligibility</a></li>
+          <li><a href="#refund-process"><span class="toc-num">04</span> How to Request a Refund</a></li>
+          <li><a href="#delivery"><span class="toc-num">05</span> Delivery &amp; Access</a></li>
+          <li><a href="#terms"><span class="toc-num">06</span> Terms of Service</a></li>
+          <li><a href="#license"><span class="toc-num">07</span> License &amp; PLR Rights</a></li>
+          <li><a href="#liability"><span class="toc-num">08</span> Limitation of Liability</a></li>
+          <li><a href="#governing"><span class="toc-num">09</span> Governing Law</a></li>
+          <li><a href="#contact"><span class="toc-num">10</span> Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Section 1: Product Description -->
+      <section class="policy-section" id="product-description">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 01</span>
+            <h2 class="section-heading">Product Description</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>FutureWithAi (operated by Anshuman Enterprises, Greater Noida, UP) sells the <strong>Cinematic n8n Automation Pack</strong> — a curated collection of over 2,000 pre-built automation workflow template files (JSON format), setup documentation, and supporting media assets. This is an entirely digital product.</p>
+          <p>Upon successful payment, buyers receive:</p>
+          <ul>
+            <li>A private <strong>Google Drive link</strong> containing all 2,000+ n8n workflow JSON files.</li>
+            <li>Access to the exclusive <strong>FutureWithAi Insider Community</strong> — a private group for updates, new workflow drops, and direct support.</li>
+            <li>Setup guides, documentation, and video tutorials.</li>
+            <li>PLR (Private Label Rights) license enabling modification and resale of the templates.</li>
+          </ul>
+          <div class="callout">
+            <strong>Important:</strong> This product is a digital download. No physical goods are shipped. Google Drive access and Insider Community access are delivered to your registered email address within 30 minutes of confirmed payment.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Refund Policy -->
+      <section class="policy-section" id="refund-policy">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.51"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 02</span>
+            <h2 class="section-heading">Refund Policy</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>Due to the nature of digital products, <strong>all sales are generally final</strong>. However, we understand that issues can arise and we want every customer to be satisfied. Therefore, we offer a limited refund window under specific conditions.</p>
+
+          <p><strong>48-Hour Refund Window:</strong> You may request a refund within <strong>48 hours</strong> of your purchase date if any of the following apply:</p>
+          <ul>
+            <li>You did not receive the Google Drive access link within 2 hours of confirmed payment despite contacting support.</li>
+            <li>You experience a documented technical issue with the product files that renders them completely unusable and our support team is unable to resolve it.</li>
+            <li>Duplicate payment occurred for the same order (you were charged more than once).</li>
+            <li>Fraudulent or unauthorized transaction — contact us and your bank immediately.</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Processing Time:</strong> Approved refunds are processed within <strong>5–7 business days</strong> back to your original payment method via PhonePe. The actual credit depends on your bank's processing time.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Refund Eligibility -->
+      <section class="policy-section" id="eligibility">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 03</span>
+            <h2 class="section-heading">Refund Eligibility</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>Below is a clear breakdown of what qualifies and does not qualify for a refund:</p>
+
+          <div class="eligibility-grid">
+            <div class="eligibility-col approved">
+              <div class="eligibility-col-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Eligible for Refund
+              </div>
+              <div class="eligibility-items">
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Google Drive link not received within 2 hours of payment</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Duplicate charge / double payment on same order</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Proven technical defect making files completely unusable</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Unauthorized / fraudulent transaction reported within 24 hrs</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Payment debited but order not created (no Order ID)</div>
+              </div>
+            </div>
+            <div class="eligibility-col denied">
+              <div class="eligibility-col-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Not Eligible for Refund
+              </div>
+              <div class="eligibility-items">
+                <div class="eligibility-item"><span class="dot-denied">✗</span> "Change of mind" after Google Drive link has been opened/accessed</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> Refund requested after 48 hours from purchase</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> User already downloaded files from Google Drive link</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> Issues arising from user's own n8n setup or API keys</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> Dissatisfaction with product after reviewing and using it</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> Request made after violating our Terms of Service</div>
+              </div>
+            </div>
+          </div>
+
+          <p>We reserve the right to decline refund requests that do not meet the above criteria. All refund decisions are final.</p>
+        </div>
+      </section>
+
+      <!-- Section 4: Refund Process -->
+      <section class="policy-section" id="refund-process">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 04</span>
+            <h2 class="section-heading">How to Request a Refund</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>To request a refund, please follow these steps within the 48-hour window:</p>
+          <ol>
+            <li>Email us at <strong>anshumanenterprises1119@gmail.com</strong> with the subject line: <em>"Refund Request – [Your Order ID]"</em>.</li>
+            <li>Include your <strong>full name</strong>, <strong>registered email</strong>, <strong>Order ID</strong> (found in your payment confirmation), and the <strong>reason for refund</strong>.</li>
+            <li>If applicable, attach screenshots or evidence of the issue you experienced.</li>
+            <li>Our team will review your request within <strong>24–48 hours</strong> and respond via email.</li>
+            <li>If approved, the refund will be initiated to your original PhonePe payment method and reflect in your account within 5–7 business days.</li>
+          </ol>
+          <div class="callout">
+            <strong>Alternatively:</strong> You can also reach us on WhatsApp at <strong>+91 70658 15743</strong> for faster assistance, especially if you have not received your access credentials.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Delivery & Access -->
+      <section class="policy-section" id="delivery">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 05</span>
+            <h2 class="section-heading">Delivery &amp; Access Policy</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>All product access is delivered <strong>digitally</strong>. Upon confirmed payment:</p>
+          <ul>
+            <li>A <strong>Google Drive link</strong> containing all files will be sent to your registered email within <strong>30 minutes</strong>.</li>
+            <li>An invitation to the exclusive <strong>FutureWithAi Insider Community</strong> will also be sent to your email.</li>
+            <li>A confirmation message will also be sent via <strong>WhatsApp</strong> to the number you provided.</li>
+            <li>If you do not receive access within 2 hours, please contact us at <strong>+91 70658 15743</strong> (WhatsApp) or email us immediately.</li>
+          </ul>
+          <p>We are not responsible for delivery failures caused by an incorrect email address provided at the time of purchase. Please ensure you enter accurate contact details in the checkout form.</p>
+        </div>
+      </section>
+
+      <!-- Section 6: Terms of Service -->
+      <section class="policy-section" id="terms">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 06</span>
+            <h2 class="section-heading">Terms of Service</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>By purchasing and accessing the FutureWithAi Cinematic n8n Automation Pack, you agree to the following:</p>
+          <ul>
+            <li><strong>Eligibility:</strong> You must be at least 18 years of age or have parental/guardian consent to make this purchase.</li>
+            <li><strong>Accuracy of Information:</strong> You agree to provide accurate, truthful information during checkout, including your name, email, and WhatsApp number.</li>
+            <li><strong>Authorized Use:</strong> The product is licensed for lawful personal, professional, or commercial use. You may not use the workflows for illegal, fraudulent, or harmful activities.</li>
+            <li><strong>No Sharing of Access:</strong> The Google Drive link is shared with you individually. Distributing the link or the downloaded files to others without a valid PLR license is strictly prohibited.</li>
+            <li><strong>Prohibited Activities:</strong> You must not reverse-engineer, misrepresent the origin of, or publicly re-publish the raw downloaded files as your own original work without modification (PLR modification is permitted).</li>
+            <li><strong>Account Termination:</strong> We reserve the right to revoke Google Drive access without refund if a user is found to be in violation of these terms.</li>
+            <li><strong>Modifications:</strong> We reserve the right to update or modify these Terms at any time. Continued use of the product constitutes acceptance of the revised terms.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7: License & PLR -->
+      <section class="policy-section" id="license">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 07</span>
+            <h2 class="section-heading">License &amp; PLR Rights</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>Your purchase includes a <strong>Private Label Rights (PLR) license</strong>, which grants you the following permissions:</p>
+          <ul>
+            <li><strong>Modify:</strong> You may edit, customize, rebrand, or combine these workflow templates to suit your own or client needs.</li>
+            <li><strong>Sell:</strong> You may sell the modified workflows to your own clients or customers as part of a service package.</li>
+            <li><strong>Resell:</strong> You may bundle and resell the templates as a product of your own.</li>
+          </ul>
+          <p>The PLR license does <strong>not</strong> permit:</p>
+          <ul>
+            <li>Redistribution of the original, unmodified repository files for free or at any price.</li>
+            <li>Claiming original authorship of unmodified content from this pack.</li>
+            <li>Reselling access to this specific repository or granting sub-access to others.</li>
+          </ul>
+          <div class="callout">
+            This license is non-transferable and applies only to the individual purchaser. Businesses purchasing for team use must contact us for a multi-seat arrangement.
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8: Limitation of Liability -->
+      <section class="policy-section" id="liability">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 08</span>
+            <h2 class="section-heading">Disclaimer &amp; Limitation of Liability</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>The FutureWithAi Automation Pack is provided <strong>"as is"</strong> without warranties of any kind, either express or implied. We do not guarantee that:</p>
+          <ul>
+            <li>All workflows will function identically in every n8n version or configuration.</li>
+            <li>Third-party APIs (OpenAI, HubSpot, Slack, etc.) integrated in these templates will remain available or unchanged.</li>
+            <li>The templates will meet your specific business requirements without customization.</li>
+          </ul>
+          <p>Anshuman Enterprises shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of or inability to use this product, including loss of revenue, data, or business opportunities.</p>
+          <p>Our total liability to you shall not exceed the amount paid for the product (₹349).</p>
+        </div>
+      </section>
+
+      <!-- Section 9: Governing Law -->
+      <section class="policy-section" id="governing">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 09</span>
+            <h2 class="section-heading">Governing Law &amp; Jurisdiction</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>These Terms and Conditions and the Refund Policy are governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts located in <strong>Greater Noida, Uttar Pradesh, India</strong>.</p>
+          <p>By making a purchase, you agree that any legal action or proceedings arising out of or relating to this agreement shall be brought exclusively in these courts, and you consent to their jurisdiction.</p>
+        </div>
+      </section>
+
+      <!-- Section 10: Contact & Support Request -->
+      <section class="policy-section" id="contact">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 7 7l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 10</span>
+            <h2 class="section-heading">Contact &amp; Support Form</h2>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left: Contact Details -->
+          <div class="contact-info">
+            <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 24px; text-align: left;">
+              For refund requests, access issues, or general support, please reach out to us using the form or through our direct channels. We respond within 24 hours on business days.
+            </p>
+            
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <strong>Email Support</strong>
+                  <a href="mailto:anshumanenterprises1119@gmail.com">anshumanenterprises1119@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </div>
+                <div>
+                  <strong>WhatsApp Support</strong>
+                  <a href="https://wa.me/917065815743?text=Hi%2C%20I%20have%20a%20question%20about%20FutureWithAi%20product." target="_blank">Chat with us (+91 70658 15743)</a>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <strong>Address</strong>
+                  <span>A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP – 203207, India</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <strong>Support Hours</strong>
+                  <span>Mon – Sat, 10:00 AM – 7:00 PM IST</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right: Web3Forms Contact Form -->
+          <div class="contact-form-wrap">
+            <form id="contact-form" onsubmit="handleContactSubmit(event)">
+              <!-- Web3Forms Config -->
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+              <input type="hidden" name="subject" value="New Support Query from FutureWithAi">
+              <input type="hidden" name="from_name" value="FutureWithAi Support">
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="contact-name">Full Name <span class="required-asterisk">*</span></label>
+                  <input type="text" id="contact-name" name="name" placeholder="John Doe" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email Address <span class="required-asterisk">*</span></label>
+                  <input type="email" id="contact-email" name="email" placeholder="john@example.com" required autocomplete="email">
+                </div>
+              </div>
+              
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="contact-whatsapp">WhatsApp Number</label>
+                  <input type="tel" id="contact-whatsapp" name="whatsapp" placeholder="e.g. +91 98765 43210" autocomplete="tel">
+                </div>
+                <div class="form-group">
+                  <label for="contact-enquiry">Enquiry Type <span class="required-asterisk">*</span></label>
+                  <select id="contact-enquiry" name="enquiry_type" required>
+                    <option value="" disabled selected>Select issue type</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Access Code / Download Link Issue">Access Code / Download Link Issue</option>
+                    <option value="Payment Failure / Billing">Payment Failure / Billing</option>
+                    <option value="Refund Request">Refund Request</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="contact-order-id">Order ID (if applicable)</label>
+                <input type="text" id="contact-order-id" name="order_id" placeholder="e.g. AEN8N-XXXXXX">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message <span class="required-asterisk">*</span></label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Write your query details here..." required></textarea>
+              </div>
+
+              <button type="submit" class="contact-btn email form-submit-btn" id="contact-submit-btn" style="width: 100%; justify-content: center; gap: 8px;">
+                <span>Send Message</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+              </button>
+
+              <div id="form-status" class="form-status-msg" style="display: none;"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Page Footer ── -->
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span class="footer-copy">© 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refund.html" aria-current="page">Refund Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    async function handleContactSubmit(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const statusMsg = document.getElementById('form-status');
+      const submitBtnText = submitBtn.querySelector('span');
+      const originalText = submitBtnText.textContent;
+      
+      // Clear status
+      statusMsg.style.display = 'none';
+      statusMsg.textContent = '';
+      
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtnText.textContent = 'Sending Message...';
+      
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        });
+        
+        const result = await response.json();
+        
+        if (response.status === 200) {
+          statusMsg.style.display = 'block';
+          statusMsg.textContent = 'Thank you! Your query has been submitted successfully. We will respond within 24 hours.';
+          statusMsg.style.background = 'rgba(34, 197, 94, 0.1)';
+          statusMsg.style.border = '1px solid rgba(34, 197, 94, 0.3)';
+          statusMsg.style.color = '#4ade80';
+          form.reset();
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        statusMsg.style.display = 'block';
+        statusMsg.textContent = 'Oops! ' + error.message + '. Please try again or reach us directly via email/WhatsApp.';
+        statusMsg.style.background = 'rgba(239, 68, 68, 0.1)';
+        statusMsg.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+        statusMsg.style.color = '#f87171';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtnText.textContent = originalText;
+      }
+    }
+  </script>
+</body>
+</html>
