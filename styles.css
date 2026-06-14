@@ -1087,10 +1087,15 @@ footer {
     display: none; /* Can build mobile menu toggle if needed, or keep header clean */
   }
   .header-container {
-    height: 70px;
+    height: auto;
+    min-height: 90px;
+    padding: 10px 24px;
+  }
+  .logo-img {
+    height: 64px;
   }
   .hero {
-    padding-top: 130px;
+    padding-top: 160px;
   }
 }
 
