@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /terms.html
+Allow: /privacy.html
+Allow: /refund.html
+Disallow: /access.html
+Disallow: /emergent-prompt.html
+Disallow: /payment-success.html
+Disallow: /payment-failure.html
+
+Sitemap: https://futurewithai.anshumanenterprises.online/sitemap.xml
