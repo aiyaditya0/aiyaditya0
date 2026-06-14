@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions | FutureWithAi</title>
+  <meta name="description" content="Read the Terms and Conditions for FutureWithAi's Cinematic n8n Automation Pack. Understand the terms of service, platform rules, and licensing rights.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --border-hover: rgba(255, 138, 0, 0.4);
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+      --glow-intense: 0px 0px 25px rgba(255, 138, 0, 0.4);
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --transition-smooth: 600ms cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(255, 138, 0, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(67, 55, 46, 0.12) 0px, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+    }
+
+    /* ── Header ── */
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 5, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 24px;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-wrap img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+      border-color: var(--border-hover);
+      background: rgba(255, 138, 0, 0.05);
+    }
+
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* ── Hero Banner ── */
+    .doc-hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 64px 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.18);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow-primary);
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-container), var(--primary), transparent);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+      margin-bottom: 16px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 20px;
+      background: rgba(255, 138, 0, 0.08);
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .doc-title span {
+      color: var(--primary-container);
+      background: linear-gradient(135deg, #ff8a00, #ffb77f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* ── Section Cards ── */
+    .policy-section {
+      background: rgba(20, 20, 20, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .policy-section:hover {
+      border-color: rgba(255, 138, 0, 0.18);
+      box-shadow: var(--glow-primary);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 138, 0, 0.1);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary-container);
+    }
+
+    .section-head-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+    }
+
+    .policy-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .policy-body p:last-child { margin-bottom: 0; }
+
+    .policy-body strong { color: var(--text-primary); font-weight: 600; }
+
+    .policy-body ul, .policy-body ol {
+      padding-left: 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .policy-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .policy-body ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .policy-body ol {
+      counter-reset: item;
+    }
+
+    .policy-body ol li {
+      counter-increment: item;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .policy-body ol li::before {
+      content: counter(item) ".";
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+      min-width: 18px;
+    }
+
+    /* ── Info Banners ── */
+    .alert-banner {
+      background: rgba(255, 138, 0, 0.08);
+      border-left: 4px solid var(--primary-container);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
+    }
+
+    .alert-banner p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .warning-banner {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 24px 0;
+    }
+
+    .warning-banner p {
+      margin: 0;
+      font-size: 13.5px;
+      color: #f87171;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    .identity-card {
+      background: linear-gradient(135deg, rgba(40, 20, 10, 0.6) 0%, rgba(20, 10, 5, 0.8) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin: 28px 0;
+      box-shadow: var(--glow-primary);
+    }
+
+    .identity-card h3 {
+      color: var(--primary);
+      font-family: var(--font-serif);
+      font-size: 20px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .identity-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .identity-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .identity-label {
+      color: var(--text-muted);
+      font-weight: 600;
+      min-width: 140px;
+      flex-shrink: 0;
+    }
+
+    .identity-val {
+      color: var(--text-primary);
+    }
+
+    .identity-val.highlight {
+      font-weight: 700;
+      color: var(--text-white);
+      background: rgba(255, 138, 0, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      font-family: monospace;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .page-footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .container { padding: 48px 16px 80px; }
+      .doc-hero { padding: 48px 24px; }
+      .policy-section { padding: 28px 20px; }
+      .page-footer-inner { flex-direction: column; text-align: center; }
+      .identity-row { flex-direction: column; gap: 4px; }
+      .identity-label { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky Header ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" onerror="this.style.display='none'">
+      </a>
+      <a href="index.html" class="back-link" id="back-to-home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- ── Page Content ── -->
+  <main>
+    <div class="container">
+
+      <!-- Hero Banner -->
+      <div class="doc-hero">
+        <div class="doc-label">Legal Document</div>
+        <h1 class="doc-title">Terms &amp; <span>Conditions</span></h1>
+        <p class="doc-meta">Last Updated: June 2026 &nbsp;·&nbsp; FutureWithAi / Anshuman Enterprises</p>
+      </div>
+
+      <!-- IT Act Electronic Record Notice -->
+      <div class="alert-banner">
+        <p>
+          This document is an electronic record in terms of <strong>Information Technology Act, 2000</strong> and rules there under as applicable and the amended provisions pertaining to electronic records in various statutes as amended by the Information Technology Act, 2000. This electronic record is generated by a computer system and does not require any physical or digital signatures.
+        </p>
+      </div>
+
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 28px;">
+        This document is published in accordance with the provisions of <strong>Rule 3 (1) of the Information Technology (Intermediaries guidelines) Rules, 2011</strong> that require publishing the rules and regulations, privacy policy and Terms of Use for access or usage of domain name <a href="https://futurewithai.anshumanenterprises.online/" style="color: var(--primary); font-weight: 600; text-decoration: none;">https://futurewithai.anshumanenterprises.online/</a> ('Website'), including the related mobile site and mobile application (hereinafter referred to as 'Platform').
+      </p>
+
+      <!-- Business Identity & GST Card -->
+      <div class="identity-card">
+        <h3>Platform Owner Details</h3>
+        <div class="identity-grid">
+          <div class="identity-row">
+            <span class="identity-label">Business Name</span>
+            <span class="identity-val" style="font-weight: 700; color: var(--text-white);">ANSHUMAN ENTERPRISES</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Registered Office</span>
+            <span class="identity-val">A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, Uttar Pradesh — 203207, India</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">GST Number</span>
+            <span class="identity-val highlight">09AWTPT8270E1ZQ</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Website Domain</span>
+            <span class="identity-val">futurewithai.anshumanenterprises.online</span>
+          </div>
+          <div class="identity-row">
+            <span class="identity-label">Incorporated Under</span>
+            <span class="identity-val">Companies Act, 1956</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 28px;">
+        Your use of the Platform and services and tools are governed by the following terms and conditions ("Terms of Use") as applicable to the Platform including the applicable policies which are incorporated herein by way of reference. If You transact on the Platform, You shall be subject to the policies that are applicable to the Platform for such transaction. By mere use of the Platform, You shall be contracting with the Platform Owner and these terms and conditions including the policies constitute Your binding obligations, with Platform Owner. These Terms of Use relate to your use of our website, goods (as applicable) or services (as applicable) (collectively, 'Services'). Any terms and conditions proposed by You which are in addition to or which conflict with these Terms of Use are expressly rejected by the Platform Owner and shall be of no force or effect. These Terms of Use can be modified at any time without assigning any reason. It is your responsibility to periodically review these Terms of Use to stay informed of updates.
+      </p>
+
+      <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 28px;">
+        For the purpose of these Terms of Use, wherever the context so requires <strong>'you'</strong>, <strong>'your'</strong> or <strong>'user'</strong> shall mean any natural or legal person who has agreed to become a user/buyer on the Platform.
+      </p>
+
+      <!-- Alert Banner -->
+      <div class="warning-banner">
+        <p>
+          ⚠️ ACCESSING, BROWSING OR OTHERWISE USING THE PLATFORM INDICATES YOUR AGREEMENT TO ALL THE TERMS AND CONDITIONS UNDER THESE TERMS OF USE, SO PLEASE READ THE TERMS OF USE CAREFULLY BEFORE PROCEEDING.
+        </p>
+      </div>
+
+      <!-- Terms of Use Section -->
+      <section class="policy-section" style="margin-top: 40px;">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 01</span>
+            <h2 class="section-heading">Platform Terms of Use</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>The use of Platform and/or availing of our Services is subject to the following Terms of Use:</p>
+          <ol style="margin-top: 16px;">
+            <li>To access and use the Services, you agree to provide true, accurate and complete information to us during and after registration, and you shall be responsible for all acts done through the use of your registered account on the Platform.</li>
+            <li>Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials offered on this website or through the Services, for any specific purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
+            <li>Your use of our Services and the Platform is solely and entirely at your own risk and discretion for which we shall not be liable to you in any manner. You are required to independently assess and ensure that the Services meet your requirements.</li>
+            <li>The contents of the Platform and the Services are proprietary to us and are licensed to us. You will not have any authority to claim any intellectual property rights, title, or interest in its contents. The contents includes and is not limited to the design, layout, look, graphics, and n8n workflow templates.</li>
+            <li>You acknowledge that unauthorized use of the Platform and/or the Services may lead to action against you as per these Terms of Use and/or applicable laws.</li>
+            <li>You agree to pay us the charges associated with availing the Services.</li>
+            <li>You agree not to use the Platform and/or Services for any purpose that is unlawful, illegal or forbidden by these Terms, or Indian or local laws that might apply to you.</li>
+            <li>You agree and acknowledge that website and the Services may contain links to other third party websites. On accessing these links, you will be governed by the terms of use, privacy policy and such other policies of such third party websites. These links are provided for your convenience to provide further information.</li>
+            <li>You understand that upon initiating a transaction for availing the Services you are entering into a legally binding and enforceable contract with the Platform Owner for the Services.</li>
+            <li>You shall indemnify and hold harmless Platform Owner, its affiliates, group companies (as applicable) and their respective officers, directors, agents, and employees, from any claim or demand, or actions including reasonable attorney's fees, made by any third party or penalty imposed due to or arising out of Your breach of this Terms of Use, privacy Policy and other Policies, or Your violation of any law, rules or regulations or the rights (including infringement of intellectual property rights) of a third party.</li>
+            <li>Notwithstanding anything contained in these Terms of Use, the parties shall not be liable for any failure to perform an obligation under these Terms if performance is prevented or delayed by a force majeure event.</li>
+            <li>These Terms and any dispute or claim relating to it, or its enforceability, shall be governed by and construed in accordance with the laws of India.</li>
+            <li>All disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts in Greater Noida, Uttar Pradesh, India.</li>
+            <li>All concerns or communications relating to these Terms must be communicated to us using the contact information provided on this website.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Section: Licensing and Digital Deliverables -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 02</span>
+            <h2 class="section-heading">Licensing &amp; Digital Deliverables</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>
+            When purchasing the **Cinematic n8n Automation Pack**, you receive a non-exclusive, non-transferable license to use, modify, and implement the workflow files for your own operations or on behalf of client projects. Reselling or distributing the unmodified raw workflow repository files is strictly prohibited under our Intellectual Property rules.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section: Contact for Grievances -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 03</span>
+            <h2 class="section-heading">Contact &amp; Grievances</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>If you have any questions or grievances regarding these terms, please contact us at:</p>
+          <ul style="margin-top: 12px;">
+            <li><strong>Email:</strong> anshumanenterprises1119@gmail.com</li>
+            <li><strong>Phone:</strong> +91 70658 15743</li>
+            <li><strong>Registered Address:</strong> A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP - 203207, India</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Page Footer ── -->
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span class="footer-copy">© 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refund.html">Refund Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

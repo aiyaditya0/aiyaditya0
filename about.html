@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | FutureWithAi</title>
+  <meta name="description" content="Learn more about FutureWithAi, our mission to simplify workflow automation, and how we help businesses scale using ready-to-run n8n templates.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Design Tokens ── */
+    :root {
+      --bg-void: #050505;
+      --primary: #ffb77f;
+      --primary-container: #ff8a00;
+      --text-white: #ffffff;
+      --text-primary: #f3dfd1;
+      --text-secondary: #ddc1ae;
+      --text-muted: #a58c7b;
+      --border-color: #232323;
+      --border-hover: rgba(255, 138, 0, 0.4);
+      --glow-primary: 0px 0px 20px rgba(255, 138, 0, 0.25);
+      --glow-intense: 0px 0px 25px rgba(255, 138, 0, 0.4);
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'Inter', sans-serif;
+      --transition-smooth: 600ms cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-void);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(255, 138, 0, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(67, 55, 46, 0.12) 0px, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
+    }
+
+    /* ── Header ── */
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(5, 5, 5, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 24px;
+    }
+
+    .page-header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo-wrap img {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: var(--transition-smooth);
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+      border-color: var(--border-hover);
+      background: rgba(255, 138, 0, 0.05);
+    }
+
+    .back-link svg { flex-shrink: 0; }
+
+    /* ── Main Container ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    /* ── Hero Banner ── */
+    .doc-hero {
+      text-align: center;
+      margin-bottom: 48px;
+      padding: 64px 40px;
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.18);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow-primary);
+    }
+
+    .doc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-container), var(--primary), transparent);
+    }
+
+    .doc-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+      margin-bottom: 16px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 20px;
+      background: rgba(255, 138, 0, 0.08);
+    }
+
+    .doc-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 50px);
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .doc-title span {
+      color: var(--primary-container);
+      background: linear-gradient(135deg, #ff8a00, #ffb77f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* ── Section Cards ── */
+    .policy-section {
+      background: rgba(20, 20, 20, 0.35);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .policy-section:hover {
+      border-color: rgba(255, 138, 0, 0.18);
+      box-shadow: var(--glow-primary);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 138, 0, 0.1);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary-container);
+    }
+
+    .section-head-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .section-num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary-container);
+    }
+
+    .section-heading {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+      line-height: 1.3;
+    }
+
+    .policy-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .policy-body p:last-child { margin-bottom: 0; }
+
+    .policy-body strong { color: var(--text-primary); font-weight: 600; }
+
+    .policy-body ul {
+      padding-left: 0;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .policy-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    .policy-body ul li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-container);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ── Info Grid / Cards ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .feature-card {
+      background: rgba(255, 138, 0, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .feature-card:hover {
+      border-color: rgba(255, 138, 0, 0.25);
+      background: rgba(255, 138, 0, 0.06);
+    }
+
+    .feature-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text-white);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-desc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .page-footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .container { padding: 48px 16px 80px; }
+      .doc-hero { padding: 48px 24px; }
+      .policy-section { padding: 28px 20px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .page-footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Sticky Header ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" onerror="this.style.display='none'">
+      </a>
+      <a href="index.html" class="back-link" id="back-to-home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- ── Page Content ── -->
+  <main>
+    <div class="container">
+
+      <!-- Hero Banner -->
+      <div class="doc-hero">
+        <div class="doc-label">About Us</div>
+        <h1 class="doc-title">Future<span>WithAi</span></h1>
+        <p class="doc-meta">Est. 2026 &nbsp;·&nbsp; Powering High-Performance Automations</p>
+      </div>
+
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px; text-align: center; max-width: 760px; margin-left: auto; margin-right: auto;">
+        FutureWithAi is a premium digital platform focused on helping businesses, agencies, developers, and creators automate their operations using state-of-the-art workflow technologies. We provide the tools you need to build faster and run smoother.
+      </p>
+
+      <!-- Section 1: Who We Are -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 01</span>
+            <h2 class="section-heading">Our Mission &amp; Vision</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>
+            Building software integrations from scratch is complex, slow, and expensive. Our team of workflow architects created the **Cinematic n8n Automation Pack** to solve this exact problem. By collecting and testing over **2,000 ready-to-import n8n workflow templates**, we bridge the gap between expensive developer resources and immediate operational scaling.
+          </p>
+          <p>
+            Whether you are a freelancer hoping to scale your hourly rate, an agency owner looking to deliver retainers, or a business manager trying to eliminate manual data entries — our pre-built models are designed to give you instant, reliable answers.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: Why Choose FutureWithAi -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 02</span>
+            <h2 class="section-heading">Why Choose Us?</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>We build templates with extreme attention to detail and rigorous real-world testing. Here is what makes our repository unique:</p>
+          
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h4 class="feature-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Tested &amp; Production Ready
+              </h4>
+              <p class="feature-desc">Every single workflow in our 2000+ pack is fully configured, debugged, and optimized to run out of the box.</p>
+            </div>
+            <div class="feature-card">
+              <h4 class="feature-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                Lifetime Access &amp; Updates
+              </h4>
+              <p class="feature-desc">A single, one-time launch payment gives you lifetime access to our Google Drive repository, including future additions.</p>
+            </div>
+            <div class="feature-card">
+              <h4 class="feature-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                Insider Community
+              </h4>
+              <p class="feature-desc">Gain instant access to our private WhatsApp and Telegram spaces to exchange automation guides, triggers, and tips.</p>
+            </div>
+            <div class="feature-card">
+              <h4 class="feature-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                PLR Licensing Included
+              </h4>
+              <p class="feature-desc">You are free to edit, customize, rebrand, and sell the workflows to your own agency clients to create new streams of income.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Powered by Anshuman Enterprises -->
+      <section class="policy-section">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 03</span>
+            <h2 class="section-heading">Our Business Foundation</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <p>
+            FutureWithAi is a proud digital brand owned and operated by **Anshuman Enterprises**, an established enterprise registered in Greater Noida, Uttar Pradesh, India.
+          </p>
+          <p>
+            Through Anshuman Enterprises, we carry a strong operational framework that ensures top-tier compliance, fast customer support response times, and fully secured payment gateways via PhonePe.
+          </p>
+          <ul style="margin-top: 16px;">
+            <li><strong>Registered Business:</strong> ANSHUMAN ENTERPRISES</li>
+            <li><strong>GSTIN:</strong> 09AWTPT8270E1ZQ</li>
+            <li><strong>Registered Address:</strong> A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP - 203207, India</li>
+            <li><strong>Support Email:</strong> anshumanenterprises1119@gmail.com</li>
+            <li><strong>Direct Helpline:</strong> +91 70658 15743 (WhatsApp)</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ── Page Footer ── -->
+  <footer class="page-footer">
+    <div class="page-footer-inner">
+      <span class="footer-copy">© 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refund.html">Refund Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

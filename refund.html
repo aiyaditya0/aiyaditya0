@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Refund Policy & Terms | FutureWithAi</title>
-  <meta name="description" content="Read the Refund Policy and Terms & Conditions for FutureWithAi's Cinematic n8n Automation Pack. Understand our digital product policy and your rights as a customer.">
+  <title>Refund &amp; Shipping Policy | FutureWithAi</title>
+  <meta name="description" content="Read the Refund and Shipping Policy for FutureWithAi's Cinematic n8n Automation Pack. Understand the return policies, digital delivery, and shipping terms.">
   <meta name="robots" content="index,follow">
 
   <!-- Favicon -->
@@ -175,85 +175,73 @@
 
     /* ── Alert Box ── */
     .alert-box {
+      background: rgba(255, 138, 0, 0.08);
+      border-left: 4px solid var(--primary-container);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin-bottom: 28px;
       display: flex;
-      align-items: flex-start;
       gap: 16px;
-      padding: 20px 24px;
-      border-radius: 16px;
-      margin-bottom: 48px;
-      border: 1px solid rgba(255, 138, 0, 0.25);
-      background: rgba(255, 138, 0, 0.05);
+      align-items: flex-start;
     }
 
     .alert-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255, 138, 0, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      color: var(--primary-container);
       flex-shrink: 0;
+      margin-top: 2px;
     }
-
-    .alert-icon svg { color: var(--primary-container); }
 
     .alert-text p {
+      margin: 0;
       font-size: 14px;
-      line-height: 1.6;
       color: var(--text-secondary);
+      line-height: 1.6;
     }
-
-    .alert-text strong { color: var(--primary); }
 
     /* ── Table of Contents ── */
     .toc {
-      background: rgba(20, 20, 20, 0.4);
+      background: rgba(20, 20, 20, 0.2);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 56px;
+      padding: 24px 32px;
+      margin-bottom: 40px;
     }
 
     .toc-title {
-      font-family: var(--font-sans);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--text-white);
       margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .toc-list {
-      list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 24px;
+      list-style: none;
+      padding-left: 0;
     }
 
-    .toc-list li a {
-      display: flex;
+    .toc-list a {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 500;
-      transition: var(--transition-smooth);
-      padding: 4px 0;
     }
 
-    .toc-list li a:hover { color: var(--primary); }
+    .toc-list a:hover {
+      color: var(--primary);
+    }
 
-    .toc-list li a .toc-num {
-      font-size: 10px;
+    .toc-num {
+      font-size: 11px;
       font-weight: 700;
       color: var(--primary-container);
-      background: rgba(255, 138, 0, 0.12);
-      border-radius: 4px;
-      padding: 2px 6px;
-      flex-shrink: 0;
+      opacity: 0.8;
     }
 
     /* ── Section Cards ── */
@@ -264,7 +252,6 @@
       padding: 36px 40px;
       margin-bottom: 24px;
       transition: var(--transition-smooth);
-      scroll-margin-top: 100px;
     }
 
     .policy-section:hover {
@@ -327,16 +314,16 @@
 
     .policy-body strong { color: var(--text-primary); font-weight: 600; }
 
-    .policy-body ul, .policy-body ol {
+    .policy-body ul {
       padding-left: 0;
       margin-bottom: 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       list-style: none;
     }
 
-    .policy-body ul li, .policy-body ol li {
+    .policy-body ul li {
       display: flex;
       align-items: flex-start;
       gap: 12px;
@@ -355,8 +342,24 @@
       margin-top: 8px;
     }
 
-    .policy-body ol { counter-reset: list-counter; }
-    .policy-body ol li { counter-increment: list-counter; }
+    .policy-body ol {
+      counter-reset: list-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .policy-body ol li {
+      counter-increment: list-counter;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
     .policy-body ol li::before {
       content: counter(list-counter);
       font-size: 11px;
@@ -436,120 +439,6 @@
 
     .eligibility-item .dot-approved { color: #4ade80; font-size: 16px; line-height: 1; margin-top: 1px; }
     .eligibility-item .dot-denied   { color: #f87171; font-size: 16px; line-height: 1; margin-top: 1px; }
-
-    /* ── Contact Card ── */
-    .contact-card {
-      background: linear-gradient(135deg, rgba(27, 17, 10, 0.85) 0%, rgba(5, 5, 5, 0.9) 100%);
-      border: 1.5px solid rgba(255, 138, 0, 0.25);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-top: 48px;
-      text-align: center;
-      box-shadow: var(--glow-primary);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--primary-container), transparent);
-    }
-
-    .contact-card h3 {
-      font-family: var(--font-serif);
-      font-size: 24px;
-      color: var(--text-white);
-      margin-bottom: 8px;
-    }
-
-    .contact-card p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: var(--transition-smooth);
-    }
-
-    .contact-btn.email {
-      background: var(--primary-container);
-      color: var(--bg-void);
-      box-shadow: var(--glow-primary);
-    }
-
-    .contact-btn.email:hover {
-      background: #ff9f24;
-      transform: translateY(-2px);
-      box-shadow: var(--glow-intense);
-    }
-
-    .contact-btn.whatsapp {
-      background: transparent;
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-    }
-
-    .contact-btn.whatsapp:hover {
-      border-color: var(--border-hover);
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* ── Footer ── */
-    .page-footer {
-      border-top: 1px solid var(--border-color);
-      padding: 32px 24px;
-      text-align: center;
-    }
-
-    .page-footer-inner {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .footer-copy {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-links a:hover { color: var(--primary); }
 
     /* ── Contact Grid & Form Styles ── */
     .contact-grid {
@@ -684,6 +573,66 @@
       line-height: 1.5;
     }
 
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .contact-btn.email {
+      background: var(--primary-container);
+      color: var(--bg-void);
+      box-shadow: var(--glow-primary);
+    }
+
+    .contact-btn.email:hover {
+      background: #ff9f24;
+      transform: translateY(-2px);
+      box-shadow: var(--glow-intense);
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    .page-footer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    .footer-links a:hover { color: var(--primary); }
+
     /* ── Responsive ── */
     @media (max-width: 680px) {
       .container { padding: 48px 16px 80px; }
@@ -691,7 +640,7 @@
       .policy-section { padding: 28px 20px; }
       .toc-list { grid-template-columns: 1fr; }
       .eligibility-grid { grid-template-columns: 1fr; }
-      .contact-card { padding: 28px 20px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
       .page-footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
@@ -720,7 +669,7 @@
       <!-- Hero Banner -->
       <div class="doc-hero">
         <div class="doc-label">Legal Document</div>
-        <h1 class="doc-title">Refund Policy &amp; <span>Terms of Service</span></h1>
+        <h1 class="doc-title">Refund &amp; <span>Shipping Policy</span></h1>
         <p class="doc-meta">Last Updated: June 2026 &nbsp;·&nbsp; FutureWithAi / Anshuman Enterprises</p>
       </div>
 
@@ -733,7 +682,7 @@
         </div>
         <div class="alert-text">
           <p>
-            <strong>Please read this document carefully</strong> before purchasing. By completing your payment, you agree to be bound by these Terms of Service and our Refund Policy. This is a <strong>digital product</strong> — all sales are processed via PhonePe and are subject to the conditions below.
+            <strong>Please review these guidelines carefully</strong> before purchasing. By completing your transaction on our Platform, you agree to be bound by this Return, Refund, and Shipping Policy. All transactions are backed by Anshuman Enterprises.
           </p>
         </div>
       </div>
@@ -743,15 +692,12 @@
         <div class="toc-title">Contents</div>
         <ul class="toc-list">
           <li><a href="#product-description"><span class="toc-num">01</span> Product Description</a></li>
-          <li><a href="#refund-policy"><span class="toc-num">02</span> Refund Policy</a></li>
-          <li><a href="#eligibility"><span class="toc-num">03</span> Refund Eligibility</a></li>
-          <li><a href="#refund-process"><span class="toc-num">04</span> How to Request a Refund</a></li>
+          <li><a href="#return-policy"><span class="toc-num">02</span> Return Policy</a></li>
+          <li><a href="#refund-policy"><span class="toc-num">03</span> Refund Policy</a></li>
+          <li><a href="#eligibility"><span class="toc-num">04</span> Refund Eligibility</a></li>
           <li><a href="#delivery"><span class="toc-num">05</span> Delivery &amp; Access</a></li>
-          <li><a href="#terms"><span class="toc-num">06</span> Terms of Service</a></li>
-          <li><a href="#license"><span class="toc-num">07</span> License &amp; PLR Rights</a></li>
-          <li><a href="#liability"><span class="toc-num">08</span> Limitation of Liability</a></li>
-          <li><a href="#governing"><span class="toc-num">09</span> Governing Law</a></li>
-          <li><a href="#contact"><span class="toc-num">10</span> Contact Us</a></li>
+          <li><a href="#shipping-policy"><span class="toc-num">06</span> Shipping &amp; Store Pickups</a></li>
+          <li><a href="#contact"><span class="toc-num">07</span> Contact &amp; Support</a></li>
         </ul>
       </nav>
 
@@ -769,21 +715,41 @@
           </div>
         </div>
         <div class="policy-body">
-          <p>FutureWithAi (operated by Anshuman Enterprises, Greater Noida, UP) sells the <strong>Cinematic n8n Automation Pack</strong> — a curated collection of over 2,000 pre-built automation workflow template files (JSON format), setup documentation, and supporting media assets. This is an entirely digital product.</p>
-          <p>Upon successful payment, buyers receive:</p>
+          <p>FutureWithAi sells the <strong>Cinematic n8n Automation Pack</strong> — a curated collection of over 2,000 pre-built automation workflow template files (JSON format), setup documentation, and supporting media assets. This is entirely a digital product. Physical store pickups or home deliveries of other engineering products are managed separately by our parent concern, Anshuman Enterprises.</p>
+          <p>Upon successful payment for the digital pack, buyers receive:</p>
           <ul>
             <li>A private <strong>Google Drive link</strong> containing all 2,000+ n8n workflow JSON files.</li>
-            <li>Access to the exclusive <strong>FutureWithAi Insider Community</strong> — a private group for updates, new workflow drops, and direct support.</li>
+            <li>Access to the exclusive <strong>FutureWithAi Insider Community</strong> — a private group for updates and support.</li>
             <li>Setup guides, documentation, and video tutorials.</li>
             <li>PLR (Private Label Rights) license enabling modification and resale of the templates.</li>
           </ul>
-          <div class="callout">
-            <strong>Important:</strong> This product is a digital download. No physical goods are shipped. Google Drive access and Insider Community access are delivered to your registered email address within 30 minutes of confirmed payment.
+        </div>
+      </section>
+
+      <!-- Section 2: Return Policy -->
+      <section class="policy-section" id="return-policy">
+        <div class="section-head">
+          <div class="section-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <div class="section-head-text">
+            <span class="section-num">Section 02</span>
+            <h2 class="section-heading">Return Policy</h2>
+          </div>
+        </div>
+        <div class="policy-body">
+          <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; border-radius: 8px; padding: 16px 20px;">
+            <p style="margin: 0; font-size: 15px; font-weight: 700; color: #f87171;">🚫 No Return Policy</p>
+            <p style="margin: 6px 0 0; font-size: 14px; line-height: 1.6; color: var(--text-secondary);">
+              We do not accept returns on any products once they are sold. <strong>All sales are final.</strong> Please ensure you review the features, categories, and setup documentation before confirming your purchase.
+            </p>
           </div>
         </div>
       </section>
 
-      <!-- Section 2: Refund Policy -->
+      <!-- Section 3: Refund Policy -->
       <section class="policy-section" id="refund-policy">
         <div class="section-head">
           <div class="section-icon">
@@ -792,28 +758,25 @@
             </svg>
           </div>
           <div class="section-head-text">
-            <span class="section-num">Section 02</span>
+            <span class="section-num">Section 03</span>
             <h2 class="section-heading">Refund Policy</h2>
           </div>
         </div>
         <div class="policy-body">
-          <p>Due to the nature of digital products, <strong>all sales are generally final</strong>. However, we understand that issues can arise and we want every customer to be satisfied. Therefore, we offer a limited refund window under specific conditions.</p>
-
-          <p><strong>48-Hour Refund Window:</strong> You may request a refund within <strong>48 hours</strong> of your purchase date if any of the following apply:</p>
-          <ul>
-            <li>You did not receive the Google Drive access link within 2 hours of confirmed payment despite contacting support.</li>
-            <li>You experience a documented technical issue with the product files that renders them completely unusable and our support team is unable to resolve it.</li>
-            <li>Duplicate payment occurred for the same order (you were charged more than once).</li>
-            <li>Fraudulent or unauthorized transaction — contact us and your bank immediately.</li>
-          </ul>
-
-          <div class="callout">
-            <strong>Processing Time:</strong> Approved refunds are processed within <strong>5–7 business days</strong> back to your original payment method via PhonePe. The actual credit depends on your bank's processing time.
+          <p>
+            Refunds are only processed in exceptional cases where a refund has been formally <strong>approved by the company</strong>. We do not initiate refunds automatically or on request without proper review and authorization by the management.
+          </p>
+          
+          <div class="callout" style="display: flex; align-items: flex-start; gap: 14px; background: rgba(255, 138, 0, 0.05); margin-bottom: 0;">
+            <div style="font-size: 20px; line-height: 1;">⏱</div>
+            <div>
+              <strong>Refund Processing Time:</strong> If any refund is approved by the company, it will take <strong>7 working days</strong> to credit back to your original source account (bank account / UPI / credit card used at the time of purchase).
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Section 3: Refund Eligibility -->
+      <!-- Section 4: Refund Eligibility -->
       <section class="policy-section" id="eligibility">
         <div class="section-head">
           <div class="section-icon">
@@ -822,71 +785,39 @@
             </svg>
           </div>
           <div class="section-head-text">
-            <span class="section-num">Section 03</span>
+            <span class="section-num">Section 04</span>
             <h2 class="section-heading">Refund Eligibility</h2>
           </div>
         </div>
         <div class="policy-body">
-          <p>Below is a clear breakdown of what qualifies and does not qualify for a refund:</p>
+          <p>Below is a clear breakdown of what qualifies and does not qualify for an exceptional refund:</p>
 
           <div class="eligibility-grid">
             <div class="eligibility-col approved">
               <div class="eligibility-col-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Eligible for Refund
+                Eligible for Review
               </div>
               <div class="eligibility-items">
                 <div class="eligibility-item"><span class="dot-approved">✓</span> Google Drive link not received within 2 hours of payment</div>
-                <div class="eligibility-item"><span class="dot-approved">✓</span> Duplicate charge / double payment on same order</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Duplicate charge / double payment on the same order</div>
                 <div class="eligibility-item"><span class="dot-approved">✓</span> Proven technical defect making files completely unusable</div>
-                <div class="eligibility-item"><span class="dot-approved">✓</span> Unauthorized / fraudulent transaction reported within 24 hrs</div>
-                <div class="eligibility-item"><span class="dot-approved">✓</span> Payment debited but order not created (no Order ID)</div>
+                <div class="eligibility-item"><span class="dot-approved">✓</span> Payment debited but order not created (no download link generated)</div>
               </div>
             </div>
             <div class="eligibility-col denied">
               <div class="eligibility-col-title">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                Not Eligible for Refund
+                Not Eligible
               </div>
               <div class="eligibility-items">
-                <div class="eligibility-item"><span class="dot-denied">✗</span> "Change of mind" after Google Drive link has been opened/accessed</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> "Change of mind" after Google Drive link has been accessed</div>
                 <div class="eligibility-item"><span class="dot-denied">✗</span> Refund requested after 48 hours from purchase</div>
-                <div class="eligibility-item"><span class="dot-denied">✗</span> User already downloaded files from Google Drive link</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> User already downloaded files from the Google Drive link</div>
                 <div class="eligibility-item"><span class="dot-denied">✗</span> Issues arising from user's own n8n setup or API keys</div>
-                <div class="eligibility-item"><span class="dot-denied">✗</span> Dissatisfaction with product after reviewing and using it</div>
-                <div class="eligibility-item"><span class="dot-denied">✗</span> Request made after violating our Terms of Service</div>
+                <div class="eligibility-item"><span class="dot-denied">✗</span> Dissatisfaction with product contents after using it</div>
               </div>
             </div>
-          </div>
-
-          <p>We reserve the right to decline refund requests that do not meet the above criteria. All refund decisions are final.</p>
-        </div>
-      </section>
-
-      <!-- Section 4: Refund Process -->
-      <section class="policy-section" id="refund-process">
-        <div class="section-head">
-          <div class="section-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-            </svg>
-          </div>
-          <div class="section-head-text">
-            <span class="section-num">Section 04</span>
-            <h2 class="section-heading">How to Request a Refund</h2>
-          </div>
-        </div>
-        <div class="policy-body">
-          <p>To request a refund, please follow these steps within the 48-hour window:</p>
-          <ol>
-            <li>Email us at <strong>anshumanenterprises1119@gmail.com</strong> with the subject line: <em>"Refund Request – [Your Order ID]"</em>.</li>
-            <li>Include your <strong>full name</strong>, <strong>registered email</strong>, <strong>Order ID</strong> (found in your payment confirmation), and the <strong>reason for refund</strong>.</li>
-            <li>If applicable, attach screenshots or evidence of the issue you experienced.</li>
-            <li>Our team will review your request within <strong>24–48 hours</strong> and respond via email.</li>
-            <li>If approved, the refund will be initiated to your original PhonePe payment method and reflect in your account within 5–7 business days.</li>
-          </ol>
-          <div class="callout">
-            <strong>Alternatively:</strong> You can also reach us on WhatsApp at <strong>+91 70658 15743</strong> for faster assistance, especially if you have not received your access credentials.
           </div>
         </div>
       </section>
@@ -901,7 +832,7 @@
           </div>
           <div class="section-head-text">
             <span class="section-num">Section 05</span>
-            <h2 class="section-heading">Delivery &amp; Access Policy</h2>
+            <h2 class="section-heading">Digital Delivery &amp; Access</h2>
           </div>
         </div>
         <div class="policy-body">
@@ -909,117 +840,35 @@
           <ul>
             <li>A <strong>Google Drive link</strong> containing all files will be sent to your registered email within <strong>30 minutes</strong>.</li>
             <li>An invitation to the exclusive <strong>FutureWithAi Insider Community</strong> will also be sent to your email.</li>
-            <li>A confirmation message will also be sent via <strong>WhatsApp</strong> to the number you provided.</li>
             <li>If you do not receive access within 2 hours, please contact us at <strong>+91 70658 15743</strong> (WhatsApp) or email us immediately.</li>
           </ul>
-          <p>We are not responsible for delivery failures caused by an incorrect email address provided at the time of purchase. Please ensure you enter accurate contact details in the checkout form.</p>
+          <p>We are not responsible for delivery failures caused by an incorrect email address provided at checkout. Please verify your contact details before submitting.</p>
         </div>
       </section>
 
-      <!-- Section 6: Terms of Service -->
-      <section class="policy-section" id="terms">
+      <!-- Section 6: Shipping & Store Pickups Policy -->
+      <section class="policy-section" id="shipping-policy">
         <div class="section-head">
           <div class="section-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
             </svg>
           </div>
           <div class="section-head-text">
             <span class="section-num">Section 06</span>
-            <h2 class="section-heading">Terms of Service</h2>
+            <h2 class="section-heading">Shipping &amp; Store Pickups</h2>
           </div>
         </div>
         <div class="policy-body">
-          <p>By purchasing and accessing the FutureWithAi Cinematic n8n Automation Pack, you agree to the following:</p>
+          <p>For custom projects, custom database solutions, or retail orders processed through **Anshuman Enterprises**, we outline our delivery guidelines below:</p>
           <ul>
-            <li><strong>Eligibility:</strong> You must be at least 18 years of age or have parental/guardian consent to make this purchase.</li>
-            <li><strong>Accuracy of Information:</strong> You agree to provide accurate, truthful information during checkout, including your name, email, and WhatsApp number.</li>
-            <li><strong>Authorized Use:</strong> The product is licensed for lawful personal, professional, or commercial use. You may not use the workflows for illegal, fraudulent, or harmful activities.</li>
-            <li><strong>No Sharing of Access:</strong> The Google Drive link is shared with you individually. Distributing the link or the downloaded files to others without a valid PLR license is strictly prohibited.</li>
-            <li><strong>Prohibited Activities:</strong> You must not reverse-engineer, misrepresent the origin of, or publicly re-publish the raw downloaded files as your own original work without modification (PLR modification is permitted).</li>
-            <li><strong>Account Termination:</strong> We reserve the right to revoke Google Drive access without refund if a user is found to be in violation of these terms.</li>
-            <li><strong>Modifications:</strong> We reserve the right to update or modify these Terms at any time. Continued use of the product constitutes acceptance of the revised terms.</li>
+            <li><strong>No Default Online Shipping:</strong> We do not ship custom physical products automatically. Customers are encouraged to visit our Greater Noida store once satisfied with our project models and pricing.</li>
+            <li><strong>Advance Payment and Home Delivery:</strong> If the order amount is fully paid in advance, home delivery or deployment setups to your local premises will take <strong>7 working days</strong> to deliver/complete.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Section 7: License & PLR -->
-      <section class="policy-section" id="license">
-        <div class="section-head">
-          <div class="section-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-            </svg>
-          </div>
-          <div class="section-head-text">
-            <span class="section-num">Section 07</span>
-            <h2 class="section-heading">License &amp; PLR Rights</h2>
-          </div>
-        </div>
-        <div class="policy-body">
-          <p>Your purchase includes a <strong>Private Label Rights (PLR) license</strong>, which grants you the following permissions:</p>
-          <ul>
-            <li><strong>Modify:</strong> You may edit, customize, rebrand, or combine these workflow templates to suit your own or client needs.</li>
-            <li><strong>Sell:</strong> You may sell the modified workflows to your own clients or customers as part of a service package.</li>
-            <li><strong>Resell:</strong> You may bundle and resell the templates as a product of your own.</li>
-          </ul>
-          <p>The PLR license does <strong>not</strong> permit:</p>
-          <ul>
-            <li>Redistribution of the original, unmodified repository files for free or at any price.</li>
-            <li>Claiming original authorship of unmodified content from this pack.</li>
-            <li>Reselling access to this specific repository or granting sub-access to others.</li>
-          </ul>
-          <div class="callout">
-            This license is non-transferable and applies only to the individual purchaser. Businesses purchasing for team use must contact us for a multi-seat arrangement.
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 8: Limitation of Liability -->
-      <section class="policy-section" id="liability">
-        <div class="section-head">
-          <div class="section-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-          </div>
-          <div class="section-head-text">
-            <span class="section-num">Section 08</span>
-            <h2 class="section-heading">Disclaimer &amp; Limitation of Liability</h2>
-          </div>
-        </div>
-        <div class="policy-body">
-          <p>The FutureWithAi Automation Pack is provided <strong>"as is"</strong> without warranties of any kind, either express or implied. We do not guarantee that:</p>
-          <ul>
-            <li>All workflows will function identically in every n8n version or configuration.</li>
-            <li>Third-party APIs (OpenAI, HubSpot, Slack, etc.) integrated in these templates will remain available or unchanged.</li>
-            <li>The templates will meet your specific business requirements without customization.</li>
-          </ul>
-          <p>Anshuman Enterprises shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of or inability to use this product, including loss of revenue, data, or business opportunities.</p>
-          <p>Our total liability to you shall not exceed the amount paid for the product (₹349).</p>
-        </div>
-      </section>
-
-      <!-- Section 9: Governing Law -->
-      <section class="policy-section" id="governing">
-        <div class="section-head">
-          <div class="section-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <div class="section-head-text">
-            <span class="section-num">Section 09</span>
-            <h2 class="section-heading">Governing Law &amp; Jurisdiction</h2>
-          </div>
-        </div>
-        <div class="policy-body">
-          <p>These Terms and Conditions and the Refund Policy are governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes arising from this agreement shall be subject to the exclusive jurisdiction of the courts located in <strong>Greater Noida, Uttar Pradesh, India</strong>.</p>
-          <p>By making a purchase, you agree that any legal action or proceedings arising out of or relating to this agreement shall be brought exclusively in these courts, and you consent to their jurisdiction.</p>
-        </div>
-      </section>
-
-      <!-- Section 10: Contact & Support Request -->
+      <!-- Section 7: Contact & Support Request -->
       <section class="policy-section" id="contact">
         <div class="section-head">
           <div class="section-icon">
@@ -1028,7 +877,7 @@
             </svg>
           </div>
           <div class="section-head-text">
-            <span class="section-num">Section 10</span>
+            <span class="section-num">Section 07</span>
             <h2 class="section-heading">Contact &amp; Support Form</h2>
           </div>
         </div>
@@ -1037,7 +886,7 @@
           <!-- Left: Contact Details -->
           <div class="contact-info">
             <p style="font-size: 14.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 24px; text-align: left;">
-              For refund requests, access issues, or general support, please reach out to us using the form or through our direct channels. We respond within 24 hours on business days.
+              For refund requests, access issues, or store inquiries, please submit this form or reach us via direct channels.
             </p>
             
             <div class="info-list">
@@ -1057,7 +906,7 @@
                 </div>
                 <div>
                   <strong>WhatsApp Support</strong>
-                  <a href="https://wa.me/917065815743?text=Hi%2C%20I%20have%20a%20question%20about%20FutureWithAi%20product." target="_blank">Chat with us (+91 70658 15743)</a>
+                  <a href="https://wa.me/917065815743?text=Hi%2C%20I%20have%20a%20question%20about%20FutureWithAi%20refunds." target="_blank">Chat with us (+91 70658 15743)</a>
                 </div>
               </div>
 
@@ -1066,29 +915,22 @@
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 </div>
                 <div>
-                  <strong>Address</strong>
+                  <strong>Office Address</strong>
                   <span>A-4, Neelgiri-2, Vaishno Mata Mandir, Greater Noida, UP – 203207, India</span>
                 </div>
               </div>
-
-              <div class="info-item">
-                <div class="info-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div>
-                  <strong>Support Hours</strong>
-                  <span>Mon – Sat, 10:00 AM – 7:00 PM IST</span>
-                </div>
-              </div>
             </div>
+            
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 16px;">
+              <strong>GSTIN:</strong> 09AWTPT8270E1ZQ
+            </p>
           </div>
           
           <!-- Right: Web3Forms Contact Form -->
           <div class="contact-form-wrap">
             <form id="contact-form" onsubmit="handleContactSubmit(event)">
-              <!-- Web3Forms Config -->
               <input type="hidden" name="access_key" value="2455552c-6b95-483c-96ee-65271c8719f3">
-              <input type="hidden" name="subject" value="New Support Query from FutureWithAi">
+              <input type="hidden" name="subject" value="New Refund / Shipping Query from FutureWithAi">
               <input type="hidden" name="from_name" value="FutureWithAi Support">
               
               <div class="form-row-2">
@@ -1111,10 +953,9 @@
                   <label for="contact-enquiry">Enquiry Type <span class="required-asterisk">*</span></label>
                   <select id="contact-enquiry" name="enquiry_type" required>
                     <option value="" disabled selected>Select issue type</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Access Code / Download Link Issue">Access Code / Download Link Issue</option>
-                    <option value="Payment Failure / Billing">Payment Failure / Billing</option>
                     <option value="Refund Request">Refund Request</option>
+                    <option value="Delivery / Download Issue">Delivery / Download Issue</option>
+                    <option value="Store Visit Inquiry">Store Visit Inquiry</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -1152,6 +993,8 @@
       <span class="footer-copy">© 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
       <nav class="footer-links">
         <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="refund.html" aria-current="page">Refund Policy</a>
       </nav>
