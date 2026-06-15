@@ -190,6 +190,20 @@
       }
     }
   </style>
+
+  <!-- Meta Pixel Code -->
+  <script src="pixel-tracker.js"></script>
+  <script>
+    fbq('track', 'InitiateCheckout', {
+      value: 349,
+      currency: 'INR',
+    });
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -307,6 +321,9 @@
   </footer>
 
   <script>
+    // ── CONFIGURATION ──────────────────────────────────────────────
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUBtaPjMCFBydFtF63ntJhIwBTIWadjGJLcO3K0N5jrgsuzEY4wnhAgkLz3KH1_bA/exec";
+
     // Initialize Lucide Icons
     lucide.createIcons();
 
@@ -388,19 +405,20 @@
         console.warn('Web3Forms checkout log failed:', e);
       }
 
-      // Initiate payment via backend server
+      // Initiate payment via backend serverless Google Apps Script
       try {
-        const response = await fetch('https://ae-payment-server.vercel.app/initiate-phonepe-payment', {
+        const response = await fetch(APPS_SCRIPT_URL, {
           method: 'POST',
+          // Note: To avoid CORS preflight OPTIONS error, send body as text/plain
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'text/plain',
           },
           body: JSON.stringify({
+            action: 'initiate_payment',
             name: name,
             email: email,
             whatsapp: phone,
-            bizType: profession,
-            goals: ""
+            bizType: profession
           })
         });
         
