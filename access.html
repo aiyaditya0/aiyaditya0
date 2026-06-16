@@ -12,13 +12,18 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (deferred) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <style>
     /* Access Portal Specific Styles */
@@ -435,8 +440,9 @@
   </footer>
 
   <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    // Initialize Lucide Icons (wait for deferred script)
+    function initIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); else setTimeout(initIcons, 50); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIcons); else initIcons();
 
     // ── Payment Verification Check ─────────────────────────────────
     window.addEventListener('DOMContentLoaded', async () => {

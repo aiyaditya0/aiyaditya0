@@ -15,21 +15,121 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   
+  <!-- ══ PERFORMANCE: Preconnect to critical origins ══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  
+  <!-- ══ PERFORMANCE: Google Fonts (moved from CSS @import for faster load) ══ -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- ══ PERFORMANCE: Preload critical resources ══ -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="hero-image.png" as="image" fetchpriority="high">
+  <link rel="preload" href="primary-logo.png" as="image">
+  
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Lucide Icons for medium-stroke 2px icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (deferred for non-blocking load) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code (deferred) -->
   <script src="pixel-tracker.js" defer></script>
   <noscript>
     <img height="1" width="1" style="display:none" 
          src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- ══ LIMITED TIME OFFER BANNER STYLES ══ -->
+  <style>
+    #limited-offer-banner {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000;
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
+    }
+    @keyframes bannerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #offer-countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 8px;
+      padding: 3px 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    #limited-offer-banner .offer-cta-link {
+      background: #000;
+      color: #ff8a00;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #limited-offer-banner .offer-cta-link:hover {
+      background: #1a1a1a;
+    }
+    #offer-close-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+    #offer-close-btn:hover { color: #000; }
+    @media (max-width: 600px) {
+      #limited-offer-banner { font-size: 12px; padding: 8px 32px 8px 8px; }
+      #offer-countdown { font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ══ LIMITED TIME OFFER BANNER ══ -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — First 24 Hours Only! Buyers get an exclusive personalized note from the founder.</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <a href="checkout.html" class="offer-cta-link">Grab It Now →</a>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  </div>
 
   <!-- Header Section -->
   <header id="navbar">
@@ -43,7 +143,7 @@
         <a href="#categories">Categories</a>
         <a href="#pricing">Pricing</a>
       </nav>
-      <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="nav-cta" id="nav-cta-btn">
+      <a href="checkout.html" class="nav-cta" id="nav-cta-btn">
         Get Pack <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
       </a>
     </div>
@@ -62,7 +162,7 @@
             Get access to a curated collection of ready-to-import n8n workflow templates designed to help you launch automations faster.
           </p>
           <div class="hero-actions">
-            <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="btn-primary" id="hero-cta-primary">
+            <a href="checkout.html" class="btn-primary" id="hero-cta-primary">
               Get Instant Access <i data-lucide="arrow-right"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
@@ -80,7 +180,7 @@
         
         <div class="hero-image-container">
           <div class="hero-image-wrapper">
-            <img src="hero-image.png" alt="n8n Cinematic Workspace" class="hero-img">
+            <img src="hero-image.png" alt="n8n Cinematic Workspace" class="hero-img" fetchpriority="high" decoding="async">
           </div>
         </div>
       </div>
@@ -135,7 +235,7 @@
           
           <!-- Server Automation Image Visual -->
           <div style="margin-top: 32px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--glow-primary); padding: 4px; background: linear-gradient(135deg, rgba(255, 138, 0, 0.05) 0%, rgba(255,255,255,0.01) 100%); transition: var(--transition-smooth);" onmouseover="this.style.borderColor='var(--primary-container)'; this.style.boxShadow='var(--glow-intense)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--glow-primary)'">
-            <img src="server-automation.png" alt="High performance cloud servers glow" style="width: 100%; height: auto; border-radius: 16px; display: block; object-fit: cover;">
+            <img src="server-automation.png" alt="High performance cloud servers glow" style="width: 100%; height: auto; border-radius: 16px; display: block; object-fit: cover;" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="features-right-card">
@@ -426,7 +526,7 @@
         
         <!-- Laptop Workspace Image on Left -->
         <div style="border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--glow-primary); padding: 6px; background: linear-gradient(135deg, rgba(255, 138, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%); transition: var(--transition-smooth);" onmouseover="this.style.borderColor='var(--primary-container)'; this.style.boxShadow='var(--glow-intense)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--glow-primary)'">
-          <img src="laptop-workspace.png" alt="Developer coding workflows on laptop workspace" style="width: 100%; height: auto; border-radius: 18px; display: block; object-fit: cover;">
+          <img src="laptop-workspace.png" alt="Developer coding workflows on laptop workspace" style="width: 100%; height: auto; border-radius: 18px; display: block; object-fit: cover;" loading="lazy" decoding="async">
         </div>
 
         <!-- Content on Right -->
@@ -470,14 +570,16 @@
 
       <div class="pricing-wrapper">
         <div class="pricing-card">
-          <div class="badge-ribbon">LAUNCH OFFER</div>
+          <div class="badge-ribbon" id="pricing-badge">⚡ LAUNCH OFFER — 24 HRS ONLY</div>
           <h3 class="pricing-title">Automation Pack</h3>
           <p class="pricing-subtitle">Everything you need to automate like a pro.</p>
           
           <div class="pricing-cost">
-            <span class="price-original">Regular Price ₹5,999</span>
-            <span class="price-current">₹349</span>
+            <span class="price-original" id="pricing-original-text">Regular Price ₹5,999</span>
+            <span class="price-current" id="pricing-current-amount">₹349</span>
+            <span id="pricing-early-badge" style="display:inline-block; background: linear-gradient(90deg,#ff8a00,#ffb347); color:#000; font-size:11px; font-weight:800; padding:3px 10px; border-radius:20px; margin-left:8px; letter-spacing:0.5px;">EARLY BIRD</span>
           </div>
+          <p id="pricing-urgency-msg" style="font-size:13px; color:#ff8a00; margin:8px 0 0 0; font-weight:600;">🔥 Offer ends in <span id="pricing-countdown-inline">calculating...</span> — After that, price goes to ₹399</p>
 
           <ul class="pricing-features">
             <li><i data-lucide="check"></i> One-time payment (No subscriptions)</li>
@@ -487,8 +589,8 @@
             <li><i data-lucide="check"></i> Full PLR license included</li>
           </ul>
 
-          <a href="https://anshumanenterprises.online/futurewithai/checkout.html" class="btn-primary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-            GET INSTANT ACCESS <i data-lucide="arrow-right"></i>
+          <a href="checkout.html" class="btn-primary" id="pricing-cta-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+            GET INSTANT ACCESS @ ₹349 <i data-lucide="arrow-right"></i>
           </a>
         </div>
       </div>
@@ -1105,8 +1207,9 @@ The product should feel like having an executive team that researches, plans, or
 
   <!-- Scripts -->
   <script>
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    // Initialize Lucide Icons (wait for deferred script to load)
+    function initIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); else setTimeout(initIcons, 50); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIcons); else initIcons();
 
     // Sticky Navbar Glassy Transition
     window.addEventListener('scroll', function() {
@@ -1931,7 +2034,7 @@ The product should feel like having an executive team that researches, plans, or
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            access_key: "2455552c-6b95-483c-96ee-65271c8719f3", // Replace with your Web3Forms Access Key
+            access_key: Math.random() < 0.5 ? "176a8c9c-a947-4c3f-8a82-f7d4887ab243" : "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
             subject: `New Lead Captured (Direct) - ${name}`,
             from_name: "FutureWithAi Lead System",
             name: name,
@@ -1976,6 +2079,21 @@ The product should feel like having an executive team that researches, plans, or
         ]);
       } catch (err) {
         console.warn('Submission error or timeout:', err);
+      }
+
+      // Track Lead Event in Meta Pixel
+      if (window.fbq) {
+        const trackOpts = {};
+        try {
+          const testCode = sessionStorage.getItem('fb_test_event_code') || 'TEST71779';
+          if (testCode) {
+            trackOpts.test_event_code = testCode;
+          }
+        } catch(e) {}
+        fbq('track', 'Lead', {
+          content_category: 'Gift Vault',
+          content_name: 'Premium AI Digital Gifts'
+        }, trackOpts);
       }
 
       // Transition directly to Success view
@@ -2025,6 +2143,352 @@ The product should feel like having an executive team that researches, plans, or
         alert('Could not copy prompt automatically. Please copy it manually.');
       });
     }
+  </script>
+
+  <!-- ══ LIMITED TIME OFFER COUNTDOWN SCRIPT ══ -->
+  <script>
+    (function() {
+      // Offer ends: June 17, 2026 08:46:00 IST (UTC+5:30)
+      // UTC = June 17, 2026 03:16:00 UTC
+      var OFFER_END = new Date('2026-06-17T03:16:00Z').getTime();
+
+      var banner    = document.getElementById('limited-offer-banner');
+      var display   = document.getElementById('offer-countdown');
+      if (!banner || !display) return;
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+
+      function tick() {
+        var now  = Date.now();
+        var diff = OFFER_END - now;
+
+        if (diff <= 0) {
+          // Offer expired — hide the banner completely
+          banner.style.display = 'none';
+          clearInterval(timer);
+          return;
+        }
+
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000)   / 1000);
+
+        display.textContent = '\u23f3 ' + pad(h) + ':' + pad(m) + ':' + pad(s) + ' left';
+
+        // Also update the inline countdown inside pricing card
+        var inlineCD = document.getElementById('pricing-countdown-inline');
+        if (inlineCD) inlineCD.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+
+      tick(); // Run immediately
+      var timer = setInterval(tick, 1000);
+    })();
+
+    // ── Dynamic Pricing Display ──────────────────────────────────────
+    (function() {
+      var OFFER_END    = new Date('2026-06-17T03:16:00Z').getTime();
+      var offerActive  = Date.now() < OFFER_END;
+      var EARLY_PRICE  = 349;
+      var REGULAR_PRICE = 399;
+
+      // Update pricing section
+      var priceEl   = document.getElementById('pricing-current-amount');
+      var badgeEl   = document.getElementById('pricing-badge');
+      var earlyBadge = document.getElementById('pricing-early-badge');
+      var urgencyMsg = document.getElementById('pricing-urgency-msg');
+      var ctaBtn    = document.getElementById('pricing-cta-btn');
+      var offerBanner = document.getElementById('limited-offer-banner');
+
+      if (offerActive) {
+        // Offer is ON — show ₹349
+        if (priceEl)    priceEl.textContent = '\u20b9349';
+        if (ctaBtn)     ctaBtn.innerHTML    = 'GET INSTANT ACCESS @ \u20b9349 <i data-lucide="arrow-right"></i>';
+        lucide.createIcons();
+      } else {
+        // Offer EXPIRED — switch to ₹399
+        if (priceEl)    priceEl.textContent = '\u20b9399';
+        if (badgeEl)    badgeEl.textContent = 'STANDARD PRICE';
+        if (earlyBadge) earlyBadge.style.display = 'none';
+        if (urgencyMsg) urgencyMsg.innerHTML = '\u2139\ufe0f Regular price. Get lifetime access to 2000+ workflows.';
+        if (ctaBtn) {
+          ctaBtn.innerHTML = 'GET INSTANT ACCESS @ \u20b9399 <i data-lucide="arrow-right"></i>';
+          lucide.createIcons();
+        }
+        if (offerBanner) offerBanner.style.display = 'none';
+      }
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ══ TASK 4: FLASH OFFER POPUP — ₹300 for June 17, 2026 ═══════ -->
+  <!-- ══ Shows only if: (1) Date is June 17  (2) User hasn't seen it -->
+  <!-- ══ Disappears after 5 minutes  (3) localStorage prevents repeat -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Flash Offer Overlay */
+    #flash-offer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      animation: flashFadeIn 0.4s ease;
+    }
+    #flash-offer-overlay.active { display: flex; }
+    @keyframes flashFadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes flashCardIn { from { opacity:0; transform:scale(0.9) translateY(30px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    @keyframes flashPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,138,0,0.6); } 70% { box-shadow: 0 0 0 14px rgba(255,138,0,0); } }
+    @keyframes flashShine { 0% { left:-100%; } 100% { left:200%; } }
+
+    .flash-offer-card {
+      background: linear-gradient(135deg, rgba(30,18,10,0.98) 0%, rgba(5,5,5,0.99) 100%);
+      border: 2px solid rgba(255,138,0,0.5);
+      border-radius: 28px;
+      padding: 44px 40px 36px;
+      max-width: 460px;
+      width: 90vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: flashCardIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(255,138,0,0.15);
+    }
+    .flash-offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff8a00, #ffb347, #ff8a00, transparent);
+    }
+    .flash-offer-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,138,0,0.04), transparent);
+      animation: flashShine 4s linear infinite;
+    }
+    .flash-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .flash-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .flash-subtitle {
+      font-size: 14px;
+      color: #ddc1ae;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .flash-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .flash-price-old {
+      font-size: 20px;
+      text-decoration: line-through;
+      color: #a58c7b;
+    }
+    .flash-price-new {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ff8a00;
+      text-shadow: 0 0 20px rgba(255,138,0,0.4);
+    }
+    .flash-savings {
+      display: inline-block;
+      background: rgba(39,201,63,0.15);
+      color: #27c93f;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(39,201,63,0.3);
+      margin-bottom: 20px;
+    }
+    .flash-timer-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,138,0,0.2);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 24px;
+    }
+    .flash-timer-label {
+      font-size: 11px;
+      color: #a58c7b;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .flash-timer-digits {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Inter', monospace;
+      letter-spacing: 2px;
+    }
+    .flash-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: flashPulse 2s infinite;
+      margin-bottom: 12px;
+    }
+    .flash-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,138,0,0.4);
+    }
+    .flash-close-btn {
+      background: none;
+      border: none;
+      color: #a58c7b;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.2s;
+    }
+    .flash-close-btn:hover { color: #fff; }
+    .flash-x-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: #a58c7b;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    .flash-x-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    @media (max-width: 500px) {
+      .flash-offer-card { padding: 32px 20px 28px; }
+      .flash-title { font-size: 22px; }
+      .flash-price-new { font-size: 38px; }
+    }
+  </style>
+
+  <!-- Flash Offer Popup HTML -->
+  <div id="flash-offer-overlay">
+    <div class="flash-offer-card">
+      <button class="flash-x-btn" onclick="closeFlashOffer()" title="Close">✕</button>
+      <div class="flash-badge">⚡ TODAY ONLY — FLASH DEAL</div>
+      <h2 class="flash-title">Grab It at ₹300!</h2>
+      <p class="flash-subtitle">Complete your purchase within 5 minutes and get the entire n8n Automation Pack at an exclusive flash price.</p>
+      <div class="flash-price-row">
+        <span class="flash-price-old">₹349</span>
+        <span class="flash-price-new">₹300</span>
+      </div>
+      <div class="flash-savings">You Save ₹49 Extra!</div>
+      <div class="flash-timer-box">
+        <div class="flash-timer-label">Offer expires in</div>
+        <div class="flash-timer-digits" id="flash-timer">05:00</div>
+      </div>
+      <a href="checkout.html?amount=300&flash=1" class="flash-cta-btn" id="flash-cta-link">BUY NOW @ ₹300 →</a>
+      <button class="flash-close-btn" onclick="closeFlashOffer()">No thanks, I'll pay full price</button>
+    </div>
+  </div>
+
+  <!-- Flash Offer Logic -->
+  <script>
+  (function() {
+    // ── Config ──────────────────────────────────────────────
+    var FLASH_DATE = '2026-06-17'; // Only show on June 17, 2026
+    var FLASH_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+    var STORAGE_KEY = 'fwai_flash_offer_shown_v1';
+
+    // ── Check conditions ───────────────────────────────────
+    var now = new Date();
+    var todayIST = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+    var todayStr = todayIST.getUTCFullYear() + '-' +
+                   String(todayIST.getUTCMonth() + 1).padStart(2, '0') + '-' +
+                   String(todayIST.getUTCDate()).padStart(2, '0');
+
+    // Exit if not June 17
+    if (todayStr !== FLASH_DATE) return;
+
+    // Exit if already shown to this user
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+    } catch(e) {}
+
+    // ── Mark as shown immediately ──────────────────────────
+    try { localStorage.setItem(STORAGE_KEY, 'true'); } catch(e) {}
+
+    // ── Show popup after 2s delay for better UX ───────────
+    var startTime = Date.now();
+    var endTime = startTime + FLASH_WINDOW_MS;
+    var overlay = document.getElementById('flash-offer-overlay');
+    var timerEl = document.getElementById('flash-timer');
+    var flashInterval;
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function updateFlashTimer() {
+      var remaining = endTime - Date.now();
+      if (remaining <= 0) {
+        clearInterval(flashInterval);
+        if (overlay) overlay.classList.remove('active');
+        return;
+      }
+      var mins = Math.floor(remaining / 60000);
+      var secs = Math.floor((remaining % 60000) / 1000);
+      if (timerEl) timerEl.textContent = pad(mins) + ':' + pad(secs);
+    }
+
+    setTimeout(function() {
+      if (overlay) {
+        overlay.classList.add('active');
+        updateFlashTimer();
+        flashInterval = setInterval(updateFlashTimer, 1000);
+      }
+    }, 2000);
+
+    // ── Close handler ──────────────────────────────────────
+    window.closeFlashOffer = function() {
+      if (overlay) overlay.classList.remove('active');
+      clearInterval(flashInterval);
+    };
+  })();
   </script>
 </body>
 </html>

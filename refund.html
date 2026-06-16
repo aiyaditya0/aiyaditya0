@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -946,7 +946,7 @@
           <!-- Right: Web3Forms Contact Form -->
           <div class="contact-form-wrap">
             <form id="contact-form" onsubmit="handleContactSubmit(event)">
-              <input type="hidden" name="access_key" value="2455552c-6b95-483c-96ee-65271c8719f3">
+              <input type="hidden" name="access_key" value="176a8c9c-a947-4c3f-8a82-f7d4887ab243">
               <input type="hidden" name="subject" value="New Refund / Shipping Query from FutureWithAi">
               <input type="hidden" name="from_name" value="FutureWithAi Support">
               
@@ -1023,6 +1023,14 @@
       event.preventDefault();
       
       const form = document.getElementById('contact-form');
+      
+      // Split traffic 50/50 between two Web3Forms keys
+      const keys = [
+        "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
+        "176a8c9c-a947-4c3f-8a82-f7d4887ab243"
+      ];
+      form.querySelector('input[name="access_key"]').value = keys[Math.floor(Math.random() * keys.length)];
+
       const submitBtn = document.getElementById('contact-submit-btn');
       const statusMsg = document.getElementById('form-status');
       const submitBtnText = submitBtn.querySelector('span');

@@ -7,6 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0">
   <style>
@@ -218,6 +219,14 @@
       if (window.fbq) {
         const purchaseFiredKey = `fb_purchase_fired_${orderId}`;
         if (!localStorage.getItem(purchaseFiredKey)) {
+          const trackOpts = {};
+          try {
+            const testCode = sessionStorage.getItem('fb_test_event_code') || 'TEST71779';
+            if (testCode) {
+              trackOpts.test_event_code = testCode;
+            }
+          } catch(e) {}
+
           fbq('track', 'Purchase', {
             value: value,
             currency: 'INR',
@@ -226,7 +235,7 @@
                     quantity: 1
                 }
             ],
-          });
+          }, trackOpts);
           localStorage.setItem(purchaseFiredKey, 'true');
           
           // Debug Logging (development only)
@@ -235,7 +244,7 @@
                         window.location.hostname.includes('192.168.') ||
                         window.location.search.includes('debug=true');
           if (isDev) {
-            console.log('%c[Meta Pixel Debug] Event: Purchase', 'color: #ff8a00; font-weight: bold;', { value: value, currency: 'INR', orderId: orderId });
+            console.log('%c[Meta Pixel Debug] Event: Purchase', 'color: #ff8a00; font-weight: bold;', { value: value, currency: 'INR', orderId: orderId, options: trackOpts });
           }
         } else {
           // Debug Logging for skipped duplicates
@@ -494,7 +503,7 @@
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            access_key: "2455552c-6b95-483c-96ee-65271c8719f3", // Replace with your Web3Forms Access Key
+            access_key: Math.random() < 0.5 ? "176a8c9c-a947-4c3f-8a82-f7d4887ab243" : "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
             subject: `🎉 SUCCESSFUL PAYMENT: ${customerName} (₹${amtInr})`,
             from_name: "FutureWithAi Checkout System",
             name: customerName || "Customer",

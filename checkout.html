@@ -12,13 +12,18 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (deferred) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <style>
     /* Checkout Specific Page Styles */
@@ -192,20 +197,48 @@
   </style>
 
   <!-- Meta Pixel Code -->
-  <script src="pixel-tracker.js"></script>
-  <script>
-    fbq('track', 'InitiateCheckout', {
-      value: 349,
-      currency: 'INR',
-    });
-  </script>
+  <script src="pixel-tracker.js" defer></script>
   <noscript>
     <img height="1" width="1" style="display:none" 
          src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
   </noscript>
   <!-- End Meta Pixel Code -->
+
+  <!-- ══ LIMITED TIME OFFER BANNER STYLES ══ -->
+  <style>
+    #limited-offer-banner {
+      position: sticky; top: 0; z-index: 9999;
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000; text-align: center; padding: 10px 16px;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      flex-wrap: wrap; box-shadow: 0 2px 20px rgba(255,138,0,0.5);
+    }
+    @keyframes bannerSlide {
+      0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+    }
+    #offer-countdown {
+      background: rgba(0,0,0,0.18); border-radius: 8px; padding: 3px 12px;
+      font-size: 15px; font-weight: 800; letter-spacing: 1px; color: #fff;
+    }
+    #offer-close-btn {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: rgba(0,0,0,0.5); cursor: pointer;
+      font-size: 18px; line-height: 1; padding: 0 4px;
+    }
+    #offer-close-btn:hover { color: #000; }
+  </style>
 </head>
 <body>
+
+  <!-- ══ LIMITED TIME OFFER BANNER ══ -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — First 24 Hours Only! Buyers get a special personalized note from the founder.</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  </div>
 
   <!-- Header Section -->
   <header id="navbar" style="position: relative; border-bottom: 1px solid var(--border-color);">
@@ -233,8 +266,8 @@
             <p>2000+ ready-to-use workflows, community, and training guides</p>
           </div>
           <div class="product-price">
-            <span class="price-strike">₹5,999</span>
-            <span class="price-val">₹349</span>
+            <span class="price-strike" id="co-price-strike">₹5,999</span>
+            <span class="price-val" id="co-price-val">₹349</span>
           </div>
         </div>
 
@@ -305,7 +338,7 @@
           </div>
           
           <button type="submit" class="btn-primary btn-checkout-submit" id="checkout-submit-btn" style="width: 100%; justify-content: center; gap: 8px;">
-            <span>Pay ₹349 Securely</span> <i data-lucide="lock" class="btn-icon"></i>
+            <span id="checkout-submit-text">Pay ₹349 Securely</span> <i data-lucide="lock" class="btn-icon"></i>
           </button>
         </form>
       </div>
@@ -324,8 +357,9 @@
     // ── CONFIGURATION ──────────────────────────────────────────────
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUBtaPjMCFBydFtF63ntJhIwBTIWadjGJLcO3K0N5jrgsuzEY4wnhAgkLz3KH1_bA/exec";
 
-    // Initialize Lucide Icons
-    lucide.createIcons();
+    // Initialize Lucide Icons (wait for deferred script)
+    function initIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); else setTimeout(initIcons, 50); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIcons); else initIcons();
 
     // ── Parse Query Parameters and Pre-fill Form ────────────────────
     window.addEventListener('DOMContentLoaded', () => {
@@ -339,6 +373,21 @@
       if (email) document.getElementById('checkout-email').value = decodeURIComponent(email);
       if (phone) document.getElementById('checkout-phone').value = decodeURIComponent(phone);
       if (profession) document.getElementById('checkout-profession').value = decodeURIComponent(profession);
+
+      // ══ FLASH OFFER PRICE DETECTION ══
+      const flashAmount = parseInt(params.get('amount'));
+      const isFlash = params.get('flash') === '1';
+      if (isFlash && flashAmount === 300) {
+        // Update all price displays to ₹300
+        const priceStrike = document.getElementById('co-price-strike');
+        const priceVal = document.getElementById('co-price-val');
+        const submitText = document.getElementById('checkout-submit-text');
+        if (priceStrike) priceStrike.textContent = '₹349';
+        if (priceVal) priceVal.textContent = '₹300';
+        if (submitText) submitText.textContent = 'Pay ₹300 Securely';
+        // Store flash flag for payment initiation
+        window.__flashPrice = 300;
+      }
     });
 
     // ── PhonePe Checkout Initiation Logic ──────────────────────────
@@ -391,7 +440,7 @@
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            access_key: "2455552c-6b95-483c-96ee-65271c8719f3", // Replace with your Web3Forms Access Key
+            access_key: Math.random() < 0.5 ? "176a8c9c-a947-4c3f-8a82-f7d4887ab243" : "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
             subject: `Checkout Page Submitted - ${name}`,
             from_name: "FutureWithAi Checkout System",
             name: name,
@@ -418,7 +467,8 @@
             name: name,
             email: email,
             whatsapp: phone,
-            bizType: profession
+            bizType: profession,
+            amount: window.__flashPrice || 0
           })
         });
         
@@ -448,6 +498,27 @@
         Array.from(form.elements).forEach(el => el.disabled = false);
       }
     }
+  </script>
+
+  <!-- ══ LIMITED TIME OFFER COUNTDOWN SCRIPT ══ -->
+  <script>
+    (function() {
+      var OFFER_END = new Date('2026-06-17T03:16:00Z').getTime();
+      var banner  = document.getElementById('limited-offer-banner');
+      var display = document.getElementById('offer-countdown');
+      if (!banner || !display) return;
+      function pad(n) { return n < 10 ? '0' + n : n; }
+      function tick() {
+        var diff = OFFER_END - Date.now();
+        if (diff <= 0) { banner.style.display = 'none'; clearInterval(t); return; }
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        display.textContent = '\u23f3 ' + pad(h) + ':' + pad(m) + ':' + pad(s) + ' left';
+      }
+      tick();
+      var t = setInterval(tick, 1000);
+    })();
   </script>
 </body>
 </html>
