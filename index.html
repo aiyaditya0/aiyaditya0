@@ -2085,7 +2085,7 @@ The product should feel like having an executive team that researches, plans, or
       if (window.fbq) {
         const trackOpts = {};
         try {
-          const testCode = sessionStorage.getItem('fb_test_event_code') || 'TEST71779';
+          const testCode = sessionStorage.getItem('fb_test_event_code');
           if (testCode) {
             trackOpts.test_event_code = testCode;
           }

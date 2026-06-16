@@ -28,8 +28,8 @@
     logDebug('init', PIXEL_ID);
   }
 
-  // Capture test_event_code from URL and persist in sessionStorage (defaulting to TEST71779)
-  let testCode = 'TEST71779';
+  // Capture test_event_code from URL and persist in sessionStorage
+  let testCode = null;
   try {
     const params = new URLSearchParams(window.location.search);
     const urlTestCode = params.get('test_event_code');
@@ -37,12 +37,7 @@
       testCode = urlTestCode;
       sessionStorage.setItem('fb_test_event_code', urlTestCode);
     } else {
-      const cached = sessionStorage.getItem('fb_test_event_code');
-      if (cached) {
-        testCode = cached;
-      } else {
-        sessionStorage.setItem('fb_test_event_code', testCode);
-      }
+      testCode = sessionStorage.getItem('fb_test_event_code');
     }
   } catch (e) {}
 

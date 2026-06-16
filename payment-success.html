@@ -221,7 +221,7 @@
         if (!localStorage.getItem(purchaseFiredKey)) {
           const trackOpts = {};
           try {
-            const testCode = sessionStorage.getItem('fb_test_event_code') || 'TEST71779';
+            const testCode = sessionStorage.getItem('fb_test_event_code');
             if (testCode) {
               trackOpts.test_event_code = testCode;
             }
