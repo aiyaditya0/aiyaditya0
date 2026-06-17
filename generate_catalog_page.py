@@ -13,24 +13,54 @@ def make_product_id(name):
 
 def get_product_image(name, category_id):
     name_lower = name.lower()
-    if "gym" in name_lower or "fitness" in name_lower:
-        return "reels_fitness_preview.png"
-    elif "ai" in name_lower or "anime" in name_lower:
-        return "reels_anime_preview.png"
-    elif "art" in name_lower or "craft" in name_lower:
+    
+    # Exact mappings for the new PNG images provided by the user
+    if "infographic post canva" in name_lower or "550+ fitness health" in name_lower:
+        return "0592048c-f88b-41a6-bc23-0eaff4e60064.png"
+    elif "travel reels bundle" in name_lower:
+        return "062c4ef6-262f-4d6b-beda-62ba5d7f154a.png"
+    elif "lifestyle reels bundle" in name_lower:
+        return "074f8b8c-c197-44d2-b38c-4a4d69698588.png"
+    elif "5000+ mega reels bundle" in name_lower or "5000+ mega reels" in name_lower:
+        return "255ad432-0183-46a6-9bad-fcde38327c83.png"
+    elif "space content reels bundle" in name_lower or "space content" in name_lower:
+        return "35c0c997-945b-4f67-b5c7-2ea83275c1be.png"
+    elif "glowing motion graphics" in name_lower or "glowing motion" in name_lower:
+        return "48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.png"
+    elif "luxury hotels and resorts" in name_lower or "luxury hotels" in name_lower:
+        return "5ab06a38-7ad9-4c1f-93de-c92f6eb0e19f.png"
+    elif "mega car reels bundle" in name_lower or "mega car" in name_lower:
+        return "8537458a-8df9-4489-8f8f-6b6a64ddc03e.png"
+    elif "animation explaining" in name_lower or "explaining motivation" in name_lower:
+        return "9b80d846-5f05-4d84-8103-c7ed626da19e.png"
+    elif "youtuber kit" in name_lower:
+        return "a0c80c0f-3c0a-4930-adb3-e3170b2e9f78.png"
+    elif "english health reels bundle" in name_lower or "english health reels" in name_lower:
+        return "b1cea753-66e9-4085-9d6d-84f19973cb47.png"
+    elif "gym" in name_lower or "fitness reels" in name_lower:
+        return "b578e47f-4c4a-420c-b59a-3bbc90470abf.png"
+    elif "ai (english) reels" in name_lower or "ai (english)" in name_lower or "700+ ai" in name_lower:
+        return "d1afab38-4733-4fbb-b4d8-0710b238de74.png"
+    elif "business growth reels bundle" in name_lower or "business growth" in name_lower:
+        return "d3cd854c-b2ff-495e-a47e-b2ead1943696.png"
+    elif "natures reels bundle" in name_lower or "nature reels" in name_lower:
+        return "ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.png"
+    elif "ai reels bundle" in name_lower:
+        return "fa8550fe-ca58-442a-8906-7d9b4454eb88.png"
+    elif "php scripts" in name_lower or "php" in name_lower:
+        return "ChatGPT Image Jun 17, 2026, 08_01_16 PM.png"
+        
+    # General fallbacks
+    if "art" in name_lower or "craft" in name_lower:
         return "reels_art_preview.png"
-    elif "nature" in name_lower or "woodwork" in name_lower:
+    elif "woodwork" in name_lower:
         return "reels_woodwork_preview.png"
     elif "cricket" in name_lower:
         return "reels_cricket_preview.png"
-    elif "motivation" in name_lower or "business growth" in name_lower:
-        return "reels_playbook_preview.png"
-    elif "car reels" in name_lower or "caravan" in name_lower:
+    elif "caravan" in name_lower:
         return "reels_hero_mockup.png"
     elif "travel" in name_lower or "lifestyle" in name_lower or "luxury hotels" in name_lower:
         return "hero-image.png"
-    elif "php scripts" in name_lower or "php" in name_lower:
-        return "pos_billing_mockup.png"
     elif "web applications" in name_lower or "web app" in name_lower:
         return "saas_dashboard_mockup.png"
     elif "transitions" in name_lower or "latest editing" in name_lower or "graphics bundle" in name_lower:
@@ -40,7 +70,6 @@ def get_product_image(name, category_id):
     elif "money making courses" in name_lower or "all money making" in name_lower:
         return "laptop-workspace.png"
         
-    # General fallbacks
     if category_id == "web-software":
         return "webapp_hero_mockup.png"
     elif category_id == "digital-marketing":
@@ -51,6 +80,7 @@ def get_product_image(name, category_id):
         return "reels_hero_mockup.png"
         
     return "hero-image.png"
+
 
 def get_custom_description(name):
     name_lower = name.lower()
@@ -174,6 +204,10 @@ def generate_catalog_html():
         price_str = str(price).strip().upper() if price is not None else ""
         is_free = "FREE" in price_str or price == 0 or not price
         
+        # Skip free items in the public catalog since they are delivered as bonuses
+        if is_free:
+            continue
+            
         prod_id = make_product_id(name)
         
         products.append({
@@ -191,26 +225,48 @@ def generate_catalog_html():
     # Build HTML string
     product_cards_html = ""
     for p in products:
-        badge_html = '<div class="prod-badge badge-free">🎁 Free</div>' if p["is_free"] else '<div class="prod-badge badge-sale">🔥 Paid</div>'
-        
         if p["is_free"]:
-            action_btn = f'<a href="{p["link"]}" target="_blank" class="prod-add-btn free-btn" style="flex:1.2; padding:10px; justify-content:center;">📥 Download Free</a>'
+            badge_html = '<div class="prod-badge badge-free">🎁 Free</div>'
             price_display = '<span class="prod-price">FREE</span>'
+            quick_buy_html = f"""
+            <a href="{p["link"]}" target="_blank" class="quick-buy-btn free-btn">
+              <i data-lucide="download" style="width:14px;height:14px;"></i> Download Free
+            </a>
+            <a href="product-{p["id"]}.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+            """
+            action_btn = f'<a href="{p["link"]}" target="_blank" class="prod-add-btn free-btn" style="flex:1.2; padding:10px; justify-content:center; text-decoration:none;"><i data-lucide="download" style="width:14px;height:14px;margin-right:4px;"></i> Download</a>'
+            features_html = f'<div class="prod-feat-item"><i data-lucide="zap" style="width:12px;height:12px;"></i>Instant direct access</div>'
         else:
-            action_btn = f'<button class="prod-add-btn" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p["name"]}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1.2; padding:10px; justify-content:center;"><i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Buy Pack</button>'
-            price_display = f'<span class="prod-price">₹{p["price"]}</span>'
-            
-        features_html = (
-            f'<div class="prod-feat-item"><i data-lucide="shield-check" style="width:12px;height:12px;"></i>Secure delivery</div>'
-            if not p["is_free"] else
-            f'<div class="prod-feat-item"><i data-lucide="zap" style="width:12px;height:12px;"></i>Instant access</div>'
-        )
-        
+            badge_html = '<div class="prod-badge badge-sale">🔥 Paid</div>'
+            orig_price = 499 if p["price"] > 50 else 299
+            discount = int(round((1.0 - float(p["price"]) / float(orig_price)) * 100))
+            price_display = f"""
+              <span class="prod-original">₹{orig_price}</span>
+              <span class="prod-price">₹{p["price"]}</span>
+              <span class="prod-discount">{discount}% OFF</span>
+            """
+            p_name_escaped = p["name"].replace("'", "\\'")
+            quick_buy_html = f"""
+            <button class="quick-buy-btn" onclick="quickBuy(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹{p["price"]}
+            </button>
+            <a href="product-{p["id"]}.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+            """
+            action_btn = f'<button class="prod-add-btn" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1.2; padding:10px; justify-content:center;"><i data-lucide="shopping-cart" style="width:14px;height:14px;margin-right:4px;"></i> Add</button>'
+            features_html = f'<div class="prod-feat-item"><i data-lucide="shield-check" style="width:12px;height:12px;"></i>Secure link delivery</div>'
+
         product_cards_html += f"""
       <div class="prod-card" data-cat="{p["category_id"]}" data-name="{p["name"].lower()}" data-free="{"true" if p["is_free"] else "false"}">
         {badge_html}
         <div class="prod-img-wrap">
           <a href="product-{p["id"]}.html"><img src="{p["img"]}" alt="{p["name"]}" loading="lazy"></a>
+          <div class="prod-quick-buy">
+            {quick_buy_html}
+          </div>
         </div>
         <div class="prod-body">
           <div class="prod-category">{p["category_display"]}</div>
@@ -684,6 +740,12 @@ def generate_catalog_html():
         if (window.lucide) lucide.createIcons();
       }, 2000);
     }
+
+    // Quick Buy = add to cart + open cart
+    function quickBuy(id, name, price, img, link) {
+      addToCart(id, name, price, img, link);
+      if (window.openCart) window.openCart();
+    }
   </script>
 </body>
 </html>
@@ -695,6 +757,30 @@ def generate_catalog_html():
         out.write(html_template)
         
     print(f"Catalog storefront generated successfully at '{output_path}'.")
+
+    # Update index.html dynamically
+    index_path = "index.html"
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            index_content = f.read()
+            
+        start_tag = "<!-- INDIVIDUAL_PRODUCTS_START -->"
+        end_tag = "<!-- INDIVIDUAL_PRODUCTS_END -->"
+        
+        start_idx = index_content.find(start_tag)
+        end_idx = index_content.find(end_tag)
+        
+        if start_idx != -1 and end_idx != -1:
+            new_index_content = (
+                index_content[:start_idx + len(start_tag)] + 
+                "\n" + product_cards_html + "\n" + 
+                index_content[end_idx:]
+            )
+            with open(index_path, "w", encoding="utf-8") as f:
+                f.write(new_index_content)
+            print("index.html updated successfully with individual product cards.")
+        else:
+            print("Warning: INDIVIDUAL_PRODUCTS placeholder tags not found in index.html.")
 
 if __name__ == "__main__":
     generate_catalog_html()

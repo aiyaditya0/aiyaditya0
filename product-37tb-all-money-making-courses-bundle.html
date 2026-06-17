@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FutureWithAi - 1.37tb All Money Making Courses Bundle</title>
+  
   <meta name="description" content="A massive 1.37 Terabyte catalog of courses on dropshipping, coding, copywriting, organic marketing, and agency scaling.">
+  <meta property="og:title" content="FutureWithAi - 1.37tb All Money Making Courses Bundle">
+  <meta property="og:description" content="A massive 1.37 Terabyte catalog of courses on dropshipping, coding, copywriting, organic marketing, and agency scaling.">
+  <meta property="og:image" content="laptop-workspace.png">
+  
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="pixel-tracker.js" defer></script>
@@ -30,6 +36,7 @@
       --border-color: rgba(255, 255, 255, 0.06);
       --border-hover: rgba(255, 138, 0, 0.35);
       --glow-primary: 0 0 20px rgba(255, 138, 0, 0.15);
+      --transition-smooth: all 0.3s ease;
     }
 
     body {
@@ -41,22 +48,38 @@
       overflow-x: hidden;
     }
 
-    #top-bar {
-      background: linear-gradient(90deg, #b34500 0%, #ff8a00 50%, #b34500 100%);
-      background-size: 200% 100%;
-      animation: barAnim 4s linear infinite;
-      color: #000; text-align: center; padding: 10px 16px;
-      font-size: 13px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; gap: 10px;
+    #limited-offer-banner {
       position: sticky; top: 0; z-index: 9999;
-      box-shadow: 0 2px 20px rgba(255,138,0,0.4);
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000; text-align: center; padding: 10px 16px;
+      font-size: 13.5px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
     }
-    @keyframes barAnim { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    @keyframes bannerSlide { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    
+    #offer-countdown {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(0,0,0,0.18); border-radius: 8px;
+      padding: 3px 12px; font-size: 14px; font-weight: 800; color: #fff;
+    }
+    .offer-cta-link {
+      background: #000; color: #ff8a00; padding: 4px 14px;
+      border-radius: 20px; font-size: 12.5px; font-weight: 800;
+      text-decoration: none; transition: background 0.2s; white-space: nowrap;
+    }
+    .offer-cta-link:hover { background: #1a1a1a; }
+    #offer-close-btn {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: rgba(0,0,0,0.5); cursor: pointer; font-size: 18px;
+    }
+    #offer-close-btn:hover { color: #000; }
 
     header {
       position: sticky; top: 42px; z-index: 1000;
-      background: rgba(5,5,5,0.92);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(5,5,5,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .header-inner {
@@ -73,8 +96,7 @@
       border: 1px solid rgba(255,138,0,0.3);
       color: #ff8a00; border-radius: 12px; cursor: pointer;
       padding: 10px 16px; display: flex; align-items: center; gap: 8px;
-      font-size: 13px; font-weight: 600;
-      transition: all 0.2s;
+      font-size: 13px; font-weight: 600; transition: all 0.2s;
     }
     .cart-btn:hover { background: rgba(255,138,0,0.2); }
     .cart-count {
@@ -88,23 +110,14 @@
     }
     .back-catalog-btn:hover { color: #ff8a00; }
 
-    /* Hero Section */
+    /* Product Hero */
     .product-hero {
       background: linear-gradient(135deg, #0a0614 0%, #150a00 50%, #0a0614 100%);
-      padding: 60px 0;
-      border-bottom: 1px solid var(--border-color);
+      padding: 60px 0; border-bottom: 1px solid var(--border-color);
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    
     .badge-sale {
       display: inline-flex; align-items: center; gap: 6px;
       background: rgba(255, 138, 0, 0.15); border: 1px solid rgba(255, 138, 0, 0.3);
@@ -117,51 +130,22 @@
       color: #27c93f; border-radius: 20px; padding: 4px 14px;
       font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px;
     }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.2;
-      margin: 0 0 16px;
-      color: #fff;
-    }
-    .hero-title span { color: #ff8a00; }
-    .hero-desc {
-      font-size: 16px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
     
-    /* Purchase details */
+    .hero-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(30px, 4.5vw, 46px);
+      line-height: 1.15; margin: 0 0 16px; color: #fff;
+    }
+    .hero-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px; }
+    
     .purchase-block {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 24px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+      border-radius: 20px; padding: 24px; margin-bottom: 24px;
     }
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .price-now {
-      font-size: 38px;
-      font-weight: 800;
-      color: #ff8a00;
-      text-shadow: var(--glow-primary);
-    }
-    .price-orig {
-      font-size: 16px;
-      color: var(--text-muted);
-      text-decoration: line-through;
-    }
-    .price-free {
-      font-size: 38px;
-      font-weight: 800;
-      color: #27c93f;
-    }
+    .price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .price-now { font-size: 38px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); }
+    .price-orig { font-size: 16px; color: var(--text-muted); text-decoration: line-through; }
+    .price-free { font-size: 38px; font-weight: 800; color: #27c93f; }
+    
     .btn-buy {
       display: flex; align-items: center; justify-content: center; gap: 10px;
       width: 100%; padding: 16px; border-radius: 14px; border: none;
@@ -169,174 +153,208 @@
       font-family: 'Inter', sans-serif;
     }
     .btn-buy-paid {
-      background: linear-gradient(135deg, #ff8a00, #ffb347);
-      color: #000;
+      background: linear-gradient(135deg, #ff8a00, #ffb347); color: #000;
       box-shadow: 0 8px 24px rgba(255,138,0,0.3);
     }
-    .btn-buy-paid:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(255,138,0,0.45);
-    }
+    .btn-buy-paid:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,138,0,0.45); }
     .btn-buy-free {
-      background: linear-gradient(135deg, #27c93f, #1e9a30);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(39,201,63,0.3);
-      text-decoration: none;
+      background: linear-gradient(135deg, #27c93f, #1e9a30); color: #fff;
+      box-shadow: 0 8px 24px rgba(39,201,63,0.3); text-decoration: none;
     }
-    .btn-buy-free:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(39,201,63,0.45);
-    }
+    .btn-buy-free:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(39,201,63,0.45); }
     
-    .trust-notes {
-      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;
-    }
-    .trust-note {
-      font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;
-    }
+    .trust-notes { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+    .trust-note { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
     
     .hero-img-wrap {
-      border: 1.5px solid rgba(255,138,0,0.25);
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6), var(--glow-primary);
-      background: #000;
-      aspect-ratio: 16 / 10;
+      border: 1.5px solid rgba(255,138,0,0.25); border-radius: 24px;
+      overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6), var(--glow-primary);
+      background: #000; aspect-ratio: 16 / 10;
     }
-    .hero-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover;
-    }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* Features Section */
-    .features-sec {
-      padding: 80px 0;
-      background: rgba(10, 10, 10, 0.2);
-      border-bottom: 1px solid var(--border-color);
+    /* Trust Statistics Ribbon */
+    .trustbar { padding: 24px 0; background: rgba(255,138,0,0.02); border-bottom: 1px solid var(--border-color); }
+    .trustbar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .hero-stat-card {
+      background: rgba(27, 17, 10, 0.4); border: 1px solid var(--border-color);
+      border-radius: 16px; padding: 20px; text-align: center; transition: var(--transition-smooth);
     }
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      text-align: center;
-      margin-bottom: 40px;
+    .hero-stat-card:hover { border-color: var(--border-hover); box-shadow: var(--glow-primary); transform: translateY(-2px); }
+    .hero-stat-number {
+      font-size: 22px; font-weight: 800; color: #ff8a00; margin-bottom: 4px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    .hero-stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); }
+
+    /* Revenue Potential / Benefits Grid */
+    .earnings-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .section-header { text-align: center; margin: 0 auto 56px auto; max-width: 700px; }
+    .section-label { color: #ff8a00; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 8px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 36px); color: #fff; margin: 0 0 12px; }
+    .section-desc { color: var(--text-secondary); font-size: 15px; line-height: 1.6; margin: 0; }
+    
+    .earnings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .earnings-card {
+      background: linear-gradient(135deg, rgba(20, 15, 10, 0.45) 0%, rgba(5, 5, 5, 0.8) 100%);
+      border: 1px solid var(--border-color); border-radius: 24px; padding: 36px 28px;
+      display: flex; flex-direction: column; gap: 20px; transition: var(--transition-smooth);
     }
-    .feat-card {
-      background: rgba(20,12,5,0.4);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex; gap: 16px;
-      align-items: flex-start;
-      transition: all 0.25s;
+    .earnings-card:hover { border-color: var(--primary-container); box-shadow: var(--glow-primary); transform: translateY(-4px); }
+    .earnings-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: rgba(255, 138, 0, 0.15);
+      border: 1px solid rgba(255, 138, 0, 0.25); color: #ff8a00;
+      display: flex; align-items: center; justify-content: center;
     }
-    .feat-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-2px);
+    .earnings-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff; margin: 0; }
+    .earnings-salary { font-size: 22px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); }
+    .earnings-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+    .earnings-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; padding: 0; margin: 0; }
+    .earnings-bullets li { font-size: 13.5px; color: var(--text-muted); display: flex; gap: 10px; }
+    .earnings-bullets li::before { content: "•"; color: #ff8a00; font-weight: bold; }
+    .earnings-badge { align-self: flex-start; background: rgba(255, 138, 0, 0.15); color: #ff8a00; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: auto; }
+
+    /* Calculator Section */
+    .calc-sec { padding: 80px 0; background: rgba(10, 10, 10, 0.3); border-bottom: 1px solid var(--border-color); }
+    .calculator-container {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 28px; padding: 40px;
+      max-width: 760px; margin: 0 auto; box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary);
     }
-    .feat-icon {
-      background: rgba(255,138,0,0.1); border: 1px solid rgba(255,138,0,0.2);
-      border-radius: 10px; padding: 10px; color: #ff8a00; flex-shrink: 0;
+    .calculator-title { font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; margin: 0 0 12px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .calc-slider-group { margin-bottom: 30px; text-align: left; }
+    .calc-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14.5px; color: #fff; }
+    .calc-val-bubble { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 12px; font-weight: 700; color: #ff8a00; }
+    .calc-slider { width: 100%; height: 6px; border-radius: 4px; outline: none; -webkit-appearance: none; accent-color: #ff8a00; background: rgba(255,255,255,0.08); }
+    .calc-result-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 32px; text-align: center; }
+    .calc-result-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
+    .calc-result-value { font-size: 48px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); margin-bottom: 4px; }
+    .calc-result-subtitle { font-size: 12.5px; color: var(--text-muted); }
+
+    /* Database Inclusions */
+    .db-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .db-container { max-width: 900px; margin: 0 auto; }
+    .db-category { background: rgba(20, 15, 10, 0.4); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; }
+    .db-category-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #ff8a00; margin-bottom: 24px; border-bottom: 1px solid rgba(255,138,0,0.15); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .db-apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .db-app-item { font-size: 14px; color: var(--text-secondary); background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.02); padding: 12px 16px; border-radius: 8px; display: flex; align-items: center; gap: 10px; }
+
+    /* Value Box */
+    .value-sec { padding: 80px 0; background: rgba(10,10,10,0.3); border-bottom: 1px solid var(--border-color); }
+    .value-box {
+      background: linear-gradient(135deg, rgba(30, 18, 10, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3); border-radius: 24px; padding: 40px;
+      max-width: 900px; margin: 0 auto; box-shadow: var(--glow-primary);
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
     }
-    .feat-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 6px; }
-    .feat-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+    .value-list { display: flex; flex-direction: column; gap: 12px; }
+    .value-item { display: flex; justify-content: space-between; font-size: 14.5px; color: var(--text-secondary); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+    .value-item.total { font-size: 18px; font-weight: 700; color: #fff; border-bottom: none; margin-top: 8px; }
+    .value-pay-today { text-align: center; border-left: 1px solid rgba(255,255,255,0.08); padding-left: 48px; }
+    .pay-today-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-muted); margin-bottom: 4px; }
+    .pay-today-price { font-size: 58px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); line-height: 1; margin-bottom: 8px; }
+    .pay-today-badge { display: inline-block; background: rgba(39, 201, 63, 0.15); color: #27c93f; border: 1px solid rgba(39, 201, 63, 0.3); padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; margin-bottom: 24px; }
 
     /* Testimonials */
-    .reviews-sec {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .review-card {
-      background: rgba(20, 12, 5, 0.6);
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 24px;
-      display: flex; flex-direction: column; gap: 14px;
-    }
+    .reviews-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .review-card { background: rgba(20, 12, 5, 0.6); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; transition: var(--transition-smooth); }
+    .review-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
     .review-stars { color: #ffb300; font-size: 13px; display: flex; gap: 2px; }
     .review-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }
-    .review-author {
-      display: flex; align-items: center; gap: 12px; margin-top: auto;
-      border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;
-    }
-    .review-avatar {
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(255, 138, 0, 0.12); display: flex; align-items: center;
-      justify-content: center; font-weight: 700; color: #ff8a00; border: 1px solid rgba(255,138,0,0.2);
-    }
+    .review-author { display: flex; align-items: center; gap: 12px; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; }
+    .review-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 138, 0, 0.12); display: flex; align-items: center; justify-content: center; font-weight: 700; color: #ff8a00; border: 1px solid rgba(255,138,0,0.2); }
     .review-name { font-size: 13.5px; font-weight: 600; color: #fff; display: block; }
     .review-role { font-size: 11px; color: var(--text-muted); display: block; }
 
-    /* Suggestions Section (Connected Loop) */
-    .suggestions-sec {
-      padding: 80px 0;
-    }
-    .suggestions-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 40px;
-    }
+    /* FAQ Section */
+    .faq-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
+    .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: rgba(20, 20, 20, 0.4); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-smooth); }
+    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-header { padding: 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+    .faq-question { font-size: 15px; font-weight: 600; color: #fff; padding-right: 20px; }
+    .faq-icon { color: #ff8a00; transition: transform 0.3s ease; flex-shrink: 0; }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-content { padding: 0 24px 24px 24px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 16px; }
+    .faq-item.active .faq-body { max-height: 300px; }
+    .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+    /* Suggestions Section */
+    .suggestions-sec { padding: 80px 0; }
+    .suggestions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .suggest-card {
-      background: rgba(20,12,5,0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      display: flex; flex-direction: column; overflow: hidden;
-      transition: all 0.25s; text-decoration: none; color: inherit;
+      background: rgba(20,12,5,0.8); border: 1px solid var(--border-color);
+      border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;
+      transition: var(--transition-smooth);
     }
-    .suggest-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5), var(--glow-primary);
-    }
-    .suggest-img {
-      width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    .suggest-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.5), var(--glow-primary); }
+    .suggest-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .suggest-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-    .suggest-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 8px; line-height: 1.4; }
-    .suggest-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; }
-    .suggest-footer {
-      display: flex; justify-content: space-between; align-items: center; margin-top: auto;
+    .suggest-title { font-size: 15.5px; font-weight: 700; color: #fff; margin: 0 0 8px; line-height: 1.4; }
+    .suggest-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; flex: 1; }
+    .suggest-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; }
+    .suggest-action { font-size: 12px; font-weight: 700; color: #ff8a00; display: flex; align-items: center; gap: 4px; text-decoration: none; }
+
+    /* Purchase Toast Notifications */
+    #purchase-toast {
+      position: fixed; bottom: 24px; left: 24px; z-index: 99999;
+      background: rgba(18, 11, 6, 0.95); border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 16px; padding: 16px; width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), var(--glow-primary);
+      display: flex; align-items: center; gap: 16px;
+      transform: translateY(120px); opacity: 0;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
     }
-    .suggest-price { font-size: 16px; font-weight: 800; color: #ff8a00; }
-    .suggest-price-free { font-size: 16px; font-weight: 800; color: #27c93f; }
-    .suggest-action { font-size: 12px; font-weight: 700; color: #ff8a00; display: flex; align-items: center; gap: 4px; }
+    #purchase-toast.show { transform: translateY(0); opacity: 1; }
+    .purchase-toast-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: rgba(255,138,0,0.1); display: flex; align-items: center;
+      justify-content: center; color: #ff8a00; border: 1px solid rgba(255,138,0,0.2);
+      flex-shrink: 0; font-weight: 700; font-size: 14px;
+    }
+    .purchase-toast-content { display: flex; flex-direction: column; gap: 2px; }
+    .purchase-toast-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .purchase-toast-prod { font-size: 11px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px; }
+    .purchase-toast-meta { font-size: 10px; color: #27c93f; font-weight: 600; display: flex; align-items: center; gap: 4px; }
 
     /* Footer */
-    footer {
-      border-top: 1px solid var(--border-color);
-      padding: 40px 0;
-      text-align: center;
-      background: #020202;
-    }
+    footer { border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; background: #020202; }
     .footer-text { font-size: 13px; color: var(--text-muted); margin: 0; }
 
-    @media (max-width: 900px) {
+    /* Responsive */
+    @media (max-width: 991px) {
       .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .features-grid { grid-template-columns: 1fr; }
-      .review-grid { grid-template-columns: repeat(2, 1fr); }
+      .trustbar-grid { grid-template-columns: repeat(2, 1fr); }
+      .earnings-grid { grid-template-columns: 1fr; gap: 24px; }
+      .db-apps-grid { grid-template-columns: 1fr; }
+      .value-box { grid-template-columns: 1fr; gap: 32px; }
+      .value-pay-today { border-left: none; border-top: 1px solid rgba(255,255,255,0.08); padding-left: 0; padding-top: 32px; }
       .suggestions-grid { grid-template-columns: repeat(2, 1fr); }
+      .review-grid { grid-template-columns: repeat(2, 1fr); }
+      #purchase-toast { width: calc(100% - 48px); left: 24px; }
     }
-    @media (max-width: 600px) {
-      .review-grid { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      header { top: 58px; }
+      #limited-offer-banner { font-size: 11px; padding: 8px 36px 8px 12px; }
+      #offer-countdown { font-size: 12px; }
       .suggestions-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .pay-today-price { font-size: 48px; }
+      .calc-result-value { font-size: 38px; }
     }
   </style>
 </head>
 <body>
-  <!-- Top announcement -->
-  <div id="top-bar">
-    <span>🔥 <strong>PROMOTIONAL OFFER</strong> — Get instant digital delivery after payment!</span>
+  <!-- Countdown Announcement Banner -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — Get this pack today at 90% off before the price increases!</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <a href="#" onclick="quickBuy('37tb-all-money-making-courses-bundle', '1.37tb All Money Making Courses Bundle', 29, 'laptop-workspace.png', 'product-37tb-all-money-making-courses-bundle.html'); return false;" class="offer-cta-link">Grab Deal →</a>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'">✕</button>
   </div>
 
   <!-- Header -->
@@ -373,7 +391,7 @@
             </div>
             <button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,'37tb-all-money-making-courses-bundle','1.37tb All Money Making Courses Bundle',29,'laptop-workspace.png','product-37tb-all-money-making-courses-bundle.html')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>
             <div class="trust-notes">
-              <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payment</div>
+              <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payments</div>
               <div class="trust-note"><i data-lucide="zap" style="width:14px;height:14px;color:#ff8a00;"></i> Instant Download Link</div>
               <div class="trust-note"><i data-lucide="infinity" style="width:14px;height:14px;color:#ff8a00;"></i> Lifetime Validity</div>
             </div>
@@ -389,41 +407,171 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="features-sec">
+  <!-- Statistics Ribbon -->
+  <section class="trustbar">
     <div class="container">
-      <h2 class="sec-title">What's Inside This Pack?</h2>
-      <div class="features-grid">
+      <div class="trustbar-grid">
         
-        <div class="feat-card">
-          <div class="feat-icon"><i data-lucide="hard-drive" style="width:20px;height:20px;"></i></div>
-          <div>
-            <h3 class="feat-title">Massive 1.37 TB Archive</h3>
-            <p class="feat-desc">Detailed chapters, worksheets, and resources covering coding, organic sales, copywriting, and SEO.</p>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number"><i data-lucide="cloud-lightning" style="width:20px;height:20px;color:var(--primary-container);"></i> 1.37 TB</div>
+          <div class="hero-stat-label">Cloud Storage Database</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number"><i data-lucide="graduation-cap" style="width:20px;height:20px;color:var(--primary-container);"></i> Premium</div>
+          <div class="hero-stat-label">Learning Modules</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number"><i data-lucide="play-circle" style="width:20px;height:20px;color:var(--primary-container);"></i> Online</div>
+          <div class="hero-stat-label">Direct video streaming</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number"><i data-lucide="file-text" style="width:20px;height:20px;color:var(--primary-container);"></i> Workbooks</div>
+          <div class="hero-stat-label">And Strategy Checksheets</div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Earning Potential / Benefits Section -->
+  <section class="earnings-sec" id="benefits">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">⚡ Growth & Earning potential</span>
+        <h2 class="section-title">Scale Your Freelancing, Business & Creator Journey</h2>
+        <p class="section-desc">Here is exactly how you can leverage these digital assets to build recurring income streams and scale branding.</p>
+      </div>
+      <div class="earnings-grid">
+        
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="shopping-bag"></i></div>
+          <h3 class="earnings-title">E-Commerce & Shopify Sellers</h3>
+          <div class="earnings-salary">₹30,000–₹2,00,000/month</div>
+          <p class="earnings-desc">Master dropshipping, niche product research, Facebook ads campaigns, and shipping integrations using step-by-step masterclass blueprints.</p>
+          <ul class="earnings-bullets">
+            <li>Niche product validation methods</li>
+            <li>Ad campaign configure setups</li>
+            <li>Supplier sourcing worksheets</li>
+            <li>High-margin selling formulas</li>
+          </ul>
+          <div class="earnings-badge">Build Online Stores</div>
+        </div>
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="pen-tool"></i></div>
+          <h3 class="earnings-title">Freelance Copywriters</h3>
+          <div class="earnings-salary">₹20,000–₹1,00,000/client</div>
+          <p class="earnings-desc">Write landing pages, sales copies, and high-retention newsletter blocks. Master client prospecting, cold mailing, and contract packaging secrets.</p>
+          <ul class="earnings-bullets">
+            <li>Sales script copywriting blueprints</li>
+            <li>Email sequencing cheat-sheets</li>
+            <li>Cold pitch closing frameworks</li>
+            <li>Negotiate premium billing fees</li>
+          </ul>
+          <div class="earnings-badge">Close Marketing Deals</div>
+        </div>
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="search"></i></div>
+          <h3 class="earnings-title">SEO & Growth Marketers</h3>
+          <div class="earnings-salary">₹25,000–₹1,20,000/month</div>
+          <p class="earnings-desc">Scale organic traffic channels. Master search keyword research, search console configurations, off-page backlinks creation, and index ranking.</p>
+          <ul class="earnings-bullets">
+            <li>Keyword target sorting guides</li>
+            <li>On-page layout configure cards</li>
+            <li>High-quality backlinks blueprint</li>
+            <li>Rank on top google indexes</li>
+          </ul>
+          <div class="earnings-badge">Scale Organic Search Traffic</div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section class="calc-sec">
+    <div class="container">
+      
+        <div class="calculator-container" id="calculator">
+          <h2 class="calculator-title"><i data-lucide="calculator" style="color:var(--primary);"></i> Digital Profit Calculator</h2>
+          <p style="color:var(--text-secondary); margin-bottom: 24px;">Adjust daily volume sales and margins to calculate your net projected monthly returns</p>
+          
+          <div class="calc-slider-group">
+            <div class="calc-label-row">
+              <span>Daily Sales Volume:</span>
+              <span class="calc-val-bubble" id="sales-val">3</span>
+            </div>
+            <input type="range" min="1" max="100" step="1" value="3" class="calc-slider" id="sales-slider">
+          </div>
+
+          <div class="calc-slider-group">
+            <div class="calc-label-row">
+              <span>Net Profit (per Sale):</span>
+              <span class="calc-val-bubble" id="margin-val">₹1,500</span>
+            </div>
+            <input type="range" min="200" max="5000" step="50" value="1500" class="calc-slider" id="margin-slider">
+          </div>
+
+          <div class="calc-result-box">
+            <div class="calc-result-label">Net Projected Monthly Profits:</div>
+            <div class="calc-result-value" id="calc-result">₹1,35,000</div>
+            <div class="calc-result-subtitle">Projected net earnings based on active monthly cycles</div>
           </div>
         </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i data-lucide="graduation-cap" style="width:20px;height:20px;"></i></div>
-          <div>
-            <h3 class="feat-title">Premium Frameworks</h3>
-            <p class="feat-desc">Learn business hacks and conversion copywriting directly from certified experts' case studies.</p>
+        
+    </div>
+  </section>
+
+  <!-- Database Inclusions Section -->
+  <section class="db-sec" id="inclusions">
+    <div class="container">
+      <div class="db-container">
+        
+        <div class="db-category">
+          <div class="db-category-title"><i data-lucide="database" style="color:var(--primary);"></i> Cloud Vault Database structure</div>
+          <div class="db-apps-grid">
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Instant access to 1.37 TB high speed cloud folders</div>
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Direct video lessons online streaming player</div>
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Sorted chapters, text guide guides & templates</div>
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Ad copy templates, worksheets & spreadsheets</div>
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Lifetime free updates for future uploads</div>
+            <div class="db-app-item"><i data-lucide="check" style="color:#27c93f;width:14px;height:14px;"></i>Offline downloads support for all lessons</div>
           </div>
         </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i data-lucide="life-buoy" style="width:20px;height:20px;"></i></div>
-          <div>
-            <h3 class="feat-title">Lifetime Updates</h3>
-            <p class="feat-desc">Get immediate free downloads for all future courses uploaded to this cloud repository folder.</p>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Box Section -->
+  <section class="value-sec">
+    <div class="container">
+      <div class="value-box">
+        <div class="value-list">
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:12px;">What This Deal Saves You:</h3>
+          <div class="value-item">
+            <span>Premium Asset Archive</span>
+            <span style="text-decoration:line-through;color:var(--text-muted);">₹2,999</span>
+          </div>
+          <div class="value-item">
+            <span>Commercial Resell License</span>
+            <span style="text-decoration:line-through;color:var(--text-muted);">₹1,499</span>
+          </div>
+          <div class="value-item">
+            <span>Lifetime Storage Sync Updates</span>
+            <span style="text-decoration:line-through;color:var(--text-muted);">₹999</span>
+          </div>
+          <div class="value-item total">
+            <span>Total Estimated Value:</span>
+            <span>₹5,497</span>
           </div>
         </div>
-        <div class="feat-card">
-          <div class="feat-icon"><i data-lucide="globe" style="width:20px;height:20px;"></i></div>
-          <div>
-            <h3 class="feat-title">Download Anytime</h3>
-            <p class="feat-desc">Hosted on high-speed cloud nodes. Access individual directories or stream chapters directly.</p>
-          </div>
+        
+        <div class="value-pay-today">
+          <div class="pay-today-label">You Pay Today:</div>
+          <div class="pay-today-price">₹29</div>
+          <div class="pay-today-badge">90% Discount Applied</div>
+          <button class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;" onclick="addToCartAnimated(this,'37tb-all-money-making-courses-bundle','1.37tb All Money Making Courses Bundle',29,'laptop-workspace.png','product-37tb-all-money-making-courses-bundle.html')"><i data-lucide="shopping-cart"></i> Add To Cart</button>
         </div>
-            
       </div>
     </div>
   </section>
@@ -431,44 +579,99 @@
   <!-- Testimonials Section -->
   <section class="reviews-sec">
     <div class="container">
-      <h2 class="sec-title" style="margin-bottom: 0;">What Creators & Developers Say</h2>
-      <p style="text-align: center; color: var(--text-secondary); margin-top: 8px;">Real reviews from verified buyers.</p>
+      <div class="section-header" style="margin-bottom: 40px;">
+        <span class="section-label">⭐ Customer Reviews</span>
+        <h2 class="section-title">What Creators & Developers Say</h2>
+        <p class="section-desc">Real reviews from verified digital asset buyers.</p>
+      </div>
       <div class="review-grid">
         
         <div class="review-card">
           <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
-          <p class="review-text">"Unbelievable collection. The organic traffic course alone saved me from buying a separate ₹5k masterclass."</p>
+          <p class="review-text">"Outstanding resource pack. I was skeptical first due to the low price, but the cloud link has everything as described. Clean layouts, zero issues."</p>
           <div class="review-author">
-            <div class="review-avatar">JD</div>
+            <div class="review-avatar">AK</div>
             <div class="review-author-info">
-              <span class="review-name">Jayesh D.</span>
-              <span class="review-role">Patna · Student</span>
+              <span class="review-name">Amit Kumar</span>
+              <span class="review-role">Patna · Verified Customer</span>
             </div>
           </div>
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
-          <p class="review-text">"Highly structured files. Got the MEGA links immediately after UPI checkout. Fully satisfied!"</p>
+          <p class="review-text">"Absolute lifesaver for my freelance projects. Saved me days of scanning code files and stock footage. Delivered instantly via confirmation email."</p>
           <div class="review-author">
-            <div class="review-avatar">RS</div>
+            <div class="review-avatar">SS</div>
             <div class="review-author-info">
-              <span class="review-name">Rahul S.</span>
-              <span class="review-role">Jaipur · Blogger</span>
+              <span class="review-name">Sanjay Sharma</span>
+              <span class="review-role">Pune · Freelancer</span>
             </div>
           </div>
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
-          <p class="review-text">"Incredible knowledge store. Highly structured guides, no broken links. Highly recommend to everyone."</p>
+          <p class="review-text">"Really solid quality. I checked the dog and caravan reels folders, and they are high definition. Then I bought this paid pack. Incredible value."</p>
           <div class="review-author">
-            <div class="review-avatar">KM</div>
+            <div class="review-avatar">RV</div>
             <div class="review-author-info">
-              <span class="review-name">Kavita M.</span>
-              <span class="review-role">Lucknow · Entrepreneur</span>
+              <span class="review-name">Rohan Verma</span>
+              <span class="review-role">Noida · Creator</span>
             </div>
           </div>
         </div>
-            
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="faq-sec" id="faq">
+    <div class="container">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <span class="section-label">❔ FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Everything you need to know about access, delivery, and licenses.</p>
+      </div>
+      
+      <div class="faq-container">
+        
+        <div class="faq-item">
+          <div class="faq-header">
+            <span class="faq-question">How do I access 1.37 TB of directories?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">All files are hosted on secure, high-speed cloud nodes (MEGA and Google Drive). The links never expire, and you can download chapters locally or stream videos directly.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span class="faq-question">Are there templates or worksheets inside?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">Yes! Along with video guides, you get comprehensive excel sheets, ad copy templates, email sequences, and checklists to practice concepts.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span class="faq-question">Is there a time limit to download?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">No, your access link is valid forever. You can access the database folder from your desktop, mobile, or tablet anytime at zero extra charges.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-header">
+            <span class="faq-question">Do I get new courses added to the vault?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">Yes! All future marketing courses, dropshipping masterclass chapters, and resources uploaded to the cloud repository are completely free for all previous buyers.</div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </section>
@@ -476,43 +679,82 @@
   <!-- Related Products (Connected Loop) -->
   <section class="suggestions-sec">
     <div class="container">
-      <h2 class="sec-title" style="margin-bottom: 0;">Other Packs You Might Like</h2>
-      <p style="text-align: center; color: var(--text-secondary); margin-top: 8px;">Expand your toolkit with these highly rated additions.</p>
+      <div class="section-header" style="margin-bottom: 40px;">
+        <span class="section-label">🎁 Toolkit expansions</span>
+        <h2 class="section-title">Other Packs You Might Like</h2>
+        <p class="section-desc">Expand your resource toolkit with these highly rated bundles.</p>
+      </div>
       <div class="suggestions-grid">
         
-        <a href="product-lifestyle-reels-bundle.html" class="suggest-card">
-          <img class="suggest-img" src="hero-image.png" alt="Lifestyle Reels Bundle">
-          <div class="suggest-body">
-            <h3 class="suggest-title">Lifestyle Reels Bundle</h3>
-            <p class="suggest-desc">Premium luxury lifestyle, mansions, private jets, and travel clips. Show off the dream life to build a luxury brand page.</p>
-            <div class="suggest-footer">
-              <span class="suggest-price-free">FREE</span>
-              <span class="suggest-action">Download Now →</span>
+        <div class="suggest-card">
+          <div class="prod-img-wrap">
+            <img class="suggest-img" src="reels_hero_mockup.png" alt="2. 500+ Text Overlay motivational videos" loading="lazy">
+            <div class="prod-quick-buy">
+              
+                <button class="quick-buy-btn" onclick="quickBuy('500-text-overlay-motivational-videos','2. 500+ Text Overlay motivational videos',29,'reels_hero_mockup.png','product-500-text-overlay-motivational-videos.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹29
+                </button>
+                
+              <a href="product-500-text-overlay-motivational-videos.html" class="quick-view-btn">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </a>
             </div>
           </div>
-        </a>
-        <a href="product-1000-natures-reels-bundle.html" class="suggest-card">
-          <img class="suggest-img" src="reels_woodwork_preview.png" alt="13. 1000 Natures Reels Bundle">
           <div class="suggest-body">
-            <h3 class="suggest-title">13. 1000 Natures Reels Bundle</h3>
-            <p class="suggest-desc">1000+ satisfying, peaceful nature reels. Ideal for meditation channels, relaxing background loops, and aesthetic pages.</p>
+            <h3 class="suggest-title"><a href="product-500-text-overlay-motivational-videos.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">2. 500+ Text Overlay motivational videos</a></h3>
+            <p class="suggest-desc">500+ ready-to-use motivational reels featuring bold text overlays, trending background score, and high-retention cinematic clips.</p>
             <div class="suggest-footer">
-              <span class="suggest-price">₹59</span>
-              <span class="suggest-action">View Details →</span>
+              <span class="suggest-price">₹29</span>
+              <a href="product-500-text-overlay-motivational-videos.html" class="suggest-action">Details →</a>
             </div>
           </div>
-        </a>
-        <a href="product-graphics-bundle.html" class="suggest-card">
-          <img class="suggest-img" src="reels_playbook_preview.png" alt="Graphics Bundle">
+        </div>
+        <div class="suggest-card">
+          <div class="prod-img-wrap">
+            <img class="suggest-img" src="48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.png" alt="1500+ GLowing motion graphics reels bundle:" loading="lazy">
+            <div class="prod-quick-buy">
+              
+                <button class="quick-buy-btn" onclick="quickBuy('1500-glowing-motion-graphics-reels-bundle','1500+ GLowing motion graphics reels bundle:',39,'48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.png','product-1500-glowing-motion-graphics-reels-bundle.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
+                </button>
+                
+              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="quick-view-btn">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </a>
+            </div>
+          </div>
           <div class="suggest-body">
-            <h3 class="suggest-title">Graphics Bundle</h3>
-            <p class="suggest-desc">Over 100 GB of premium vector shapes, social templates, corporate mockups, PNG icons, and branding presentation files.</p>
+            <h3 class="suggest-title"><a href="product-1500-glowing-motion-graphics-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">1500+ GLowing motion graphics reels bundle:</a></h3>
+            <p class="suggest-desc">1500+ trending glowing line animations, neon overlays, and motion graphics assets. Level up your editing instantly.</p>
             <div class="suggest-footer">
               <span class="suggest-price">₹39</span>
-              <span class="suggest-action">View Details →</span>
+              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="suggest-action">Details →</a>
             </div>
           </div>
-        </a>
+        </div>
+        <div class="suggest-card">
+          <div class="prod-img-wrap">
+            <img class="suggest-img" src="saas_dashboard_mockup.png" alt="200+ Ultimate Web Applications Theme & Plugins" loading="lazy">
+            <div class="prod-quick-buy">
+              
+                <button class="quick-buy-btn" onclick="quickBuy('200-ultimate-web-applications-theme-plugins','200+ Ultimate Web Applications Theme & Plugins',39,'saas_dashboard_mockup.png','product-200-ultimate-web-applications-theme-plugins.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
+                </button>
+                
+              <a href="product-200-ultimate-web-applications-theme-plugins.html" class="quick-view-btn">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="suggest-body">
+            <h3 class="suggest-title"><a href="product-200-ultimate-web-applications-theme-plugins.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">200+ Ultimate Web Applications Theme & Plugins</a></h3>
+            <p class="suggest-desc">200+ premium WordPress themes, elementor templates, security plugins, and SEO tools with lifetime developer licenses.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price">₹39</span>
+              <a href="product-200-ultimate-web-applications-theme-plugins.html" class="suggest-action">Details →</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -524,11 +766,101 @@
     </div>
   </footer>
 
+  <!-- Floating simulated purchases toast -->
+  <div id="purchase-toast">
+    <div class="purchase-toast-avatar" id="toast-avatar">R</div>
+    <div class="purchase-toast-content">
+      <div class="purchase-toast-name" id="toast-buyer-name">Rahul S.</div>
+      <div class="purchase-toast-prod" id="toast-prod-name">Gym Reels Pack</div>
+      <div class="purchase-toast-meta">
+        <i data-lucide="check-circle" style="width:10px;height:10px;"></i> Verified Purchase
+      </div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
+      startTimer();
+      setupFAQs();
+      startPurchaseSimulation();
     });
-    
+
+    // Countdown Timer
+    function startTimer() {
+      const end = Date.now() + (18 * 3600000);
+      function tick() {
+        const rem = end - Date.now();
+        if (rem <= 0) return;
+        const h = Math.floor(rem / 3600000);
+        const m = Math.floor((rem % 3600000) / 60000);
+        const s = Math.floor((rem % 60000) / 1000);
+        const pad = n => String(n).padStart(2, '0');
+        const el = document.getElementById('offer-countdown');
+        if (el) el.textContent = `⏳ ${pad(h)}:${pad(m)}:${pad(s)}`;
+      }
+      tick(); setInterval(tick, 1000);
+    }
+
+    // FAQ Accordion listener
+    function setupFAQs() {
+      document.querySelectorAll('.faq-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          const isActive = item.classList.contains('active');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
+      });
+    }
+
+    // Simulated Purchases
+    function startPurchaseSimulation() {
+      const buyers = [
+        { name: 'Rahul Sharma', city: 'Delhi' },
+        { name: 'Aniket Patel', city: 'Ahmedabad' },
+        { name: 'Vikram Rao', city: 'Bengaluru' },
+        { name: 'Priya Sen', city: 'Kolkata' },
+        { name: 'Sanjay Deshmukh', city: 'Mumbai' },
+        { name: 'Amit Tiwari', city: 'Indore' },
+        { name: 'Jayesh Dave', city: 'Pune' },
+        { name: 'Sneha Reddy', city: 'Hyderabad' },
+        { name: 'Kunal Kapoor', city: 'Chandigarh' },
+        { name: 'Meera Nair', city: 'Kochi' }
+      ];
+      
+      const toast = document.getElementById('purchase-toast');
+      const avatar = document.getElementById('toast-avatar');
+      const buyerName = document.getElementById('toast-buyer-name');
+      const prodName = document.getElementById('toast-prod-name');
+      
+      function showNextToast() {
+        const b = buyers[Math.floor(Math.random() * buyers.length)];
+        buyerName.textContent = `${b.name} (${b.city})`;
+        prodName.textContent = "1.37tb All Money Making Courses Bundle";
+        avatar.textContent = b.name.charAt(0);
+        
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 4000);
+      }
+
+      // Start after random 8-15 seconds, repeat every 20-30 seconds
+      setTimeout(() => {
+        showNextToast();
+        setInterval(showNextToast, 25000);
+      }, 8000 + Math.random() * 7000);
+    }
+
+    // Quick Buy helper
+    function quickBuy(id, name, price, img, link) {
+      addToCart(id, name, price, img, link);
+      if (window.openCart) window.openCart();
+    }
+
     // Add to Cart Animation
     function addToCartAnimated(btn, id, name, price, img, link) {
       addToCart(id, name, price, img, link);
@@ -542,6 +874,29 @@
         if (window.lucide) lucide.createIcons();
       }, 2000);
     }
+    
+    // Category Slider JS
+    
+        const salesSlider = document.getElementById('sales-slider');
+        const marginSlider = document.getElementById('margin-slider');
+        const salesVal = document.getElementById('sales-val');
+        const marginVal = document.getElementById('margin-margin'); // Wait, let's fix ID matching
+        const marginValActual = document.getElementById('margin-val');
+        const calcResult = document.getElementById('calc-result');
+
+        function updateCalc() {
+          const sales = parseInt(salesSlider.value);
+          const margin = parseInt(marginSlider.value);
+          salesVal.textContent = sales;
+          if(marginValActual) marginValActual.textContent = '₹' + margin.toLocaleString('en-IN');
+          const revenue = sales * margin * 30;
+          calcResult.textContent = '₹' + revenue.toLocaleString('en-IN');
+        }
+
+        salesSlider.addEventListener('input', updateCalc);
+        marginSlider.addEventListener('input', updateCalc);
+        updateCalc();
+        
   </script>
 </body>
 </html>

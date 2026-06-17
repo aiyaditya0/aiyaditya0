@@ -2495,3 +2495,97 @@ html, body {
   h1 { font-size: clamp(20px, 8vw, 28px) !important; }
   h2 { font-size: clamp(18px, 6vw, 24px) !important; }
 }
+
+/* ── Premium Product Card Styles for Catalog/Suggestions ── */
+.prod-quick-buy {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 100%);
+  padding: 32px 16px 12px;
+  opacity: 0;
+  transition: opacity 0.25s;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.prod-card:hover .prod-quick-buy {
+  opacity: 1;
+}
+.quick-buy-btn {
+  flex: 1;
+  background: #ff8a00;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+.quick-buy-btn:hover {
+  background: #ffb347;
+  transform: translateY(-1px);
+}
+.quick-view-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.quick-view-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+.prod-original {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: line-through;
+}
+.prod-discount {
+  background: rgba(52, 199, 89, 0.15);
+  color: #34c759;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+}
+.suggest-price-free, .suggest-price {
+  font-weight: 800;
+  font-size: 15px;
+}
+.suggest-price-free {
+  color: #27c93f;
+}
+.suggest-price {
+  color: #ff8a00;
+}
+@media (max-width: 768px) {
+  .prod-quick-buy {
+    opacity: 1;
+    position: static;
+    background: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  .quick-view-btn {
+    display: flex;
+    flex: 1;
+  }
+}
