@@ -2342,3 +2342,156 @@ html, body {
   }
 }
 
+
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE — Complete Fix
+   All pages: index, n8n-pack, mega-reels,
+   video-editing, web-apps, digital-marketing
+   ═══════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .header-container { padding: 10px 20px; min-height: 70px; }
+  .logo-img { height: 56px !important; width: auto !important; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-title { font-size: clamp(28px, 7vw, 44px); }
+  .hero-subtitle { font-size: 16px; }
+  .two-col-features { grid-template-columns: 1fr; gap: 32px; }
+  .workflow-arch-grid { grid-template-columns: repeat(2, 1fr); }
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+  .trustbar-grid { grid-template-columns: repeat(3, 1fr); }
+  .pricing-card { padding: 32px 24px; }
+  .section { padding: 72px 0; }
+  .timeline-row { grid-template-columns: 1fr 60px 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  /* ── Navbar ── */
+  .header-container {
+    padding: 8px 16px;
+    min-height: 60px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .logo-img { height: 44px !important; width: auto !important; }
+  nav { gap: 12px; }
+  nav a { font-size: 12px; }
+  .nav-cta { font-size: 11px; padding: 7px 14px; }
+
+  /* ── Container ── */
+  .container { padding: 0 16px; }
+
+  /* ── Hero ── */
+  .hero { padding-top: 90px; padding-bottom: 48px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero-title { font-size: clamp(26px, 8vw, 38px); line-height: 1.15; }
+  .hero-subtitle { font-size: 15px; line-height: 1.6; max-width: 100%; }
+  .hero-actions { flex-direction: column; gap: 12px; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary { width: 100%; justify-content: center; padding: 14px 20px; }
+  .hero-trust-notes { font-size: 12px; gap: 8px; }
+  .hero-stat-card { padding: 14px; }
+  .hero-stat-number { font-size: 24px; }
+
+  /* ── Sections ── */
+  .section { padding: 56px 0; }
+  .section-title { font-size: clamp(22px, 6vw, 32px); }
+  .section-header { margin-bottom: 36px; }
+
+  /* ── Trustbar ── */
+  .trustbar { padding: 28px 0; }
+  .trustbar-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .trustbar-card { padding: 16px 10px; gap: 8px; }
+  .trustbar-card span { font-size: 12px; }
+
+  /* ── Features ── */
+  .two-col-features { grid-template-columns: 1fr; gap: 24px; }
+  .features-left h2 { font-size: 26px; }
+  .features-right-card { padding: 24px 18px; }
+
+  /* ── Workflow Grid ── */
+  .workflow-arch-grid { grid-template-columns: 1fr; gap: 16px; }
+  .workflow-arch-body { padding: 20px; }
+
+  /* ── Categories ── */
+  .categories-grid { grid-template-columns: 1fr; gap: 16px; }
+  .category-card { padding: 24px 18px; }
+
+  /* ── Timeline ── */
+  .timeline-line { display: none; }
+  .timeline-row {
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .timeline-node { width: 36px; height: 36px; font-size: 12px; }
+  .timeline-content { padding: 16px; }
+  .timeline-content h3 { font-size: 16px; }
+  /* Fix alternating layout on mobile */
+  .timeline-row .timeline-content-left,
+  .timeline-row .timeline-content-right { grid-column: 2; grid-row: 1; text-align: left; }
+  .timeline-row .timeline-node { grid-column: 1; grid-row: 1; }
+  .timeline-row > *:empty { display: none; }
+
+  /* ── Pricing ── */
+  .pricing-wrapper { padding: 0 16px; }
+  .pricing-card { padding: 28px 20px; border-radius: 20px; }
+  .pricing-card .price-amount { font-size: 48px; }
+
+  /* ── Buttons ── */
+  .btn-primary { font-size: 13px; padding: 14px 24px; }
+  .btn-secondary { font-size: 13px; padding: 14px 24px; }
+  .center-btn-wrapper { padding: 0 16px; }
+  .center-btn-wrapper .btn-primary { width: 100%; justify-content: center; }
+
+  /* ── Footer ── */
+  footer .container > div { flex-direction: column; gap: 24px; }
+  footer { padding: 40px 0 20px; }
+
+  /* ── Announcement bar ── */
+  #limited-offer-banner { font-size: 11px; padding: 8px 36px 8px 12px; }
+  #offer-countdown { font-size: 12px; }
+
+  /* ── Store Grid ── */
+  .store-grid { grid-template-columns: 1fr !important; gap: 20px; }
+  .store-card-actions { grid-template-columns: 1fr; gap: 10px; }
+
+  /* ── Cart Drawer ── */
+  .cart-drawer { width: 100% !important; right: -100% !important; }
+
+  /* ── Showcase Grid (DM + Video editing pages) ── */
+  .showcase-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .showcase-item { aspect-ratio: 4/5 !important; }
+
+  /* ── Inside Grid ── */
+  .inside-grid { grid-template-columns: 1fr !important; }
+
+  /* ── Who chips ── */
+  .who-chips-wrapper { gap: 10px; }
+  .who-chip { font-size: 12px; padding: 8px 16px; }
+
+  /* ── General text fixes ── */
+  h1 { font-size: clamp(24px, 7vw, 36px) !important; }
+  h2 { font-size: clamp(20px, 5vw, 28px) !important; }
+  h3 { font-size: clamp(16px, 4vw, 22px) !important; }
+  p { font-size: 14px !important; line-height: 1.65 !important; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .logo-img { height: 38px !important; }
+  .header-container { padding: 6px 12px; min-height: 54px; }
+  nav a { display: none; } /* Hide nav links on very small screens, keep CTA */
+  .hero-title { font-size: clamp(22px, 9vw, 32px); }
+  .trustbar-grid { grid-template-columns: repeat(2, 1fr); }
+  .showcase-grid { grid-template-columns: 1fr !important; }
+  .section { padding: 40px 0; }
+  .pricing-card { padding: 20px 14px; }
+  .workflow-arch-body { padding: 16px; }
+  .category-card { padding: 18px 14px; }
+  h1 { font-size: clamp(20px, 8vw, 28px) !important; }
+  h2 { font-size: clamp(18px, 6vw, 24px) !important; }
+}
