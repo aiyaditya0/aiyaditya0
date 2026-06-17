@@ -2461,6 +2461,7 @@ html, body {
 
   /* ── Cart Drawer ── */
   .cart-drawer { width: 100% !important; right: -100% !important; }
+  .cart-drawer.open { right: 0 !important; }
 
   /* ── Showcase Grid (DM + Video editing pages) ── */
   .showcase-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
@@ -2473,11 +2474,11 @@ html, body {
   .who-chips-wrapper { gap: 10px; }
   .who-chip { font-size: 12px; padding: 8px 16px; }
 
-  /* ── General text fixes ── */
-  h1 { font-size: clamp(24px, 7vw, 36px) !important; }
-  h2 { font-size: clamp(20px, 5vw, 28px) !important; }
-  h3 { font-size: clamp(16px, 4vw, 22px) !important; }
-  p { font-size: 14px !important; line-height: 1.65 !important; }
+  /* ── General section heading responsive fixes ── */
+  .section h1 { font-size: clamp(24px, 7vw, 36px) !important; }
+  .section h2 { font-size: clamp(20px, 5vw, 28px) !important; }
+  .section h3 { font-size: clamp(16px, 4vw, 22px) !important; }
+  .section p { font-size: 14px !important; line-height: 1.65 !important; }
 }
 
 /* Small phones */
@@ -2578,14 +2579,6 @@ html, body {
 }
 @media (max-width: 768px) {
   .prod-quick-buy {
-    opacity: 1;
-    position: static;
-    background: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-  .quick-view-btn {
-    display: flex;
-    flex: 1;
+    display: none !important;
   }
 }

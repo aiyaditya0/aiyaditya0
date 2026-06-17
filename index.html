@@ -242,7 +242,7 @@
     .badge-new { background: #34c759; color: #fff; }
     .badge-sale { background: #ff8a00; color: #000; }
     .badge-top { background: #5856d6; color: #fff; }
-    .prod-img-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #080503; display: flex; align-items: center; justify-content: center; }
+    .prod-img-wrap { position: relative; height: 240px; overflow: hidden; background: #080503; display: flex; align-items: center; justify-content: center; }
     .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .prod-card:hover .prod-img-wrap img { transform: scale(1.08); }
     .prod-quick-buy {
@@ -342,8 +342,7 @@
 
     /* Mobile Quick Buy floating CTA for product pages */
     @media(max-width:768px){
-      .prod-quick-buy { opacity: 1; position: static; background: none; padding: 0; margin-top: 10px; }
-      .quick-view-btn { display: none; }
+      .prod-quick-buy { display: none !important; }
     }
   </style>
 </head>
@@ -438,7 +437,7 @@
             <div class="fb-price">₹4,999</div>
             <div class="fb-price-main">₹499</div>
           </div>
-          <button class="fb-cta" onclick="addToCart('digital-marketing-bundle','Full Digital Marketing Resource Bundle',499,'digital-marketing-bundle/fwa-canva.webp','digital-marketing-bundle.html')">
+          <button class="fb-cta" data-product-id="digital-marketing-bundle" onclick="addToCartAnimated(this,'digital-marketing-bundle','Full Digital Marketing Resource Bundle',499,'digital-marketing-bundle/fwa-canva.webp','digital-marketing-bundle.html')">
             <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add to Cart
           </button>
           <a href="digital-marketing-bundle.html" class="fb-cta" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15);">
