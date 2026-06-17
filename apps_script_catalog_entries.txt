@@ -1,0 +1,103 @@
+// Copy this code block and paste it inside PRODUCT_CATALOG in google-apps-script.gs
+const NEW_PRODUCT_ENTRIES = {
+  '500-animation-explaining-motivation-video': {
+    filename: '500-animation-explaining-motivation-video.pdf',
+    displayName: '1. 500+ Animation Explaining motivation video'
+  },
+  '500-text-overlay-motivational-videos': {
+    filename: '500-text-overlay-motivational-videos.pdf',
+    displayName: '2. 500+ Text Overlay motivational videos'
+  },
+  '500-english-health-reels-bundle': {
+    filename: '500-english-health-reels-bundle.pdf',
+    displayName: '3. 500+ English Health Reels bundle'
+  },
+  '700-ai-english-reelsshort': {
+    filename: '700-ai-english-reelsshort.pdf',
+    displayName: '4. 700+ AI (ENGLISH) Reelsshort'
+  },
+  '1000-business-growth-reels-bundle': {
+    filename: '1000-business-growth-reels-bundle.pdf',
+    displayName: '6. 1000+ Business growth Reels Bundle'
+  },
+  '200-mega-car-reels-bundle': {
+    filename: '200-mega-car-reels-bundle.pdf',
+    displayName: '9. 200+ Mega Car Reels Bundle'
+  },
+  '2200-gym-fitness-reels-bundle': {
+    filename: '2200-gym-fitness-reels-bundle.pdf',
+    displayName: '10. 2200+ Gym_ Fitness Reels Bundle'
+  },
+  '550-fitness-health-infographic-post-canva': {
+    filename: '550-fitness-health-infographic-post-canva.pdf',
+    displayName: '11. 550+ Fitness Health Infographic Post Canva'
+  },
+  'all-in-one-youtuber-kit': {
+    filename: 'all-in-one-youtuber-kit.pdf',
+    displayName: '12. All In One Youtuber Kit'
+  },
+  '1000-natures-reels-bundle': {
+    filename: '1000-natures-reels-bundle.pdf',
+    displayName: '13. 1000 Natures Reels Bundle'
+  },
+  '1200-space-content-reels-bundle': {
+    filename: '1200-space-content-reels-bundle.pdf',
+    displayName: '14. 1200+ Space Content Reels Bundle'
+  },
+  'ai-reels-bundle': {
+    filename: 'ai-reels-bundle.pdf',
+    displayName: 'AI Reels Bundle'
+  },
+  'animation-visual-reels-bundle': {
+    filename: 'animation-visual-reels-bundle.pdf',
+    displayName: 'Animation Visual Reels Bundle'
+  },
+  'art-and-craft-reels-bundle': {
+    filename: 'art-and-craft-reels-bundle.pdf',
+    displayName: 'Art and Craft Reels Bundle'
+  },
+  '1500-glowing-motion-graphics-reels-bundle': {
+    filename: '1500-glowing-motion-graphics-reels-bundle.pdf',
+    displayName: '1500+ GLowing motion graphics reels bundle:'
+  },
+  '500-luxury-reels': {
+    filename: '500-luxury-reels.pdf',
+    displayName: '500+ LUXURY REELS'
+  },
+  '400-php-scripts': {
+    filename: '400-php-scripts.pdf',
+    displayName: '400+ PHP scripts'
+  },
+  '200-ultimate-web-applications-theme-plugins': {
+    filename: '200-ultimate-web-applications-theme-plugins.pdf',
+    displayName: '200+ Ultimate Web Applications Theme & Plugins'
+  },
+  '21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app': {
+    filename: '21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.pdf',
+    displayName: '21 Hrs Content of How to Work on 1500+ Manually Tested Web App:'
+  },
+  '1500-premium-transitions': {
+    filename: '1500-premium-transitions.pdf',
+    displayName: '1500 PREMIUM TRANSITIONS'
+  },
+  'latest-editing-2026': {
+    filename: 'latest-editing-2026.pdf',
+    displayName: 'LATEST EDITING 2026'
+  },
+  'graphics-bundle': {
+    filename: 'graphics-bundle.pdf',
+    displayName: 'Graphics Bundle'
+  },
+  'igital-marketing-bundle': {
+    filename: 'igital-marketing-bundle.pdf',
+    displayName: 'igital Marketing Bundle'
+  },
+  '2700-elementor-pro-templates-forwordpresssite': {
+    filename: '2700-elementor-pro-templates-forwordpresssite.pdf',
+    displayName: '2700+ Elementor Pro Templates Forwordpresssite'
+  },
+  '37tb-all-money-making-courses-bundle': {
+    filename: '37tb-all-money-making-courses-bundle.pdf',
+    displayName: '1.37tb All Money Making Courses Bundle'
+  },
+};

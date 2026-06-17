@@ -1,4 +1,95 @@
-<!DOCTYPE html>
+import os
+import openpyxl
+import re
+
+def make_product_id(name):
+    clean = re.sub(r'^\d+\.\s*', '', name)
+    clean = clean.lower()
+    clean = re.sub(r'[^a-z0-9\s-]', '', clean)
+    clean = re.sub(r'[\s-]+', '-', clean).strip('-')
+    return clean
+
+def generate_access_page():
+    excel_path = "PRODUCT.xlsx"
+    wb = openpyxl.load_workbook(excel_path, data_only=True)
+    sheet = wb.active
+    
+    product_links_js = "{\n"
+    
+    # Mapped core packages
+    core_packages = [
+        {
+            "id": "mega-reels",
+            "name": "100,000+ Viral Reels Goldmine Pack",
+            "link": "https://drive.google.com/drive/folders/1qBpqgApYwv86vNhsqKhJume2NNo_Qg9V",
+            "desc": "Access 100,000+ ready-to-use premium viral reels spanning AI Anime, Cricket, Woodwork, Luxury, and Fitness."
+        },
+        {
+            "id": "n8n-automation-enterprise",
+            "name": "14,000+ n8n Workflow Automation (Enterprise)",
+            "link": "https://drive.google.com/drive/folders/1HK8GYyfqNK6z64BvEzjBMJuH8xM0-LeD",
+            "desc": "Access 14,000+ enterprise node schemas, proxy scrapers, CRM connectors, looping systems, and WhatsApp bots."
+        },
+        {
+            "id": "web-apps",
+            "name": "1500+ Manually Tested Web App Pack",
+            "link": "https://drive.google.com/file/d/1yNQyxLnLbWppNyzdzQhuYXh6f-Vpjf4n/view?usp=drivesdk",
+            "desc": "Access 1500+ complete manually tested SaaS web applications source code packages."
+        },
+        {
+            "id": "video-editing",
+            "name": "Video Editing Toolkit (500GB+)",
+            "link": "https://drive.google.com/drive/folders/10QKbUY7qRyKM3m1ig6EsVQ3KNSJdDZ8Y?usp=drive_link",
+            "desc": "Access 500GB+ premium video editing assets - transitions, LUTs, FX presets, and overlays."
+        },
+        {
+            "id": "digital-marketing-bundle",
+            "name": "Full Digital Marketing Resource Bundle",
+            "link": "https://drive.google.com/drive/folders/1XyNfF4cxEJTkOJHxAjPLILeAqdAutgdX?usp=drive_link",
+            "desc": "Access 700+ premium resources including Canva templates, ChatGPT prompts, and full marketing courses."
+        },
+        {
+            "id": "n8n-pack",
+            "name": "n8n Automation Pack (2000+ Workflows)",
+            "link": "https://github.com/anshumanenterprises1119/futurewithai",
+            "desc": "Access 2,000+ standard ready-to-import n8n automation JSON workflows."
+        }
+    ]
+    
+    for p in core_packages:
+        product_links_js += f"  '{p['id']}': {{\n"
+        product_links_js += f"    name: \"{p['name']}\",\n"
+        product_links_js += f"    link: \"{p['link']}\",\n"
+        product_links_js += f"    desc: \"{p['desc']}\"\n"
+        product_links_js += "  },\n"
+        
+    for row_idx, row in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
+        category = row[0]
+        name = row[1]
+        price = row[2]
+        unit = row[3]
+        link = row[4]
+        
+        if not name or not category:
+            continue
+            
+        category = str(category).strip()
+        name = str(name).strip()
+        link = str(link).strip() if link else ""
+        
+        prod_id = make_product_id(name)
+        desc = f"Direct access link for {name}. Download or bookmark files for offline usage."
+        
+        product_links_js += f"  '{prod_id}': {{\n"
+        product_links_js += f"    name: \"{name}\",\n"
+        product_links_js += f"    link: \"{link}\",\n"
+        product_links_js += f"    desc: \"{desc}\"\n"
+        product_links_js += "  },\n"
+        
+    product_links_js += "}"
+
+    # Structure of access.html
+    html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -237,208 +328,7 @@
   </footer>
 
   <script>
-    const PRODUCT_LINKS = {
-  'mega-reels': {
-    name: "100,000+ Viral Reels Goldmine Pack",
-    link: "https://drive.google.com/drive/folders/1qBpqgApYwv86vNhsqKhJume2NNo_Qg9V",
-    desc: "Access 100,000+ ready-to-use premium viral reels spanning AI Anime, Cricket, Woodwork, Luxury, and Fitness."
-  },
-  'n8n-automation-enterprise': {
-    name: "14,000+ n8n Workflow Automation (Enterprise)",
-    link: "https://drive.google.com/drive/folders/1HK8GYyfqNK6z64BvEzjBMJuH8xM0-LeD",
-    desc: "Access 14,000+ enterprise node schemas, proxy scrapers, CRM connectors, looping systems, and WhatsApp bots."
-  },
-  'web-apps': {
-    name: "1500+ Manually Tested Web App Pack",
-    link: "https://drive.google.com/file/d/1yNQyxLnLbWppNyzdzQhuYXh6f-Vpjf4n/view?usp=drivesdk",
-    desc: "Access 1500+ complete manually tested SaaS web applications source code packages."
-  },
-  'video-editing': {
-    name: "Video Editing Toolkit (500GB+)",
-    link: "https://drive.google.com/drive/folders/10QKbUY7qRyKM3m1ig6EsVQ3KNSJdDZ8Y?usp=drive_link",
-    desc: "Access 500GB+ premium video editing assets - transitions, LUTs, FX presets, and overlays."
-  },
-  'digital-marketing-bundle': {
-    name: "Full Digital Marketing Resource Bundle",
-    link: "https://drive.google.com/drive/folders/1XyNfF4cxEJTkOJHxAjPLILeAqdAutgdX?usp=drive_link",
-    desc: "Access 700+ premium resources including Canva templates, ChatGPT prompts, and full marketing courses."
-  },
-  'n8n-pack': {
-    name: "n8n Automation Pack (2000+ Workflows)",
-    link: "https://github.com/anshumanenterprises1119/futurewithai",
-    desc: "Access 2,000+ standard ready-to-import n8n automation JSON workflows."
-  },
-  '500-animation-explaining-motivation-video': {
-    name: "1. 500+ Animation Explaining motivation video",
-    link: "https://drive.google.com/drive/folders/1nv-GvSF23_G1ZYuH5qilvumgu71RL9fg?usp=drive_link",
-    desc: "Direct access link for 1. 500+ Animation Explaining motivation video. Download or bookmark files for offline usage."
-  },
-  '500-text-overlay-motivational-videos': {
-    name: "2. 500+ Text Overlay motivational videos",
-    link: "https://drive.google.com/drive/folders/17GWqJrZC6bpuWPYgnqtZgj35UK5TLRCy?usp=drive_link",
-    desc: "Direct access link for 2. 500+ Text Overlay motivational videos. Download or bookmark files for offline usage."
-  },
-  '500-english-health-reels-bundle': {
-    name: "3. 500+ English Health Reels bundle",
-    link: "https://drive.google.com/drive/folders/1qnFldiGs48ZSvLI525_7j2UQL2W6f9Qg?usp=drive_link",
-    desc: "Direct access link for 3. 500+ English Health Reels bundle. Download or bookmark files for offline usage."
-  },
-  '700-ai-english-reelsshort': {
-    name: "4. 700+ AI (ENGLISH) Reelsshort",
-    link: "https://drive.google.com/drive/folders/1CS3tP_tNQ1sRRaoGdK8AW1soDfenTQKl?usp=drive_link",
-    desc: "Direct access link for 4. 700+ AI (ENGLISH) Reelsshort. Download or bookmark files for offline usage."
-  },
-  '1000-business-growth-reels-bundle': {
-    name: "6. 1000+ Business growth Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1mIRBPf54raxvuYMFstLu4UByqKazEfkl?usp=drive_link",
-    desc: "Direct access link for 6. 1000+ Business growth Reels Bundle. Download or bookmark files for offline usage."
-  },
-  '200-mega-car-reels-bundle': {
-    name: "9. 200+ Mega Car Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1Pj4YQBWN33SUsKdprJRNpd9lmR1uxuZM?usp=drive_link",
-    desc: "Direct access link for 9. 200+ Mega Car Reels Bundle. Download or bookmark files for offline usage."
-  },
-  '2200-gym-fitness-reels-bundle': {
-    name: "10. 2200+ Gym_ Fitness Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1OkXgDpuv5xGGcRwwQ9DqyEYAGHI-0AxE?usp=drive_link",
-    desc: "Direct access link for 10. 2200+ Gym_ Fitness Reels Bundle. Download or bookmark files for offline usage."
-  },
-  '550-fitness-health-infographic-post-canva': {
-    name: "11. 550+ Fitness Health Infographic Post Canva",
-    link: "https://drive.google.com/drive/folders/1ku51UTed1Mc7yoDvvvOu2rs4_NvL-COt?usp=drive_link",
-    desc: "Direct access link for 11. 550+ Fitness Health Infographic Post Canva. Download or bookmark files for offline usage."
-  },
-  'all-in-one-youtuber-kit': {
-    name: "12. All In One Youtuber Kit",
-    link: "https://drive.google.com/drive/folders/1oNfnIXO4rXI3M047uYqvRwH55oxLRH1G?usp=drive_link",
-    desc: "Direct access link for 12. All In One Youtuber Kit. Download or bookmark files for offline usage."
-  },
-  '1000-natures-reels-bundle': {
-    name: "13. 1000 Natures Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1HQy4C_NCo-gRRasyO-84aEQSifq-GZ_N?usp=drive_link",
-    desc: "Direct access link for 13. 1000 Natures Reels Bundle. Download or bookmark files for offline usage."
-  },
-  '1200-space-content-reels-bundle': {
-    name: "14. 1200+ Space Content Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1ZDJEAO5mGA5o8NWnEgRkHVb7Plk7nTEA?usp=drive_link",
-    desc: "Direct access link for 14. 1200+ Space Content Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'ai-reels-bundle': {
-    name: "AI Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1wuAJG14Atf_t6X2rmd1VALyJm_DcOx56?usp=drive_link",
-    desc: "Direct access link for AI Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'animation-visual-reels-bundle': {
-    name: "Animation Visual Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1_xjuRow3DExAz0jEEjEWAgLvDVkuI7hO?usp=drive_link",
-    desc: "Direct access link for Animation Visual Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'art-and-craft-reels-bundle': {
-    name: "Art and Craft Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1dWPRpPeptdZjOjZuV9xclRFJK_Tnjhik?usp=drive_link",
-    desc: "Direct access link for Art and Craft Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'black-word-with-white-background-images': {
-    name: "Black Word with White Background Images",
-    link: "https://drive.google.com/drive/folders/1GzfLUGZpwOklGZK_UB4_ZsvHM5WUb5cz?usp=drive_link",
-    desc: "Direct access link for Black Word with White Background Images. Download or bookmark files for offline usage."
-  },
-  'caravan-life': {
-    name: "Caravan Life",
-    link: "https://drive.google.com/drive/folders/1icBWFJeUT6tbSEbn8xgqu0yjpYca7Qqb?usp=drive_link",
-    desc: "Direct access link for Caravan Life. Download or bookmark files for offline usage."
-  },
-  'dog-reels-bundle': {
-    name: "Dog Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1i6GdFMRzlIWFQYPW3Q26VxmmCtkb6Ewl?usp=drive_link",
-    desc: "Direct access link for Dog Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'funny-and-cute-cat-bundle': {
-    name: "Funny and Cute Cat Bundle",
-    link: "https://drive.google.com/drive/folders/1_eyWC3Xj8MYhsJU1MxX_JZa_KBTl5kB8?usp=drive_link",
-    desc: "Direct access link for Funny and Cute Cat Bundle. Download or bookmark files for offline usage."
-  },
-  'health-infographic-post-updating': {
-    name: "Health Infographic Post (updating)",
-    link: "https://drive.google.com/drive/folders/1eTA836EkIIjF1gmFXVg8hy94VPRPC7KV?usp=drive_link",
-    desc: "Direct access link for Health Infographic Post (updating). Download or bookmark files for offline usage."
-  },
-  'lifestyle-reels-bundle': {
-    name: "Lifestyle Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1nk5llkVEXI-1mU2-W9IevjsWovv2gNr_?usp=drive_link",
-    desc: "Direct access link for Lifestyle Reels Bundle. Download or bookmark files for offline usage."
-  },
-  'luxury-hotels-and-resorts': {
-    name: "Luxury Hotels and Resorts",
-    link: "https://drive.google.com/drive/folders/1PHCYdlpYhnS-f0auyYWhgo5SW3x_LgRb?usp=drive_link",
-    desc: "Direct access link for Luxury Hotels and Resorts. Download or bookmark files for offline usage."
-  },
-  'travel-reels-bundle': {
-    name: "Travel Reels Bundle",
-    link: "https://drive.google.com/drive/folders/1Aw0KGaR4pcEQiWaldQhWPbgGLjq9lPsJ?usp=drive_link",
-    desc: "Direct access link for Travel Reels Bundle. Download or bookmark files for offline usage."
-  },
-  '1500-glowing-motion-graphics-reels-bundle': {
-    name: "1500+ GLowing motion graphics reels bundle:",
-    link: "https://drive.google.com/drive/folders/1roblnDQyKDbkJscGsTSTEglAJc-50RYM?usp=drive_link",
-    desc: "Direct access link for 1500+ GLowing motion graphics reels bundle:. Download or bookmark files for offline usage."
-  },
-  '500-luxury-reels': {
-    name: "500+ LUXURY REELS",
-    link: "https://drive.google.com/drive/folders/1q06oyJq5SXegTeRnl_CRY0_nbttX_P62?usp=drive_link",
-    desc: "Direct access link for 500+ LUXURY REELS. Download or bookmark files for offline usage."
-  },
-  '5000-mega-reels-bundle': {
-    name: "5000+ MEGA REELS BUNDLE",
-    link: "https://mega.nz/folder/BBpxDYQQ#OLyaL1a0vDXxG__ddzyxoQ",
-    desc: "Direct access link for 5000+ MEGA REELS BUNDLE. Download or bookmark files for offline usage."
-  },
-  '400-php-scripts': {
-    name: "400+ PHP scripts",
-    link: "400+ Php Scripts-20240730T043321Z-001.zip - Google Drive",
-    desc: "Direct access link for 400+ PHP scripts. Download or bookmark files for offline usage."
-  },
-  '200-ultimate-web-applications-theme-plugins': {
-    name: "200+ Ultimate Web Applications Theme & Plugins",
-    link: "File folder on MEGA",
-    desc: "Direct access link for 200+ Ultimate Web Applications Theme & Plugins. Download or bookmark files for offline usage."
-  },
-  '21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app': {
-    name: "21 Hrs Content of How to Work on 1500+ Manually Tested Web App:",
-    link: "https://mega.nz/folder/ViYy2TIT#cyvpfiqw_mT 4Yd8wKV4jgQ/folder/4roxQahZ",
-    desc: "Direct access link for 21 Hrs Content of How to Work on 1500+ Manually Tested Web App:. Download or bookmark files for offline usage."
-  },
-  '1500-premium-transitions': {
-    name: "1500 PREMIUM TRANSITIONS",
-    link: "https://drive.google.com/drive/folders/18YTOPFKEzz4jjMiwiMTrx6aTl1AJ2hTf?usp=drive_link",
-    desc: "Direct access link for 1500 PREMIUM TRANSITIONS. Download or bookmark files for offline usage."
-  },
-  'latest-editing-2026': {
-    name: "LATEST EDITING 2026",
-    link: "https://drive.google.com/drive/folders/10QKbUY7qRyKM3m1ig6EsVQ3KNSJdDZ8Y?usp=drive_link",
-    desc: "Direct access link for LATEST EDITING 2026. Download or bookmark files for offline usage."
-  },
-  'graphics-bundle': {
-    name: "Graphics Bundle",
-    link: "https://drive.google.com/drive/folders/1hORXYzDSl0lQnOHbBChKIF6s4wSTC0mP?usp=drive_link",
-    desc: "Direct access link for Graphics Bundle. Download or bookmark files for offline usage."
-  },
-  'igital-marketing-bundle': {
-    name: "igital Marketing Bundle",
-    link: "MEGA",
-    desc: "Direct access link for igital Marketing Bundle. Download or bookmark files for offline usage."
-  },
-  '2700-elementor-pro-templates-forwordpresssite': {
-    name: "2700+ Elementor Pro Templates Forwordpresssite",
-    link: "MEGA",
-    desc: "Direct access link for 2700+ Elementor Pro Templates Forwordpresssite. Download or bookmark files for offline usage."
-  },
-  '37tb-all-money-making-courses-bundle': {
-    name: "1.37tb All Money Making Courses Bundle",
-    link: "MEGA",
-    desc: "Direct access link for 1.37tb All Money Making Courses Bundle. Download or bookmark files for offline usage."
-  },
-};
+    const PRODUCT_LINKS = REPLACE_WITH_PRODUCT_LINKS;
     const FREE_BONUSES = [
       { name: "Black Word with White Background Images", link: "https://drive.google.com/drive/folders/1GzfLUGZpwOklGZK_UB4_ZsvHM5WUb5cz?usp=drive_link", desc: "🎁 FREE BONUS — Minimalist aesthetic quote backgrounds." },
       { name: "Caravan Life Travel Reels", link: "https://drive.google.com/drive/folders/1icBWFJeUT6tbSEbn8xgqu0yjpYca7Qqb?usp=drive_link", desc: "🎁 FREE BONUS — Scenic camper van road trips & landscape reels." },
@@ -605,3 +495,13 @@
   </script>
 </body>
 </html>
+""".replace("REPLACE_WITH_PRODUCT_LINKS", product_links_js)
+
+    output_path = "access.html"
+    with open(output_path, "w", encoding="utf-8") as out:
+        out.write(html_content)
+        
+    print(f"Dynamic access page compiled successfully at '{output_path}'.")
+
+if __name__ == "__main__":
+    generate_access_page()

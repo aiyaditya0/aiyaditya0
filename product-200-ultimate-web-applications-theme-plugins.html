@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureWithAi - 200+ Ultimate Web Applications Theme & Plugins</title>
+  <meta name="description" content="200+ premium WordPress themes, elementor templates, security plugins, and SEO tools with lifetime developer licenses.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="pixel-tracker.js" defer></script>
+  <script src="cart.js" defer></script>
+  
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    :root {
+      --primary: #ff8a00;
+      --primary-container: #ff8a00;
+      --bg-dark: #050505;
+      --text-white: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --text-muted: rgba(255, 255, 255, 0.4);
+      --border-color: rgba(255, 255, 255, 0.06);
+      --border-hover: rgba(255, 138, 0, 0.35);
+      --glow-primary: 0 0 20px rgba(255, 138, 0, 0.15);
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    #top-bar {
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 50%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: barAnim 4s linear infinite;
+      color: #000; text-align: center; padding: 10px 16px;
+      font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      position: sticky; top: 0; z-index: 9999;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.4);
+    }
+    @keyframes barAnim { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+
+    header {
+      position: sticky; top: 42px; z-index: 1000;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px; gap: 16px;
+    }
+    .logo-wrap { display: flex; align-items: center; text-decoration: none; }
+    .logo-wrap img { height: 44px; width: auto; object-fit: contain; }
+    
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .cart-btn {
+      position: relative; background: rgba(255,138,0,0.12);
+      border: 1px solid rgba(255,138,0,0.3);
+      color: #ff8a00; border-radius: 12px; cursor: pointer;
+      padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .cart-btn:hover { background: rgba(255,138,0,0.2); }
+    .cart-count {
+      background: #ff8a00; color: #000; border-radius: 50%;
+      width: 18px; height: 18px; font-size: 10px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .back-catalog-btn {
+      color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 600;
+      display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+    }
+    .back-catalog-btn:hover { color: #ff8a00; }
+
+    /* Hero Section */
+    .product-hero {
+      background: linear-gradient(135deg, #0a0614 0%, #150a00 50%, #0a0614 100%);
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .badge-sale {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255, 138, 0, 0.15); border: 1px solid rgba(255, 138, 0, 0.3);
+      color: #ff8a00; border-radius: 20px; padding: 4px 14px;
+      font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .badge-free {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(39, 201, 63, 0.15); border: 1px solid rgba(39, 201, 63, 0.3);
+      color: #27c93f; border-radius: 20px; padding: 4px 14px;
+      font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: #fff;
+    }
+    .hero-title span { color: #ff8a00; }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    
+    /* Purchase details */
+    .purchase-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .price-now {
+      font-size: 38px;
+      font-weight: 800;
+      color: #ff8a00;
+      text-shadow: var(--glow-primary);
+    }
+    .price-orig {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .price-free {
+      font-size: 38px;
+      font-weight: 800;
+      color: #27c93f;
+    }
+    .btn-buy {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 16px; border-radius: 14px; border: none;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-buy-paid {
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000;
+      box-shadow: 0 8px 24px rgba(255,138,0,0.3);
+    }
+    .btn-buy-paid:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255,138,0,0.45);
+    }
+    .btn-buy-free {
+      background: linear-gradient(135deg, #27c93f, #1e9a30);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(39,201,63,0.3);
+      text-decoration: none;
+    }
+    .btn-buy-free:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(39,201,63,0.45);
+    }
+    
+    .trust-notes {
+      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;
+    }
+    .trust-note {
+      font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px;
+    }
+    
+    .hero-img-wrap {
+      border: 1.5px solid rgba(255,138,0,0.25);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6), var(--glow-primary);
+      background: #000;
+      aspect-ratio: 16 / 10;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Features Section */
+    .features-sec {
+      padding: 80px 0;
+      background: rgba(10, 10, 10, 0.2);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .feat-card {
+      background: rgba(20,12,5,0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex; gap: 16px;
+      align-items: flex-start;
+      transition: all 0.25s;
+    }
+    .feat-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .feat-icon {
+      background: rgba(255,138,0,0.1); border: 1px solid rgba(255,138,0,0.2);
+      border-radius: 10px; padding: 10px; color: #ff8a00; flex-shrink: 0;
+    }
+    .feat-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 6px; }
+    .feat-desc { font-size: 13.5px; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+
+    /* Testimonials */
+    .reviews-sec {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .review-card {
+      background: rgba(20, 12, 5, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .review-stars { color: #ffb300; font-size: 13px; display: flex; gap: 2px; }
+    .review-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }
+    .review-author {
+      display: flex; align-items: center; gap: 12px; margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;
+    }
+    .review-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255, 138, 0, 0.12); display: flex; align-items: center;
+      justify-content: center; font-weight: 700; color: #ff8a00; border: 1px solid rgba(255,138,0,0.2);
+    }
+    .review-name { font-size: 13.5px; font-weight: 600; color: #fff; display: block; }
+    .review-role { font-size: 11px; color: var(--text-muted); display: block; }
+
+    /* Suggestions Section (Connected Loop) */
+    .suggestions-sec {
+      padding: 80px 0;
+    }
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .suggest-card {
+      background: rgba(20,12,5,0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      display: flex; flex-direction: column; overflow: hidden;
+      transition: all 0.25s; text-decoration: none; color: inherit;
+    }
+    .suggest-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), var(--glow-primary);
+    }
+    .suggest-img {
+      width: 100%; aspect-ratio: 16 / 10; object-fit: cover;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .suggest-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+    .suggest-title { font-size: 16px; font-weight: 700; color: #fff; margin: 0 0 8px; line-height: 1.4; }
+    .suggest-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 16px; }
+    .suggest-footer {
+      display: flex; justify-content: space-between; align-items: center; margin-top: auto;
+    }
+    .suggest-price { font-size: 16px; font-weight: 800; color: #ff8a00; }
+    .suggest-price-free { font-size: 16px; font-weight: 800; color: #27c93f; }
+    .suggest-action { font-size: 12px; font-weight: 700; color: #ff8a00; display: flex; align-items: center; gap: 4px; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      text-align: center;
+      background: #020202;
+    }
+    .footer-text { font-size: 13px; color: var(--text-muted); margin: 0; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: repeat(2, 1fr); }
+      .suggestions-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .review-grid { grid-template-columns: 1fr; }
+      .suggestions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top announcement -->
+  <div id="top-bar">
+    <span>🔥 <strong>PROMOTIONAL OFFER</strong> — Get instant digital delivery after payment!</span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrap">
+        <img src="primary-logo.png" alt="FutureWithAI Logo">
+      </a>
+      <a href="digital-products.html" class="back-catalog-btn">
+        <i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Back to Store
+      </a>
+      <div class="header-actions">
+        <button class="cart-btn cart-toggle-trigger">
+          <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
+          Cart
+          <span class="cart-count cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="product-hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="badge-sale">🔥 Premium Resource</span>
+          <h1 class="hero-title">200+ Ultimate Web Applications Theme & Plugins</h1>
+          <p class="hero-desc">200+ premium WordPress themes, elementor templates, security plugins, and SEO tools with lifetime developer licenses.</p>
+          
+          <div class="purchase-block">
+            <div class="price-row">
+              <span class="price-now">₹39</span><span class="price-orig">₹299</span><span style="color:#27c93f; font-size:13px; font-weight:700;">(90% OFF Launch Deal)</span>
+            </div>
+            <button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,'200-ultimate-web-applications-theme-plugins','200+ Ultimate Web Applications Theme & Plugins',39,'saas_dashboard_mockup.png','product-200-ultimate-web-applications-theme-plugins.html')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>
+            <div class="trust-notes">
+              <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payment</div>
+              <div class="trust-note"><i data-lucide="zap" style="width:14px;height:14px;color:#ff8a00;"></i> Instant Download Link</div>
+              <div class="trust-note"><i data-lucide="infinity" style="width:14px;height:14px;color:#ff8a00;"></i> Lifetime Validity</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image-side">
+          <div class="hero-img-wrap">
+            <img src="saas_dashboard_mockup.png" alt="200+ Ultimate Web Applications Theme & Plugins">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-sec">
+    <div class="container">
+      <h2 class="sec-title">What's Inside This Pack?</h2>
+      <div class="features-grid">
+        
+        <div class="feat-card">
+          <div class="feat-icon"><i data-lucide="code" style="width:20px;height:20px;"></i></div>
+          <div>
+            <h3 class="feat-title">Clean Source Code</h3>
+            <p class="feat-desc">Get complete deployable source code with clean structures, preconfigured router & authentication scripts.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i data-lucide="database" style="width:20px;height:20px;"></i></div>
+          <div>
+            <h3 class="feat-title">Database Included</h3>
+            <p class="feat-desc">Includes clean SQL database dumps for zero-hassle schema setups on your server.</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i data-lucide="server" style="width:20px;height:20px;"></i></div>
+          <div>
+            <h3 class="feat-title">Easy Hosting</h3>
+            <p class="feat-desc">Fully compatible with generic cPanel shared hosting or VPS instances (PHP, MySQL, Apache).</p>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon"><i data-lucide="badge-dollar-sign" style="width:20px;height:20px;"></i></div>
+          <div>
+            <h3 class="feat-title">Micro-SaaS Ready</h3>
+            <p class="feat-desc">Includes resale license rights to rebranding, hosting, and charging clients premium monthly subscriptions.</p>
+          </div>
+        </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="reviews-sec">
+    <div class="container">
+      <h2 class="sec-title" style="margin-bottom: 0;">What Creators & Developers Say</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-top: 8px;">Real reviews from verified buyers.</p>
+      <div class="review-grid">
+        
+        <div class="review-card">
+          <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
+          <p class="review-text">"The PHP scripts are structured perfectly. DB setups worked on the first try. Made my client project ready in 1 day."</p>
+          <div class="review-author">
+            <div class="review-avatar">SS</div>
+            <div class="review-author-info">
+              <span class="review-name">Sanjay Sharma</span>
+              <span class="review-role">Pune · Freelancer</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
+          <p class="review-text">"The 21 hours video guide is a massive addition. Learned step-by-step how to host and edit. Absolute value for money!"</p>
+          <div class="review-author">
+            <div class="review-avatar">JD</div>
+            <div class="review-author-info">
+              <span class="review-name">Jayesh D.</span>
+              <span class="review-role">Mumbai · Software Dev</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★ <span style="font-size: 11px; color: #27c93f; margin-left: auto;">✔ Verified Buyer</span></div>
+          <p class="review-text">"Highly functional scripts. Skip writing backend code, just customize this template and sell. Highly recommended."</p>
+          <div class="review-author">
+            <div class="review-avatar">VT</div>
+            <div class="review-author-info">
+              <span class="review-name">Vikash T.</span>
+              <span class="review-role">Delhi · Agency Owner</span>
+            </div>
+          </div>
+        </div>
+            
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products (Connected Loop) -->
+  <section class="suggestions-sec">
+    <div class="container">
+      <h2 class="sec-title" style="margin-bottom: 0;">Other Packs You Might Like</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-top: 8px;">Expand your toolkit with these highly rated additions.</p>
+      <div class="suggestions-grid">
+        
+        <a href="product-400-php-scripts.html" class="suggest-card">
+          <img class="suggest-img" src="pos_billing_mockup.png" alt="400+ PHP scripts">
+          <div class="suggest-body">
+            <h3 class="suggest-title">400+ PHP scripts</h3>
+            <p class="suggest-desc">400+ working PHP source code scripts for building SaaS platforms, utility directories, tools, booking websites, and portals.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price">₹69</span>
+              <span class="suggest-action">View Details →</span>
+            </div>
+          </div>
+        </a>
+        <a href="product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html" class="suggest-card">
+          <img class="suggest-img" src="saas_dashboard_mockup.png" alt="21 Hrs Content of How to Work on 1500+ Manually Tested Web App:">
+          <div class="suggest-body">
+            <h3 class="suggest-title">21 Hrs Content of How to Work on 1500+ Manually Tested Web App:</h3>
+            <p class="suggest-desc">Step-by-step 21-hour masterclass tutorial on installing, configuring, hosting, and monetizing the 1500+ web application source codes.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price">₹79</span>
+              <span class="suggest-action">View Details →</span>
+            </div>
+          </div>
+        </a>
+        <a href="product-travel-reels-bundle.html" class="suggest-card">
+          <img class="suggest-img" src="hero-image.png" alt="Travel Reels Bundle">
+          <div class="suggest-body">
+            <h3 class="suggest-title">Travel Reels Bundle</h3>
+            <p class="suggest-desc">Cinematic landscape clips, tropical islands, and mountain views from around the world. Excellent for travel and lifestyle pages.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price-free">FREE</span>
+              <span class="suggest-action">Download Now →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2026 FutureWithAI · Powered by Anshuman Enterprises · All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+    
+    // Add to Cart Animation
+    function addToCartAnimated(btn, id, name, price, img, link) {
+      addToCart(id, name, price, img, link);
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i data-lucide="check" style="width:20px;height:20px;"></i> Added!';
+      btn.classList.add('added');
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove('added');
+        if (window.lucide) lucide.createIcons();
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

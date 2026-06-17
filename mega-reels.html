@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -625,6 +625,104 @@
         font-size: 13px;
       }
     }
+
+    /* Tier Selector Styling */
+    .tier-selector-container {
+      background: linear-gradient(145deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 28px 0;
+      box-shadow: 0 8px 32px rgba(255, 138, 0, 0.08);
+      text-align: left;
+    }
+    .tier-selector-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tier-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .tier-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100px;
+    }
+    .tier-card:hover {
+      border-color: rgba(255, 138, 0, 0.4);
+      transform: translateY(-2px);
+      background: rgba(255, 138, 0, 0.02);
+    }
+    .tier-card.selected {
+      background: rgba(255, 138, 0, 0.08);
+      border-color: #ff8a00;
+      box-shadow: 0 0 16px rgba(255, 138, 0, 0.15);
+    }
+    .tier-card-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #ff8a00;
+      color: #000;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 0 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tier-card-qty {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      margin-top: 6px;
+    }
+    .tier-card-name {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .tier-card-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+    .tier-card-price-orig {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      text-decoration: line-through;
+    }
+    .tier-card-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ff8a00;
+    }
+    @media(max-width:480px){
+      .tier-cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -676,6 +774,67 @@
           <p class="hero-subtitle">
             Skip ideas, formatting, and rendering bottlenecks. Get instant access to 100,000+ pre-edited, copyright-free high-converting reels across 25+ viral categories. Ready to publish today.
           </p>
+
+          <!-- Interactive Tier Selector -->
+          <div class="tier-selector-container">
+            <h3 class="tier-selector-title">
+              <i data-lucide="layers" style="width:20px;height:20px;color:var(--primary-container);"></i>
+              Choose Asset Volume / अपना पैकेज चुनें:
+            </h3>
+            <div class="tier-cards-grid">
+              <div class="tier-card" onclick="selectTier(0)">
+                <div class="tier-card-qty">1,000+ Reels</div>
+                <div class="tier-card-name">Starter Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹599</span>
+                  <span class="tier-card-price">₹9</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(1)">
+                <div class="tier-card-qty">5,000+ Reels</div>
+                <div class="tier-card-name">Creator Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹999</span>
+                  <span class="tier-card-price">₹29</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(2)">
+                <div class="tier-card-qty">15,000+ Reels</div>
+                <div class="tier-card-name">Silver Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹1,599</span>
+                  <span class="tier-card-price">₹49</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(3)">
+                <div class="tier-card-qty">50,000+ Reels</div>
+                <div class="tier-card-name">Gold Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹2,499</span>
+                  <span class="tier-card-price">₹79</span>
+                </div>
+              </div>
+              <div class="tier-card selected" onclick="selectTier(4)">
+                <div class="tier-card-badge">Best Seller</div>
+                <div class="tier-card-qty">100,000+ Reels</div>
+                <div class="tier-card-name">Ultimate Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹4,999</span>
+                  <span class="tier-card-price">₹99</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(5)">
+                <div class="tier-card-badge">PLR Rights</div>
+                <div class="tier-card-qty">100k + License</div>
+                <div class="tier-card-name">Reseller Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹5,999</span>
+                  <span class="tier-card-price">₹199</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="hero-actions">
             <a href="#" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.png', 'mega-reels.html'); return false;" class="btn-primary" id="hero-cta-primary">
               ADD TO CART @ ₹99 <i data-lucide="shopping-cart"></i>
@@ -1181,10 +1340,77 @@
   </footer>
 
   <script>
+    // Product Tiers Configuration
+    const PRODUCT_TIERS = [
+      { id: 'mega-reels-starter', name: 'Viral Reels Starter Pack (1,000+ Reels)', price: 9, origPrice: 599, label: 'Starter Pack', qty: '1,000+ Reels', badge: 'Save 98%' },
+      { id: 'mega-reels-creator', name: 'Viral Reels Creator Pack (5,000+ Reels)', price: 29, origPrice: 999, label: 'Creator Pack', qty: '5,000+ Reels', badge: 'Popular' },
+      { id: 'mega-reels-silver', name: 'Viral Reels Silver Pack (15,000+ Reels)', price: 49, origPrice: 1599, label: 'Silver Pack', qty: '15,000+ Reels', badge: 'Great Value' },
+      { id: 'mega-reels-gold', name: 'Viral Reels Goldmine Pack (50,000+ Reels)', price: 79, origPrice: 2499, label: 'Gold Pack', qty: '50,000+ Reels', badge: 'High Volume' },
+      { id: 'mega-reels', name: '100,000+ Viral Reels Goldmine Pack', price: 99, origPrice: 4999, label: 'Ultimate Pack', qty: '100,000+ Reels', badge: 'Best Seller' },
+      { id: 'mega-reels-reseller', name: 'Viral Reels Reseller Pack (100k + Resell Rights)', price: 199, origPrice: 5999, label: 'Reseller Pack', qty: '100k + License', badge: 'Agency PLR' }
+    ];
+
+    let currentTierIdx = 4; // default to index 4 (₹99 pack)
+
+    function selectTier(idx) {
+      currentTierIdx = idx;
+      const cards = document.querySelectorAll('.tier-card');
+      cards.forEach((el, i) => {
+        el.classList.toggle('selected', i === idx);
+      });
+      const tier = PRODUCT_TIERS[idx];
+
+      // Update limited offer banner button
+      const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
+      if (bannerCta) {
+        bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.png', 'mega-reels.html'); return false;`);
+      }
+
+      // Update navbar CTA button
+      const navCta = document.getElementById('nav-cta-btn');
+      if (navCta) {
+        navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.png', 'mega-reels.html'); return false;`);
+        navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update hero CTA button
+      const heroCta = document.getElementById('hero-cta-primary');
+      if (heroCta) {
+        heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.png', 'mega-reels.html'); return false;`);
+        heroCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update value comparison CTA button
+      const valCta = document.querySelector('.value-pay-today .btn-primary');
+      if (valCta) {
+        valCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.png', 'mega-reels.html'); return false;`);
+        valCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update final checkout CTA button
+      const finalCta = document.querySelector('.final-box .btn-primary');
+      if (finalCta) {
+        finalCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.png', 'mega-reels.html'); return false;`);
+        finalCta.innerHTML = `🎬 ADD TO CART NOW @ ₹${tier.price} →`;
+      }
+
+      // Update value comparison box price display
+      const valPrice = document.querySelector('.value-pay-today .pay-today-price');
+      if (valPrice) valPrice.textContent = '₹' + tier.price;
+
+      // Update final box header price display
+      const finalTitle = document.querySelector('.final-box .section-title');
+      if (finalTitle) finalTitle.innerHTML = `Claim ${tier.qty} for ₹${tier.price}`;
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
       startCountdownTimer();
       updateCalculator();
+      selectTier(4); // default to ₹99 pack
     });
 
     function toggleFaq(header) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -487,6 +487,104 @@
         font-size: 13px;
       }
     }
+
+    /* Tier Selector Styling */
+    .tier-selector-container {
+      background: linear-gradient(145deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 28px 0;
+      box-shadow: 0 8px 32px rgba(255, 138, 0, 0.08);
+      text-align: left;
+    }
+    .tier-selector-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tier-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .tier-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100px;
+    }
+    .tier-card:hover {
+      border-color: rgba(255, 138, 0, 0.4);
+      transform: translateY(-2px);
+      background: rgba(255, 138, 0, 0.02);
+    }
+    .tier-card.selected {
+      background: rgba(255, 138, 0, 0.08);
+      border-color: #ff8a00;
+      box-shadow: 0 0 16px rgba(255, 138, 0, 0.15);
+    }
+    .tier-card-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #ff8a00;
+      color: #000;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 0 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tier-card-qty {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      margin-top: 6px;
+    }
+    .tier-card-name {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .tier-card-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+    .tier-card-price-orig {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      text-decoration: line-through;
+    }
+    .tier-card-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ff8a00;
+    }
+    @media(max-width:480px){
+      .tier-cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -538,6 +636,43 @@
           <p class="hero-subtitle">
             Power up your n8n workspace with the ultimate enterprise collection. 14,000+ ready-to-import advanced workflows featuring multi-agent AI loops, web scrapers, database synchronization, and deep API integrations.
           </p>
+
+          <!-- Interactive Tier Selector -->
+          <div class="tier-selector-container">
+            <h3 class="tier-selector-title">
+              <i data-lucide="layers" style="width:20px;height:20px;color:var(--primary-container);"></i>
+              Choose Asset Volume / अपना पैकेज चुनें:
+            </h3>
+            <div class="tier-cards-grid">
+              <div class="tier-card" onclick="selectTier(0)">
+                <div class="tier-card-qty">5,000+ Workflows</div>
+                <div class="tier-card-name">Advanced AI Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹4,999</span>
+                  <span class="tier-card-price">₹199</span>
+                </div>
+              </div>
+              <div class="tier-card selected" onclick="selectTier(1)">
+                <div class="tier-card-badge">Best Seller</div>
+                <div class="tier-card-qty">14,000+ Workflows</div>
+                <div class="tier-card-name">Enterprise Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹9,999</span>
+                  <span class="tier-card-price">₹349</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(2)">
+                <div class="tier-card-badge">Agency Pack</div>
+                <div class="tier-card-qty">14,000+ + Resell</div>
+                <div class="tier-card-name">Ultimate Suite</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹14,999</span>
+                  <span class="tier-card-price">₹449</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="hero-actions">
             <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="btn-primary" id="hero-cta-primary">
               ADD TO CART @ ₹349 <i data-lucide="shopping-cart"></i>
@@ -1002,10 +1137,83 @@
   </footer>
 
   <script>
+    // Product Tiers Configuration
+    const PRODUCT_TIERS = [
+      { id: 'n8n-automation-enterprise-starter', name: 'n8n Workflow Automation Advanced AI Pack (5,000+ Workflows)', price: 199, origPrice: 4999, qty: '5,000+ Workflows' },
+      { id: 'n8n-automation-enterprise', name: '14,000+ n8n Workflow Automation (Enterprise)', price: 349, origPrice: 9999, qty: '14,000+ Workflows' },
+      { id: 'n8n-automation-enterprise-agency', name: 'n8n Workflow Automation Ultimate Agency Suite (14,000+ + Resell Rights)', price: 449, origPrice: 14999, qty: '14,000+ + Resell' }
+    ];
+
+    let currentTierIdx = 1; // Default to index 1 (₹349 pack)
+
+    function selectTier(idx) {
+      currentTierIdx = idx;
+      const cards = document.querySelectorAll('.tier-card');
+      cards.forEach((el, i) => {
+        el.classList.toggle('selected', i === idx);
+      });
+      const tier = PRODUCT_TIERS[idx];
+
+      // Update offer banner CTA
+      const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
+      if (bannerCta) {
+        bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+      }
+
+      // Update navbar CTA button
+      const navCta = document.getElementById('nav-cta-btn');
+      if (navCta) {
+        navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+        navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update hero CTA button
+      const heroCta = document.getElementById('hero-cta-primary');
+      if (heroCta) {
+        heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+        heroCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update calculator CTA button
+      const calcCta = document.querySelector('.calculator-container .btn-primary');
+      if (calcCta) {
+        calcCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+        calcCta.innerHTML = `🤖 Grab n8n Enterprise for ₹${tier.price} →`;
+      }
+
+      // Update value comparison CTA button
+      const valCta = document.querySelector('.value-pay-today .btn-primary');
+      if (valCta) {
+        valCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+        valCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        if (window.lucide) lucide.createIcons();
+      }
+
+      // Update final checkout CTA button
+      const finalCta = document.querySelector('.final-box .btn-primary');
+      if (finalCta) {
+        finalCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;`);
+        finalCta.innerHTML = `🎬 ADD TO CART NOW @ ₹${tier.price} →`;
+      }
+
+      // Update value comparison box price display
+      const valPrice = document.querySelector('.value-pay-today .pay-today-price');
+      if (valPrice) valPrice.textContent = '₹' + tier.price;
+
+      // Update final box header price display
+      const finalTitle = document.querySelector('.final-box .section-title');
+      if (finalTitle) finalTitle.innerHTML = `Get ${tier.qty} today for ₹${tier.price}`;
+    }
+
+    window.selectTier = selectTier;
+
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
       startCountdownTimer();
       updateCalculator();
+      selectTier(1); // Default to Enterprise Pack ₹349
     });
 
     function toggleFaq(header) {

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -122,6 +122,104 @@
       #limited-offer-banner { font-size: 12px; padding: 8px 32px 8px 8px; }
       #offer-countdown { font-size: 13px; }
     }
+
+    /* Tier Selector Styling */
+    .tier-selector-container {
+      background: linear-gradient(145deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      margin: 28px 0;
+      box-shadow: 0 8px 32px rgba(255, 138, 0, 0.08);
+      text-align: left;
+    }
+    .tier-selector-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tier-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .tier-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100px;
+    }
+    .tier-card:hover {
+      border-color: rgba(255, 138, 0, 0.4);
+      transform: translateY(-2px);
+      background: rgba(255, 138, 0, 0.02);
+    }
+    .tier-card.selected {
+      background: rgba(255, 138, 0, 0.08);
+      border-color: #ff8a00;
+      box-shadow: 0 0 16px rgba(255, 138, 0, 0.15);
+    }
+    .tier-card-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #ff8a00;
+      color: #000;
+      font-size: 8px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 0 0 0 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tier-card-qty {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+      margin-top: 6px;
+    }
+    .tier-card-name {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .tier-card-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-top: auto;
+    }
+    .tier-card-price-orig {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      text-decoration: line-through;
+    }
+    .tier-card-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ff8a00;
+    }
+    @media(max-width:480px){
+      .tier-cards-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -171,6 +269,43 @@
           <p class="hero-subtitle">
             Get access to a curated collection of ready-to-import n8n workflow templates designed to help you launch automations faster.
           </p>
+
+          <!-- Interactive Tier Selector -->
+          <div class="tier-selector-container">
+            <h3 class="tier-selector-title">
+              <i data-lucide="layers" style="width:20px;height:20px;color:var(--primary-container);"></i>
+              Choose Asset Volume / अपना पैकेज चुनें:
+            </h3>
+            <div class="tier-cards-grid">
+              <div class="tier-card" onclick="selectTier(0)">
+                <div class="tier-card-qty">100+ Workflows</div>
+                <div class="tier-card-name">Starter Workflows</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹999</span>
+                  <span class="tier-card-price">₹19</span>
+                </div>
+              </div>
+              <div class="tier-card" onclick="selectTier(1)">
+                <div class="tier-card-badge">Popular</div>
+                <div class="tier-card-qty">500+ Workflows</div>
+                <div class="tier-card-name">Pro Workflows</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹1,999</span>
+                  <span class="tier-card-price">₹49</span>
+                </div>
+              </div>
+              <div class="tier-card selected" onclick="selectTier(2)">
+                <div class="tier-card-badge">Best Seller</div>
+                <div class="tier-card-qty">2,000+ Workflows</div>
+                <div class="tier-card-name">Developer Pack</div>
+                <div class="tier-card-price-row">
+                  <span class="tier-card-price-orig">₹5,999</span>
+                  <span class="tier-card-price">₹99</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="hero-actions">
             <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html'); return false;" class="btn-primary" id="hero-cta-primary">
               Add To Cart <i data-lucide="shopping-cart"></i>
@@ -2196,20 +2331,66 @@ The product should feel like having an executive team that researches, plans, or
 
     // ── Dynamic Pricing Display ──────────────────────────────────────
     (function() {
-      var EARLY_PRICE  = 99;
-      var REGULAR_PRICE = 149;
+      // Product Tiers Configuration
+      const PRODUCT_TIERS = [
+        { id: 'n8n-pack-starter', name: 'n8n Automation Starter Pack (100+ Workflows)', price: 19, origPrice: 999, qty: '100+ Workflows' },
+        { id: 'n8n-pack-pro', name: 'n8n Automation Pro Pack (500+ Workflows)', price: 49, origPrice: 1999, qty: '500+ Workflows' },
+        { id: 'n8n-pack', name: 'n8n Automation Pack (2000+ Workflows)', price: 99, origPrice: 5999, qty: '2,000+ Workflows' }
+      ];
 
-      // Update pricing section
-      var priceEl   = document.getElementById('pricing-current-amount');
-      var badgeEl   = document.getElementById('pricing-badge');
-      var earlyBadge = document.getElementById('pricing-early-badge');
-      var urgencyMsg = document.getElementById('pricing-urgency-msg');
-      var ctaBtn    = document.getElementById('pricing-cta-btn');
+      let currentTierIdx = 2; // Default to index 2 (₹99 pack)
 
-      // Price is now fixed at ₹99
-      if (priceEl)    priceEl.textContent = '\u20b999';
-      if (ctaBtn)     ctaBtn.innerHTML    = 'ADD TO CART @ \u20b999 <i data-lucide="shopping-cart"></i>';
-      lucide.createIcons();
+      function selectTier(idx) {
+        currentTierIdx = idx;
+        const cards = document.querySelectorAll('.tier-card');
+        cards.forEach((el, i) => {
+          el.classList.toggle('selected', i === idx);
+        });
+        const tier = PRODUCT_TIERS[idx];
+
+        // Update offer banner CTA
+        const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
+        if (bannerCta) {
+          bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.png', 'n8n-pack.html'); return false;`);
+        }
+
+        // Update navbar CTA button
+        const navCta = document.getElementById('nav-cta-btn');
+        if (navCta) {
+          navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.png', 'n8n-pack.html'); return false;`);
+          navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+          if (window.lucide) lucide.createIcons();
+        }
+
+        // Update hero CTA button
+        const heroCta = document.getElementById('hero-cta-primary');
+        if (heroCta) {
+          heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.png', 'n8n-pack.html'); return false;`);
+          heroCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+          if (window.lucide) lucide.createIcons();
+        }
+
+        // Update pricing section
+        const priceEl = document.getElementById('pricing-current-amount');
+        if (priceEl) priceEl.textContent = '₹' + tier.price;
+
+        const origPriceEl = document.getElementById('pricing-original-text');
+        if (origPriceEl) origPriceEl.textContent = 'Regular Price ₹' + tier.origPrice;
+
+        const ctaBtn = document.getElementById('pricing-cta-btn');
+        if (ctaBtn) {
+          ctaBtn.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.png', 'n8n-pack.html'); return false;`);
+            ctaBtn.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+          if (window.lucide) lucide.createIcons();
+        }
+      }
+
+      window.selectTier = selectTier;
+
+      // Initialize default tier
+      document.addEventListener('DOMContentLoaded', function() {
+        selectTier(2); // default to Developer Pack ₹99
+      });
     })();
   </script>
 
