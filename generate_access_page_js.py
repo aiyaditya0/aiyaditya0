@@ -346,7 +346,7 @@ def generate_access_page():
 
     // Verification check
     window.addEventListener('DOMContentLoaded', async () => {
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUBtaPjMCFBydFtF63ntJhIwBTIWadjGJLcO3K0N5jrgsuzEY4wnhAgkLz3KH1_bA/exec";
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLJxvjXfqXF10N1YIju5pihlp3OgjjJtGl9bqNr2uHvn94cKodeS2U0kB0yNTieFuV/exec";
       const params = new URLSearchParams(window.location.search);
       const orderId = params.get('orderId') || sessionStorage.getItem('ae_verified_order_id');
 
