@@ -14,72 +14,88 @@ def make_product_id(name):
 def get_product_image(name, category_id):
     name_lower = name.lower()
     
-    # Exact mappings for the new PNG images provided by the user
+    # Exact mappings for the new WebP images provided by the user
     if "infographic post canva" in name_lower or "550+ fitness health" in name_lower:
-        return "0592048c-f88b-41a6-bc23-0eaff4e60064.png"
+        return "0592048c-f88b-41a6-bc23-0eaff4e60064.webp"
     elif "travel reels bundle" in name_lower:
-        return "062c4ef6-262f-4d6b-beda-62ba5d7f154a.png"
+        return "062c4ef6-262f-4d6b-beda-62ba5d7f154a.webp"
     elif "lifestyle reels bundle" in name_lower:
-        return "074f8b8c-c197-44d2-b38c-4a4d69698588.png"
+        return "074f8b8c-c197-44d2-b38c-4a4d69698588.webp"
     elif "5000+ mega reels bundle" in name_lower or "5000+ mega reels" in name_lower:
-        return "255ad432-0183-46a6-9bad-fcde38327c83.png"
+        return "255ad432-0183-46a6-9bad-fcde38327c83.webp"
     elif "space content reels bundle" in name_lower or "space content" in name_lower:
-        return "35c0c997-945b-4f67-b5c7-2ea83275c1be.png"
+        return "35c0c997-945b-4f67-b5c7-2ea83275c1be.webp"
     elif "glowing motion graphics" in name_lower or "glowing motion" in name_lower:
-        return "48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.png"
+        return "48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.webp"
     elif "luxury hotels and resorts" in name_lower or "luxury hotels" in name_lower:
-        return "5ab06a38-7ad9-4c1f-93de-c92f6eb0e19f.png"
+        return "5ab06a38-7ad9-4c1f-93de-c92f6eb0e19f.webp"
     elif "mega car reels bundle" in name_lower or "mega car" in name_lower:
-        return "8537458a-8df9-4489-8f8f-6b6a64ddc03e.png"
+        return "8537458a-8df9-4489-8f8f-6b6a64ddc03e.webp"
     elif "animation explaining" in name_lower or "explaining motivation" in name_lower:
-        return "9b80d846-5f05-4d84-8103-c7ed626da19e.png"
+        return "9b80d846-5f05-4d84-8103-c7ed626da19e.webp"
     elif "youtuber kit" in name_lower:
-        return "a0c80c0f-3c0a-4930-adb3-e3170b2e9f78.png"
+        return "a0c80c0f-3c0a-4930-adb3-e3170b2e9f78.webp"
     elif "english health reels bundle" in name_lower or "english health reels" in name_lower:
-        return "b1cea753-66e9-4085-9d6d-84f19973cb47.png"
+        return "b1cea753-66e9-4085-9d6d-84f19973cb47.webp"
     elif "gym" in name_lower or "fitness reels" in name_lower:
-        return "b578e47f-4c4a-420c-b59a-3bbc90470abf.png"
+        return "b578e47f-4c4a-420c-b59a-3bbc90470abf.webp"
     elif "ai (english) reels" in name_lower or "ai (english)" in name_lower or "700+ ai" in name_lower:
-        return "d1afab38-4733-4fbb-b4d8-0710b238de74.png"
+        return "d1afab38-4733-4fbb-b4d8-0710b238de74.webp"
     elif "business growth reels bundle" in name_lower or "business growth" in name_lower:
-        return "d3cd854c-b2ff-495e-a47e-b2ead1943696.png"
+        return "d3cd854c-b2ff-495e-a47e-b2ead1943696.webp"
     elif "natures reels bundle" in name_lower or "nature reels" in name_lower:
-        return "ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.png"
+        return "ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.webp"
     elif "ai reels bundle" in name_lower:
-        return "fa8550fe-ca58-442a-8906-7d9b4454eb88.png"
+        return "fa8550fe-ca58-442a-8906-7d9b4454eb88.webp"
     elif "php scripts" in name_lower or "php" in name_lower:
-        return "ChatGPT Image Jun 17, 2026, 08_01_16 PM.png"
+        return "ChatGPT Image Jun 17, 2026, 08_01_16 PM.webp"
+    elif "premium transitions" in name_lower or "transitions" in name_lower:
+        return "dcd1eb49-06e0-4670-9b58-34251a1cf975.webp"
+    elif "latest editing" in name_lower or "editing 2026" in name_lower:
+        return "54beffc5-a747-4142-a5f6-4c32af142c40.webp"
+    elif "graphics bundle" in name_lower:
+        return "61ac1b38-c5f7-4a17-a64b-59330a93ea76.webp"
+    elif "marketing bundle" in name_lower or "digital marketing bundle" in name_lower:
+        return "4e4d70ac-e86e-40fe-94b7-168459764baa.webp"
+    elif "elementor pro templates" in name_lower or "elementor" in name_lower:
+        return "9570321e-3dd1-4d10-b32a-cb3ea8458624.webp"
+    elif "ultimate web applications" in name_lower:
+        return "e5ede526-2409-4388-9197-cd2b8d7553a3.webp"
+    elif "21 hrs content" in name_lower:
+        return "3117313c-1dbe-4180-8ec0-838d3223ee52.webp"
+    elif "animation visual reels" in name_lower:
+        return "bfcbbd14-cbcd-4daa-8278-50bf6240c648.webp"
+    elif "luxury reels" in name_lower:
+        return "63948cf2-88fa-4cdc-a802-1a91d77f0fd9.webp"
         
     # General fallbacks
     if "art" in name_lower or "craft" in name_lower:
-        return "reels_art_preview.png"
+        return "reels_art_preview.webp"
     elif "woodwork" in name_lower:
-        return "reels_woodwork_preview.png"
+        return "reels_woodwork_preview.webp"
     elif "cricket" in name_lower:
-        return "reels_cricket_preview.png"
+        return "reels_cricket_preview.webp"
     elif "caravan" in name_lower:
-        return "reels_hero_mockup.png"
+        return "reels_hero_mockup.webp"
     elif "travel" in name_lower or "lifestyle" in name_lower or "luxury hotels" in name_lower:
-        return "hero-image.png"
+        return "hero-image.webp"
     elif "web applications" in name_lower or "web app" in name_lower:
-        return "saas_dashboard_mockup.png"
+        return "saas_dashboard_mockup.webp"
     elif "transitions" in name_lower or "latest editing" in name_lower or "graphics bundle" in name_lower:
-        return "reels_playbook_preview.png"
+        return "reels_playbook_preview.webp"
     elif "marketing" in name_lower or "elementor" in name_lower:
-        return "ecommerce_portal_mockup.png"
+        return "ecommerce_portal_mockup.webp"
     elif "money making courses" in name_lower or "all money making" in name_lower:
-        return "laptop-workspace.png"
+        return "laptop-workspace.webp"
         
-    if category_id == "web-software":
-        return "webapp_hero_mockup.png"
-    elif category_id == "digital-marketing":
-        return "ecommerce_portal_mockup.png"
-    elif category_id == "business":
-        return "laptop-workspace.png"
+    if category_id == "webapps":
+        return "webapp_hero_mockup.webp"
+    elif category_id == "marketing":
+        return "ecommerce_portal_mockup.webp"
     elif "editing" in category_id or "reels" in category_id:
-        return "reels_hero_mockup.png"
+        return "reels_hero_mockup.webp"
         
-    return "hero-image.png"
+    return "hero-image.webp"
 
 
 def get_custom_description(name):
@@ -176,27 +192,29 @@ def generate_catalog_html():
         name = str(name).strip()
         link = str(link).strip() if link else ""
         
-        # Determine clean category ID
+        # Determine clean category ID matching homepage filters
         cat_lower = category.lower()
-        if "video" in cat_lower or "editing" in cat_lower:
-            if "bundle" in cat_lower:
-                cat_id = "editing-bundle"
-                cat_display = "🎬 Editing Bundle"
-            else:
-                cat_id = "video-editing"
-                cat_display = "📱 Video Editing / Reels"
-        elif "software" in cat_lower or "web" in cat_lower:
-            cat_id = "web-software"
-            cat_display = "💻 Web Software"
-        elif "marketing" in cat_lower or "maketing" in cat_lower:
-            cat_id = "digital-marketing"
+        name_lower = name.lower()
+        if "software" in cat_lower or "web" in cat_lower:
+            cat_id = "webapps"
+            cat_display = "💻 Web Apps"
+        elif "editing bundle" in cat_lower:
+            cat_id = "editing"
+            cat_display = "🎬 Video Editing"
+        elif "marketing" in cat_lower or "maketing" in cat_lower or "business" in cat_lower:
+            cat_id = "marketing"
             cat_display = "📊 Digital Marketing"
-        elif "business" in cat_lower:
-            cat_id = "business"
-            cat_display = "💼 Business & Courses"
+        elif "video editing" in cat_lower:
+            # Check if it's editing assets or reels
+            if any(x in name_lower for x in ["youtuber", "graphics", "motion", "transitions", "editing"]):
+                cat_id = "editing"
+                cat_display = "🎬 Video Editing"
+            else:
+                cat_id = "reels"
+                cat_display = "📱 Viral Reels"
         else:
-            cat_id = "other"
-            cat_display = "📦 Other Resources"
+            cat_id = "reels"
+            cat_display = "📱 Viral Reels"
             
         img = get_product_image(name, cat_id)
             
@@ -297,7 +315,7 @@ def generate_catalog_html():
   <title>FutureWithAI — Digital Product Store</title>
   
   <meta name="description" content="Shop premium individual reels packs, video editing assets, website software templates, courses, and digital marketing tools. Instant post-payment link delivery.">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.webp">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -523,7 +541,7 @@ def generate_catalog_html():
   <header>
     <div class="header-inner">
       <a href="index.html" class="logo-wrap" id="nav-logo">
-        <img src="primary-logo.png" alt="FutureWithAI Logo" class="logo-img">
+        <img src="primary-logo.webp" alt="FutureWithAI Logo" class="logo-img">
       </a>
       <div class="search-bar">
         <i data-lucide="search" style="width:16px;height:16px;"></i>
@@ -675,7 +693,7 @@ def generate_catalog_html():
       <div class="footer-top">
         <div>
           <div class="footer-logo">
-            <img src="primary-logo.png" alt="FutureWithAI Logo">
+            <img src="primary-logo.webp" alt="FutureWithAI Logo">
           </div>
           <p class="footer-desc">India's biggest digital product store — empowering creators, developers & agencies with premium resources.</p>
         </div>
@@ -751,21 +769,14 @@ def generate_catalog_html():
 </html>
 """.replace("{product_cards_html}", product_cards_html)
 
-    # Write output to digital-products.html
-    output_path = "digital-products.html"
-    with open(output_path, "w", encoding="utf-8") as out:
-        out.write(html_template)
-        
-    print(f"Catalog storefront generated successfully at '{output_path}'.")
-
     # Update index.html dynamically
     index_path = "index.html"
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
             index_content = f.read()
             
-        start_tag = "<!-- INDIVIDUAL_PRODUCTS_START -->"
-        end_tag = "<!-- INDIVIDUAL_PRODUCTS_END -->"
+        start_tag = "<!-- DYNAMIC_INDIVIDUAL_PRODUCTS_START -->"
+        end_tag = "<!-- DYNAMIC_INDIVIDUAL_PRODUCTS_END -->"
         
         start_idx = index_content.find(start_tag)
         end_idx = index_content.find(end_tag)
@@ -780,7 +791,7 @@ def generate_catalog_html():
                 f.write(new_index_content)
             print("index.html updated successfully with individual product cards.")
         else:
-            print("Warning: INDIVIDUAL_PRODUCTS placeholder tags not found in index.html.")
+            print("Warning: DYNAMIC_INDIVIDUAL_PRODUCTS placeholder tags not found in index.html.")
 
 if __name__ == "__main__":
     generate_catalog_html()

@@ -87,7 +87,7 @@ def generate_pdfs():
         pdf.add_page()
         
         # 1. Logo
-        logo_path = 'primary-logo.png'
+        logo_path = 'primary-logo.webp'
         if os.path.exists(logo_path):
             pdf.image(logo_path, x=45, y=25, w=120)
             pdf.ln(45)

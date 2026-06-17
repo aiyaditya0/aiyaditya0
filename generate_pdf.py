@@ -48,7 +48,7 @@ def create_blueprint_pdf():
     pdf.add_page()
     
     # 1. Large Brand Logo
-    logo_path = 'primary-logo.png'
+    logo_path = 'primary-logo.webp'
     if os.path.exists(logo_path):
         # Center the logo (w = 120, page width is 210, so x = (210 - 120)/2 = 45)
         pdf.image(logo_path, x=45, y=30, w=120)

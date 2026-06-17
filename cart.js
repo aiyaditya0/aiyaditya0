@@ -32,7 +32,7 @@
       desc: '2000+ ready-to-use automation workflows for marketing, CRM & operations.',
       bullets: ['2000+ Production-ready JSONs', 'Slack + WhatsApp + Email bots', 'Full PLR / Resell License'],
       price: 99,
-      img: 'hero-image.png',
+      img: 'hero-image.webp',
       link: 'n8n-pack.html',
       emoji: '🤖',
     },
@@ -43,7 +43,7 @@
       desc: 'Ready-to-post HD reels — cricket, gym, AI anime, motivation & more.',
       bullets: ['100,000+ Viral Edited Shorts', 'Zero watermarks, Full HD', 'Instant Google Drive access'],
       price: 99,
-      img: 'reels_hero_mockup.png',
+      img: 'reels_hero_mockup.webp',
       link: 'mega-reels.html',
       emoji: '📱',
     },
@@ -412,6 +412,9 @@
     if (el) el.textContent = `₹${subtotal}`;
 
     if (window.lucide) lucide.createIcons();
+
+    // Notify product page to refresh Add button states
+    window.dispatchEvent(new Event('cartUpdated'));
   };
 
   // ─── Toast System ─────────────────────────────────────────────────────────────

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -103,6 +103,97 @@
     @keyframes progress { from { width:0%; } to { width:90%; } }
     .progress-label { font-size:12px; color:var(--text-muted); text-align:center; }
 
+    /* Token Box */
+    .token-box {
+      background: linear-gradient(135deg, rgba(255, 138, 0, 0.12) 0%, rgba(255, 138, 0, 0.04) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.35);
+      border-radius: 16px; padding: 20px; text-align: center;
+      margin: 20px 0; animation: fadeUp 0.5s 0.6s ease both;
+    }
+    .token-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 700; }
+    .token-code {
+      font-family: 'Courier New', monospace; font-size: 28px; font-weight: 800;
+      color: var(--primary-container); letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(255, 138, 0, 0.3);
+    }
+    .token-hint { font-size: 11px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+    .token-copy-btn {
+      background: rgba(255, 138, 0, 0.15); border: 1px solid rgba(255, 138, 0, 0.3);
+      color: var(--primary); padding: 6px 16px; border-radius: 8px;
+      font-size: 12px; font-weight: 700; cursor: pointer; margin-top: 10px;
+      font-family: var(--font-sans); transition: all 0.2s;
+    }
+    .token-copy-btn:hover { background: rgba(255, 138, 0, 0.25); }
+
+    /* Product Links Grid */
+    .product-links-section { margin: 24px 0; animation: fadeUp 0.5s 0.7s ease both; }
+    .product-links-title { font-size: 14px; font-weight: 700; color: var(--text-white); margin-bottom: 14px; text-align: left; }
+    .product-link-card {
+      background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color);
+      border-radius: 14px; padding: 16px; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 14px;
+      transition: all 0.2s;
+    }
+    .product-link-card:hover { border-color: rgba(255, 138, 0, 0.35); transform: translateY(-1px); }
+    .product-link-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: rgba(255, 138, 0, 0.1); border: 1px solid rgba(255, 138, 0, 0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .product-link-info { flex: 1; min-width: 0; }
+    .product-link-name { font-size: 13px; font-weight: 600; color: var(--text-white); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-link-desc { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-link-btn {
+      background: var(--primary-container); color: #000; border: none;
+      padding: 8px 14px; border-radius: 8px; font-size: 11px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+      text-decoration: none; font-family: var(--font-sans);
+      transition: all 0.2s; flex-shrink: 0;
+    }
+    .product-link-btn:hover { background: #ff9f24; transform: translateY(-1px); }
+
+    /* Post-Purchase Upsell */
+    .upsell-section {
+      margin: 24px 0; animation: fadeUp 0.5s 0.9s ease both;
+      background: linear-gradient(135deg, rgba(40, 20, 10, 0.5) 0%, rgba(5, 5, 5, 0.9) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3); border-radius: 18px;
+      padding: 24px; position: relative; overflow: hidden;
+    }
+    .upsell-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #b34500, #ff8a00, #ffb347);
+    }
+    .upsell-badge-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(255, 59, 48, 0.15); border: 1px solid rgba(255, 59, 48, 0.3);
+      color: #ff5f52; border-radius: 20px; padding: 4px 12px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 10px;
+    }
+    .upsell-head { font-family: var(--font-serif); font-size: 18px; color: var(--text-white); margin-bottom: 6px; }
+    .upsell-sub-text { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+    .upsell-item {
+      display: flex; gap: 12px; align-items: center;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 138, 0, 0.15);
+      border-radius: 12px; padding: 12px; margin-bottom: 12px;
+    }
+    .upsell-item-img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+    .upsell-item-info { flex: 1; }
+    .upsell-item-name { font-size: 13px; font-weight: 700; color: var(--text-white); }
+    .upsell-item-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .upsell-item-prices { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .upsell-item-orig { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
+    .upsell-item-now { font-size: 18px; font-weight: 800; color: var(--primary-container); }
+    .upsell-item-off { font-size: 10px; color: #27c93f; font-weight: 700; }
+    .upsell-add-btn {
+      width: 100%; background: linear-gradient(135deg, #ff8a00, #ffb347); color: #000;
+      font-weight: 800; font-size: 14px; padding: 14px; border-radius: 12px;
+      border: none; cursor: pointer; font-family: var(--font-sans);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 16px rgba(255, 138, 0, 0.35); transition: all 0.3s;
+    }
+    .upsell-add-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 138, 0, 0.5); }
+
     /* Order detail box */
     .order-box {
       background: rgba(0, 0, 0, 0.25);
@@ -199,6 +290,241 @@
       100% { box-shadow: 0 0 0 0 rgba(255, 138, 0, 0); }
     }
 
+    /* ── VIP Community Card ── */
+    .community-box {
+      background: linear-gradient(135deg, rgba(30, 20, 10, 0.7) 0%, rgba(10, 5, 0, 0.9) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3);
+      border-radius: 18px;
+      padding: 24px;
+      margin: 22px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--glow-primary);
+      animation: fadeUp 0.5s 0.65s ease both;
+    }
+    .community-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .community-box h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+    .community-box p {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .btn-community {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .btn-community:hover {
+      background: #20ba59;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ── Collapsible Bonus Bundles ── */
+    .bonus-section {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 138, 0, 0.25);
+      border-radius: 16px;
+      margin: 22px 0;
+      overflow: hidden;
+      animation: fadeUp 0.5s 0.7s ease both;
+      text-align: left;
+    }
+    .bonus-title-bar {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      background: rgba(255, 138, 0, 0.05);
+      transition: background 0.3s;
+    }
+    .bonus-title-bar:hover {
+      background: rgba(255, 138, 0, 0.1);
+    }
+    .bonus-title-bar span {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+    .bonus-toggle-icon {
+      font-size: 12px;
+      color: var(--primary);
+      transition: transform 0.3s;
+    }
+    .bonus-toggle-icon.open {
+      transform: rotate(180deg);
+    }
+    .bonus-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 16px;
+      border-top: 1px solid rgba(255, 138, 0, 0.15);
+    }
+    @media (max-width: 480px) {
+      .bonus-content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .bonus-card-mini {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .bonus-card-mini h4 {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .bonus-card-mini p {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .btn-bonus-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: rgba(255, 138, 0, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-bonus-download:hover {
+      background: var(--primary-container);
+      color: #000;
+      border-color: var(--primary-container);
+    }
+
+    /* ── Interactive Feedback Form ── */
+    .feedback-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      margin: 22px 0;
+      text-align: center;
+      animation: fadeUp 0.5s 0.75s ease both;
+    }
+    .feedback-box h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 6px;
+    }
+    .feedback-box p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .star-rating .star {
+      font-size: 32px;
+      color: rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: color 0.2s, text-shadow 0.2s;
+    }
+    .star-rating .star:hover,
+    .star-rating .star:hover ~ .star,
+    .star-rating .star.selected,
+    .star-rating .star.selected ~ .star {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(255, 183, 127, 0.4);
+    }
+    .feedback-textarea {
+      width: 100%;
+      height: 70px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--text-primary);
+      padding: 10px 12px;
+      font-size: 13px;
+      font-family: var(--font-sans);
+      resize: none;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .btn-feedback-submit {
+      width: 100%;
+      background: rgba(255, 138, 0, 0.15);
+      border: 1px solid rgba(255, 138, 0, 0.35);
+      color: var(--primary);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+    .btn-feedback-submit:hover {
+      background: var(--primary-container);
+      color: #000;
+      border-color: var(--primary-container);
+      box-shadow: var(--glow-primary);
+    }
+    .feedback-success-msg {
+      padding: 12px;
+      color: #27c93f;
+      font-size: 14px;
+      font-weight: 700;
+      animation: checkPop 0.5s ease both;
+    }
+
     @media (max-width:500px) {
       .status-card { padding:36px 20px 28px; }
       .card-title  { font-size:24px; }
@@ -269,7 +595,7 @@
     <!-- Logo -->
     <div style="margin-bottom:22px; animation:fadeUp 0.4s ease both;">
       <a href="index.html">
-        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height:200px; width:auto; object-fit:contain;" onerror="this.style.display='none'">
+        <img src="primary-logo.webp" alt="FutureWithAi Logo" style="height:200px; width:auto; object-fit:contain;" onerror="this.style.display='none'">
       </a>
     </div>
 
@@ -289,10 +615,10 @@
         <div class="success-wrap">
           <span class="material-symbols-outlined">verified</span>
         </div>
-        <h1 class="card-title">Payment Successful! 🎉</h1>
+        <h1 class="card-title">Thank You For Your Purchase! 🎉</h1>
         <div class="amount-big" id="paidAmount">₹349</div>
         <p class="card-sub">
-          Aapka payment confirm ho gaya. <strong>Google Drive link</strong> aapke WhatsApp pe bheja jayega <strong>30 minutes ke andar</strong>.
+          Aapka payment confirm ho gaya hai! Premium resources ko access karne ke link niche diye gaye hain.
         </p>
 
         <!-- Order Details -->
@@ -319,21 +645,80 @@
           </div>
           <div class="order-row">
             <span>Product</span>
-            <span id="displayProductName">n8n AI Pack (2000+ Workflows)</span>
+            <span id="displayProductName">—</span>
           </div>
         </div>
 
-        <a href="https://futurewithai.anshumanenterprises.online/access.html" class="btn-wa" id="btnAccessPortal" style="display: none; background: linear-gradient(135deg, #ff8a00, #ffb77f); color: #000; border: none; font-weight: 700; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);">
-          Access Workflows & Community 🚀
+        <!-- ── Access Token Box ── -->
+        <div class="token-box" id="tokenBox" style="display:none;">
+          <div class="token-label">🔑 Your Lifetime Access Token</div>
+          <div class="token-code" id="displayToken">—</div>
+          <div class="token-hint">Is token ko save karke rakhein! Kabhi bhi apne products access karne ke liye use karein.</div>
+          <button class="token-copy-btn" onclick="copyToken()">📋 Copy Token</button>
+        </div>
+
+        <!-- ── Product Download Links ── -->
+        <div class="product-links-section" id="productLinksSection" style="display:none;">
+          <div class="product-links-title">📥 Your Purchased Product Downloads</div>
+          <div id="productLinksContainer"></div>
+        </div>
+
+        <!-- ── Insider Community Access Card ── -->
+        <div class="community-box">
+          <div class="community-badge">👑 VIP COMMUNITY CLUB</div>
+          <h3>Insider Creators Community</h3>
+          <p>Join our private WhatsApp group for weekly bonuses, trending editing templates, and direct founder support!</p>
+          <a href="https://chat.whatsapp.com/EyFuaWsWiL895ON4cHtVl6" target="_blank" class="btn-community">
+            💬 Join WhatsApp Group
+          </a>
+        </div>
+
+        <!-- ── Collapsible Bonus Bundles ── -->
+        <div class="bonus-section">
+          <div class="bonus-title-bar" onclick="toggleBonusSection()">
+            <span>🎁 Your Free Bonus Bundles (9 Included)</span>
+            <span class="bonus-toggle-icon" id="bonusToggleIcon">▼</span>
+          </div>
+          <div class="bonus-content-grid" id="bonusContainer" style="display:none;">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- ── Interactive Feedback Form ── -->
+        <div class="feedback-box" id="feedbackFormContainer">
+          <h3>Help us improve! ⭐</h3>
+          <p>Rate your purchase experience and help us make FutureWithAi better.</p>
+          <div class="star-rating">
+            <span class="star" data-value="5" onclick="setFeedbackRating(5)">★</span>
+            <span class="star" data-value="4" onclick="setFeedbackRating(4)">★</span>
+            <span class="star" data-value="3" onclick="setFeedbackRating(3)">★</span>
+            <span class="star" data-value="2" onclick="setFeedbackRating(2)">★</span>
+            <span class="star" data-value="1" onclick="setFeedbackRating(1)">★</span>
+          </div>
+          <textarea id="feedbackText" class="feedback-textarea" placeholder="What did you like or how can we improve? (Optional)..."></textarea>
+          <button class="btn-feedback-submit" onclick="submitFeedbackForm()">Submit Feedback</button>
+        </div>
+
+        <!-- ── Action Buttons ── -->
+        <a href="#" class="btn-wa" id="btnAccessPortal" style="display: none; background: linear-gradient(135deg, #ff8a00, #ffb77f); color: #000; border: none; font-weight: 700; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);">
+          🚀 Open Full Access Portal (Bookmarkable)
         </a>
         <a href="#" class="btn-wa" id="btnWhatsApp" onclick="openWhatsApp()">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp Support Pe Maango
+          WhatsApp Support
         </a>
         <a href="index.html" class="btn-home">
           <span class="material-symbols-outlined" style="font-size:18px;">home</span>
           Back to Website
         </a>
+
+        <!-- ── Post-Purchase Upsell ── -->
+        <div class="upsell-section" id="upsellSection" style="display:none;">
+          <div class="upsell-badge-tag">⚡ EXCLUSIVE POST-PURCHASE DEAL</div>
+          <div class="upsell-head" id="upsellHead">You just bought a great product!</div>
+          <div class="upsell-sub-text">Customers who bought this also love these — grab at 30% off (checkout-only price):</div>
+          <div id="upsellItemsContainer"></div>
+        </div>
       </div>
 
       <!-- ══ STATE: FAILED ═══════════════════════════════════════ -->
@@ -387,7 +772,7 @@
     // ══════════════════════════════════════════════════════════
 
     // ── CONFIGURATION ──────────────────────────────────────────────
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUBtaPjMCFBydFtF63ntJhIwBTIWadjGJLcO3K0N5jrgsuzEY4wnhAgkLz3KH1_bA/exec";
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLJxvjXfqXF10N1YIju5pihlp3OgjjJtGl9bqNr2uHvn94cKodeS2U0kB0yNTieFuV/exec";
     const MAX_POLLS = 8;        // Max polling attempts
     const POLL_INTERVAL = 3500; // ms between each poll
 
@@ -478,19 +863,7 @@
       // Determine product name dynamically
       let prodName = sessionStorage.getItem('ae_pg_product_name');
       if (!prodName) {
-        const amt = parseInt(amtInr);
-        if (amt === 99) {
-          // Both n8n Pack and Reels Pack are ₹99 — default to n8n Pack
-          prodName = 'n8n Automation Pack (2000+ Workflows)';
-        } else if (amt === 149) {
-          prodName = 'n8n Automation Pack (2000+ Workflows)';
-        } else if (amt === 199) {
-          prodName = 'Ultimate Video Editing Toolkit / Web Apps Pack';
-        } else if (amt === 349) {
-          prodName = '14000+ n8n Workflow Automation (Enterprise)';
-        } else {
-          prodName = 'FutureWithAi Premium Creators Pack';
-        }
+        prodName = data.products || 'FutureWithAi Premium Pack';
       }
 
       document.getElementById('paidAmount').textContent = `₹${amtInr}`;
@@ -500,27 +873,60 @@
       document.getElementById('displayPayMode').textContent = payment.paymentMode || 'UPI';
       document.getElementById('displayTxnId').textContent  = payment.transactionId || '—';
 
+      // ── Show Access Token ──────────────────────────────────
+      const accessToken = data.accessToken || '';
+      if (accessToken) {
+        document.getElementById('tokenBox').style.display = 'block';
+        document.getElementById('displayToken').textContent = accessToken;
+        // Store token for copy function
+        window._accessToken = accessToken;
+      }
+
+      // ── Render Product Download Links ──────────────────────
+      const productLinks = data.productLinks || {};
+      const linkKeys = Object.keys(productLinks);
+      if (linkKeys.length > 0) {
+        document.getElementById('productLinksSection').style.display = 'block';
+        const container = document.getElementById('productLinksContainer');
+        container.innerHTML = linkKeys.map(key => {
+          const p = productLinks[key];
+          return `
+            <div class="product-link-card">
+              <div class="product-link-icon">📦</div>
+              <div class="product-link-info">
+                <div class="product-link-name">${p.name}</div>
+                <div class="product-link-desc">${p.desc || 'Direct access link'}</div>
+              </div>
+              <a href="${p.link}" target="_blank" class="product-link-btn">📥 Open</a>
+            </div>`;
+        }).join('');
+      }
+
+      // ── Show Access Portal Button ──────────────────────────
+      const btnAccess = document.getElementById('btnAccessPortal');
+      if (btnAccess) {
+        const tokenParam = accessToken ? `token=${encodeURIComponent(accessToken)}` : `orderId=${encodeURIComponent(orderId || data.merchantOrderId || '')}`;
+        btnAccess.href = `https://futurewithai.anshumanenterprises.online/access.html?${tokenParam}`;
+        btnAccess.style.display = 'inline-flex';
+      }
+
+      // ── Render Bonus Bundles ───────────────────────────────
+      renderBonusBundles();
+
+      // ── Render Post-Purchase Upsell ────────────────────────
+      renderPostPurchaseUpsell(data.products || prodName, linkKeys);
+
       // Launch confetti 🎉
       launchConfetti();
 
       // Trigger Purchase event via helper function
       triggerFbPurchase(amtInr, orderId || data.merchantOrderId || 'generic');
 
-      // Show Deliverables Portal button and set href with orderId
-      const btnAccess = document.getElementById('btnAccessPortal');
-      if (btnAccess) {
-        btnAccess.href = `https://futurewithai.anshumanenterprises.online/access.html?orderId=${encodeURIComponent(orderId || data.merchantOrderId || '')}`;
-        btnAccess.style.display = 'inline-flex';
-      }
-
       // Send payment details to Web3Forms in the background
       try {
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             access_key: "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
             subject: `🎉 SUCCESSFUL PAYMENT: ${customerName} (₹${amtInr}) - ${prodName}`,
@@ -532,7 +938,7 @@
             txn_id: payment.transactionId || "N/A",
             amount: `₹${amtInr}`,
             payment_mode: payment.paymentMode || "UPI",
-            message: `A client has successfully paid for the ${prodName}.\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${customerPhone}\nOrder ID: ${orderId}\nTransaction ID: ${payment.transactionId || "N/A"}\nAmount Paid: ₹${amtInr}\n\nPlease verify and send Google Drive and Community Access to their email/WhatsApp.`
+            message: `Client paid for ${prodName}.\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${customerPhone}\nOrder ID: ${orderId}\nTransaction ID: ${payment.transactionId || "N/A"}\nAmount Paid: ₹${amtInr}\nAccess Token: ${accessToken}\n\nDelivery was automated — email sent with direct links.`
           })
         });
       } catch (e) {
@@ -541,6 +947,204 @@
 
       // Clear session
       try { sessionStorage.removeItem('ae_pg_order_id'); } catch(e){}
+    }
+
+    // ── Copy Token to Clipboard ───────────────────────────────
+    function copyToken() {
+      const token = window._accessToken || document.getElementById('displayToken').textContent;
+      navigator.clipboard.writeText(token).then(() => {
+        const btn = document.querySelector('.token-copy-btn');
+        if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => { btn.textContent = '📋 Copy Token'; }, 2000); }
+      }).catch(() => {
+        // Fallback
+        const ta = document.createElement('textarea'); ta.value = token; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        const btn = document.querySelector('.token-copy-btn');
+        if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => { btn.textContent = '📋 Copy Token'; }, 2000); }
+      });
+    }
+
+    // ── Free Bonus Catalog ─────────────────────────────────────
+    const FREE_BONUSES = [
+      { name: "Black Word with White Background Images", link: "https://drive.google.com/drive/folders/1GzfLUGZpwOklGZK_UB4_ZsvHM5WUb5cz?usp=drive_link", desc: "Minimalist aesthetic quote background images." },
+      { name: "Caravan Life Travel Reels", link: "https://drive.google.com/drive/folders/1icBWFJeUT6tbSEbn8xgqu0yjpYca7Qqb?usp=drive_link", desc: "Scenic camper van road trips & landscape reels." },
+      { name: "Dog Reels Bundle", link: "https://drive.google.com/drive/folders/1i6GdFMRzlIWFQYPW3Q26VxmmCtkb6Ewl?usp=drive_link", desc: "Cute and funny dog reels for creators." },
+      { name: "Funny and Cute Cat Bundle", link: "https://drive.google.com/drive/folders/1_eyWC3Xj8MYhsJU1MxX_JZa_KBTl5kB8?usp=drive_link", desc: "Adorable viral cat video compilation reels." },
+      { name: "Health Infographic Post Canva", link: "https://drive.google.com/drive/folders/1eTA836EkIIjF1gmFXVg8hy94VPRPC7KV?usp=drive_link", desc: "Editable wellness infographics in Canva." },
+      { name: "Lifestyle Reels Bundle", link: "https://drive.google.com/drive/folders/1nk5llkVEXI-1mU2-W9IevjsWovv2gNr_", desc: "Luxury lifestyle and daily inspiration reels." },
+      { name: "Luxury Hotels and Resorts", link: "https://drive.google.com/drive/folders/1PHCYdlpYhnS-f0auyYWhgo5SW3x_LgRb?usp=drive_link", desc: "Walkthroughs of top hotels worldwide." },
+      { name: "Travel Reels Bundle", link: "https://drive.google.com/drive/folders/1Aw0KGaR4pcEQiWaldQhWPbgGLjq9lPsJ?usp=drive_link", desc: "Beautiful global travel landscape clips." },
+      { name: "5000+ MEGA REELS BUNDLE", link: "https://mega.nz/folder/BBpxDYQQ#OLyaL1a0vDXxG__ddzyxoQ", desc: "Our massive reels collection across popular categories." }
+    ];
+
+    function renderBonusBundles() {
+      const container = document.getElementById('bonusContainer');
+      if (!container) return;
+      container.innerHTML = FREE_BONUSES.map(b => `
+        <div class="bonus-card-mini">
+          <div>
+            <h4 style="margin-bottom: 4px;">${b.name}</h4>
+            <p>${b.desc}</p>
+          </div>
+          <a href="${b.link}" target="_blank" class="btn-bonus-download">📥 Access Bonus</a>
+        </div>
+      `).join('');
+    }
+
+    function toggleBonusSection() {
+      const container = document.getElementById('bonusContainer');
+      const icon = document.getElementById('bonusToggleIcon');
+      if (container.style.display === 'none') {
+        container.style.display = 'grid';
+        icon.classList.add('open');
+      } else {
+        container.style.display = 'none';
+        icon.classList.remove('open');
+      }
+    }
+
+    // ── Interactive Feedback Form Logic ────────────────────────
+    let currentRating = 0;
+    
+    function setFeedbackRating(rating) {
+      currentRating = rating;
+      const stars = document.querySelectorAll('.star-rating .star');
+      stars.forEach(star => {
+        const val = parseInt(star.getAttribute('data-value'));
+        if (val <= rating) {
+          star.classList.add('selected');
+        } else {
+          star.classList.remove('selected');
+        }
+      });
+    }
+
+    async function submitFeedbackForm() {
+      if (currentRating === 0) {
+        alert("Please select a rating star before submitting! 🌟");
+        return;
+      }
+      
+      const feedbackText = document.getElementById('feedbackText').value;
+      const btn = document.querySelector('.btn-feedback-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Submitting Feedback...';
+      btn.disabled = true;
+
+      const orderId = orderIdFromUrl || 'N/A';
+      const name = customerName || 'Valued Creator';
+      const email = customerEmail || 'No Email';
+      const products = document.getElementById('displayProductName').textContent || 'FutureWithAi Product';
+
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
+            subject: `⭐️ CUSTOMER FEEDBACK: ${name} (${currentRating}/5 Stars)`,
+            from_name: "FutureWithAi Feedback System",
+            name: name,
+            email: email,
+            order_id: orderId,
+            rating: `${currentRating} Stars`,
+            products: products,
+            comments: feedbackText || "No comment provided."
+          })
+        });
+
+        // Hide form fields, show success
+        const container = document.getElementById('feedbackFormContainer');
+        container.innerHTML = `
+          <div class="feedback-success-msg">
+            <span class="material-symbols-outlined" style="vertical-align: middle; margin-right: 6px;">verified</span>
+            Thank you for your valuable feedback! 🧡 We appreciate your support.
+          </div>
+        `;
+      } catch (e) {
+        console.warn('Feedback submission failed:', e);
+        btn.textContent = originalText;
+        btn.disabled = false;
+        alert("Submission failed. Please try again!");
+      }
+    }
+
+    // ── Post-Purchase Upsell ──────────────────────────────────
+    const UPSELL_CATALOG_SUCCESS = [
+      { id: 'n8n-pack', name: 'n8n Automation Pack (2000+ Workflows)', price: 99, discountedPrice: 69, img: 'hero-image.webp', link: 'n8n-pack.html', desc: '2000+ automation workflows for marketing & CRM.' },
+      { id: 'mega-reels', name: '100,000+ Viral Reels Goldmine Pack', price: 99, discountedPrice: 69, img: 'reels_hero_mockup.webp', link: 'mega-reels.html', desc: '100K+ ready-to-post HD reels across all niches.' },
+      { id: 'video-editing', name: 'Video Editing Toolkit (500GB+)', price: 199, discountedPrice: 139, img: 'reels_hero_mockup.webp', link: 'video-editing.html', desc: '500GB+ transitions, LUTs, FX presets & overlays.' },
+      { id: 'digital-marketing-bundle', name: 'Full Digital Marketing Bundle', price: 499, discountedPrice: 349, img: 'digital-marketing-bundle/fwa-canva.webp', link: 'digital-marketing-bundle.html', desc: '700+ resources: Canva, ChatGPT prompts, courses.' }
+    ];
+
+    function renderPostPurchaseUpsell(purchasedProducts, purchasedIds) {
+      const purchasedLower = (purchasedProducts || '').toLowerCase();
+      // Filter out already-purchased products
+      const eligible = UPSELL_CATALOG_SUCCESS.filter(p => {
+        return !purchasedIds.includes(p.id) && !purchasedLower.includes(p.id);
+      });
+      if (eligible.length === 0) return;
+
+      const section = document.getElementById('upsellSection');
+      section.style.display = 'block';
+      document.getElementById('upsellHead').textContent = `You just saved big! Grab these at 30% OFF too 🔥`;
+
+      // Read current local cart state
+      let localCart = [];
+      try {
+        localCart = JSON.parse(localStorage.getItem('fwai_cart_items') || '[]');
+      } catch(e) {}
+
+      const container = document.getElementById('upsellItemsContainer');
+      container.innerHTML = eligible.slice(0, 2).map(p => {
+        const saved = p.price - p.discountedPrice;
+        const isInCart = localCart.find(item => item.id === p.id);
+        const btnText = isInCart ? 'Added! Proceed to Checkout 💳' : 'Add to Cart';
+        const btnStyle = isInCart ? 'background: #27c93f; color: #fff; border-color: #27c93f; box-shadow: 0 4px 12px rgba(39, 201, 63, 0.3);' : '';
+        const btnAction = isInCart ? 'goToCheckoutFromUpsell()' : `addUpsellToCart('${p.id}', '${p.name.replace(/'/g, "\\'")}', ${p.discountedPrice}, '${p.img}', '${p.link}')`;
+
+        return `
+          <div class="upsell-item">
+            <img class="upsell-item-img" src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">
+            <div class="upsell-item-info">
+              <div class="upsell-item-name">${p.name}</div>
+              <div class="upsell-item-desc">${p.desc}</div>
+              <div class="upsell-item-prices">
+                <span class="upsell-item-orig">₹${p.price}</span>
+                <span class="upsell-item-now">₹${p.discountedPrice}</span>
+                <span class="upsell-item-off">Save ₹${saved}</span>
+              </div>
+            </div>
+            <button class="product-link-btn" id="upsell-btn-${p.id}" style="${btnStyle}" onclick="${btnAction}">${btnText}</button>
+          </div>`;
+      }).join('');
+    }
+
+    function addUpsellToCart(id, name, price, img, link) {
+      let cart = [];
+      try {
+        cart = JSON.parse(localStorage.getItem('fwai_cart_items') || '[]');
+      } catch (e) {}
+
+      if (!cart.find(i => i.id === id)) {
+        cart.push({ id, name, price, img, link });
+        try {
+          localStorage.setItem('fwai_cart_items', JSON.stringify(cart));
+        } catch(e) {}
+      }
+
+      const btn = document.getElementById(`upsell-btn-${id}`);
+      if (btn) {
+        btn.textContent = 'Added! Proceed to Checkout 💳';
+        btn.style.background = '#27c93f';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#27c93f';
+        btn.style.boxShadow = '0 4px 12px rgba(39, 201, 63, 0.3)';
+        btn.setAttribute('onclick', `goToCheckoutFromUpsell()`);
+      }
+    }
+
+    function goToCheckoutFromUpsell() {
+      window.location.href = 'checkout.html';
     }
 
     // ── Show Failed State ─────────────────────────────────────

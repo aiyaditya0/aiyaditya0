@@ -98,7 +98,7 @@ def generate_access_page():
   <meta name="robots" content="noindex,nofollow">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.webp">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,7 +249,7 @@ def generate_access_page():
 
   <!-- Large Brand Logo -->
   <div class="giant-logo-container">
-    <img src="primary-logo.png" alt="FutureWithAi Brand Logo" class="giant-logo">
+    <img src="primary-logo.webp" alt="FutureWithAi Brand Logo" class="giant-logo">
   </div>
 
   <main class="portal-container">
