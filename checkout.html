@@ -1,21 +1,594 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>Redirecting to Secure Checkout...</title>
-  <meta http-equiv="refresh" content="0; url=https://anshumanenterprises.online/futurewithai/checkout.html">
-  <script>
-    (function() {
-      var target = 'https://anshumanenterprises.online/futurewithai/checkout.html' + window.location.search;
-      window.location.replace(target);
-    })();
-  </script>
+  <title>Checkout — FutureWithAI</title>
+  <meta name="description" content="Secure checkout for FutureWithAI premium digital products.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="cart.js" defer></script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --primary:#ff8a00; --primary-dark:#b34500;
+      --bg:#060402; --surface:rgba(20,12,4,0.95);
+      --border:rgba(255,138,0,0.18); --text:#fff;
+      --muted:rgba(255,255,255,0.45); --green:#27c93f;
+    }
+    html{scroll-behavior:smooth; background:var(--bg); font-family:'Inter',sans-serif; color:var(--text);}
+    body{
+      min-height:100vh;
+      background:var(--bg)
+        radial-gradient(ellipse at 0% 0%, rgba(255,138,0,0.06) 0, transparent 55%)
+        no-repeat;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar{
+      background:linear-gradient(90deg,#b34500,#ff8a00,#ffb347,#ff8a00,#b34500);
+      background-size:300% 100%; animation:barAnim 5s linear infinite;
+      color:#000; text-align:center; padding:9px 16px;
+      font-size:12.5px; font-weight:800; letter-spacing:0.3px;
+    }
+    @keyframes barAnim{0%,100%{background-position:0%}50%{background-position:100%}}
+
+    /* ── HEADER ── */
+    header{
+      background:rgba(6,4,2,0.92); backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      padding:14px 24px; display:flex; align-items:center;
+      justify-content:space-between;
+    }
+    .logo img{height:52px; object-fit:contain;}
+    .secure-badge{
+      display:flex; align-items:center; gap:6px;
+      font-size:12.5px; color:var(--muted);
+    }
+    .secure-badge span{color:var(--green); font-weight:700;}
+
+    /* ── LAYOUT ── */
+    .checkout-wrap{
+      max-width:980px; margin:0 auto; padding:40px 20px 80px;
+      display:grid; grid-template-columns:1fr 380px; gap:28px; align-items:start;
+    }
+    @media(max-width:768px){.checkout-wrap{grid-template-columns:1fr;}}
+
+    /* ── CARD ── */
+    .card{
+      background:linear-gradient(145deg,rgba(18,10,3,0.97) 0%,rgba(10,6,2,0.99) 100%);
+      border:1px solid var(--border); border-radius:20px; padding:28px;
+    }
+    .card-title{
+      font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;
+      color:var(--primary); margin-bottom:20px;
+      display:flex; align-items:center; gap:8px;
+    }
+
+    /* ── ORDER ITEMS ── */
+    #orderItemsList{display:flex; flex-direction:column; gap:12px; margin-bottom:20px;}
+    .order-item{
+      display:flex; align-items:center; gap:14px;
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+      border-radius:14px; padding:12px;
+    }
+    .order-item img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+    .order-item-info{flex:1;}
+    .order-item-name{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:3px;line-height:1.3;}
+    .order-item-sub{font-size:11px;color:var(--muted);}
+    .order-item-price{font-size:17px;font-weight:800;color:var(--primary);white-space:nowrap;}
+
+    .divider{height:1px;background:rgba(255,255,255,0.06);margin:16px 0;}
+
+    .order-row{
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:13.5px;color:var(--muted);margin-bottom:10px;
+    }
+    .order-row.total{font-size:20px;font-weight:800;color:#fff;margin-top:6px;}
+    .order-row.total span:last-child{color:var(--primary);}
+    .order-row .savings{color:var(--green);font-size:12px;font-weight:700;}
+
+    /* ── UPSELL CARD ── */
+    #upsellSection{display:none;}
+    #upsellSection.visible{display:block;}
+    .upsell-strip{
+      height:3px;width:100%;border-radius:3px 3px 0 0;
+      background:linear-gradient(90deg,#b34500,#ff8a00,#ffb347);
+    }
+    .upsell-card{
+      background:linear-gradient(145deg,rgba(24,12,2,0.99),rgba(10,6,2,0.99));
+      border:1.5px solid rgba(255,138,0,0.35); border-radius:0 0 20px 20px;
+      padding:22px 22px 20px; margin-bottom:28px;
+      box-shadow:0 8px 32px rgba(255,138,0,0.1);
+    }
+    .upsell-header-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(255,59,48,0.15);border:1px solid rgba(255,59,48,0.3);
+      color:#ff5f52;border-radius:20px;padding:4px 12px;
+      font-size:10.5px;font-weight:800;letter-spacing:0.6px;margin-bottom:12px;
+    }
+    .upsell-title{
+      font-family:'Playfair Display',serif;
+      font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.25;
+    }
+    .upsell-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;}
+
+    .upsell-product-row{
+      display:flex;gap:14px;align-items:flex-start;
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,138,0,0.15);
+      border-radius:14px;padding:14px;margin-bottom:14px;
+    }
+    .upsell-prod-img{width:68px;height:68px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+    .upsell-prod-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;}
+    .upsell-prod-desc{font-size:11.5px;color:var(--muted);line-height:1.5;}
+    .upsell-bullets{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px;}
+    .upsell-bullets li{font-size:11px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:5px;}
+    .upsell-bullets li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0;}
+
+    .upsell-price-bar{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+      background:rgba(255,138,0,0.07);border:1px solid rgba(255,138,0,0.16);
+      border-radius:12px;padding:12px 14px;margin-bottom:14px;
+    }
+    .off-chip{
+      background:linear-gradient(135deg,#ff3b30,#ff6635);
+      color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px;
+    }
+    .orig-price{font-size:13px;color:var(--muted);text-decoration:line-through;}
+    .now-price{font-size:26px;font-weight:800;color:var(--primary);line-height:1;}
+    .save-chip{font-size:11.5px;color:var(--green);font-weight:700;margin-left:auto;}
+
+    .upsell-accept-btn{
+      width:100%;background:linear-gradient(135deg,#ff8a00,#ffb347);
+      color:#000;font-weight:800;font-size:15px;padding:16px;
+      border-radius:14px;border:none;cursor:pointer;
+      letter-spacing:0.3px;margin-bottom:10px;
+      box-shadow:0 6px 24px rgba(255,138,0,0.4);
+      transition:all 0.3s;font-family:'Inter',sans-serif;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+    }
+    .upsell-accept-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,138,0,0.55);}
+    .upsell-decline-btn{
+      width:100%;background:none;border:none;color:var(--muted);
+      font-size:12px;cursor:pointer;padding:6px;text-align:center;
+      font-family:'Inter',sans-serif;transition:color 0.2s;
+    }
+    .upsell-decline-btn:hover{color:rgba(255,255,255,0.6);text-decoration:underline;}
+
+    /* ── RIGHT SUMMARY CARD ── */
+    .summary-card{position:sticky;top:24px;}
+    .summary-card .total-big{
+      font-size:36px;font-weight:800;color:var(--primary);
+      line-height:1;margin:12px 0 4px;
+    }
+    .summary-card .original-big{
+      font-size:14px;color:var(--muted);text-decoration:line-through;margin-bottom:12px;
+    }
+    .summary-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin:18px 0;}
+    .summary-features li{
+      font-size:13px;color:rgba(255,255,255,0.6);
+      display:flex;align-items:center;gap:8px;
+    }
+    .summary-features li::before{content:"✅";flex-shrink:0;}
+
+    .checkout-cta{
+      width:100%;background:linear-gradient(135deg,#ff8a00,#ffb347);
+      color:#000;font-weight:800;font-size:16px;padding:18px;
+      border-radius:16px;border:none;cursor:pointer;
+      letter-spacing:0.3px;
+      box-shadow:0 8px 28px rgba(255,138,0,0.45);
+      transition:all 0.3s;font-family:'Inter',sans-serif;
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      text-decoration:none;margin-bottom:12px;
+    }
+    .checkout-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,138,0,0.6);}
+
+    .trust-row{
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+      margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);
+    }
+    .trust-item{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+
+    /* ── EMPTY STATE ── */
+    #emptyState{
+      text-align:center;padding:60px 20px;display:none;
+    }
+    #emptyState h2{font-size:24px;margin-bottom:12px;}
+    #emptyState p{color:var(--muted);margin-bottom:24px;}
+    .back-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--primary);color:#000;padding:12px 24px;
+      border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;
+      transition:all 0.2s;
+    }
+    .back-btn:hover{transform:translateY(-2px);}
+
+    /* ── LOADING ── */
+    #loadingState{text-align:center;padding:80px 20px;}
+    .spinner{
+      width:40px;height:40px;border:3px solid rgba(255,138,0,0.2);
+      border-top-color:var(--primary);border-radius:50%;
+      animation:spin 0.8s linear infinite;margin:0 auto 16px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    @media(max-width:480px){
+      .checkout-wrap{padding:20px 14px 80px;}
+      .card{padding:20px;}
+      .summary-card .total-big{font-size:28px;}
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to secure checkout... If you are not redirected, <a id="redirect-link" href="https://anshumanenterprises.online/futurewithai/checkout.html">click here</a>.</p>
+
+  <div class="topbar">🔒 256-bit SSL Secured · ⚡ Instant Digital Delivery · ✅ Verified PhonePe Integration</div>
+
+  <header>
+    <a href="index.html" class="logo">
+      <img src="primary-logo.png" alt="FutureWithAI">
+    </a>
+    <div class="secure-badge">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Secure</span> Checkout
+    </div>
+  </header>
+
+  <!-- Loading state -->
+  <div id="loadingState">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);font-size:14px;">Loading your order...</p>
+  </div>
+
+  <!-- Empty cart state -->
+  <div id="emptyState">
+    <div style="font-size:48px;margin-bottom:16px;">🛒</div>
+    <h2>Your cart is empty</h2>
+    <p>Go back and add some products to your cart.</p>
+    <a href="index.html" class="back-btn">← Browse Products</a>
+  </div>
+
+  <!-- Main checkout layout -->
+  <div class="checkout-wrap" id="checkoutMain" style="display:none;">
+
+    <!-- LEFT: Order + Upsell -->
+    <div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:26px;margin-bottom:20px;color:#fff;">
+        Your Order Summary
+      </h1>
+
+      <!-- Order Items Card -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-title">🧾 Items in your cart</div>
+        <div id="orderItemsList"></div>
+        <div class="divider"></div>
+        <div class="order-row">
+          <span>Subtotal</span>
+          <span id="orderSubtotal">₹0</span>
+        </div>
+        <div class="order-row">
+          <span>Delivery</span>
+          <span style="color:var(--green);font-weight:700;">FREE (Instant Digital)</span>
+        </div>
+        <div class="order-row">
+          <span>Original Value</span>
+          <span id="orderOriginal" style="text-decoration:line-through;">—</span>
+        </div>
+        <div class="order-row total">
+          <span>Total</span>
+          <span id="orderTotal">₹0</span>
+        </div>
+        <div style="margin-top:8px;" class="order-row">
+          <span class="savings" id="orderSavings"></span>
+        </div>
+      </div>
+
+      <!-- ── SMART UPSELL SECTION ── -->
+      <div id="upsellSection">
+        <div class="upsell-strip"></div>
+        <div class="upsell-card">
+          <div class="upsell-header-badge" id="upsellBadge">⚡ EXCLUSIVE CHECKOUT OFFER</div>
+          <div class="upsell-title" id="upsellTitle">Wait! Add one more at 30% off</div>
+          <div class="upsell-sub" id="upsellSub">Customers buying this also grab this — available at this price only right now:</div>
+
+          <div class="upsell-product-row">
+            <img class="upsell-prod-img" id="upsellImg" src="" alt="Upsell product">
+            <div>
+              <div class="upsell-prod-name" id="upsellName">Loading...</div>
+              <div class="upsell-prod-desc" id="upsellDesc"></div>
+              <ul class="upsell-bullets" id="upsellBullets"></ul>
+            </div>
+          </div>
+
+          <div class="upsell-price-bar">
+            <span class="off-chip">30% OFF</span>
+            <span class="orig-price" id="upsellOrig">₹99</span>
+            <span class="now-price" id="upsellNow">₹69</span>
+            <span class="save-chip" id="upsellSave">You save ₹30!</span>
+          </div>
+
+          <button class="upsell-accept-btn" id="upsellAcceptBtn">
+            ✅ Yes! Add This &amp; Proceed to Payment →
+          </button>
+          <button class="upsell-decline-btn" id="upsellDeclineBtn">
+            No thanks, I'll skip this deal
+          </button>
+        </div>
+      </div>
+
+      <!-- Trust signals -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);">
+          <span>🔒</span> 256-bit SSL
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);">
+          <span>📲</span> PhonePe / UPI / Cards
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);">
+          <span>⚡</span> Instant Google Drive Access
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);">
+          <span>🔄</span> 7-Day Refund Policy
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Summary + CTA -->
+    <div class="summary-card">
+      <div class="card">
+        <div class="card-title">💳 Payment Summary</div>
+
+        <div style="font-size:13px;color:var(--muted);margin-bottom:4px;">Total Payable</div>
+        <div class="total-big" id="summaryTotal">₹0</div>
+        <div class="original-big" id="summaryOriginal"></div>
+
+        <div style="background:rgba(39,201,63,0.1);border:1px solid rgba(39,201,63,0.2);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--green);font-weight:700;margin-bottom:16px;">
+          🎉 You're saving <span id="summarySavings">₹0</span> on this order!
+        </div>
+
+        <ul class="summary-features">
+          <li>Instant Google Drive delivery</li>
+          <li>Lifetime access — yours forever</li>
+          <li>Full PLR / Resell License</li>
+          <li>7-day refund policy</li>
+        </ul>
+
+        <button class="checkout-cta" id="mainCheckoutBtn">
+          🔐 Pay Securely → Proceed
+        </button>
+
+        <div class="trust-row">
+          <div class="trust-item">🔒 SSL Secure</div>
+          <div class="trust-item">📲 UPI / Cards</div>
+          <div class="trust-item">✅ Verified</div>
+        </div>
+
+        <div style="margin-top:16px;text-align:center;font-size:11px;color:rgba(255,255,255,0.2);">
+          By proceeding you agree to our <a href="terms.html" style="color:rgba(255,138,0,0.5);">Terms</a> &amp;
+          <a href="refund.html" style="color:rgba(255,138,0,0.5);">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <script>
-    document.getElementById('redirect-link').href = 'https://anshumanenterprises.online/futurewithai/checkout.html' + window.location.search;
+    // ─── Product catalog (for upsell) ────────────────────────────────────────────
+    const UPSELL_CATALOG = [
+      {
+        id: 'n8n-pack',
+        name: 'n8n Automation Pack',
+        fullName: 'n8n Automation Pack (2000+ Workflows)',
+        desc: '2000+ ready-to-use automation workflows for marketing, CRM & operations.',
+        bullets: ['2000+ Production-ready JSONs', 'Slack + WhatsApp bots', 'Full PLR / Resell License'],
+        price: 99,
+        img: 'hero-image.png',
+        link: 'n8n-pack.html',
+      },
+      {
+        id: 'mega-reels',
+        name: 'Viral Reels Goldmine Pack',
+        fullName: '100,000+ Viral Reels Goldmine Pack',
+        desc: 'Ready-to-post HD reels — cricket, gym, AI anime, motivation & more.',
+        bullets: ['100,000+ Viral Edited Shorts', 'Zero watermarks, Full HD', 'Instant Google Drive access'],
+        price: 99,
+        img: 'reels_hero_mockup.png',
+        link: 'mega-reels.html',
+      },
+    ];
+
+    // Original values for savings display (per product id)
+    const ORIGINAL_VALUES = {
+      'n8n-pack': 5999,
+      'n8n-automation-enterprise': 9999,
+      'video-editing': 2999,
+      'mega-reels': 1599,
+      'web-apps': 4999,
+      'digital-marketing-bundle': 56990,
+    };
+
+    // ─── Read cart from localStorage ─────────────────────────────────────────────
+    function getCart() {
+      try { return JSON.parse(localStorage.getItem('fwai_cart_items') || '[]'); }
+      catch(e) { return []; }
+    }
+    function saveCart(cart) {
+      try { localStorage.setItem('fwai_cart_items', JSON.stringify(cart)); } catch(e) {}
+    }
+
+    // ─── Get eligible upsell ──────────────────────────────────────────────────────
+    function getUpsellProduct(cart) {
+      const cartIds = cart.map(i => i.id);
+      const eligible = UPSELL_CATALOG.filter(p => !cartIds.includes(p.id));
+      if (!eligible.length) return null;
+      return eligible[(cart.length - 1) % eligible.length] || eligible[0];
+    }
+
+    // ─── Go to real payment gateway ───────────────────────────────────────────────
+    function proceedToPayment() {
+      const cart = getCart();
+      const amount = cart.reduce((s, i) => s + i.price, 0);
+      const productNames = cart.map(i => i.name).join(', ');
+      try {
+        sessionStorage.setItem('ae_pg_product_name', productNames);
+        sessionStorage.setItem('ae_pg_amount', amount);
+      } catch(e) {}
+      const base = 'https://anshumanenterprises.online/futurewithai/checkout.html';
+      window.location.href = `${base}?amount=${amount}&products=${encodeURIComponent(productNames)}`;
+    }
+
+    // ─── Render page ──────────────────────────────────────────────────────────────
+    window.addEventListener('DOMContentLoaded', function() {
+      const loading  = document.getElementById('loadingState');
+      const empty    = document.getElementById('emptyState');
+      const main     = document.getElementById('checkoutMain');
+
+      // Also read URL params (cart may have been passed as query)
+      const params   = new URLSearchParams(window.location.search);
+      const cart     = getCart();
+
+      setTimeout(function() {
+        loading.style.display = 'none';
+
+        if (cart.length === 0) {
+          empty.style.display = 'block';
+          return;
+        }
+
+        main.style.display = 'grid';
+        renderOrder(cart);
+        renderUpsell(cart);
+        renderSummary(cart);
+        bindButtons(cart);
+
+        if (window.lucide) lucide.createIcons();
+      }, 400);
+    });
+
+    function renderOrder(cart) {
+      const list = document.getElementById('orderItemsList');
+      list.innerHTML = cart.map(item => `
+        <div class="order-item">
+          <img src="${item.img}" alt="${item.name}" onerror="this.style.display='none'">
+          <div class="order-item-info">
+            <div class="order-item-name">${item.name}</div>
+            <div class="order-item-sub">Instant Google Drive Access · Lifetime</div>
+          </div>
+          <div class="order-item-price">₹${item.price}</div>
+        </div>
+      `).join('');
+
+      const subtotal  = cart.reduce((s, i) => s + i.price, 0);
+      const origTotal = cart.reduce((s, i) => s + (ORIGINAL_VALUES[i.id] || i.price * 5), 0);
+      const saved     = origTotal - subtotal;
+
+      document.getElementById('orderSubtotal').textContent = `₹${subtotal}`;
+      document.getElementById('orderOriginal').textContent = `₹${origTotal.toLocaleString('en-IN')}`;
+      document.getElementById('orderTotal').textContent    = `₹${subtotal}`;
+      document.getElementById('orderSavings').textContent  =
+        saved > 0 ? `🎉 You're saving ₹${saved.toLocaleString('en-IN')} on this order!` : '';
+    }
+
+    function renderSummary(cart) {
+      const subtotal  = cart.reduce((s, i) => s + i.price, 0);
+      const origTotal = cart.reduce((s, i) => s + (ORIGINAL_VALUES[i.id] || i.price * 5), 0);
+      const saved     = origTotal - subtotal;
+
+      document.getElementById('summaryTotal').textContent    = `₹${subtotal}`;
+      document.getElementById('summaryOriginal').textContent =
+        `Was ₹${origTotal.toLocaleString('en-IN')}`;
+      document.getElementById('summarySavings').textContent  =
+        `₹${saved.toLocaleString('en-IN')}`;
+    }
+
+    function renderUpsell(cart) {
+      const product = getUpsellProduct(cart);
+      if (!product) return;
+
+      const discounted = Math.round(product.price * 0.7); // 30% off
+      const saved      = product.price - discounted;
+
+      const section = document.getElementById('upsellSection');
+      section.classList.add('visible');
+
+      // Badge & headline based on cart size
+      if (cart.length >= 2) {
+        document.getElementById('upsellBadge').textContent = '🎁 BUNDLE BONUS OFFER';
+        document.getElementById('upsellTitle').textContent =
+          `You're buying ${cart.length} products — here's your bonus deal!`;
+        document.getElementById('upsellSub').textContent =
+          'Complete your bundle with this add-on at 30% off — available at this price only at checkout:';
+      } else {
+        document.getElementById('upsellBadge').textContent = '⚡ ONE-TIME CHECKOUT OFFER';
+        document.getElementById('upsellTitle').textContent = 'Hold on! Add this at 30% off';
+        document.getElementById('upsellSub').textContent =
+          'Customers who buy this also grab this bestseller — available at this exclusive checkout price only:';
+      }
+
+      document.getElementById('upsellImg').src       = product.img;
+      document.getElementById('upsellName').textContent = product.name;
+      document.getElementById('upsellDesc').textContent = product.desc;
+      document.getElementById('upsellBullets').innerHTML =
+        product.bullets.map(b => `<li>${b}</li>`).join('');
+      document.getElementById('upsellOrig').textContent = `₹${product.price}`;
+      document.getElementById('upsellNow').textContent  = `₹${discounted}`;
+      document.getElementById('upsellSave').textContent = `You save ₹${saved}!`;
+
+      // Store for button handlers
+      window._upsellProduct    = product;
+      window._upsellDiscounted = discounted;
+    }
+
+    function bindButtons(cart) {
+      // Main checkout button
+      document.getElementById('mainCheckoutBtn').addEventListener('click', proceedToPayment);
+
+      // Upsell Accept
+      const acceptBtn = document.getElementById('upsellAcceptBtn');
+      if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+          const p = window._upsellProduct;
+          const d = window._upsellDiscounted;
+          if (!p) { proceedToPayment(); return; }
+
+          // Add upsell to cart
+          const currentCart = getCart();
+          if (!currentCart.find(i => i.id === p.id)) {
+            currentCart.push({
+              id: p.id, name: p.fullName,
+              price: d, img: p.img, link: p.link,
+            });
+            saveCart(currentCart);
+          }
+
+          // Hide upsell section, update totals, then redirect
+          document.getElementById('upsellSection').style.display = 'none';
+
+          // Add upsell item to visible order list
+          const newCart = getCart();
+          renderOrder(newCart);
+          renderSummary(newCart);
+
+          // Brief success flash then proceed
+          acceptBtn.textContent = '✅ Added! Redirecting to payment...';
+          acceptBtn.style.background = '#27c93f';
+          acceptBtn.style.color = '#fff';
+          setTimeout(proceedToPayment, 1200);
+        });
+      }
+
+      // Upsell Decline
+      const declineBtn = document.getElementById('upsellDeclineBtn');
+      if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+          document.getElementById('upsellSection').style.display = 'none';
+          proceedToPayment();
+        });
+      }
+    }
   </script>
 </body>
 </html>
