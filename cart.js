@@ -325,14 +325,14 @@
     const cart = getCart();
     if (cart.find(item => item.id === id)) {
       showToast(`"${name}" is already in your cart!`, 'info');
-      openCart();
+      // openCart(); (disabled automatic drawer)
       return;
     }
     cart.push({ id, name, price, img, link });
     saveCart(cart);
     updateCartUI();
     showToast(`Added "${name}" to cart!`, 'success');
-    setTimeout(openCart, 500);
+    // setTimeout(openCart, 500); (disabled automatic drawer)
   };
 
   window.removeFromCart = function (id) {

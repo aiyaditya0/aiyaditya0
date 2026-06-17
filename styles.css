@@ -2337,7 +2337,8 @@ html, body {
     gap: 28px;
   }
   .cart-drawer {
-    width: 100%;
+    width: 80%;
+    max-width: 340px;
     right: -100%;
   }
 }
@@ -2460,7 +2461,7 @@ html, body {
   .store-card-actions { grid-template-columns: 1fr; gap: 10px; }
 
   /* ── Cart Drawer ── */
-  .cart-drawer { width: 100% !important; right: -100% !important; }
+  .cart-drawer { width: 80% !important; max-width: 340px !important; right: -100% !important; }
   .cart-drawer.open { right: 0 !important; }
 
   /* ── Showcase Grid (DM + Video editing pages) ── */

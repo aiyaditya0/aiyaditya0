@@ -639,6 +639,13 @@
         font-size: 48px;
       }
     }
+
+      .cart-drawer-overlay {
+        background: rgba(0, 0, 0, 0.45) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+    
   </style>
 </head>
 <body>
@@ -1180,28 +1187,52 @@
 
     function startPurchaseNotifs() {
       const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('purchase-toast-avatar');
-      const nameEl = document.getElementById('purchase-toast-name');
-      const timeEl = document.getElementById('purchase-toast-time');
+      const avatar = document.getElementById('purchase-toast-avatar') || document.getElementById('toast-avatar');
+      const nameEl = document.getElementById('purchase-toast-name') || document.getElementById('toast-buyer-name');
+      const prodEl = document.getElementById('purchase-toast-prod') || document.getElementById('toast-product-name');
+      const timeEl = document.getElementById('purchase-toast-time') || document.getElementById('toast-time');
       
+      if (!toast || !avatar || !nameEl || !prodEl || !timeEl) return;
+      
+      const purchaseProductsList = [
+        "n8n Automation Pack (2000+ Workflows)",
+        "Ultimate Video Editing Toolkit (500GB)",
+        "100,000+ Viral Reels Goldmine Pack",
+        "1500+ Manually Tested Web Apps Source Code",
+        "Full Digital Marketing Resource Bundle",
+        "Enterprise n8n Automation System",
+        "2700+ Elementor Pro Templates",
+        "1.37tb All Money Making Courses Bundle"
+      ];
+
       let index = 0;
       
       function showNext() {
         const item = purchaseData[index];
+        const prod = purchaseProductsList[Math.floor(Math.random() * purchaseProductsList.length)];
+        
+        // Set values
         const initials = item.name.split(' ').map(n => n[0]).join('');
         avatar.textContent = initials;
-        nameEl.textContent = `${item.name} - ${item.city}`;
-        timeEl.textContent = item.name === "Kartik S." ? "Just now" : item.time;
+        nameEl.textContent = `${item.name} (${item.city})`;
+        prodEl.textContent = `purchased ${prod}`;
+        timeEl.textContent = ["Just now", "1 min ago", "2 mins ago", "3 mins ago"][Math.floor(Math.random() * 4)];
         
+        // Slide in
         toast.classList.add('show');
+        if (window.lucide) lucide.createIcons();
         
+        // Slide out after 6 seconds
         setTimeout(() => {
           toast.classList.remove('show');
           index = (index + 1) % purchaseData.length;
-          setTimeout(showNext, 8000);
-        }, 5000);
+          
+          // Wait 20 seconds before showing next
+          setTimeout(showNext, 20000);
+        }, 6000);
       }
       
+      // Delay first notification by 4s
       setTimeout(showNext, 4000);
     }
   </script>
