@@ -1,5 +1,31 @@
+# ── Large Product Folders (not website files) ──
+10000 + mega reels bundle/
+14000 n8n automation system/
+1500 manually tested web app/
+500 gb editing Pack/
+digital products/
+interior design reelks/
+stitch_futurewithai_cinematic_automation_pack/
+
+# ── Large Zip Files ──
+*.zip
+
+# ── Personal / Sensitive Files ──
+aditya adhaar.jpg
+set_pixel_id.py
+generate_pdf.py
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+
+# ── OS Files ──
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# ── Editor ──
 .vscode/
 .idea/
-.gitattributes
+*.log
