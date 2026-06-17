@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureWithAi - Cinematic n8n Automation Pack</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Get access to a curated collection of 2000+ ready-to-import n8n workflow templates designed to launch automations at enterprise scale.">
+  <meta property="og:title" content="FutureWithAi - Cinematic n8n Automation Pack">
+  <meta property="og:description" content="Get access to a curated collection of 2000+ ready-to-import n8n workflow templates designed to launch automations at enterprise scale.">
+  <meta property="og:image" content="hero-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- ══ PERFORMANCE: Preconnect to critical origins ══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://connect.facebook.net">
+  
+  <!-- ══ PERFORMANCE: Google Fonts (moved from CSS @import for faster load) ══ -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- ══ PERFORMANCE: Preload critical resources ══ -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="hero-image.png" as="image" fetchpriority="high">
+  <link rel="preload" href="primary-logo.png" as="image">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Lucide Icons (deferred for non-blocking load) -->
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  
+  <!-- Global Cart System -->
+  <script src="cart.js" defer></script>
+
+  <!-- Meta Pixel Code (deferred) -->
+  <script src="pixel-tracker.js" defer></script>
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- ══ LIMITED TIME OFFER BANNER STYLES ══ -->
+  <style>
+    #limited-offer-banner {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000;
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
+    }
+    @keyframes bannerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #offer-countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 8px;
+      padding: 3px 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    #limited-offer-banner .offer-cta-link {
+      background: #000;
+      color: #ff8a00;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #limited-offer-banner .offer-cta-link:hover {
+      background: #1a1a1a;
+    }
+    #offer-close-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+    #offer-close-btn:hover { color: #000; }
+    @media (max-width: 600px) {
+      #limited-offer-banner { font-size: 12px; padding: 8px 32px 8px 8px; }
+      #offer-countdown { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ LIMITED TIME OFFER BANNER ══ -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — First 24 Hours Only! Buyers get an exclusive personalized note from the founder.</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html'); return false;" class="offer-cta-link">Grab It Now →</a>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  </div>
+
+  <!-- Header Section -->
+  <header id="navbar">
+    <div class="header-container">
+      <a href="index.html" class="logo-wrapper" id="nav-logo">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" class="logo-img">
+      </a>
+      <nav id="nav-links">
+        <a href="#workflows">Workflows</a>
+        <a href="video-editing.html" style="color: var(--primary); font-weight: 700; border: 1px solid rgba(255,138,0,0.3); padding: 4px 10px; border-radius: 12px; font-size: 13px;">Video Editing Pack 🔥</a>
+        <a href="#features">Features</a>
+        <a href="#categories">Categories</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="cart-nav-btn cart-toggle-trigger" title="Open Cart">
+          <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Build Less.
+            <span>Automate More.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Get access to a curated collection of ready-to-import n8n workflow templates designed to help you launch automations faster.
+          </p>
+          <div class="hero-actions">
+            <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              Add To Cart <i data-lucide="shopping-cart"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
+              Join WhatsApp Community
+            </a>
+          </div>
+          <div class="hero-trust-notes">
+            <span><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary-container);"></i> One-time payment</span>
+            <div class="dot"></div>
+            <span><i data-lucide="infinity" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Lifetime access</span>
+            <div class="dot"></div>
+            <span><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Instant delivery</span>
+          </div>
+        </div>
+        
+        <div class="hero-image-container">
+          <div class="hero-image-wrapper">
+            <img src="hero-image.png" alt="n8n Cinematic Workspace" class="hero-img" fetchpriority="high" decoding="async">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trustbar / Badges Row -->
+  <section class="trustbar">
+    <div class="container">
+      <div class="trustbar-grid">
+        <div class="trustbar-card">
+          <i data-lucide="git-merge"></i>
+          <span>2000+ Workflows</span>
+        </div>
+        <div class="trustbar-card">
+          <i data-lucide="check-circle-2"></i>
+          <span>100% Tested</span>
+        </div>
+        <div class="trustbar-card">
+          <i data-lucide="infinity"></i>
+          <span>Lifetime Access</span>
+        </div>
+        <div class="trustbar-card">
+          <i data-lucide="video"></i>
+          <span>Video Guides</span>
+        </div>
+        <div class="trustbar-card">
+          <i data-lucide="users"></i>
+          <span>Insider Community</span>
+        </div>
+        <div class="trustbar-card">
+          <i data-lucide="award"></i>
+          <span>PLR Included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stop Starting Every Workflow Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="two-col-features">
+        <div class="features-left">
+          <span class="section-label">THE AUTOMATION GAP</span>
+          <h2>Stop starting every workflow from scratch.</h2>
+          <p>
+            Building automations takes time. Debugging them takes even longer. We've done the hard work for you by testing and organizing 2000+ real-world n8n workflows.
+          </p>
+          <p>
+            Save countless hours of setup time and launch your automations faster with our proven, ready-to-import templates.
+          </p>
+          
+          <!-- Server Automation Image Visual -->
+          <div style="margin-top: 32px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--glow-primary); padding: 4px; background: linear-gradient(135deg, rgba(255, 138, 0, 0.05) 0%, rgba(255,255,255,0.01) 100%); transition: var(--transition-smooth);" onmouseover="this.style.borderColor='var(--primary-container)'; this.style.boxShadow='var(--glow-intense)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--glow-primary)'">
+            <img src="server-automation.png" alt="High performance cloud servers glow" style="width: 100%; height: auto; border-radius: 16px; display: block; object-fit: cover;" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="features-right-card">
+          <h3>What You Get</h3>
+          <ul class="feature-checklist">
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>2000+ Ready-to-import n8n workflow files</strong>
+                Get instant copy-paste access to our comprehensive repository.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>Setup guides and documentation + videos</strong>
+                Step-by-step instructions to configure APIs and environment keys.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>AI, Marketing, and CRM examples included</strong>
+                Pre-built workflows for OpenAI, HubSpot, Shopify, and social networks.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>100% Customization ready</strong>
+                Tweak, expand, or merge flows with your own logic dynamically.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>PLR rights included</strong>
+                Modify and resell these templates to your own agency clients.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>FutureWithAi Insider Community Access</strong>
+                Get exclusive access to our private community — updates, tips, new workflows, and direct support from the team.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Practical Visual Workflows Section -->
+  <section class="section workflow-arch-section" id="workflows">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">PRACTICAL VISUAL WORKFLOWS</span>
+        <h2 class="section-title">Private Repository Explorer</h2>
+        <p class="section-desc">
+          Browse our private repository directory containing 2000+ enterprise-grade n8n workflows. Search folders or click to preview active node structures.
+        </p>
+      </div>
+
+      <!-- Repository Explorer Container -->
+      <div class="repo-explorer" style="margin-bottom: 48px;">
+        <!-- Left Sidebar: Folders Tree -->
+        <div class="repo-sidebar">
+          <span class="repo-sidebar-title">Directory Tree</span>
+          
+          <!-- Category Tabs -->
+          <div class="repo-category-tabs">
+            <button class="repo-tab active" onclick="filterRepoCategory('All')">All</button>
+            <button class="repo-tab" onclick="filterRepoCategory('AI Agents')">AI Agents</button>
+            <button class="repo-tab" onclick="filterRepoCategory('Marketing')">Marketing</button>
+            <button class="repo-tab" onclick="filterRepoCategory('Data & Scrapers')">Data</button>
+            <button class="repo-tab" onclick="filterRepoCategory('Email & Sync')">Sync</button>
+          </div>
+          
+          <div style="position: relative;">
+            <input type="text" id="repo-search-input" class="repo-search" placeholder="Search workflows..." oninput="handleRepoSearch()">
+          </div>
+          
+          <div class="repo-folder-list" id="repo-folders">
+            <!-- Rendered dynamically by script -->
+          </div>
+        </div>
+
+        <!-- Right Preview Pane: Detailed Visual Architecture -->
+        <div class="repo-preview" id="repo-preview-pane">
+          <!-- Rendered dynamically by script -->
+        </div>
+      </div>
+
+      <div class="center-btn-wrapper" style="flex-direction: column; align-items: center; gap: 24px;">
+        <a href="#pricing" class="btn-secondary" style="gap: 10px;">
+          <i data-lucide="layout-grid"></i> VIEW ALL 2000+ WORKFLOWS
+        </a>
+        
+        <!-- Orange Boundary Community Card -->
+        <div class="whatsapp-community-card">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-white); margin-bottom: 4px;">Join WhatsApp Community</h4>
+            <p style="font-size: 13px; color: var(--text-secondary);">Get daily new workflows and AI updates.</p>
+          </div>
+          <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="nav-cta" style="flex-shrink: 0; padding: 12px 24px; font-weight: 700; background: var(--primary-container); color: var(--bg-void); border: none; box-shadow: var(--glow-primary); animation: pulseGlow 2s infinite; display: inline-flex; align-items: center; gap: 6px; text-decoration: none;" onmouseover="this.style.background='#ff9f24';" onmouseout="this.style.background='var(--primary-container)';">
+            JOIN NOW <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Included Section -->
+  <section class="section" id="categories" style="background: rgba(10, 10, 10, 0.5);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 64px auto;">
+        <span class="section-label">CATEGORIES</span>
+        <h2 class="section-title">Categories Included</h2>
+        <p class="section-desc">
+          Get fully configured and ready-to-run automation templates spanning these key operational areas.
+        </p>
+      </div>
+
+      <div class="categories-grid">
+        
+        <!-- Category 1 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="terminal"></i>
+          </div>
+          <h3 class="category-title">AI & Automation</h3>
+          <ul class="category-bullets">
+            <li>OpenAI & Gemini integration</li>
+            <li>Automated content & image gen</li>
+            <li>Vector DB & RAG pipelines</li>
+          </ul>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="megaphone"></i>
+          </div>
+          <h3 class="category-title">Marketing</h3>
+          <ul class="category-bullets">
+            <li>Email sequencing automation</li>
+            <li>Lead scraping & web enrichment</li>
+            <li>Ad campaign automated flow</li>
+          </ul>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="users"></i>
+          </div>
+          <h3 class="category-title">CRM & Operations</h3>
+          <ul class="category-bullets">
+            <li>HubSpot & Salesforce sync</li>
+            <li>Support ticketing routers</li>
+            <li>Employee onboarding systems</li>
+          </ul>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="share-2"></i>
+          </div>
+          <h3 class="category-title">Social & Content</h3>
+          <ul class="category-bullets">
+            <li>Multi-platform auto-posting</li>
+            <li>Comment monitoring & triage</li>
+            <li>Sentiment tracking dashboards</li>
+          </ul>
+        </div>
+
+        <!-- Category 5 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="database"></i>
+          </div>
+          <h3 class="category-title">Data & Integrations</h3>
+          <ul class="category-bullets">
+            <li>Robust custom API connectors</li>
+            <li>Database synchronization</li>
+            <li>Real-time automated reports</li>
+          </ul>
+        </div>
+
+        <!-- Category 6 -->
+        <div class="category-card">
+          <div class="category-icon">
+            <i data-lucide="shopping-bag"></i>
+          </div>
+          <h3 class="category-title">E-Commerce</h3>
+          <ul class="category-bullets">
+            <li>Shopify order integrations</li>
+            <li>Inventory sync & monitoring</li>
+            <li>Abandoned cart recovery</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 64px auto;">
+        <span class="section-label">PROCESS FLOW</span>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">
+          Get up and running with automated systems in three simple steps.
+        </p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <!-- Row 1: Step 1 & 2 -->
+        <div class="timeline-row left-content">
+          <div class="timeline-content timeline-content-left">
+            <h3>01. Purchase</h3>
+            <p>Make a secure payment via our gateway and get instant access to the entire workflow collection.</p>
+          </div>
+          <div class="timeline-node glow">01</div>
+          <div style="flex-grow: 1;"></div>
+        </div>
+
+        <div class="timeline-row right-content">
+          <div style="flex-grow: 1;"></div>
+          <div class="timeline-node">02</div>
+          <div class="timeline-content timeline-content-right">
+            <h3>02. Download</h3>
+            <p>Download the curated package containing raw JSONs, markdown docs, and media screenshots.</p>
+          </div>
+        </div>
+
+        <!-- Row 2: Step 3 & 4 -->
+        <div class="timeline-row left-content">
+          <div class="timeline-content timeline-content-left">
+            <h3>03. Import</h3>
+            <p>Go to your n8n workspace, click "Import from File", and upload the specific workflow JSON.</p>
+          </div>
+          <div class="timeline-node">03</div>
+          <div style="flex-grow: 1;"></div>
+        </div>
+
+        <div class="timeline-row right-content">
+          <div style="flex-grow: 1;"></div>
+          <div class="timeline-node">04</div>
+          <div class="timeline-content timeline-content-right">
+            <h3>04. Configure</h3>
+            <p>Set up connection credentials and add API keys for tools like OpenAI, HubSpot, or Slack.</p>
+          </div>
+        </div>
+
+        <!-- Row 3: Step 5 & 6 -->
+        <div class="timeline-row left-content">
+          <div class="timeline-content timeline-content-left">
+            <h3>05. Customize</h3>
+            <p>Edit or add custom nodes to adjust data fields, schedules, or reporting channels.</p>
+          </div>
+          <div class="timeline-node">05</div>
+          <div style="flex-grow: 1;"></div>
+        </div>
+
+        <div class="timeline-row right-content">
+          <div style="flex-grow: 1;"></div>
+          <div class="timeline-node glow">06</div>
+          <div class="timeline-content timeline-content-right">
+            <h3>06. Test & Run</h3>
+            <p>Activate your workflow triggers and watch as your business executes tasks automatically.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For Section -->
+  <section class="section" id="who-is-for">
+    <div class="container">
+      <div class="who-is-for-grid" style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px; align-items: center;">
+        
+        <!-- Laptop Workspace Image on Left -->
+        <div style="border-radius: 24px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--glow-primary); padding: 6px; background: linear-gradient(135deg, rgba(255, 138, 0, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%); transition: var(--transition-smooth);" onmouseover="this.style.borderColor='var(--primary-container)'; this.style.boxShadow='var(--glow-intense)'" onmouseout="this.style.borderColor='var(--border-color)'; this.style.boxShadow='var(--glow-primary)'">
+          <img src="laptop-workspace.png" alt="Developer coding workflows on laptop workspace" style="width: 100%; height: auto; border-radius: 18px; display: block; object-fit: cover;" loading="lazy" decoding="async">
+        </div>
+
+        <!-- Content on Right -->
+        <div style="text-align: left;">
+          <span class="section-label">AUDIENCE FIT</span>
+          <h2 class="section-title" style="margin-bottom: 16px;">Who This Is For</h2>
+          <p class="section-desc" style="margin-bottom: 32px;">
+            Our workflows are built for builders, founders, and professionals looking to optimize operations.
+          </p>
+
+          <div class="who-chips-wrapper" style="justify-content: flex-start; margin: 0 0 32px 0; gap: 12px;">
+            <button class="who-chip active" onclick="showAudience('agencies')">Agencies</button>
+            <button class="who-chip" onclick="showAudience('freelancers')">Freelancers</button>
+            <button class="who-chip" onclick="showAudience('owners')">Owners</button>
+            <button class="who-chip" onclick="showAudience('creators')">Creators</button>
+            <button class="who-chip" onclick="showAudience('students')">Students</button>
+            <button class="who-chip" onclick="showAudience('nocode')">No-Code</button>
+          </div>
+
+          <div style="background: rgba(20, 20, 20, 0.4); border: 1px solid var(--border-color); padding: 32px; border-radius: 20px; min-height: 120px; display: flex; align-items: center; backdrop-filter: blur(10px);">
+            <p id="audience-text" style="font-size: 15px; line-height: 1.6; color: var(--text-secondary); margin: 0;">
+              Scale your client delivery. Package these workflows, skin them with custom credentials, and sell them as recurring high-ticket automation retainers.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">PRICING PLANS</span>
+        <h2 class="section-title">Ready to Automate?</h2>
+        <p class="section-desc">
+          Get unlimited access to the entire cinematic automation pack at an exclusive launch offer price.
+        </p>
+      </div>
+
+      <div class="pricing-wrapper">
+        <div class="pricing-card">
+          <div class="badge-ribbon" id="pricing-badge">⚡ LAUNCH OFFER — 24 HRS ONLY</div>
+          <h3 class="pricing-title">Automation Pack</h3>
+          <p class="pricing-subtitle">Everything you need to automate like a pro.</p>
+          
+          <div class="pricing-cost">
+            <span class="price-original" id="pricing-original-text">Regular Price ₹2,999</span>
+            <span class="price-current" id="pricing-current-amount">₹99</span>
+            <span id="pricing-early-badge" style="display:inline-block; background: linear-gradient(90deg,#ff8a00,#ffb347); color:#000; font-size:11px; font-weight:800; padding:3px 10px; border-radius:20px; margin-left:8px; letter-spacing:0.5px;">LIMITED OFFER</span>
+          </div>
+          <p id="pricing-urgency-msg" style="font-size:13px; color:#ff8a00; margin:8px 0 0 0; font-weight:600;">🔥 Offer ends in <span id="pricing-countdown-inline">calculating...</span> — After that, price goes to ₹249</p>
+
+          <ul class="pricing-features">
+            <li><i data-lucide="check"></i> One-time payment (No subscriptions)</li>
+            <li><i data-lucide="check"></i> Instant access via Google Drive link</li>
+            <li><i data-lucide="check"></i> 2000+ Production-ready workflows</li>
+            <li><i data-lucide="check"></i> FutureWithAi Insider Community Access</li>
+            <li><i data-lucide="check"></i> Full PLR license included</li>
+          </ul>
+
+          <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html'); return false;" class="btn-primary" id="pricing-cta-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+            ADD TO CART @ ₹99 <i data-lucide="shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inline Lead Capture Section -->
+  <section class="section" id="gift-vault" style="background: rgba(10, 10, 10, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 80px 0;">
+    <div class="container" style="max-width: 600px; display: flex; flex-direction: column; align-items: center;">
+      <div class="checkout-modal-content" style="background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 24px; padding: 40px; width: 100%; max-width: 500px; box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary); transform: none; display: flex; flex-direction: column; gap: 28px;">
+        
+        <!-- Step 1: Lead Capture Form -->
+        <div id="lead-form-container" style="width: 100%;">
+          <div class="checkout-header" style="text-align: center;">
+            <h3 class="checkout-title" style="font-family: var(--font-serif); font-size: 24px; color: var(--text-white); margin-bottom: 8px;">Get Premium AI Digital Gifts 🎁</h3>
+            <p class="checkout-subtitle" style="font-size: 14px; color: var(--text-secondary); line-height: 1.4;">Enter your details to receive your surprise gift in your Email inbox instantly.</p>
+          </div>
+          
+          <form id="lead-form" onsubmit="handleLeadSubmit(event)" style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+            <div class="checkout-form-group">
+              <label for="lead-name">Full Name <span class="required-asterisk">*</span></label>
+              <div class="input-wrapper">
+                <i data-lucide="user" class="input-icon"></i>
+                <input type="text" id="lead-name" name="name" placeholder="John Doe" required autocomplete="name">
+              </div>
+            </div>
+            
+            <div class="checkout-form-group">
+              <label for="lead-email">Email Address <span class="required-asterisk">*</span></label>
+              <div class="input-wrapper">
+                <i data-lucide="mail" class="input-icon"></i>
+                <input type="email" id="lead-email" name="email" placeholder="john@example.com" required autocomplete="email">
+              </div>
+            </div>
+            
+            <div class="checkout-form-group">
+              <label for="lead-phone">WhatsApp / Phone Number</label>
+              <div class="input-wrapper">
+                <i data-lucide="phone" class="input-icon"></i>
+                <input type="tel" id="lead-phone" name="phone" placeholder="e.g. +91 98765 43210" autocomplete="tel">
+              </div>
+            </div>
+            
+            <div class="checkout-form-group">
+              <label for="lead-profession">Profession <span class="required-asterisk">*</span></label>
+              <div class="input-wrapper">
+                <i data-lucide="briefcase" class="input-icon"></i>
+                <select id="lead-profession" name="profession" required>
+                  <option value="" disabled selected>Select your profession</option>
+                  <option value="Student">Student</option>
+                  <option value="Freelancer">Freelancer</option>
+                  <option value="Businessman">Businessman</option>
+                  <option value="Content Creator">Content Creator</option>
+                  <option value="Agency Owner">Agency Owner</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-primary btn-checkout-submit" id="lead-submit-btn" style="width: 100%; justify-content: center; gap: 8px; font-size: 15px; border-radius: 10px; margin-top: 8px; border: none; padding: 14px; cursor: pointer;">
+              <span>Unlock Secret Gift</span> <i data-lucide="unlock" class="btn-icon"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- Step 2: Success Card (Hidden by default) -->
+        <div id="lead-success-container" style="display: none; width: 100%;">
+          <div class="checkout-header" style="text-align: center;">
+            <div style="width: 64px; height: 64px; background: rgba(39, 201, 63, 0.15); border: 2px solid #27c93f; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; color: #27c93f; animation: pulseGlowSuccess 2s infinite;">
+              <i data-lucide="check" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h3 class="checkout-title" style="color: #27c93f;">Gift Sent to Email! 🎁</h3>
+            <p class="checkout-subtitle" style="margin-bottom: 20px;">We have sent your premium surprise gift directly to your email address. Check your inbox (and spam folder)!</p>
+          </div>
+          
+          <div style="background: rgba(255, 138, 0, 0.05); border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 12px; padding: 20px; text-align: center; margin-bottom: 24px;">
+            <h4 style="font-family: var(--font-serif); font-size: 15px; color: var(--text-white); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+              <i data-lucide="award" style="color: var(--primary); width: 16px; height: 16px;"></i> Bonus Reward Unlocked!
+            </h4>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.4;">
+              As a bonus, copy the <strong>AI Company OS Blueprint Prompt</strong> directly below to start building your own AI agency!
+            </p>
+            <button id="modal-copy-prompt-btn" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 14px; border: none; padding: 12px 24px; border-radius: 10px; font-weight: 600; cursor: pointer;" onclick="copyBlueprintFromModal()">
+              <span>Copy Blueprint Prompt</span> <i data-lucide="copy" style="width: 16px; height: 16px;"></i>
+            </button>
+          </div>
+
+          <a href="#workflows" class="btn-secondary" style="width: 100%; justify-content: center; padding: 12px; font-size: 14px; border-radius: 10px; border: 1px solid var(--border-color); color: var(--text-secondary); background: transparent; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+            <span>Explore Workflows</span> <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+          </a>
+
+          <!-- Hidden container containing the full prompt text to copy -->
+          <div id="blueprint-prompt-text" style="display: none;">Build a full-stack SaaS web application called AI Company OS.
+The idea is that a single founder can manage an entire business with a team of AI employees.
+The system should support multiple AI departments that collaborate with each other, break down goals into tasks, perform research, generate outputs, and ask for approval before executing important actions.
+This should be a production-quality application with both frontend and backend.
+________________
+
+
+CORE CONCEPT
+The user acts as the Owner.
+The Owner gives a high-level objective.
+Example:
+* Grow my business
+* Find new clients
+* Build a marketing strategy
+* Launch a SaaS
+* Generate content
+* Research competitors
+A CEO AI receives the goal.
+The CEO AI breaks the goal into subtasks and delegates them to specialized AI employees.
+Each AI employee works independently and sends updates back to the CEO.
+The CEO combines the results and presents them to the Owner.
+Sensitive actions require approval.
+________________
+
+
+AI EMPLOYEES
+Create these default agents:
+CEO AI
+Responsibilities:
+* Understand business goals
+* Break work into tasks
+* Delegate tasks
+* Monitor all departments
+* Review outputs
+* Coordinate execution
+________________
+
+
+Marketing AI
+Responsibilities:
+* Analyze social media
+* Generate content ideas
+* Create scripts
+* Write blog posts
+* Create marketing plans
+* Study competitors
+Outputs:
+* Reports
+* Calendars
+* Scripts
+* Campaign plans
+________________
+
+
+Sales AI
+Responsibilities:
+* Research prospects
+* Build lead lists
+* Score leads
+* Generate outreach drafts
+* Prepare follow-up sequences
+The system should generate email drafts but require user approval before any message is sent.
+________________
+
+
+Research AI
+Responsibilities:
+* Market research
+* Competitor analysis
+* Industry trends
+* Product ideas
+* Opportunity reports
+________________
+
+
+Developer AI
+Responsibilities:
+* Build software plans
+* Generate code
+* Create APIs
+* Create documentation
+* Build internal tools
+________________
+
+
+Operations AI
+Responsibilities:
+* Track projects
+* Manage workflows
+* Monitor deadlines
+* Organize tasks
+________________
+
+
+Finance AI
+Responsibilities:
+* Budget planning
+* Revenue forecasting
+* Expense tracking
+* ROI calculations
+________________
+
+
+HR AI
+Responsibilities:
+* Create SOPs
+* Organize team structure
+* Maintain knowledge base
+* Recommend new AI agents
+________________
+
+
+FRONTEND
+Create a premium SaaS dashboard.
+Style:
+* Dark mode
+* Glassmorphism
+* Modern typography
+* Animated dashboards
+* Responsive
+* Beautiful charts
+* Real-time updates
+________________
+
+
+DASHBOARD
+Show:
+Total AI Employees
+Active Tasks
+Completed Tasks
+Goals Running
+Reports Generated
+Leads Researched
+Content Created
+Projects Running
+System Status
+________________
+
+
+AGENT CARDS
+Every AI employee should have:
+Avatar
+Role
+Current status
+Current task
+Completed tasks
+Performance score
+Recent activity
+View workspace button
+________________
+
+
+CEO PAGE
+User enters a business objective.
+Example:
+"Help me grow my AI business."
+CEO AI should:
+Analyze objective
+Break into departments
+Generate execution plan
+Assign tasks
+Display workflow graph
+Monitor progress
+Collect reports
+Return final summary
+________________
+
+
+TASK SYSTEM
+Create:
+Task database
+Task priority
+Dependencies
+Status tracking
+Assignments
+Progress bars
+Task history
+Statuses:
+Pending
+Planning
+Running
+Waiting Approval
+Completed
+Cancelled
+________________
+
+
+APPROVAL SYSTEM
+High-impact actions should require approval.
+Examples:
+Send emails
+Publish content
+Delete data
+Deploy projects
+Modify settings
+Show:
+Approve
+Reject
+Edit
+Reschedule
+________________
+
+
+MARKETING WORKSPACE
+Include:
+Content planner
+Script generator
+Trend analysis
+Competitor dashboard
+Campaign planner
+Idea vault
+Analytics dashboard
+Calendar
+Store generated outputs.
+________________
+
+
+SALES WORKSPACE
+Include:
+Lead database
+Lead scoring
+Company profiles
+Outreach drafts
+Pipeline tracking
+Meeting tracker
+CRM dashboard
+No automatic outreach without approval.
+________________
+
+
+RESEARCH WORKSPACE
+Include:
+Market reports
+Competitor reports
+Trend tracker
+Industry summaries
+SWOT analysis
+Opportunity database
+________________
+
+
+DEVELOPER WORKSPACE
+Include:
+Project manager
+Code generator
+API planner
+Architecture diagrams
+Documentation generator
+Deployment tracker
+________________
+
+
+OPERATIONS WORKSPACE
+Include:
+Kanban board
+Timeline
+Project tracking
+Workflow automation
+Task dependencies
+Execution reports
+________________
+
+
+FINANCE WORKSPACE
+Include:
+Revenue dashboard
+Expense dashboard
+Forecasts
+Cash flow
+ROI reports
+Business metrics
+________________
+
+
+HR WORKSPACE
+Include:
+Knowledge base
+SOP manager
+Training documents
+AI employee library
+Performance reports
+________________
+
+
+LIVE ACTIVITY FEED
+Display events such as:
+Marketing AI generated report
+Research AI completed analysis
+CEO AI assigned tasks
+Developer AI created documentation
+Sales AI prepared outreach draft
+Finance AI updated forecast
+Operations AI completed workflow
+HR AI updated SOP
+________________
+
+
+DATABASE
+Create backend models for:
+Users
+Organizations
+AI Employees
+Goals
+Tasks
+Projects
+Reports
+Leads
+Campaigns
+Documents
+Notifications
+Approvals
+Settings
+Activity Logs
+________________
+
+
+AUTHENTICATION
+Support:
+Email login
+Google login
+Password reset
+User profiles
+Organization workspaces
+Role permissions
+________________
+
+
+API LAYER
+Create REST APIs for all resources.
+Support future integration with AI models and external services.
+________________
+
+
+AI ORCHESTRATION
+Implement an orchestration layer where:
+Owner
+↓
+CEO AI
+↓
+Department AI Employees
+↓
+Outputs
+↓
+CEO Review
+↓
+Approval (if needed)
+↓
+Execution
+↓
+Results
+Maintain memory of previous tasks and conversations.
+________________
+
+
+KNOWLEDGE BASE
+Allow users to upload:
+PDFs
+Word documents
+CSV files
+Notes
+Website URLs
+The AI employees should use this information as business context.
+________________
+
+
+AUTOMATION ENGINE
+Allow users to create workflows.
+Example:
+If new lead added
+↓
+Research AI analyzes company
+↓
+Sales AI prepares draft
+↓
+CEO AI reviews
+↓
+User approves
+↓
+Email can be sent
+________________
+
+
+NOTIFICATIONS
+Support:
+In-app notifications
+Email notifications
+Task reminders
+Approval requests
+Daily summaries
+________________
+
+
+ADMIN PANEL
+Create admin dashboard for:
+Managing users
+Managing AI employees
+System analytics
+Logs
+Billing
+Feature flags
+________________
+
+
+FUTURE READY
+Structure the application so future integrations can be added for:
+OpenAI
+Anthropic
+Google Gemini
+Gmail
+Google Calendar
+Slack
+Notion
+HubSpot
+Salesforce
+Zapier
+n8n
+Webhooks
+________________
+
+
+FINAL GOAL
+Build a complete AI Operating System where one person can coordinate multiple AI employees through a single dashboard.
+The product should feel like having an executive team that researches, plans, organizes, and prepares work continuously, while keeping the human in control of important decisions and external actions.</div>
+        </div>
+
+        <div class="checkout-footer" style="display: flex; justify-content: space-between; align-items: center; gap: 16px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; font-size: 11px; color: var(--text-muted);">
+          <span style="display: flex; align-items: center; gap: 6px;"><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary);"></i> 100% Safe &amp; Secure</span>
+          <span style="display: flex; align-items: center; gap: 6px;"><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary);"></i> Powered by FutureWithAi</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frequently Asked Questions Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">FAQS</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-container">
+        
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Is n8n included in this pack?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              n8n is a separate self-hosted or cloud-hosted automation platform. This pack includes 2000+ pre-built JSON workflow files that you can easily import directly into your own free self-hosted or paid cloud-hosted n8n instance.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Do I need coding skills?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              No, you do not need advanced coding skills. The templates are ready to import. You only need to plug in your API credentials (like OpenAI API keys, WhatsApp keys, or CRM secrets) into the designated nodes.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Are the workflows editable?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes, absolutely! Once you import a workflow JSON into n8n, it becomes a canvas. You can edit nodes, add new branches, adjust triggers, delete integrations, or tweak parameters to fit your requirements.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Do I need API keys?</span>
+            <i data-lucide="chevron-down" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              For workflows that interact with third-party tools (like OpenAI, Claude, Slack, or Shopify), you will need your own API keys. Setting them up takes less than 5 minutes and we provide guides for key configurations.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-left">
+          <a href="index.html" class="logo-wrapper">
+            <img src="primary-logo.png" alt="FutureWithAi Logo" class="logo-img">
+          </a>
+          <span class="footer-desc">&copy; 2026 FutureWithAi. Powered by Anshuman Enterprises.</span>
+        </div>
+        <div class="footer-right">
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="refund.html" class="footer-link">Refund Policy</a>
+          <a href="#features" class="footer-link">Features</a>
+          <a href="#workflows" class="footer-link">Workflows</a>
+          <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="footer-link">WhatsApp Community</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons (wait for deferred script to load)
+    function initIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); else setTimeout(initIcons, 50); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIcons); else initIcons();
+
+    // Sticky Navbar Glassy Transition
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        header.style.padding = '8px 0';
+        header.style.background = 'rgba(5, 5, 5, 0.85)';
+      } else {
+        header.style.padding = '0';
+        header.style.background = 'rgba(5, 5, 5, 0.2)';
+      }
+    });
+
+        // Workflow Data Array
+    const workflowsData = [
+      {
+        id: "onboarding-emails",
+        title: "AI Client Onboarding Agent: Auto Welcome Email Generator-4448",
+        category: "AI Agents",
+        complexity: 85,
+        files: ["readme.md", "workflow.json", "metadata.json", "onboarding-email-template.html"],
+        description: "Listens for new signed contracts, provisions client folders in Google Drive, auto-generates personalized onboarding welcome emails via OpenAI, and syncs status to CRM.",
+        nodes: [
+          { name: "Contract Signed", type: "trigger", icon: "user-plus" },
+          { name: "Drive Folder Gen", type: "logic", icon: "folder-plus" },
+          { name: "OpenAI GPT-4o", type: "ai", icon: "brain" },
+          { name: "Gmail Send", type: "action", icon: "mail" }
+        ]
+      },
+      {
+        id: "data-analyst-nocodb",
+        title: "AI Data Analyst Agent for Spreadsheets with NocoDB-2653",
+        category: "Data & Scrapers",
+        complexity: 80,
+        files: ["readme.md", "workflow.json", "nocodb-schema.json", "data-export.csv"],
+        description: "Connects to NocoDB databases, queries table records, runs data sanitization logic, prompts Claude for trend analysis, and exports PDF briefs.",
+        nodes: [
+          { name: "NocoDB Trigger", type: "trigger", icon: "database" },
+          { name: "Data Cleaner", type: "logic", icon: "sliders" },
+          { name: "Claude Analyst", type: "ai", icon: "sparkles" },
+          { name: "PDF Generator", type: "action", icon: "file-text" }
+        ]
+      },
+      {
+        id: "email-support-sheets",
+        title: "AI Email Support System: Gmail, Gemini, GPT-4, Slack & Google Sheets Workflow-6288",
+        category: "Email & Sync",
+        complexity: 90,
+        files: ["readme.md", "workflow.json", "support-rules.json", "triage-logs.xlsx"],
+        description: "Advanced multi-stage customer support router. Parses incoming Gmail messages, classifies priority and sentiment using Gemini, writes draft responses using GPT-4, logs records to Google Sheets, and fires Slack alert notifications.",
+        nodes: [
+          { name: "Gmail Inbox", type: "trigger", icon: "mail" },
+          { name: "Gemini Sentiment", type: "ai", icon: "smile" },
+          { name: "GPT-4 Draft", type: "ai", icon: "edit-3" },
+          { name: "Sheets Logger", type: "action", icon: "table" },
+          { name: "Slack Triage", type: "action", icon: "message-square" }
+        ]
+      },
+      {
+        id: "student-degree-openai",
+        title: "Audit student degree progress in Google Sheets using OpenAI-8093",
+        category: "Data & Scrapers",
+        complexity: 70,
+        files: ["readme.md", "workflow.json", "degree-audit-map.json", "results.xlsx"],
+        description: "Reads university student transcripts from Google Sheets, compares credits against graduation requirements using OpenAI GPT models, and marks degree completion checklists.",
+        nodes: [
+          { name: "Transcript Row", type: "trigger", icon: "file-spreadsheet" },
+          { name: "Requirements Fetch", type: "logic", icon: "search" },
+          { name: "OpenAI Auditor", type: "ai", icon: "award" },
+          { name: "Update Eligibility", type: "action", icon: "check-circle" }
+        ]
+      },
+      {
+        id: "image-gen-telegram-drive",
+        title: "Automate AI Image Generation & Telegram Delivery with Google Drive and Sheets-4049",
+        category: "AI Agents",
+        complexity: 78,
+        files: ["readme.md", "workflow.json", "prompt-history.xlsx", "images-archive/"],
+        description: "Listens for text prompts in Telegram, parses keywords with Google Sheets logs, triggers Flux/Midjourney via Replicate API, saves images to Google Drive, and delivers files to Telegram.",
+        nodes: [
+          { name: "Telegram Bot", type: "trigger", icon: "message-circle" },
+          { name: "Log Sheet", type: "logic", icon: "table" },
+          { name: "Replicate Flux", type: "ai", icon: "image" },
+          { name: "Drive Backup", type: "action", icon: "hard-drive" },
+          { name: "Send Photo", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "research-paper-brightdata",
+        title: "Automate Research Paper Collection with Bright Data & n8n-5221",
+        category: "Data & Scrapers",
+        complexity: 82,
+        files: ["readme.md", "workflow.json", "brightdata-proxies.json", "papers-index.json"],
+        description: "Scrapes bioRxiv and arXiv preprints on search terms using Bright Data rotating proxies, extracts author metadata, and alerts researchers via Slack digests.",
+        nodes: [
+          { name: "Daily Schedule", type: "trigger", icon: "clock" },
+          { name: "Bright Data Scrape", type: "logic", icon: "globe" },
+          { name: "Metadata Parser", type: "logic", icon: "file-text" },
+          { name: "Slack Digest", type: "action", icon: "message-square" }
+        ]
+      },
+      {
+        id: "sales-digital-gpt4o",
+        title: "Automate Sales for Digital Products & SaaS with AI (GPT-4o)-3342",
+        category: "Marketing",
+        complexity: 85,
+        files: ["readme.md", "workflow.json", "stripe-hooks.json", "license-keys.db"],
+        description: "Processes Stripe checkout hooks for digital sales, drafts customized onboarding proposals with GPT-4o based on client industry, registers client in CRM, and delivers product keys.",
+        nodes: [
+          { name: "Stripe Webhook", type: "trigger", icon: "credit-card" },
+          { name: "GPT-4o Proposal", type: "ai", icon: "sparkles" },
+          { name: "CRM Register", type: "action", icon: "users" },
+          { name: "License Email", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "event-discovery-brightdata",
+        title: "Automated Event Discovery with Bright Data & n8n-5222",
+        category: "Data & Scrapers",
+        complexity: 80,
+        files: ["readme.md", "workflow.json", "event-listings.csv", "calendar-mapping.json"],
+        description: "Scrapes global tech event sites using Bright Data, filters conferences by tech keywords, runs duplicates cleaning, and creates calendar events.",
+        nodes: [
+          { name: "Weekly Cron", type: "trigger", icon: "calendar" },
+          { name: "Bright Data API", type: "logic", icon: "search" },
+          { name: "Duplicate Filter", type: "logic", icon: "filter" },
+          { name: "Calendar Sync", type: "action", icon: "check-square" }
+        ]
+      },
+      {
+        id: "drive-fbads-videomktg",
+        title: "Automated Google Drive to Facebook Ads: One-Click Video Marketing Workflow-4620",
+        category: "Marketing",
+        complexity: 84,
+        files: ["readme.md", "workflow.json", "ad-creatives.json", "facebook-auth.json"],
+        description: "Monitors Google Drive for new promo videos, uses GPT-4 Vision to write copy and tags, uploads video media to Facebook Business Manager, and launches ads.",
+        nodes: [
+          { name: "Drive Upload", type: "trigger", icon: "hard-drive" },
+          { name: "GPT-4 Vision Copy", type: "ai", icon: "edit-3" },
+          { name: "FB Ads API", type: "logic", icon: "upload-cloud" },
+          { name: "Launch Adset", type: "action", icon: "megaphone" }
+        ]
+      },
+      {
+        id: "investor-intel-crunchbase",
+        title: "Automated Investor Intelligence: CrunchBase to Google Sheets Data Harvester-4731",
+        category: "Data & Scrapers",
+        complexity: 78,
+        files: ["readme.md", "workflow.json", "funding-targets.csv", "crunchbase-keys.json"],
+        description: "Polls startup fundraising directories, extracts target lead companies, fetches detailed company profiles from CrunchBase, and pushes rows to Sheets.",
+        nodes: [
+          { name: "Feed Poller", type: "trigger", icon: "rss" },
+          { name: "Crunchbase API", type: "logic", icon: "database" },
+          { name: "Revenue Scorer", type: "logic", icon: "activity" },
+          { name: "Sheets Export", type: "action", icon: "file-spreadsheet" }
+        ]
+      },
+      {
+        id: "brevo-contact-manager",
+        title: "Brevo Contact Manager 📩: Import, Add to List, Send Email and Track Unsubscribes-15085",
+        category: "Email & Sync",
+        complexity: 72,
+        files: ["readme.md", "workflow.json", "mailing-list.csv", "unsubscribe-webhooks.json"],
+        description: "Integrates mailing lists with Brevo. Imports registration contacts, tags users, handles custom campaign delivery, and hooks unsubscribe callbacks to update database.",
+        nodes: [
+          { name: "Form Signup", type: "trigger", icon: "user-plus" },
+          { name: "Brevo Importer", type: "logic", icon: "link" },
+          { name: "Campaign Dispatch", type: "action", icon: "send" },
+          { name: "Unsubscribe Listener", type: "trigger", icon: "alert-triangle" },
+          { name: "CRM Status Update", type: "action", icon: "refresh-cw" }
+        ]
+      },
+      {
+        id: "build-sell-agents",
+        title: "Build & Sell AI Automations and Agents-3941",
+        category: "AI Agents",
+        complexity: 92,
+        files: ["readme.md", "workflow.json", "monetization-model.json", "webhook-keys.json"],
+        description: "A framework that hosts multi-agent pipelines with HTTP Webhook interfaces, enabling agency builders to deploy client micro-services.",
+        nodes: [
+          { name: "Webhook Request", type: "trigger", icon: "globe" },
+          { name: "Schema Validator", type: "logic", icon: "shield-check" },
+          { name: "Agent Supervisor", type: "ai", icon: "terminal" },
+          { name: "JSON Response", type: "action", icon: "external-link" }
+        ]
+      },
+      {
+        id: "tech-radar-advisor",
+        title: "Build an AI-Powered Tech Radar Advisor with SQL DB, RAG, and Routing Agents-3151",
+        category: "AI Agents",
+        complexity: 88,
+        files: ["readme.md", "workflow.json", "postgres-vectors.sql", "advisor-ui.json"],
+        description: "Questions are embedded, queried against Postgres PGVector schemas, evaluated using Claude, and channeled through routing agents.",
+        nodes: [
+          { name: "Advisor Prompt", type: "trigger", icon: "help-circle" },
+          { name: "PGVector Search", type: "logic", icon: "database" },
+          { name: "Claude RAG Engine", type: "ai", icon: "cpu" },
+          { name: "Agent Router", type: "action", icon: "git-fork" }
+        ]
+      },
+      {
+        id: "decodo-research-extraction",
+        title: "Decodo-Powered AI Research Paper Extraction & Summarization with ChatGPT-11782",
+        category: "Data & Scrapers",
+        complexity: 86,
+        files: ["readme.md", "workflow.json", "decodo-schema.json", "paper-summaries.csv"],
+        description: "Automates document analysis by feeding academic PDFs into Decodo's high-speed extraction engine, prompting ChatGPT for key findings, and writing spreadsheets.",
+        nodes: [
+          { name: "PDF Uploaded", type: "trigger", icon: "file-text" },
+          { name: "Decodo OCR", type: "logic", icon: "server" },
+          { name: "ChatGPT Summarizer", type: "ai", icon: "brain" },
+          { name: "Excel Exporter", type: "action", icon: "table" }
+        ]
+      },
+      {
+        id: "netsuite-suiteql-webhook",
+        title: "Dynamically Run SuiteQL Queries in NetSuite via HTTP Webhook in n8n-3002",
+        category: "Data & Scrapers",
+        complexity: 82,
+        files: ["readme.md", "workflow.json", "suiteql-schemas.json", "netsuite-auth.json"],
+        description: "Receives SQL inputs via HTTP webhooks, authenticates against NetSuite ERP with OAuth 1.0, executes the SuiteQL query, and formats output rows.",
+        nodes: [
+          { name: "Webhook Query", type: "trigger", icon: "terminal" },
+          { name: "NetSuite OAuth", type: "logic", icon: "key" },
+          { name: "SuiteQL Node", type: "logic", icon: "database" },
+          { name: "JSON Formatter", type: "action", icon: "check-circle" }
+        ]
+      },
+      {
+        id: "receipts-telegram-ocr",
+        title: "Extract Details from Receipts via Telegram with Tesseract and Llama-4361",
+        category: "Data & Scrapers",
+        complexity: 76,
+        files: ["readme.md", "workflow.json", "tesseract-config.json", "receipts-db.json"],
+        description: "Accepts receipt image uploads in Telegram, runs local Tesseract OCR processing, parses transaction totals and dates with Llama models, and appends rows.",
+        nodes: [
+          { name: "Telegram Photo", type: "trigger", icon: "camera" },
+          { name: "Tesseract OCR", type: "logic", icon: "file-search" },
+          { name: "Llama Evaluator", type: "ai", icon: "brain" },
+          { name: "Append Sheets", type: "action", icon: "file-spreadsheet" }
+        ]
+      },
+      {
+        id: "gmail-responder-ollama",
+        title: "Gmail Customer Support Auto-Responder with Ollama LLM and Pinecone RAG-4760",
+        category: "Email & Sync",
+        complexity: 88,
+        files: ["readme.md", "workflow.json", "pinecone-index.json", "local-prompt.txt"],
+        description: "Fully self-hosted email responder. Fetches customer queries, calls Pinecone RAG schemas to extract matching FAQs, prompts local Ollama LLM models, and saves draft replies.",
+        nodes: [
+          { name: "Gmail Poll", type: "trigger", icon: "mail" },
+          { name: "Pinecone Query", type: "logic", icon: "database" },
+          { name: "Ollama Llama3", type: "ai", icon: "cpu" },
+          { name: "Draft Reply", type: "action", icon: "edit-3" }
+        ]
+      },
+      {
+        id: "gmail-mcp-server",
+        title: "Gmail MCP Server – Your All‑in‑One AI Email Toolkit-3605",
+        category: "Email & Sync",
+        complexity: 94,
+        files: ["readme.md", "workflow.json", "mcp-specification.json", "token-keys.json"],
+        description: "Creates an MCP (Model Context Protocol) API connection to your Gmail inbox, allowing smart LLM agents to execute inbox searching, drafts creation, and label management.",
+        nodes: [
+          { name: "MCP Command", type: "trigger", icon: "activity" },
+          { name: "Router Logic", type: "logic", icon: "sliders" },
+          { name: "Gmail API Link", type: "logic", icon: "mail" },
+          { name: "Result Output", type: "action", icon: "check-circle" }
+        ]
+      },
+      {
+        id: "smart-email-responder",
+        title: "Smart Email Responder Workflow using AI-4807",
+        category: "Email & Sync",
+        complexity: 78,
+        files: ["readme.md", "workflow.json", "rules-map.json", "email-logs.csv"],
+        description: "Monitors inbox items, runs category classification, generates custom drafts for high-priority support, and alerts staff on Slack for urgent issues.",
+        nodes: [
+          { name: "Inbox Check", type: "trigger", icon: "mail" },
+          { name: "AI Classifier", type: "ai", icon: "brain" },
+          { name: "Draft Builder", type: "action", icon: "edit-2" },
+          { name: "Slack Warning", type: "action", icon: "message-square" }
+        ]
+      },
+      {
+        id: "aave-portfolio-agent",
+        title: "AAVE Portfolio Professional AI Agent | Telegram + Email + GPT-4o + Moralis-4267",
+        category: "AI Agents",
+        complexity: 90,
+        files: ["readme.md", "workflow.json", "moralis-config.json", "portfolio-report.html"],
+        description: "Monitors AAVE lending positions, fetches wallet token balances via Moralis, triggers automated portfolio updates with GPT-4o, and reports to Telegram/Email.",
+        nodes: [
+          { name: "Daily Trigger", type: "trigger", icon: "clock" },
+          { name: "Moralis Balance", type: "logic", icon: "link" },
+          { name: "GPT-4o Summary", type: "ai", icon: "brain" },
+          { name: "Telegram Broadcast", type: "action", icon: "send" },
+          { name: "Email Alert", type: "action", icon: "mail" }
+        ]
+      },
+      {
+        id: "bubble-mcp-integration",
+        title: "AI Agent Integration for Bubble Apps with MCP Protocol Data Access-4952",
+        category: "AI Agents",
+        complexity: 86,
+        files: ["readme.md", "workflow.json", "bubble-api.json", "mcp-headers.json"],
+        description: "Interfaces Bubble workflows with background LLM agents, serving tool executions, PostgreSQL vectors, and prompt templates dynamically.",
+        nodes: [
+          { name: "Bubble Event", type: "trigger", icon: "globe" },
+          { name: "MCP Protocol", type: "logic", icon: "layers" },
+          { name: "AI Orchestrator", type: "ai", icon: "cpu" },
+          { name: "JSON Response", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "ebay-logistics-mcp",
+        title: "AI Agent Integration for eBay Logistics API with MCP Server-5574",
+        category: "AI Agents",
+        complexity: 84,
+        files: ["readme.md", "workflow.json", "ebay-logistics.json", "mcp-config.json"],
+        description: "Connects LLMs to the eBay Logistics API via an MCP server, checking shipping statuses, tracking orders, and updating database tables.",
+        nodes: [
+          { name: "Logistics Query", type: "trigger", icon: "package" },
+          { name: "eBay API Auth", type: "logic", icon: "key" },
+          { name: "MCP Server Data", type: "logic", icon: "database" },
+          { name: "Update Alert", type: "action", icon: "bell" }
+        ]
+      },
+      {
+        id: "ebay-marketing-buy",
+        title: "AI Agent Integration with eBay Buy Marketing API-5567",
+        category: "Marketing",
+        complexity: 82,
+        files: ["readme.md", "workflow.json", "ebay-campaigns.json", "marketing-rules.json"],
+        description: "Monitors search query trends, fetches related listings from eBay Buy Marketing API, scores items with OpenAI, and schedules promotion campaigns.",
+        nodes: [
+          { name: "Schedule Check", type: "trigger", icon: "clock" },
+          { name: "eBay Buy API", type: "logic", icon: "shopping-bag" },
+          { name: "GPT Price Match", type: "ai", icon: "brain" },
+          { name: "Ad Campaign", type: "action", icon: "megaphone" }
+        ]
+      },
+      {
+        id: "coda-tables-mcp",
+        title: "AI Agent Managed Tables and Views with Coda Tool MCP Server-5319",
+        category: "AI Agents",
+        complexity: 89,
+        files: ["readme.md", "workflow.json", "coda-spec.json", "table-operations.json"],
+        description: "Integrates with Coda's workspace using MCP server tools, allowing an AI agent to execute 18 operations including table edits, database updates, and row filters.",
+        nodes: [
+          { name: "Coda Event", type: "trigger", icon: "edit-2" },
+          { name: "MCP Coda Tool", type: "logic", icon: "sliders" },
+          { name: "Coda SQL Executor", type: "logic", icon: "database" },
+          { name: "Sync Confirmation", type: "action", icon: "check-circle" }
+        ]
+      },
+      {
+        id: "google-contacts-mcp",
+        title: "AI Agent Managed Google Contacts Tool MCP Server-5255",
+        category: "AI Agents",
+        complexity: 78,
+        files: ["readme.md", "workflow.json", "google-contacts-spec.json", "auth-token.json"],
+        description: "An agent that manages Google Contacts via MCP server, executing 5 key operations including searching contacts, creating contacts, and updating phone numbers.",
+        nodes: [
+          { name: "NLP Voice request", type: "trigger", icon: "mic" },
+          { name: "Google Contacts MCP", type: "logic", icon: "link" },
+          { name: "Contact Matcher", type: "logic", icon: "user-check" },
+          { name: "Confirm Action", type: "action", icon: "check" }
+        ]
+      },
+      {
+        id: "customerio-marketing-mcp",
+        title: "AI Agent Powered Marketing Customer.io Tool MCP Server-5314",
+        category: "Marketing",
+        complexity: 88,
+        files: ["readme.md", "workflow.json", "customerio-spec.json", "segment-rules.json"],
+        description: "Runs marketing operations inside Customer.io via MCP server, allowing LLMs to trigger segments, sync user profiles, and dispatch campaign templates.",
+        nodes: [
+          { name: "User Signup Event", type: "trigger", icon: "user-plus" },
+          { name: "Customer.io MCP", type: "logic", icon: "layers" },
+          { name: "GPT Segmentation", type: "ai", icon: "brain" },
+          { name: "Campaign Launch", type: "action", icon: "megaphone" }
+        ]
+      },
+      {
+        id: "slack-supa-files",
+        title: "AI Agent To Chat With Files In Supabase Storage and Google Drive-4086",
+        category: "AI Agents",
+        complexity: 87,
+        files: ["readme.md", "workflow.json", "supabase-client.json", "drive-config.json"],
+        description: "Listens to file uploads in Slack, transfers them to Supabase Storage or Google Drive, triggers document vectors parsing, and starts Q&A chatbot threads.",
+        nodes: [
+          { name: "Slack File Sent", type: "trigger", icon: "file" },
+          { name: "Supabase Transfer", type: "logic", icon: "database" },
+          { name: "Document Embedder", type: "ai", icon: "layers" },
+          { name: "Slack Response", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "project-mgmt-fireflies",
+        title: "AI Agent for project management and meetings with Airtable and Fireflies-2683",
+        category: "AI Agents",
+        complexity: 82,
+        files: ["readme.md", "workflow.json", "fireflies-mapping.json", "airtable-keys.json"],
+        description: "Listens to new Fireflies meeting transcripts, parses action items using Gemini, creates task files, and synchronizes status details to Airtable.",
+        nodes: [
+          { name: "Meeting Finished", type: "trigger", icon: "video" },
+          { name: "Gemini Transcriber", type: "ai", icon: "brain" },
+          { name: "Airtable Sync", type: "logic", icon: "database" },
+          { name: "Create Todo Card", type: "action", icon: "clipboard-list" }
+        ]
+      },
+      {
+        id: "meeting-insights-agent",
+        title: "AI Agent for realtime insights on meetings-2651",
+        category: "AI Agents",
+        complexity: 80,
+        files: ["readme.md", "workflow.json", "meeting-schemas.json", "insights-log.csv"],
+        description: "Monitors live transcripts, extracts technical queries, scores context importance, and posts alerts on Discord and Slack.",
+        nodes: [
+          { name: "Transcript Stream", type: "trigger", icon: "activity" },
+          { name: "OpenAI Evaluator", type: "ai", icon: "brain" },
+          { name: "Importance Filter", type: "logic", icon: "filter" },
+          { name: "Slack Broadcast", type: "action", icon: "message-square" }
+        ]
+      },
+      {
+        id: "airtable-chat-data",
+        title: "AI Agent to chat with Airtable and analyze data-2700",
+        category: "AI Agents",
+        complexity: 83,
+        files: ["readme.md", "workflow.json", "airtable-config.json", "chat-memory.json"],
+        description: "A chatbot interface configured to read, filter, search, and update table schemas inside Airtable databases based on natural language prompts.",
+        nodes: [
+          { name: "Chat Message", type: "trigger", icon: "message-circle" },
+          { name: "Airtable Link", type: "logic", icon: "database" },
+          { name: "Router Agent", type: "ai", icon: "terminal" },
+          { name: "Data Responder", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "supabase-postgresql-chat",
+        title: "AI Agent to chat with Supabase-PostgreSQL DB-2612",
+        category: "AI Agents",
+        complexity: 86,
+        files: ["readme.md", "workflow.json", "supabase-vectors.sql", "postgresql-auth.json"],
+        description: "Connects conversational agents to backend Supabase databases, utilizing similarity search schemas to return matching context fragments.",
+        nodes: [
+          { name: "Query Input", type: "trigger", icon: "help-circle" },
+          { name: "Vector Indexer", type: "logic", icon: "layers" },
+          { name: "Supabase Query", type: "logic", icon: "database" },
+          { name: "AI Synthesis", type: "ai", icon: "brain" }
+        ]
+      },
+      {
+        id: "gmail-receipts-sheets",
+        title: "AI Auto-Save Gmail Receipts to Google Sheets + Google Drive-5451",
+        category: "Data & Scrapers",
+        complexity: 75,
+        files: ["readme.md", "workflow.json", "receipt-rules.json", "receipt-files/"],
+        description: "Filters incoming Gmail messages for invoices, extracts PDF attachments, runs OCR processing, extracts totals via GPT-4, and saves tables to Sheets & Drive.",
+        nodes: [
+          { name: "Gmail Filter", type: "trigger", icon: "mail" },
+          { name: "OCR Document Parser", type: "logic", icon: "file-search" },
+          { name: "GPT-4 Extractor", type: "ai", icon: "brain" },
+          { name: "Sheets & Drive Sync", type: "action", icon: "file-spreadsheet" }
+        ]
+      },
+      {
+        id: "cv-analysis-hr",
+        title: "AI Automated HR Workflow for CV Analysis and Candidate Evaluation-2860",
+        category: "AI Agents",
+        complexity: 82,
+        files: ["readme.md", "workflow.json", "candidate-eval.xlsx", "recruiting-rules.json"],
+        description: "Listens for new candidate job applications, extracts resume texts, scores applicant suitability via Claude models, and updates HR spreadsheets.",
+        nodes: [
+          { name: "CV File Uploaded", type: "trigger", icon: "file-text" },
+          { name: "Claude ATS Evaluator", type: "ai", icon: "brain" },
+          { name: "Suitability Score", type: "logic", icon: "bar-chart-2" },
+          { name: "HR Sheets Update", type: "action", icon: "file-spreadsheet" }
+        ]
+      },
+      {
+        id: "shopify-blog-sheets",
+        title: "AI Blog Generator for Shopify Product listings: Using GPT-4o and Google Sheets-4735",
+        category: "Marketing",
+        complexity: 83,
+        files: ["readme.md", "workflow.json", "product-log.xlsx", "shopify-auth.json"],
+        description: "Monitors Shopify inventories in Google Sheets, generates SEO-optimized description blogs with GPT-4o, and posts them directly to Shopify Blogs.",
+        nodes: [
+          { name: "Inventory Alert", type: "trigger", icon: "shopping-bag" },
+          { name: "Google Sheets Read", type: "logic", icon: "file-spreadsheet" },
+          { name: "GPT-4o Blogger", type: "ai", icon: "edit-3" },
+          { name: "Shopify Publisher", type: "action", icon: "upload-cloud" }
+        ]
+      },
+      {
+        id: "candidate-linkedin-apify",
+        title: "AI Candidate Screening Pipeline: LinkedIn to Telegram with Gemini & Apify-10045",
+        category: "Marketing",
+        complexity: 80,
+        files: ["readme.md", "workflow.json", "linkedin-targets.json", "telegram-auth.json"],
+        description: "Scrapes applicant LinkedIn profiles using Apify, scores candidate experience metrics using Gemini models, and forwards resumes to HR via Telegram.",
+        nodes: [
+          { name: "Applicant Input", type: "trigger", icon: "user-plus" },
+          { name: "Apify Scraper", type: "logic", icon: "search" },
+          { name: "Gemini Evaluator", type: "ai", icon: "brain" },
+          { name: "Telegram HR Alert", type: "action", icon: "send" }
+        ]
+      },
+      {
+        id: "job-crawler-scoring",
+        title: "AI Job Crawler with Suitability Scoring-15412",
+        category: "Data & Scrapers",
+        complexity: 78,
+        files: ["readme.md", "workflow.json", "job-criteria.json", "scraped-jobs.csv"],
+        description: "Crawls career boards, aggregates matching tech job posts, ranks postings by resume skill compatibility, and pushes updates to email digests.",
+        nodes: [
+          { name: "Daily Trigger", type: "trigger", icon: "clock" },
+          { name: "Crawler Web", type: "logic", icon: "globe" },
+          { name: "Suitability Scorer", type: "ai", icon: "brain" },
+          { name: "Mail Notification", type: "action", icon: "mail" }
+        ]
+      },
+      {
+        id: "lead-scoring-mailchimp",
+        title: "AI Lead Scoring & Enrichment from Mailchimp to HubSpot and Pipedrive with GPT-4o-8909",
+        category: "Marketing",
+        complexity: 85,
+        files: ["readme.md", "workflow.json", "mailchimp-mapping.json", "hubspot-config.json"],
+        description: "Syncs Mailchimp contact actions, scrapes prospect company domains, runs business health scoring via GPT-4o, and updates HubSpot and Pipedrive CRM deals.",
+        nodes: [
+          { name: "Mailchimp Click", type: "trigger", icon: "mouse-pointer" },
+          { name: "Clearbit API", type: "logic", icon: "search" },
+          { name: "GPT-4o Scoring", type: "ai", icon: "brain" },
+          { name: "HubSpot Sync", type: "action", icon: "refresh-cw" },
+          { name: "Pipedrive Update", type: "action", icon: "users" }
+        ]
+      }
+    ];
+
+    let activeWorkflowId = "onboarding-emails";
+    let activeCategory = "All";
+    let searchQuery = "";
+
+
+    // Render folder items on the left sidebar
+    function renderFolders(filteredList = workflowsData) {
+      const container = document.getElementById('repo-folders');
+      container.innerHTML = '';
+      
+      filteredList.forEach(wf => {
+        const div = document.createElement('div');
+        div.className = `repo-folder-item ${wf.id === activeWorkflowId ? 'active' : ''}`;
+        div.setAttribute('data-id', wf.id);
+        div.onclick = () => selectWorkflow(wf.id);
+        
+        div.innerHTML = `<i data-lucide="folder"></i> <span>${wf.title}</span>`;
+        container.appendChild(div);
+      });
+      lucide.createIcons();
+    }
+
+    // Select workflow and render the right side details
+    function selectWorkflow(id) {
+      activeWorkflowId = id;
+      
+      // Update sidebar active class
+      document.querySelectorAll('.repo-folder-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-id') === id) {
+          item.classList.add('active');
+        }
+      });
+      
+      const wf = workflowsData.find(w => w.id === id);
+      if (!wf) return;
+
+      const previewPane = document.getElementById('repo-preview-pane');
+      
+      // Node diagram elements html
+      let nodesHtml = '';
+      wf.nodes.forEach((node, idx) => {
+        nodesHtml += `
+          <div class="repo-node-box ${node.type}">
+            <i data-lucide="${node.icon}"></i>
+            <span>${node.name}</span>
+          </div>
+        `;
+        if (idx < wf.nodes.length - 1) {
+          nodesHtml += `<div class="repo-node-connector"></div>`;
+        }
+      });
+
+      // Package files list html
+      let filesHtml = '';
+      wf.files.forEach(f => {
+        let fileIcon = "file-text";
+        if (f.endsWith(".json")) fileIcon = "code-2";
+        if (f.endsWith(".webp")) fileIcon = "image";
+        filesHtml += `
+          <div class="workflow-file-item">
+            <i data-lucide="${fileIcon}"></i>
+            <span>${f}</span>
+          </div>
+        `;
+      });
+
+      // Category styling classes
+      let categoryTagClass = "marketing";
+      if (wf.category === "AI Agents") categoryTagClass = "marketing";
+      if (wf.category === "Marketing") categoryTagClass = "sales";
+      if (wf.category === "Data & Scrapers") categoryTagClass = "operations";
+      if (wf.category === "Email & Sync") categoryTagClass = "analytics";
+
+      previewPane.innerHTML = `
+        <div class="repo-preview-header">
+          <div class="repo-preview-header-left">
+            <span class="workflow-tag ${categoryTagClass}" style="margin-bottom: 8px; display: inline-block;">${wf.category}</span>
+            <h3 class="repo-preview-title">${wf.title}</h3>
+          </div>
+          <div class="repo-preview-header-right">
+            <div class="complexity-label">COMPLEXITY</div>
+            <div class="complexity-value">${wf.complexity}%</div>
+          </div>
+        </div>
+
+        <!-- Node Canvas representation -->
+        <div>
+          <div style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 12px;">n8n Visual Canvas Preview</div>
+          <div class="repo-node-canvas">
+            ${nodesHtml}
+          </div>
+        </div>
+
+        <div class="repo-preview-grid">
+          <div class="workflow-files">
+            <span class="workflow-file-heading">Package Structure (${wf.files.length} Files)</span>
+            <div class="workflow-file-list" style="margin-top: 10px;">
+              ${filesHtml}
+            </div>
+          </div>
+          <div>
+            <span class="workflow-file-heading">Functional Scope</span>
+            <p class="workflow-scope-desc">
+              ${wf.description}
+            </p>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // Handle category tab filtering
+    function filterRepoCategory(category) {
+      activeCategory = category;
+      
+      // Update tabs active state
+      document.querySelectorAll('.repo-tab').forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.textContent.trim() === 'Data' && category === 'Data & Scrapers') {
+          tab.classList.add('active');
+        } else if (tab.textContent.trim() === 'Sync' && category === 'Email & Sync') {
+          tab.classList.add('active');
+        } else if (tab.textContent.trim() === category) {
+          tab.classList.add('active');
+        }
+      });
+      
+      applyFilters();
+    }
+
+    // Handle search in the sidebar
+    function handleRepoSearch() {
+      searchQuery = document.getElementById('repo-search-input').value.toLowerCase();
+      applyFilters();
+    }
+
+    // Apply combined filters (search and category)
+    function applyFilters() {
+      let filtered = workflowsData;
+      
+      if (activeCategory !== 'All') {
+        filtered = filtered.filter(wf => wf.category === activeCategory);
+      }
+      
+      if (searchQuery) {
+        filtered = filtered.filter(wf => 
+          wf.title.toLowerCase().includes(searchQuery) || 
+          wf.description.toLowerCase().includes(searchQuery) ||
+          wf.category.toLowerCase().includes(searchQuery)
+        );
+      }
+      
+      renderFolders(filtered);
+      
+      // Select first search result if current is hidden
+      if (filtered.length > 0) {
+        const isStillVisible = filtered.some(wf => wf.id === activeWorkflowId);
+        if (!isStillVisible) {
+          selectWorkflow(filtered[0].id);
+        }
+      } else {
+        document.getElementById('repo-preview-pane').innerHTML = `
+          <div style="text-align: center; padding: 64px 24px; color: var(--text-muted);">
+            <i data-lucide="folder-open" style="width: 48px; height: 48px; margin-bottom: 16px; stroke-width: 1.5; color: var(--outline-variant); display: inline-block;"></i>
+            <h3>No Workflows Found</h3>
+            <p style="font-size: 14px; margin-top: 8px;">Try adjusting your search query or category filters.</p>
+          </div>
+        `;
+        lucide.createIcons();
+      }
+    }
+
+    // Call renders on window load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderFolders();
+      selectWorkflow(activeWorkflowId);
+    });
+
+    // Who This Is For - Content Selector
+    const audienceData = {
+      agencies: "Scale your client delivery. Package these workflows, skin them with custom credentials, and sell them as recurring high-ticket automation retainers.",
+      freelancers: "Increase your hourly/project value. Deliver advanced automations that client developers spend weeks building in just a fraction of the time.",
+      owners: "Eliminate manual data entry. Integrate your CRMs, lead pipelines, support chat, and accounting workflows to run automatically 24/7.",
+      creators: "Build content engines. Schedule across social grids, generate text briefs, translate formats, and moderate comments with zero human supervision.",
+      students: "Learn n8n by exploring enterprise-ready patterns. Master API integrations, databases, and AI model prompting in a real-world repository.",
+      nocode: "Speed up your development. Stop reinventing standard node configurations. Copy-paste working configurations and focus on building high-value features."
+    };
+
+    function showAudience(audience) {
+      const chips = document.querySelectorAll('#who-is-for .who-chip');
+      chips.forEach(chip => {
+        chip.classList.remove('active');
+        if (chip.getAttribute('onclick').includes(audience)) {
+          chip.classList.add('active');
+        }
+      });
+      
+      const textElem = document.getElementById('audience-text');
+      textElem.style.opacity = '0';
+      textElem.style.transform = 'translateY(5px)';
+      
+      setTimeout(() => {
+        textElem.textContent = audienceData[audience];
+        textElem.style.opacity = '1';
+        textElem.style.transform = 'translateY(0)';
+      }, 200);
+    }
+
+    // Accordion Toggle
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close all items
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+        faq.querySelector('.faq-body').style.maxHeight = '0';
+      });
+
+      // If clicked item wasn't active, open it
+      if (!isActive) {
+        item.classList.add('active');
+        const body = item.querySelector('.faq-body');
+        const content = item.querySelector('.faq-content');
+        body.style.maxHeight = content.scrollHeight + 'px';
+      }
+    }
+
+    // ⚠️ REPLACE THIS WITH YOUR GOOGLE WEB APP URL AFTER DEPLOYMENT
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtmiUQ2lFZbdmjTBMRyS57uUhyXUE6i1n7tZmftgOMpUwm0S9L0ljGNx_5jQzzsUn9/exec'; 
+
+    async function handleLeadSubmit(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('lead-form');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      
+      const name = document.getElementById('lead-name').value.trim();
+      const email = document.getElementById('lead-email').value.trim();
+      const phone = document.getElementById('lead-phone').value.trim();
+      const profession = document.getElementById('lead-profession').value;
+      
+      const submitBtn = document.getElementById('lead-submit-btn');
+      const submitBtnText = submitBtn.querySelector('span');
+      const submitBtnIcon = submitBtn.querySelector('i');
+      
+      // Change to loading state
+      submitBtn.disabled = true;
+      submitBtnText.textContent = 'Unlocking Vault...';
+      if (submitBtnIcon) {
+        submitBtnIcon.className = 'spinner';
+        submitBtnIcon.setAttribute('data-lucide', 'loader-2');
+        lucide.createIcons();
+      }
+      
+      // Disable form inputs
+      Array.from(form.elements).forEach(el => el.disabled = true);
+      
+      // Save customer details in sessionStorage & set verified flag
+      try {
+        sessionStorage.setItem('ae_pg_customer_name', name);
+        sessionStorage.setItem('ae_pg_customer_email', email);
+        sessionStorage.setItem('ae_pg_customer_phone', phone);
+        sessionStorage.setItem('ae_lead_verified', 'true');
+      } catch (e) {
+        console.warn('sessionStorage write failed:', e);
+      }
+
+      // Collect submission promises
+      const submitPromises = [];
+
+      // 1. Submit to Web3Forms
+      try {
+        const p1 = fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: Math.random() < 0.5 ? "176a8c9c-a947-4c3f-8a82-f7d4887ab243" : "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
+            subject: `New Lead Captured (Direct) - ${name}`,
+            from_name: "FutureWithAi Lead System",
+            name: name,
+            email: email,
+            whatsapp: phone,
+            profession: profession,
+            message: `User details submitted in lead form:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}`
+          })
+        });
+        submitPromises.push(p1);
+      } catch (e) {
+        console.warn('Web3Forms lead log failed:', e);
+      }
+
+      // 2. Submit to Google Apps Script Web App directly
+      if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+        try {
+          const p2 = fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Bypasses browser CORS restrictions for script execution
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              action: "lead_capture",
+              name: name,
+              email: email,
+              profession: profession
+            })
+          });
+          submitPromises.push(p2);
+        } catch (e) {
+          console.warn('Google Apps Script trigger failed:', e);
+        }
+      }
+
+      // Execute submissions (with a timeout fallback to prevent user freezing)
+      try {
+        await Promise.race([
+          Promise.all(submitPromises),
+          new Promise(resolve => setTimeout(resolve, 3500))
+        ]);
+      } catch (err) {
+        console.warn('Submission error or timeout:', err);
+      }
+
+      // Track Lead Event in Meta Pixel
+      if (window.fbq) {
+        const trackOpts = {};
+        try {
+          const testCode = sessionStorage.getItem('fb_test_event_code');
+          if (testCode) {
+            trackOpts.test_event_code = testCode;
+          }
+        } catch(e) {}
+        fbq('track', 'Lead', {
+          content_category: 'Gift Vault',
+          content_name: 'Premium AI Digital Gifts'
+        }, trackOpts);
+      }
+
+      // Transition directly to Success view
+      document.getElementById('lead-form-container').style.display = 'none';
+      document.getElementById('lead-success-container').style.display = 'block';
+      
+      // Refresh icons in the newly opened container
+      lucide.createIcons();
+    }
+
+    function copyBlueprintFromModal() {
+      const promptText = document.getElementById('blueprint-prompt-text').innerText;
+      
+      navigator.clipboard.writeText(promptText).then(() => {
+        // Visual micro-feedback on button
+        const btn = document.getElementById('modal-copy-prompt-btn');
+        const btnText = btn.querySelector('span');
+        const btnIcon = btn.querySelector('i');
+        
+        const originalText = btnText.textContent;
+        btnText.textContent = 'Copied! ✓';
+        if (btnIcon) {
+          btnIcon.className = '';
+          btnIcon.setAttribute('data-lucide', 'check');
+          lucide.createIcons();
+        }
+        
+        // Show toast alert
+        const toast = document.getElementById('copy-toast');
+        if (toast) {
+          toast.classList.add('show');
+        }
+        
+        setTimeout(() => {
+          btnText.textContent = originalText;
+          if (btnIcon) {
+            btnIcon.className = '';
+            btnIcon.setAttribute('data-lucide', 'copy');
+            lucide.createIcons();
+          }
+          if (toast) {
+            toast.classList.remove('show');
+          }
+        }, 2500);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        alert('Could not copy prompt automatically. Please copy it manually.');
+      });
+    }
+  </script>
+
+  <!-- ══ LIMITED TIME OFFER COUNTDOWN SCRIPT ══ -->
+  <script>
+    (function() {
+      // Offer ends: June 17, 2026 08:46:00 IST (UTC+5:30)
+      // UTC = June 17, 2026 03:16:00 UTC
+      var OFFER_END = new Date('2026-06-17T03:16:00Z').getTime();
+
+      var banner    = document.getElementById('limited-offer-banner');
+      var display   = document.getElementById('offer-countdown');
+      if (!banner || !display) return;
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+
+      function tick() {
+        var now  = Date.now();
+        var diff = OFFER_END - now;
+
+        if (diff <= 0) {
+          // Offer expired — hide the banner completely
+          banner.style.display = 'none';
+          clearInterval(timer);
+          return;
+        }
+
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000)   / 1000);
+
+        display.textContent = '\u23f3 ' + pad(h) + ':' + pad(m) + ':' + pad(s) + ' left';
+
+        // Also update the inline countdown inside pricing card
+        var inlineCD = document.getElementById('pricing-countdown-inline');
+        if (inlineCD) inlineCD.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+
+      tick(); // Run immediately
+      var timer = setInterval(tick, 1000);
+    })();
+
+    // ── Dynamic Pricing Display ──────────────────────────────────────
+    (function() {
+      var EARLY_PRICE  = 99;
+      var REGULAR_PRICE = 149;
+
+      // Update pricing section
+      var priceEl   = document.getElementById('pricing-current-amount');
+      var badgeEl   = document.getElementById('pricing-badge');
+      var earlyBadge = document.getElementById('pricing-early-badge');
+      var urgencyMsg = document.getElementById('pricing-urgency-msg');
+      var ctaBtn    = document.getElementById('pricing-cta-btn');
+
+      // Price is now fixed at ₹99
+      if (priceEl)    priceEl.textContent = '\u20b999';
+      if (ctaBtn)     ctaBtn.innerHTML    = 'ADD TO CART @ \u20b999 <i data-lucide="shopping-cart"></i>';
+      lucide.createIcons();
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- ══ TASK 4: FLASH OFFER POPUP — ₹300 for June 17, 2026 ═══════ -->
+  <!-- ══ Shows only if: (1) Date is June 17  (2) User hasn't seen it -->
+  <!-- ══ Disappears after 5 minutes  (3) localStorage prevents repeat -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <style>
+    /* Flash Offer Overlay */
+    #flash-offer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      animation: flashFadeIn 0.4s ease;
+    }
+    #flash-offer-overlay.active { display: flex; }
+    @keyframes flashFadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes flashCardIn { from { opacity:0; transform:scale(0.9) translateY(30px); } to { opacity:1; transform:scale(1) translateY(0); } }
+    @keyframes flashPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,138,0,0.6); } 70% { box-shadow: 0 0 0 14px rgba(255,138,0,0); } }
+    @keyframes flashShine { 0% { left:-100%; } 100% { left:200%; } }
+
+    .flash-offer-card {
+      background: linear-gradient(135deg, rgba(30,18,10,0.98) 0%, rgba(5,5,5,0.99) 100%);
+      border: 2px solid rgba(255,138,0,0.5);
+      border-radius: 28px;
+      padding: 44px 40px 36px;
+      max-width: 460px;
+      width: 90vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: flashCardIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 40px rgba(255,138,0,0.15);
+    }
+    .flash-offer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff8a00, #ffb347, #ff8a00, transparent);
+    }
+    .flash-offer-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,138,0,0.04), transparent);
+      animation: flashShine 4s linear infinite;
+    }
+    .flash-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .flash-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .flash-subtitle {
+      font-size: 14px;
+      color: #ddc1ae;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .flash-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .flash-price-old {
+      font-size: 20px;
+      text-decoration: line-through;
+      color: #a58c7b;
+    }
+    .flash-price-new {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ff8a00;
+      text-shadow: 0 0 20px rgba(255,138,0,0.4);
+    }
+    .flash-savings {
+      display: inline-block;
+      background: rgba(39,201,63,0.15);
+      color: #27c93f;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(39,201,63,0.3);
+      margin-bottom: 20px;
+    }
+    .flash-timer-box {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,138,0,0.2);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 24px;
+    }
+    .flash-timer-label {
+      font-size: 11px;
+      color: #a58c7b;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .flash-timer-digits {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fff;
+      font-family: 'Inter', monospace;
+      letter-spacing: 2px;
+    }
+    .flash-cta-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: flashPulse 2s infinite;
+      margin-bottom: 12px;
+    }
+    .flash-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,138,0,0.4);
+    }
+    .flash-close-btn {
+      background: none;
+      border: none;
+      color: #a58c7b;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.2s;
+    }
+    .flash-close-btn:hover { color: #fff; }
+    .flash-x-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: #a58c7b;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    .flash-x-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    @media (max-width: 500px) {
+      .flash-offer-card { padding: 32px 20px 28px; }
+      .flash-title { font-size: 22px; }
+      .flash-price-new { font-size: 38px; }
+    }
+  </style>
+
+  <!-- Flash Offer Popup HTML -->
+  <div id="flash-offer-overlay">
+    <div class="flash-offer-card">
+      <button class="flash-x-btn" onclick="closeFlashOffer()" title="Close">✕</button>
+      <div class="flash-badge">⚡ TODAY ONLY — FLASH DEAL</div>
+      <h2 class="flash-title">Wait! Special Deal @ ₹99</h2>
+      <p class="flash-subtitle">Complete your purchase now and get the entire n8n Automation Pack (2000+ Workflows) at our lowest ever price.</p>
+      <div class="flash-price-row">
+        <span class="flash-price-old">₹2,999</span>
+        <span class="flash-price-new">₹99</span>
+      </div>
+      <div class="flash-savings">You Save ₹2,900 Today!</div>
+      <div class="flash-timer-box">
+        <div class="flash-timer-label">Offer expires in</div>
+        <div class="flash-timer-digits" id="flash-timer">05:00</div>
+      </div>
+      <a href="https://anshumanenterprises.online/futurewithai/checkout.html?amount=99&flash=1" class="flash-cta-btn" id="flash-cta-link">BUY NOW @ ₹99 →</a>
+      <button class="flash-close-btn" onclick="closeFlashOffer()">No thanks, I'll pay full price</button>
+    </div>
+  </div>
+
+  <!-- Flash Offer Logic -->
+  <script>
+  (function() {
+    // ── Config ──────────────────────────────────────────────
+    var FLASH_DATE = '2026-06-17'; // Only show on June 17, 2026
+    var FLASH_WINDOW_MS = 5 * 60 * 1000; // 5 minutes
+    var STORAGE_KEY = 'fwai_flash_offer_shown_v1';
+
+    // ── Check conditions ───────────────────────────────────
+    var now = new Date();
+    var todayIST = new Date(now.getTime() + (5.5 * 60 * 60 * 1000));
+    var todayStr = todayIST.getUTCFullYear() + '-' +
+                   String(todayIST.getUTCMonth() + 1).padStart(2, '0') + '-' +
+                   String(todayIST.getUTCDate()).padStart(2, '0');
+
+    // Exit if not June 17
+    if (todayStr !== FLASH_DATE) return;
+
+    // Exit if already shown to this user
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === 'true') return;
+    } catch(e) {}
+
+    // ── Mark as shown immediately ──────────────────────────
+    try { localStorage.setItem(STORAGE_KEY, 'true'); } catch(e) {}
+
+    // ── Show popup after 2s delay for better UX ───────────
+    var startTime = Date.now();
+    var endTime = startTime + FLASH_WINDOW_MS;
+    var overlay = document.getElementById('flash-offer-overlay');
+    var timerEl = document.getElementById('flash-timer');
+    var flashInterval;
+
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function updateFlashTimer() {
+      var remaining = endTime - Date.now();
+      if (remaining <= 0) {
+        clearInterval(flashInterval);
+        if (overlay) overlay.classList.remove('active');
+        return;
+      }
+      var mins = Math.floor(remaining / 60000);
+      var secs = Math.floor((remaining % 60000) / 1000);
+      if (timerEl) timerEl.textContent = pad(mins) + ':' + pad(secs);
+    }
+
+    setTimeout(function() {
+      if (overlay) {
+        overlay.classList.add('active');
+        updateFlashTimer();
+        flashInterval = setInterval(updateFlashTimer, 1000);
+      }
+    }, 2000);
+
+    // ── Close handler ──────────────────────────────────────
+    window.closeFlashOffer = function() {
+      if (overlay) overlay.classList.remove('active');
+      clearInterval(flashInterval);
+    };
+  })();
+  </script>
+</body>
+</html>

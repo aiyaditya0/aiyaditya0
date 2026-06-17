@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureWithAi - 1500+ Manually Tested Web Applications Pack</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Get access to 1500+ manually tested web application templates and SaaS boilerplates with full source code. Fully functional and deploy-ready.">
+  <meta property="og:title" content="FutureWithAi - 1500+ Manually Tested Web Apps Pack">
+  <meta property="og:description" content="Get access to 1500+ manually tested web application templates and SaaS boilerplates with full source code.">
+  <meta property="og:image" content="webapp_hero_mockup.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="pixel-tracker.js" defer></script>
+  <script src="cart.js" defer></script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    /* Sticky Top Banner Styling */
+    #limited-offer-banner {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000;
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
+    }
+    @keyframes bannerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #offer-countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 8px;
+      padding: 3px 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    #limited-offer-banner .offer-cta-link {
+      background: #000;
+      color: #ff8a00;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #limited-offer-banner .offer-cta-link:hover {
+      background: #1a1a1a;
+    }
+    #offer-close-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+    #offer-close-btn:hover { color: #000; }
+
+    /* Stats Ribbon Container */
+    .hero-stat-card {
+      background: rgba(27, 17, 10, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+    .hero-stat-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-2px);
+    }
+    .hero-stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-container);
+      margin-bottom: 4px;
+      text-shadow: var(--glow-primary);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    /* Earning Potential Layout */
+    .earnings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .earnings-card {
+      background: linear-gradient(135deg, rgba(20, 15, 10, 0.45) 0%, rgba(5, 5, 5, 0.8) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: var(--transition-smooth);
+    }
+    .earnings-card:hover {
+      border-color: var(--primary-container);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-4px);
+    }
+    .earnings-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255, 138, 0, 0.15);
+      border: 1px solid rgba(255, 138, 0, 0.25);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .earnings-title {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+    .earnings-salary {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary-container);
+      text-shadow: var(--glow-primary);
+    }
+    .earnings-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .earnings-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0;
+    }
+    .earnings-bullets li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 10px;
+    }
+    .earnings-bullets li::before {
+      content: "•";
+      color: var(--primary-container);
+      font-weight: bold;
+    }
+    .earnings-badge {
+      align-self: flex-start;
+      background: rgba(255, 138, 0, 0.15);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-top: auto;
+    }
+
+    /* Calculator Section */
+    .calculator-container {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      border-radius: 28px;
+      padding: 48px;
+      max-width: 800px;
+      margin: 48px auto 0 auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary);
+      text-align: center;
+    }
+    .calculator-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-white);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .calc-slider-group {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    .calc-val-bubble {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .calc-slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+      accent-color: var(--primary-container);
+      background: rgba(255,255,255,0.08);
+    }
+    .calc-result-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .calc-result-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .calc-result-value {
+      font-size: 54px;
+      font-weight: 800;
+      color: var(--primary-container);
+      text-shadow: var(--glow-primary);
+      margin-bottom: 4px;
+    }
+    .calc-result-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Showcase Grid Styles */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .showcase-card {
+      background: rgba(20, 15, 10, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+    .showcase-card:hover {
+      border-color: var(--primary-container);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-primary);
+    }
+    .showcase-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: #000;
+    }
+    .showcase-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .showcase-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .showcase-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .showcase-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Database Table styling */
+    .db-section {
+      background: rgba(10, 10, 10, 0.3);
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .db-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .db-category {
+      background: rgba(20, 15, 10, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+    .db-category-title {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255,138,0,0.15);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .db-apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .db-app-item {
+      font-size: 14px;
+      color: var(--text-secondary);
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.02);
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Value Box */
+    .value-box {
+      background: linear-gradient(135deg, rgba(30, 18, 10, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: var(--glow-primary);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .value-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 8px;
+    }
+    .value-item.total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+      border-bottom: none;
+      margin-top: 8px;
+    }
+    .value-pay-today {
+      text-align: center;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      padding-left: 48px;
+    }
+    .pay-today-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .pay-today-price {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--primary-container);
+      text-shadow: var(--glow-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .pay-today-badge {
+      display: inline-block;
+      background: rgba(39, 201, 63, 0.15);
+      color: #27c93f;
+      border: 1px solid rgba(39, 201, 63, 0.3);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    /* FAQ Accordion Styling */
+    .faq-container {
+      max-width: 800px;
+      margin: 48px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+    .faq-item:hover {
+      border-color: var(--border-hover);
+    }
+    .faq-header {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-question {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-white);
+      padding-right: 20px;
+    }
+    .faq-icon {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-content {
+      padding: 0 24px 24px 24px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.02);
+      padding-top: 16px;
+    }
+    .faq-item.active .faq-body {
+      max-height: 300px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Final Checkout Sticky Box */
+    .final-box {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3);
+      border-radius: 28px;
+      padding: 48px;
+      max-width: 600px;
+      margin: 48px auto 0 auto;
+      box-shadow: var(--glow-primary);
+      text-align: center;
+    }
+    .final-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+      margin: 24px 0 32px 0;
+      background: rgba(0,0,0,0.25);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+    .final-checklist li {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .final-checklist li i {
+      color: #27c93f;
+      flex-shrink: 0;
+    }
+
+    /* Floating Simulated Purchase Notification Popup */
+    #purchase-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 99999;
+      background: rgba(18, 11, 6, 0.95);
+      border: 1px solid rgba(255, 138, 0, 0.3);
+      border-radius: 16px;
+      padding: 16px;
+      width: 320px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), var(--glow-primary);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    #purchase-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .purchase-toast-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-surface-container-highest);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-container);
+      border: 1.5px solid rgba(255,138,0,0.2);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+    .purchase-toast-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .purchase-toast-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+    .purchase-toast-prod {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+    .purchase-toast-meta {
+      font-size: 10px;
+      color: #27c93f;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Mobile Adaptability */
+    @media (max-width: 991px) {
+      .earnings-grid {
+        grid-template-columns: 1fr;
+      }
+      .showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .db-apps-grid {
+        grid-template-columns: 1fr;
+      }
+      .value-box {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .value-pay-today {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-left: 0;
+        padding-top: 32px;
+      }
+      #purchase-toast {
+        width: calc(100% - 48px);
+        left: 24px;
+      }
+    }
+    @media (max-width: 600px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .calculator-container {
+        padding: 24px;
+      }
+      .calc-result-value {
+        font-size: 38px;
+      }
+      .value-pay-today .pay-today-price {
+        font-size: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Offer Banner -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — First 24 Hours Only! Get 1500+ Web Apps at ₹199 before prices increase.</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html'); return false;" class="offer-cta-link">Grab It Now →</a>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  </div>
+
+  <!-- Header Section -->
+  <header id="navbar">
+    <div class="header-container">
+      <a href="index.html" class="logo-wrapper" id="nav-logo">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" class="logo-img">
+      </a>
+      <nav id="nav-links">
+        <a href="n8n-pack.html">n8n Pack 🤖</a>
+        <a href="video-editing.html">Video Pack 🎬</a>
+        <a href="#earnings">Earnings</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#database">Database Inclusions</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="cart-nav-btn cart-toggle-trigger" title="Open Cart">
+          <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="section-label">💻 1500+ MANUALLY TESTED WEB APPLICATIONS</span>
+          <h1 class="hero-title">
+            Unlock Production
+            <span>Source Code Vault</span>
+          </h1>
+          <p class="hero-subtitle">
+            Skip months of development setup. Get instant access to a curated repository of 1,500+ manually tested, deploy-ready web apps, admin dashboards, and SaaS boilerplates (PHP, Laravel, MySQL, CodeIgniter).
+          </p>
+          <div class="hero-actions">
+            <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              ADD TO CART @ ₹199 <i data-lucide="shopping-cart"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
+              Join WhatsApp Community
+            </a>
+          </div>
+          <div class="hero-trust-notes">
+            <span><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Full Source Code</span>
+            <div class="dot"></div>
+            <span><i data-lucide="infinity" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Lifetime Validity</span>
+            <div class="dot"></div>
+            <span><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Instant Delivery</span>
+          </div>
+        </div>
+        
+        <div class="hero-image-container">
+          <div class="hero-image-wrapper">
+            <img src="webapp_hero_mockup.png" alt="SaaS Web Application Developer Environment Layout" class="hero-img" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges / Stats Row -->
+  <section class="trustbar" style="padding: 24px 0;">
+    <div class="container">
+      <div class="trustbar-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">1,500+</div>
+          <div class="hero-stat-label">Web Applications</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">100%</div>
+          <div class="hero-stat-label">Tested & Secure</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">Commercial</div>
+          <div class="hero-stat-label">License Included</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">₹199</div>
+          <div class="hero-stat-label">Promotional Price</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Earning Potential Section -->
+  <section class="section" id="earnings" style="background: rgba(10, 10, 10, 0.3);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">💰 REVENUE POTENTIAL</span>
+        <h2 class="section-title">Web Developers Earn ₹6,00,000–₹25,00,000 Per Year — This Bundle Gets You There Faster</h2>
+        <p class="section-desc">
+          Deploying pre-built software = high margins. Here is exactly what becomes possible when you leverage our manual tested code bases.
+        </p>
+      </div>
+
+      <div class="earnings-grid">
+        <!-- Card 1 -->
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="laptop"></i></div>
+          <h3 class="earnings-title">Freelance Developer / Agency</h3>
+          <div class="earnings-salary">₹20,000–₹1,00,000/Project</div>
+          <p class="earnings-desc">Offer hospital systems, restaurant POS, custom e-commerce stores, or school portals to local businesses. Sell them in days instead of coding from scratch.</p>
+          <ul class="earnings-bullets">
+            <li>Hospital Management: ₹25,000–₹50,000</li>
+            <li>Restaurant POS System: ₹20,000–₹40,000</li>
+            <li>Multi-Vendor Ecommerce: ₹35,000–₹80,000</li>
+            <li>Real Estate Portal: ₹30,000–₹60,000</li>
+          </ul>
+          <div class="earnings-badge">Deployable in 24 hours</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="server"></i></div>
+          <h3 class="earnings-title">Micro-SaaS Creator</h3>
+          <div class="earnings-salary">₹50,000–₹5,00,000/month</div>
+          <p class="earnings-desc">Modify SaaS boilerplates (CRM, support ticketing, project managers) and launch your own monthly recurring revenue products on hosting platforms.</p>
+          <ul class="earnings-bullets">
+            <li>Project Management: +150 Active Users</li>
+            <li>Advocate Portal: Niche subscription</li>
+            <li>Online Exam Portal: For local institutes</li>
+            <li>Gym Portal: Monthly subscription retainer</li>
+          </ul>
+          <div class="earnings-badge">Scale to passive revenue</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="earnings-card">
+          <div class="earnings-icon"><i data-lucide="building-2"></i></div>
+          <h3 class="earnings-title">Full-Time Agency Lead</h3>
+          <div class="earnings-salary">₹6,00,000–₹25,00,000/year</div>
+          <p class="earnings-desc">Accelerate your team's code delivery. Standardize code templates and reduce timeline delays by reusing our tested database schemas and scripts.</p>
+          <ul class="earnings-bullets">
+            <li>Delivery speed: +10x faster timelines</li>
+            <li>Client satisfaction: High retention</li>
+            <li>Code quality: Hand-tested repository</li>
+            <li>Integration: Preconfigured billing & auth</li>
+          </ul>
+          <div class="earnings-badge">Increase project capacity</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Pricing Calculator -->
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="calculator-container">
+        <h3 class="calculator-title"><i data-lucide="calculator"></i> Calculate Your Freelance/Agency Project Revenue</h3>
+        
+        <div class="calc-slider-group">
+          <div class="calc-label-row">
+            <span>Projects you deploy per month:</span>
+            <span class="calc-val-bubble" id="projects-val">4</span>
+          </div>
+          <input type="range" class="calc-slider" id="projects-slider" min="1" max="20" value="4" oninput="updateCalculator()">
+        </div>
+
+        <div class="calc-slider-group">
+          <div class="calc-label-row">
+            <span>Average charge per project:</span>
+            <span class="calc-val-bubble" id="rate-val">₹25,000</span>
+          </div>
+          <input type="range" class="calc-slider" id="rate-slider" min="5000" max="100000" step="5000" value="25000" oninput="updateCalculator()">
+        </div>
+
+        <div class="calc-result-box">
+          <div class="calc-result-label">POTENTIAL MONTHLY REVENUE</div>
+          <div class="calc-result-value" id="calc-earnings">₹1,00,000</div>
+          <div class="calc-result-subtitle" id="calc-formula">4 projects × ₹25,000</div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted);">Configure 1500+ templates. Skip weeks of coding. Scale client margins.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase Section -->
+  <section class="section" id="showcase">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">MODULE PREVIEWS</span>
+        <h2 class="section-title">Tested Premium Application Mockups</h2>
+        <p class="section-desc">
+          Observe flat-lay mockup screenshots of high-demand management panels, POS environments, and SaaS architectures included.
+        </p>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- Dashboard 1: Multi-Vendor Ecommerce -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="ecommerce_portal_mockup.png" alt="Multi-Vendor Ecommerce Dashboard screenshot layout">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-title">Multi-Vendor Ecommerce Portal</h4>
+            <p class="showcase-desc">Features multi-vendor commission panels, automated inventory catalog logs, shipping tables, stripe checkouts, and customer invoices in PHP Laravel.</p>
+          </div>
+        </div>
+
+        <!-- Dashboard 2: CRM Pro -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="saas_dashboard_mockup.png" alt="CRM Software Pro Version screenshot layout">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-title">CRM Software (Pro Version)</h4>
+            <p class="showcase-desc">Includes sales pipeline tracking columns, active customer logs, automated follow-up scheduling scripts, and operational task monitors in CodeIgniter.</p>
+          </div>
+        </div>
+
+        <!-- Dashboard 3: POS System -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img src="pos_billing_mockup.png" alt="Point of Sale System interface mockup screenshot">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-title">POS Touch Billing System</h4>
+            <p class="showcase-desc">Sleek checkout screen featuring dynamic category menus, active tax calculators, invoice printing modules, and payment gateway logs in PHP Laravel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorized Database Section -->
+  <section class="db-section" id="database">
+    <div class="container db-container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 64px auto;">
+        <span class="section-label">THE MASTER DIRECTORY</span>
+        <h2 class="section-title">Categorized Inclusions & App Database</h2>
+        <p class="section-desc">Browse a structured checklist of core B2B management systems, ecommerce portals, and customized templates included in the Google Drive folder.</p>
+      </div>
+
+      <!-- Core B2B Apps -->
+      <div class="db-category">
+        <h3 class="db-category-title"><i data-lucide="database" style="color: var(--primary-container);"></i> Core Business Systems (PHP, Laravel, CodeIgniter)</h3>
+        <div class="db-apps-grid">
+          <div class="db-app-item">🏥 Hospital Management System (CodeIgniter)</div>
+          <div class="db-app-item">💊 Pharmacy Management System (PHP Laravel)</div>
+          <div class="db-app-item">✈️ Tour & Travel Portal + Admin (PHP Laravel)</div>
+          <div class="db-app-item">🛒 Single Vendor Ecommerce + Admin (CodeIgniter)</div>
+          <div class="db-app-item">🏬 Multi Vendor Ecommerce + Admin (PHP Laravel)</div>
+          <div class="db-app-item">📰 News Portal with Admin Panel (CodeIgniter)</div>
+          <div class="db-app-item">📊 CRM Software Pro Version (CodeIgniter)</div>
+          <div class="db-app-item">👔 HR Management System (CodeIgniter)</div>
+          <div class="db-app-item">🖥️ Online Exam Web Portal + Admin (PHP Laravel)</div>
+          <div class="db-app-item">🎓 Online Tutorial Portal + Admin (PHP Laravel)</div>
+          <div class="db-app-item">💼 Online Job Portal + Admin (PHP Laravel)</div>
+          <div class="db-app-item">🏫 School Management Pro Version (CodeIgniter)</div>
+          <div class="db-app-item">💍 Matrimonial Web Portal + Admin (PHP Laravel)</div>
+          <div class="db-app-item">🖩 Point of Sale System (POS) (PHP Laravel)</div>
+          <div class="db-app-item">🍽️ POS System for Restaurants (PHP Laravel)</div>
+          <div class="db-app-item">🏋️ Gym & Fitness Management (PHP Laravel)</div>
+          <div class="db-app-item">🚚 Courier & Logistics Management (PHP Laravel)</div>
+          <div class="db-app-item">⚖️ Advocate Management System (PHP Laravel)</div>
+          <div class="db-app-item">🏠 Real Estate Management System (PHP Laravel)</div>
+          <div class="db-app-item">🎫 Advanced Support Ticket System (CodeIgniter)</div>
+          <div class="db-app-item">📈 Project Management Software (Laravel)</div>
+        </div>
+      </div>
+
+      <!-- Extended Catalog -->
+      <div class="db-category">
+        <h3 class="db-category-title"><i data-lucide="list" style="color: var(--primary-container);"></i> Catalog Inclusions (Tested & Documented)</h3>
+        <div class="db-apps-grid">
+          <div class="db-app-item">✅ 1. Online FIR System</div>
+          <div class="db-app-item">✅ 2. Online Exam System</div>
+          <div class="db-app-item">✅ 3. Online Food Ordering</div>
+          <div class="db-app-item">✅ 4. Patient Record Manager</div>
+          <div class="db-app-item">✅ 5. Smart Parking Management</div>
+          <div class="db-app-item">✅ 6. Library Management System</div>
+          <div class="db-app-item">✅ 7. Student Record Manager</div>
+          <div class="db-app-item">✅ 8. Crime Reporting Console</div>
+          <div class="db-app-item">✅ 9. Daily Expense Manager</div>
+          <div class="db-app-item">✅ 10. Doctor Appointment Booker</div>
+          <div class="db-app-item">✅ 11. E-Bank Management System</div>
+          <div class="db-app-item">✅ 12. Laundry Management System</div>
+          <div class="db-app-item">✅ 13. Loan Management Pipeline</div>
+          <div class="db-app-item">✅ 14. Medicine Inventory Software</div>
+          <div class="db-app-item">✅ 15. Stock & Supplier Management</div>
+          <div class="db-app-item">✅ 16. Cable Network Management</div>
+          <div class="db-app-item">✅ 17. Bus Booking portal</div>
+          <div class="db-app-item">✅ 18. Crowdfunding Portal</div>
+          <div class="db-app-item">✅ 19. MLM & Affiliate Console</div>
+          <div class="db-app-item">✅ 20. Tenant & Apartment Manager</div>
+          <div class="db-app-item">✅ 21. Car Repair Workshop Tracker</div>
+          <div class="db-app-item">✅ 22. Hostel Lodge Booking system</div>
+          <div class="db-app-item">✅ 23. Photo Studio Management</div>
+          <div class="db-app-item">✅ 24. Smart Restaurant POS</div>
+          <div class="db-app-item">✅ 25. Social Network Manager</div>
+        </div>
+      </div>
+      <p style="text-align: center; font-size: 13.5px; color: var(--text-muted);">+ 1,300 additional tested PHP application packages cataloged in Google Drive folders.</p>
+    </div>
+  </section>
+
+  <!-- 3 FREE Bonuses Section -->
+  <section class="section" id="bonuses">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">🎁 DEVELOPER REWARDS</span>
+        <h2 class="section-title">Get 3 FREE Bonuses (Worth ₹9,997)</h2>
+        <p class="section-desc">Unlock these premium developer utility assets alongside the 1500+ web applications today.</p>
+      </div>
+
+      <div class="value-box">
+        <div class="value-list">
+          <div class="value-item">
+            <span>1,500+ Manually Tested Web Applications & Source Codes</span>
+            <span>₹4,999</span>
+          </div>
+          <div class="value-item">
+            <span>Bonus 1: 50+ Premium Tailwind HTML UI Kits</span>
+            <span>₹2,999</span>
+          </div>
+          <div class="value-item">
+            <span>Bonus 2: 100+ SQL Database Schema Blueprints</span>
+            <span>₹1,499</span>
+          </div>
+          <div class="value-item">
+            <span>Bonus 3: Deployment Video Course & Docker Configurations</span>
+            <span>₹499</span>
+          </div>
+          <div class="value-item total">
+            <span>Total Real Value:</span>
+            <span>₹9,997</span>
+          </div>
+        </div>
+        <div class="value-pay-today">
+          <div class="pay-today-label">TODAY ONLY PAY:</div>
+          <div class="pay-today-price">₹199</div>
+          <div class="pay-today-badge">SAVE 98% ON LAUNCH</div>
+          <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;">
+            ADD TO CART @ ₹199 <i data-lucide="shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-container">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">What databases and stacks are used in these applications?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              The web applications are built on modern, secure frameworks including PHP Laravel, pure PHP, CodeIgniter, jQuery, Bootstrap, AJAX, and use MySQL/PostgreSQL databases. Full SQL schemas are included.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Do I get the full front-end and back-end source code?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes. You get 100% full, uncompiled source code (both front-end HTML/JS and backend PHP controllers). You can inspect, modify, tweak, and customize every aspect of the logic.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Are deployment guides and checklists included?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Absolutely. We provide setup documentation, SQL import instructions, and video walkthroughs demonstrating how to configure environment variables and deploy to cloud platforms like Vercel, Heroku, or cPanel.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Is the developer commercial license included?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes. A lifetime developer commercial license is included in the ₹199 package. You can customize, rename, host, and sell these software portals to your business clients with no restrictions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Sticky Card -->
+  <section class="section" style="border-top: 1px solid var(--border-color); padding: 80px 0;">
+    <div class="container">
+      <div class="final-box" style="margin-top: 0;">
+        <h2 class="section-title">Get 1500+ Web Apps today for ₹199</h2>
+        <p class="section-desc" style="font-size: 15px; margin-bottom: 24px;">Lifetime commercial developer license + Google Drive access. Deploy in minutes.</p>
+        
+        <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 16px; padding: 18px;">
+          🎬 ADD TO CART NOW @ ₹199 →
+        </a>
+        
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
+          🔒 Secure Checkout · Instant Drive Download · UPI · Card · NetBanking
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer style="border-top: 1px solid var(--border-color); padding: 48px 0; background: rgba(0,0,0,0.4);">
+    <div class="container" style="text-align: center; display: flex; flex-direction: column; gap: 20px;">
+      <a href="index.html" style="display: block; width: fit-content; margin: 0 auto;">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height: 48px; object-fit: contain;">
+      </a>
+      <p style="font-size: 13.5px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.5;">
+        Empowering developer agencies and creators with production-ready code boilerplates and templates.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 24px; font-size: 13px;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a>
+        <a href="refund.html" style="color: var(--text-muted); text-decoration: none;">Cancellation & Refund</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms & Conditions</a>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 16px;">
+        &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Floating Purchase Notification Popup -->
+  <div id="purchase-toast">
+    <div class="purchase-toast-avatar" id="purchase-toast-avatar">RS</div>
+    <div class="purchase-toast-content">
+      <span class="purchase-toast-name" id="purchase-toast-name">Rohit S.</span>
+      <span class="purchase-toast-prod" id="purchase-toast-prod">purchased 1500+ Manually Tested Web Apps</span>
+      <span class="purchase-toast-meta">
+        <i data-lucide="check-circle-2" style="width: 12px; height: 12px; color: #27c93f;"></i> Verified Purchase · <span id="purchase-toast-time">3 mins ago</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Script for interactive controls -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      startCountdownTimer();
+      startPurchaseNotifs();
+    });
+
+    // ── Calculator Logic ──────────────────────────────────────────────
+    function updateCalculator() {
+      const projects = parseInt(document.getElementById('projects-slider').value);
+      const rate = parseInt(document.getElementById('rate-slider').value);
+      
+      document.getElementById('projects-val').textContent = projects;
+      document.getElementById('rate-val').textContent = '₹' + rate.toLocaleString('en-IN');
+      
+      const earnings = projects * rate;
+      document.getElementById('calc-earnings').textContent = '₹' + earnings.toLocaleString('en-IN');
+      document.getElementById('calc-formula').textContent = `${projects} projects × ₹${rate.toLocaleString('en-IN')}`;
+    }
+
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    function startCountdownTimer() {
+      const endTime = Date.now() + (2 * 24 * 60 * 60 * 1000) - (8 * 60 * 1000);
+      
+      function tick() {
+        const remaining = endTime - Date.now();
+        if (remaining <= 0) {
+          clearInterval(timer);
+          return;
+        }
+        
+        const h = Math.floor((remaining % (24 * 3600000)) / 3600000);
+        const m = Math.floor((remaining % 3600000) / 60000);
+        const s = Math.floor((remaining % 60000) / 1000);
+        
+        const pad = (n) => String(n).padStart(2, '0');
+        
+        const bannerCD = document.getElementById('offer-countdown');
+        if (bannerCD) bannerCD.textContent = `⏳ ${pad(h)}:${pad(m)}:${pad(s)} left`;
+      }
+      
+      tick();
+      const timer = setInterval(tick, 1000);
+    }
+
+    // ── Purchase Notification Simulation ──────────────────────────────
+    const purchaseData = [
+      { name: "Sanjay K.", city: "Mumbai", time: "3 mins ago" },
+      { name: "Pankaj D.", city: "Noida", time: "5 mins ago" },
+      { name: "Divya J.", city: "Kolkata", time: "7 mins ago" },
+      { name: "Kartik S.", city: "Indore", time: "1 min ago" },
+      { name: "Nitin B.", city: "Bengaluru", time: "12 mins ago" },
+      { name: "Deepa G.", city: "Chennai", time: "2 mins ago" }
+    ];
+
+    function startPurchaseNotifs() {
+      const toast = document.getElementById('purchase-toast');
+      const avatar = document.getElementById('purchase-toast-avatar');
+      const nameEl = document.getElementById('purchase-toast-name');
+      const timeEl = document.getElementById('purchase-toast-time');
+      
+      let index = 0;
+      
+      function showNext() {
+        const item = purchaseData[index];
+        const initials = item.name.split(' ').map(n => n[0]).join('');
+        avatar.textContent = initials;
+        nameEl.textContent = `${item.name} - ${item.city}`;
+        timeEl.textContent = item.name === "Kartik S." ? "Just now" : item.time;
+        
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+          index = (index + 1) % purchaseData.length;
+          setTimeout(showNext, 8000);
+        }, 5000);
+      }
+      
+      setTimeout(showNext, 4000);
+    }
+  </script>
+</body>
+</html>

@@ -412,7 +412,9 @@
     }
 
     function openWhatsApp() {
-      const msg = `Hello Support,\n\nMy payment has failed.\n*Product:* Ultimate n8n AI Automation Pack\n*Amount:* ₹349\n\nPlease assist me.`;
+      const prodName = sessionStorage.getItem('ae_pg_product_name') || params.get('products') || 'n8n Automation Pack (2000+ Workflows)';
+      const amount = sessionStorage.getItem('ae_pg_amount') || params.get('amount') || '149';
+      const msg = `Hello Support,\n\nMy payment has failed.\n*Product:* ${prodName}\n*Amount:* ₹${amount}\n\nPlease assist me.`;
       window.open(`https://wa.me/917065815743?text=${encodeURIComponent(msg)}`, '_blank');
     }
 

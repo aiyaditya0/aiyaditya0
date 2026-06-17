@@ -319,7 +319,7 @@
           </div>
           <div class="order-row">
             <span>Product</span>
-            <span>n8n AI Pack (2000+ Workflows)</span>
+            <span id="displayProductName">n8n AI Pack (2000+ Workflows)</span>
           </div>
         </div>
 
@@ -475,7 +475,26 @@
       const payment = data.successPayment || (data.payments && data.payments[0]) || {};
       const amtInr  = data.amount || payment.amount || 349;
 
+      // Determine product name dynamically
+      let prodName = sessionStorage.getItem('ae_pg_product_name');
+      if (!prodName) {
+        const amt = parseInt(amtInr);
+        if (amt === 99) {
+          // Both n8n Pack and Reels Pack are ₹99 — default to n8n Pack
+          prodName = 'n8n Automation Pack (2000+ Workflows)';
+        } else if (amt === 149) {
+          prodName = 'n8n Automation Pack (2000+ Workflows)';
+        } else if (amt === 199) {
+          prodName = 'Ultimate Video Editing Toolkit / Web Apps Pack';
+        } else if (amt === 349) {
+          prodName = '14000+ n8n Workflow Automation (Enterprise)';
+        } else {
+          prodName = 'FutureWithAi Premium Creators Pack';
+        }
+      }
+
       document.getElementById('paidAmount').textContent = `₹${amtInr}`;
+      document.getElementById('displayProductName').textContent = prodName;
       document.getElementById('displayOrderId').textContent = orderId || data.merchantOrderId || '—';
       document.getElementById('displayAmount').textContent  = `₹${amtInr}`;
       document.getElementById('displayPayMode').textContent = payment.paymentMode || 'UPI';
@@ -503,8 +522,8 @@
             'Accept': 'application/json'
           },
           body: JSON.stringify({
-            access_key: Math.random() < 0.5 ? "176a8c9c-a947-4c3f-8a82-f7d4887ab243" : "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
-            subject: `🎉 SUCCESSFUL PAYMENT: ${customerName} (₹${amtInr})`,
+            access_key: "176a8c9c-a947-4c3f-8a82-f7d4887ab243",
+            subject: `🎉 SUCCESSFUL PAYMENT: ${customerName} (₹${amtInr}) - ${prodName}`,
             from_name: "FutureWithAi Checkout System",
             name: customerName || "Customer",
             email: customerEmail || "No Email Provided",
@@ -513,7 +532,7 @@
             txn_id: payment.transactionId || "N/A",
             amount: `₹${amtInr}`,
             payment_mode: payment.paymentMode || "UPI",
-            message: `A client has successfully paid for the Ultimate n8n AI Automation Pack.\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${customerPhone}\nOrder ID: ${orderId}\nTransaction ID: ${payment.transactionId || "N/A"}\nAmount Paid: ₹${amtInr}\n\nPlease verify and send Google Drive and Community Access to their email/WhatsApp.`
+            message: `A client has successfully paid for the ${prodName}.\n\nName: ${customerName}\nEmail: ${customerEmail}\nWhatsApp: ${customerPhone}\nOrder ID: ${orderId}\nTransaction ID: ${payment.transactionId || "N/A"}\nAmount Paid: ₹${amtInr}\n\nPlease verify and send Google Drive and Community Access to their email/WhatsApp.`
           })
         });
       } catch (e) {
@@ -545,7 +564,9 @@
     function openWhatsApp() {
       const orderId = orderIdFromUrl || '(not available)';
       const name    = customerName || 'Customer';
-      const msg = `Hello Support,\n\nMaine payment complete kar diya hai!\n\n*Name:* ${name}\n*Order ID:* ${orderId}\n*Product:* Ultimate n8n AI Automation Pack\n*Amount:* ₹349\n\nKripya Google Drive link bhejein. Dhanyawad! 🙏`;
+      const prodName = document.getElementById('displayProductName').textContent || 'FutureWithAi Product';
+      const amount = document.getElementById('paidAmount').textContent || '₹349';
+      const msg = `Hello Support,\n\nMaine payment complete kar diya hai!\n\n*Name:* ${name}\n*Order ID:* ${orderId}\n*Product:* ${prodName}\n*Amount:* ${amount}\n\nKripya Google Drive link bhejein. Dhanyawad! 🙏`;
       window.open(`https://wa.me/917065815743?text=${encodeURIComponent(msg)}`, '_blank');
     }
 

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureWithAi - 14,000+ n8n Workflow Automation (Enterprise Pack)</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Get access to 14,000+ enterprise-grade ready-to-import n8n workflows. Advanced automation, multi-stage AI agents, CRM integration, and web scrapers.">
+  <meta property="og:title" content="FutureWithAi - 14,000+ n8n Workflow Automation">
+  <meta property="og:description" content="Get access to 14,000+ enterprise-grade ready-to-import n8n workflows. Advanced automation, multi-stage AI agents, CRM integration, and web scrapers.">
+  <meta property="og:image" content="n8n_hero_mockup.png">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <script src="pixel-tracker.js" defer></script>
+  <script src="cart.js" defer></script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    /* Sticky Top Banner Styling */
+    #limited-offer-banner {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
+      background-size: 200% 100%;
+      animation: bannerSlide 4s linear infinite;
+      color: #000;
+      text-align: center;
+      padding: 10px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
+    }
+    @keyframes bannerSlide {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #offer-countdown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 8px;
+      padding: 3px 12px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    }
+    #limited-offer-banner .offer-cta-link {
+      background: #000;
+      color: #ff8a00;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #limited-offer-banner .offer-cta-link:hover {
+      background: #1a1a1a;
+    }
+    #offer-close-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(0,0,0,0.5);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+    #offer-close-btn:hover { color: #000; }
+
+    /* Stats Ribbon Container */
+    .hero-stat-card {
+      background: rgba(27, 17, 10, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+    .hero-stat-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-2px);
+    }
+    .hero-stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--primary-container);
+      margin-bottom: 4px;
+      text-shadow: var(--glow-primary);
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+
+    /* Calculator Section */
+    .calculator-container {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1px solid rgba(255, 138, 0, 0.2);
+      border-radius: 28px;
+      padding: 48px;
+      max-width: 800px;
+      margin: 48px auto 0 auto;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary);
+      text-align: center;
+    }
+    .calculator-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-white);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .calc-slider-group {
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: var(--text-primary);
+    }
+    .calc-val-bubble {
+      background: var(--bg-surface-container-highest);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .calc-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-surface-container-low);
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+      accent-color: var(--primary-container);
+    }
+    .calc-slider::-webkit-slider-runnable-track {
+      background: linear-gradient(to right, var(--primary-container), var(--primary-container));
+      border-radius: 4px;
+    }
+    .calc-result-box {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .calc-result-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .calc-result-value {
+      font-size: 54px;
+      font-weight: 800;
+      color: var(--primary-container);
+      text-shadow: var(--glow-primary);
+      margin-bottom: 4px;
+    }
+    .calc-result-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Showcase Grid Styles */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .showcase-card {
+      background: rgba(20, 20, 20, 0.45);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .showcase-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-4px);
+    }
+    .showcase-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .showcase-card:hover .showcase-img {
+      transform: scale(1.08);
+    }
+    .showcase-body {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .showcase-card-title {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+    .showcase-card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Value Comparison Box */
+    .value-box {
+      background: linear-gradient(135deg, rgba(30, 18, 10, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 40px;
+      box-shadow: var(--glow-primary);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .value-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-bottom: 8px;
+    }
+    .value-item.total {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-white);
+      border-bottom: none;
+      margin-top: 8px;
+    }
+    .value-pay-today {
+      text-align: center;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      padding-left: 48px;
+    }
+    .pay-today-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .pay-today-price {
+      font-size: 64px;
+      font-weight: 800;
+      color: var(--primary-container);
+      text-shadow: var(--glow-primary);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .pay-today-badge {
+      display: inline-block;
+      background: rgba(39, 201, 63, 0.15);
+      color: #27c93f;
+      border: 1px solid rgba(39, 201, 63, 0.3);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    /* Database Table styling */
+    .db-section {
+      background: rgba(10, 10, 10, 0.2);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      padding: 100px 0;
+    }
+    .db-table-wrapper {
+      background: rgba(15, 15, 15, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .db-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+    .db-table th {
+      background: rgba(27, 17, 10, 0.5);
+      color: var(--primary);
+      font-weight: 700;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .db-table td {
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      color: var(--text-secondary);
+    }
+    .db-table tr:hover td {
+      background: rgba(255,138,0,0.02);
+      color: var(--text-white);
+    }
+    .badge-count {
+      background: rgba(255,138,0,0.1);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* FAQ Accordion Styling */
+    .faq-container {
+      max-width: 800px;
+      margin: 48px auto 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: rgba(20, 20, 20, 0.4);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+    .faq-item:hover {
+      border-color: var(--border-hover);
+    }
+    .faq-header {
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-question {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-white);
+      padding-right: 20px;
+    }
+    .faq-icon {
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-content {
+      padding: 0 24px 24px 24px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.02);
+      padding-top: 16px;
+    }
+    .faq-item.active .faq-body {
+      max-height: 300px;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Final Checkout Sticky Box */
+    .final-box {
+      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+      border: 1.5px solid rgba(255, 138, 0, 0.3);
+      border-radius: 28px;
+      padding: 48px;
+      max-width: 600px;
+      margin: 48px auto 0 auto;
+      box-shadow: var(--glow-primary);
+      text-align: center;
+    }
+
+    /* Mobile Adaptability */
+    @media (max-width: 991px) {
+      .earnings-grid {
+        grid-template-columns: 1fr;
+      }
+      .showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .value-box {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .value-pay-today {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-left: 0;
+        padding-top: 32px;
+      }
+    }
+    @media (max-width: 600px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      .calculator-container {
+        padding: 24px;
+      }
+      .calc-result-value {
+        font-size: 38px;
+      }
+      .value-pay-today .pay-today-price {
+        font-size: 48px;
+      }
+      .db-table th, .db-table td {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Offer Banner -->
+  <div id="limited-offer-banner">
+    <span>🔥 <strong>LAUNCH OFFER</strong> — First 24 Hours Only! Get 14,000+ Enterprise n8n Workflows at ₹349 before offer ends.</span>
+    <span id="offer-countdown">⏳ Loading...</span>
+    <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="offer-cta-link">Grab It Now →</a>
+    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  </div>
+
+  <!-- Header Section -->
+  <header id="navbar">
+    <div class="header-container">
+      <a href="index.html" class="logo-wrapper" id="nav-logo">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" class="logo-img">
+      </a>
+      <nav id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="n8n-pack.html">Standard Pack 🤖</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#previews">Proof Previews</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <button class="cart-nav-btn cart-toggle-trigger" title="Open Cart">
+          <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="section-label">🤖 ENTERPRISE AUTOMATION</span>
+          <h1 class="hero-title">
+            14,000+ Enterprise
+            <span>n8n Workflows</span>
+          </h1>
+          <p class="hero-subtitle">
+            Power up your n8n workspace with the ultimate enterprise collection. 14,000+ ready-to-import advanced workflows featuring multi-agent AI loops, web scrapers, database synchronization, and deep API integrations.
+          </p>
+          <div class="hero-actions">
+            <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              ADD TO CART @ ₹349 <i data-lucide="shopping-cart"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
+              Join WhatsApp Community
+            </a>
+          </div>
+          <div class="hero-trust-notes">
+            <span><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Enterprise Grade</span>
+            <div class="dot"></div>
+            <span><i data-lucide="infinity" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Lifetime Updates</span>
+            <div class="dot"></div>
+            <span><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Instant Download</span>
+          </div>
+        </div>
+        
+        <div class="hero-image-container">
+          <div class="hero-image-wrapper">
+            <img src="n8n_hero_mockup.png" alt="Advanced Multi-Agent Node Workflow Mockup" class="hero-img" fetchpriority="high">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges Row -->
+  <section class="trustbar" style="padding: 24px 0;">
+    <div class="container">
+      <div class="trustbar-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">14,000+</div>
+          <div class="hero-stat-label">Production Flows</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">72+</div>
+          <div class="hero-stat-label">Integrations Folders</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">100%</div>
+          <div class="hero-stat-label">No Code Required</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-number">₹349</div>
+          <div class="hero-stat-label">Launch Price</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="two-col-features">
+        <div class="features-left">
+          <span class="section-label">SCALED AUTOMATIONS</span>
+          <h2>Sophisticated loop networks & error-handled pipelines.</h2>
+          <p>
+            While basic templates help with simple API triggers, complex business tasks require advanced loops, code nodes, conditional switches, and robust error-handling.
+          </p>
+          <p>
+            This package contains 14,000+ advanced enterprise schemas specifically built to run with full stability. Designed for agencies and businesses that need deep backend automations.
+          </p>
+          
+          <div style="margin-top: 32px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--glow-primary); padding: 4px; background: linear-gradient(135deg, rgba(255, 138, 0, 0.05) 0%, rgba(255,255,255,0.01) 100%);">
+            <img src="n8n_proof_loop.png" alt="n8n loop layout proof screenshot" style="width: 100%; height: auto; border-radius: 16px; display: block; object-fit: cover;">
+          </div>
+        </div>
+        
+        <div class="features-right-card">
+          <h3>Advanced System Inclusions</h3>
+          <ul class="feature-checklist">
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>Autonomous AI Crew Orchestration</strong>
+                Multi-agent collaboration chains that perform tasks, evaluate outputs, and rewrite prompts.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>Multi-Source Scrapers with Proxies</strong>
+                Extract directory data, LinkedIn profiles, or Google Maps pages with custom JS code.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>B2B CRM Data Enrichment Loops</strong>
+                HubSpot, Salesforce, Pipedrive automations that sync contacts and log transactions.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>WhatsApp & Telegram Autoresponders</strong>
+                Chatbot routers that check inventory databases and trigger email responses.
+              </div>
+            </li>
+            <li>
+              <i data-lucide="check-circle-2"></i>
+              <div>
+                <strong>PLR Rights Included</strong>
+                Brand, modify, bundle, and sell these schemas to your automation client accounts.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive ROI Calculator -->
+  <section class="section" id="calculator">
+    <div class="container">
+      <div class="calculator-container">
+        <h3 class="calculator-title"><i data-lucide="calculator"></i> Calculate Your Monthly Time & Money Saved</h3>
+        
+        <div class="calc-slider-group">
+          <div class="calc-label-row">
+            <span>Expected Monthly Workflow Runs:</span>
+            <span class="calc-val-bubble" id="runs-val">10,000</span>
+          </div>
+          <input type="range" class="calc-slider" id="runs-slider" min="1000" max="100000" step="1000" value="10000" oninput="updateCalculator()">
+        </div>
+
+        <div class="calc-slider-group">
+          <div class="calc-label-row">
+            <span>Manual Time Saved Per Task (mins):</span>
+            <span class="calc-val-bubble" id="time-val">5 mins</span>
+          </div>
+          <input type="range" class="calc-slider" id="time-slider" min="1" max="30" value="5" oninput="updateCalculator()">
+        </div>
+
+        <div class="calc-result-box">
+          <div class="calc-result-label">Est. Developer Hours Saved / Month:</div>
+          <div class="calc-result-value" id="calc-hours">833 Hours</div>
+          <div class="calc-result-subtitle" id="calc-formula">Equivalent to saving ₹3,33,333 in labor costs</div>
+        </div>
+
+        <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="btn-primary" style="padding: 16px 40px; font-size: 15px;">
+          🤖 Grab n8n Enterprise for ₹349 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase / Workflow Proof Grid Section -->
+  <section class="section" id="previews" style="background: rgba(10, 10, 10, 0.45);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto; max-width: 800px;">
+        <span class="section-label">EXECUTIONS PROOF SHOWCASE</span>
+        <h2 class="section-title">Verified Active Workflow Previews</h2>
+        <p class="section-desc">
+          Browse real screenshots of n8n canvas active runs, loops, and integration schemas included in this package.
+        </p>
+      </div>
+
+      <div class="showcase-grid">
+
+
+        <!-- Preview 3 -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img class="showcase-img" src="n8n_proof_scraper.png" alt="Multi-Stage Scraping Pipeline">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-card-title">Multi-Stage Web Scraper</h4>
+            <p class="showcase-card-desc">Runs automated pages scraping loops, structuring output directly into Google Sheet tables.</p>
+          </div>
+        </div>
+
+        <!-- Preview 4 -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img class="showcase-img" src="n8n_proof_whatsapp.png" alt="WhatsApp AI Assistant Bot">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-card-title">WhatsApp AI Bot</h4>
+            <p class="showcase-card-desc">Routing messages webhook through OpenAI assistant nodes and replying with structured formatting.</p>
+          </div>
+        </div>
+
+        <!-- Preview 5 -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img class="showcase-img" src="n8n_proof_database.png" alt="Cross-Database Sync Node">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-card-title">Cross-Database Sync</h4>
+            <p class="showcase-card-desc">Demonstrates real-time MySQL tables synchronizing with PostgreSQL targets using error checks.</p>
+          </div>
+        </div>
+
+        <!-- Preview 6 -->
+        <div class="showcase-card">
+          <div class="showcase-img-wrap">
+            <img class="showcase-img" src="n8n_proof_slack.png" alt="Slack Notification Engine">
+          </div>
+          <div class="showcase-body">
+            <h4 class="showcase-card-title">Slack Notification Loop</h4>
+            <p class="showcase-card-desc">AI-powered cron scheduler that generates sales reports and logs messages on dev team channels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Database Integrations Section -->
+  <section class="db-section" id="integrations">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto; max-width: 800px;">
+        <span class="section-label">📂 MASTER FILES CATALOG</span>
+        <h2 class="section-title">72+ Platform Node Integrations Folders</h2>
+        <p class="section-desc">
+          Browse the categorized folder structures you will receive in your drive access immediately.
+        </p>
+      </div>
+
+      <div class="db-table-wrapper">
+        <table class="db-table">
+          <thead>
+            <tr>
+              <th>Integration Group</th>
+              <th>Integrations Included</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google Workspace Apps</td>
+              <td>Googledrive, Googledrivetool, Googlesheets, Googlesheetstool, Googleslides, Googletasks, Googletranslate</td>
+              <td>JSON Sheets/Drive triggers</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>AI & LLM Services</td>
+              <td>Openai, OpenAI_and_LLMs, Humaniticai</td>
+              <td>Gemini, GPT-4, Llama connectors</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>CRM & Marketing Automation</td>
+              <td>Hubspot, Pipedrive, Keap, Mailchimp, Mailerlite, Mailjet, Mautic, Intercom, Helpscout, Lemlist</td>
+              <td>Contacts & Lead pipelines</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Databases & Message Queues</td>
+              <td>Postgres, Postgrestool, Redis, Mongodbtool, Mysqltool, Grist, Nocodb</td>
+              <td>Table sync & looping triggers</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Developer Utilities</td>
+              <td>Graphql, Http, Limit, Localfile, Markdown, Netlify, Odoo, Posthog, Postmark, Raindrop, Readbinaryfiles</td>
+              <td>API handlers & scrapers</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Project Operations</td>
+              <td>Jira, Jiratool, Gotowebinar, Hunter, Invoiceninja, Jotform, Microsofttodo, Mondaycom, Onfleet, Quickbooks</td>
+              <td>Task boards & billing sync</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+            <tr>
+              <td>Financial & Billing</td>
+              <td>Paypal, Gumroad, Stripe webhook catchers</td>
+              <td>Payment status listeners</td>
+              <td><span class="badge-count">Verified</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Summary Section -->
+  <section class="section" id="value-box">
+    <div class="container" style="max-width: 900px;">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">💵 VALUE COMPARISON</span>
+        <h2 class="section-title">An Unbeatable Offer</h2>
+      </div>
+
+      <div class="value-box">
+        <div class="value-list">
+          <div class="value-item">
+            <span>14,000+ Advanced n8n Workflow JSONs</span>
+            <span>₹9,999</span>
+          </div>
+          <div class="value-item">
+            <span>Autonomous AI Multi-Agent Loops</span>
+            <span>₹4,999</span>
+          </div>
+          <div class="value-item">
+            <span>Advanced Web Scrapers & Captcha Bypasses</span>
+            <span>₹2,999</span>
+          </div>
+          <div class="value-item">
+            <span>Detailed Setup Documentation & Video Guides</span>
+            <span>₹999</span>
+          </div>
+          <div class="value-item total">
+            <span>Total Real Value:</span>
+            <span>₹18,996</span>
+          </div>
+        </div>
+        <div class="value-pay-today">
+          <div class="pay-today-label">TODAY ONLY PAY:</div>
+          <div class="pay-today-price">₹349</div>
+          <div class="pay-today-badge">SAVE 98% ON LAUNCH</div>
+          <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;">
+            ADD TO CART @ ₹349 <i data-lucide="shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Grid -->
+  <section class="section" style="background: rgba(10, 10, 10, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto; max-width: 600px;">
+        <span class="section-label">TESTIMONIALS</span>
+        <h2 class="section-title">Trusted by Tech Teams</h2>
+      </div>
+
+      <div class="review-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The loops and database syncing templates are fantastic. Saved our DevOps lead days of coding custom hooks. Easily imported into our self-hosted instance."</p>
+          <div class="review-author">
+            <div class="review-avatar">AP</div>
+            <div class="review-author-info">
+              <span class="review-name">Aarav Patel</span>
+              <span class="review-role">Ops Engineer, Zenith Retail</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Using the scraping and OpenAI agents workflows to run cold outreach campaigns. The error handling on these nodes is built beautifully."</p>
+          <div class="review-author">
+            <div class="review-avatar">KD</div>
+            <div class="review-author-info">
+              <span class="review-name">Kabir Das</span>
+              <span class="review-role">Founder, ScaleMedia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Absolute goldmine for developer agencies. We rebranded 5 of the sync workflows and sold them as retouched integrations to clients. Paid for itself within hours."</p>
+          <div class="review-author">
+            <div class="review-avatar">ST</div>
+            <div class="review-author-info">
+              <span class="review-name">Siddharth T.</span>
+              <span class="review-role">Agency Owner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto;">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-container">
+        <!-- Q1 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">What is the difference between this and the 2000+ pack?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              The 2000+ pack contains ready-to-run workflows for typical setups (basic CRM, auto-posting, email notifications). The 14,000+ Enterprise Pack includes advanced, multi-node loops, autonomous AI Crew arrangements, heavy data scrapers, custom JS code nodes, and error-catching structures designed for professional agencies.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Does it support self-hosted n8n instances?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes, 100%. All workflow files are provided in standard JSON format, which can be imported into self-hosted n8n community editions, n8n cloud accounts, or desktop versions easily.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <div class="faq-header" onclick="toggleFaq(this)">
+            <span class="faq-question">Are setup guides included?</span>
+            <i data-lucide="plus" class="faq-icon"></i>
+          </div>
+          <div class="faq-body">
+            <div class="faq-content">
+              Yes. You get detailed text guides and video walkthroughs explaining how to configure credentials, set up webhook paths, link APIs, and customize data inputs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Checkout Section -->
+  <section class="section" style="border-top: 1px solid var(--border-color); padding: 80px 0;">
+    <div class="container">
+      <div class="final-box" style="margin-top: 0;">
+        <h2 class="section-title">Get 14,000+ Enterprise n8n Workflows today for ₹349</h2>
+        <p class="section-desc" style="font-size: 15px; margin-bottom: 24px;">Lifetime commercial developer license + Google Drive access. Automate at enterprise scale.</p>
+        
+        <a href="#" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 16px; padding: 18px;">
+          🎬 ADD TO CART NOW @ ₹349 →
+        </a>
+        
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
+          🔒 Secure Checkout · Instant Drive Access · UPI · Card · NetBanking
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer style="border-top: 1px solid var(--border-color); padding: 48px 0; background: rgba(0,0,0,0.4);">
+    <div class="container" style="text-align: center; display: flex; flex-direction: column; gap: 20px;">
+      <a href="index.html" style="display: block; width: fit-content; margin: 0 auto;">
+        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height: 48px; object-fit: contain;">
+      </a>
+      <p style="font-size: 13.5px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.5;">
+        Empowering developer agencies and creators with production-ready code boilerplates and templates.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 24px; font-size: 13px;">
+        <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a>
+        <a href="refund.html" style="color: var(--text-muted); text-decoration: none;">Cancellation & Refund</a>
+        <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
+        <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms & Conditions</a>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 16px;">
+        &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises. All Rights Reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      startCountdownTimer();
+      updateCalculator();
+    });
+
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    function updateCalculator() {
+      const runs = parseInt(document.getElementById('runs-slider').value);
+      const time = parseInt(document.getElementById('time-slider').value);
+
+      // Calculations:
+      // Hours saved = (runs * time) / 60
+      // Money saved = hours * 400 INR (developer rate)
+      const hours = Math.round((runs * time) / 60);
+      const money = hours * 400;
+
+      document.getElementById('runs-val').textContent = Number(runs).toLocaleString('en-IN');
+      document.getElementById('time-val').textContent = time + ' mins';
+      document.getElementById('calc-hours').textContent = Number(hours).toLocaleString('en-IN') + ' Hours';
+      document.getElementById('calc-formula').textContent = `Equivalent to saving ₹${Number(money).toLocaleString('en-IN')} in labor costs`;
+    }
+
+    function startCountdownTimer() {
+      const endTime = Date.now() + (2 * 24 * 60 * 60 * 1000) - (8 * 60 * 1000);
+      
+      function tick() {
+        const remaining = endTime - Date.now();
+        if (remaining <= 0) {
+          clearInterval(timer);
+          return;
+        }
+        
+        const h = Math.floor((remaining % (24 * 3600000)) / 3600000);
+        const m = Math.floor((remaining % 3600000) / 60000);
+        const s = Math.floor((remaining % 60000) / 1000);
+        
+        const pad = (n) => String(n).padStart(2, '0');
+        
+        const bannerCD = document.getElementById('offer-countdown');
+        if (bannerCD) bannerCD.textContent = `⏳ ${pad(h)}:${pad(m)}:${pad(s)} left`;
+      }
+      
+      tick();
+      const timer = setInterval(tick, 1000);
+    }
+  </script>
+</body>
+</html>
