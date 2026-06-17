@@ -1101,21 +1101,37 @@ function testTokenLookup() {
 
 // ── Spreadsheet Access Helper (Handles container-bound, openById, and auto-Drive fallback) ──
 function getActiveSpreadsheetHelper() {
+  // ★ HARDCODED FALLBACK — works without Script Properties
+  const HARDCODED_SHEET_ID = '121lRx4ujgdVuRcii7NVdgFhRzJGpuTR32kKomg7m6mKcxl8JzKXJM4-g6RvFcKHZzA';
+
   let ss = null;
+
+  // 1) Try active spreadsheet (container-bound)
   try {
     ss = SpreadsheetApp.getActiveSpreadsheet();
   } catch(e) {}
-  
+
+  // 2) Try Script Properties
   if (!ss) {
-    const scriptProperties = PropertiesService.getScriptProperties();
-    const sheetId = scriptProperties.getProperty('SPREADSHEET_ID');
-    if (sheetId && sheetId.trim() !== '') {
-      try {
+    try {
+      const scriptProperties = PropertiesService.getScriptProperties();
+      const sheetId = scriptProperties.getProperty('SPREADSHEET_ID');
+      if (sheetId && sheetId.trim() !== '') {
         ss = SpreadsheetApp.openById(sheetId.trim());
-      } catch(e) {}
+      }
+    } catch(e) {}
+  }
+
+  // 3) Try hardcoded ID (always works as long as the sheet exists and script has access)
+  if (!ss) {
+    try {
+      ss = SpreadsheetApp.openById(HARDCODED_SHEET_ID);
+    } catch(e) {
+      Logger.log('Hardcoded openById failed: ' + e.message);
     }
   }
-  
+
+  // 4) Drive search fallback
   if (!ss) {
     try {
       const files = DriveApp.getFilesByType(MimeType.GOOGLE_SHEETS);
@@ -1135,5 +1151,7 @@ function getActiveSpreadsheetHelper() {
       }
     } catch(e) {}
   }
+
   return ss;
 }
+
