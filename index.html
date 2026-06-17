@@ -1,472 +1,827 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FutureWithAi - Ultimate Digital Creator & Automation Suite</title>
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Unlock the ultimate suite for digital creators, automation agencies, and developers. Persistent shopping cart access to n8n packs, video editing assets, web apps, and viral reels.">
-  <meta property="og:title" content="FutureWithAi - Ultimate Digital Creator & Automation Suite">
-  <meta property="og:description" content="Unlock the ultimate suite for digital creators, automation agencies, and developers. Persistent shopping cart access to n8n packs, video editing assets, web apps, and viral reels.">
+  <title>FutureWithAI Store — Premium Digital Products</title>
+  <meta name="description" content="Buy premium digital products: n8n automation workflows, video editing assets, web app source codes, viral reels, and digital marketing bundles. Instant delivery.">
+  <meta property="og:title" content="FutureWithAI Store — Premium Digital Products">
   <meta property="og:image" content="hero-image.png">
-  
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/lucide@latest" defer></script>
   <script src="pixel-tracker.js" defer></script>
   <script src="cart.js" defer></script>
-
-  <noscript>
-    <img height="1" width="1" style="display:none" 
-         src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/>
-  </noscript>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2550902175328844&ev=PageView&noscript=1"/></noscript>
 
   <style>
-    #limited-offer-banner {
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background: linear-gradient(90deg, #b34500 0%, #ff8a00 40%, #ffb347 60%, #ff8a00 80%, #b34500 100%);
-      background-size: 200% 100%;
-      animation: bannerSlide 4s linear infinite;
-      color: #000;
-      text-align: center;
-      padding: 10px 16px;
+    /* ── Store Page Specific Styles ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* Announcement Bar */
+    #top-bar {
+      background: linear-gradient(90deg, #b34500, #ff8a00, #ffb347, #ff8a00, #b34500);
+      background-size: 300% 100%;
+      animation: barAnim 5s linear infinite;
+      color: #000; text-align: center; padding: 10px 16px;
+      font-size: 13px; font-weight: 700; font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      position: sticky; top: 0; z-index: 9999;
+      box-shadow: 0 2px 20px rgba(255,138,0,0.4);
+    }
+    @keyframes barAnim { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    #top-bar .tb-timer {
+      background: rgba(0,0,0,0.2); border-radius: 8px;
+      padding: 2px 10px; font-size: 14px; font-weight: 800;
+      color: #fff; letter-spacing: 1px;
+    }
+    #top-bar .tb-cta {
+      background: #000; color: #ff8a00; padding: 3px 12px;
+      border-radius: 20px; font-size: 12px; font-weight: 800;
+      text-decoration: none; white-space: nowrap;
+    }
+    #top-bar-close {
+      position: absolute; right: 12px; background: none;
+      border: none; color: rgba(0,0,0,0.5); cursor: pointer; font-size: 16px;
+    }
+    @media(max-width:600px){ #top-bar{font-size:11px; padding:8px 36px 8px 8px;} }
+
+    /* Header */
+    header {
+      position: sticky; top: 42px; z-index: 1000;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .header-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 24px; gap: 16px;
+    }
+    .logo-wrap { display: flex; align-items: center; text-decoration: none; }
+    .logo-wrap img { height: 52px; width: auto; object-fit: contain; }
+    .search-bar {
+      flex: 1; max-width: 420px;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 10px 16px;
+    }
+    .search-bar input {
+      background: none; border: none; outline: none;
+      color: #fff; font-size: 14px; width: 100%;
       font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 20px rgba(255,138,0,0.5);
     }
-    @keyframes bannerSlide {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .search-bar input::placeholder { color: rgba(255,255,255,0.35); }
+    .search-bar i { color: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
+    .cart-btn {
+      position: relative; background: rgba(255,138,0,0.12);
+      border: 1px solid rgba(255,138,0,0.3);
+      color: #ff8a00; border-radius: 12px; cursor: pointer;
+      padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
     }
-    #offer-countdown {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: rgba(0,0,0,0.18);
-      border-radius: 8px;
-      padding: 3px 12px;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #fff;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    .cart-btn:hover { background: rgba(255,138,0,0.2); }
+    .cart-count {
+      background: #ff8a00; color: #000; border-radius: 50%;
+      width: 18px; height: 18px; font-size: 10px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
     }
-    #limited-offer-banner .offer-cta-link {
-      background: #000;
-      color: #ff8a00;
-      padding: 4px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-      letter-spacing: 0.5px;
+    .whatsapp-btn {
+      background: #25D366; color: #fff; border: none; border-radius: 12px;
+      padding: 10px 16px; font-size: 13px; font-weight: 600;
+      cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 6px;
+      font-family: 'Inter', sans-serif; transition: all 0.2s; white-space: nowrap;
+    }
+    .whatsapp-btn:hover { background: #20bd5a; transform: translateY(-1px); }
+    @media(max-width:768px){
+      .header-inner { padding: 8px 14px; }
+      .logo-wrap img { height: 40px; }
+      .search-bar { display: none; }
+      .whatsapp-btn span { display: none; }
+      .whatsapp-btn { padding: 10px; }
+    }
+
+    /* Category Nav */
+    .cat-nav {
+      background: rgba(0,0,0,0.6); border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky; top: 92px; z-index: 900; overflow-x: auto;
+    }
+    .cat-nav::-webkit-scrollbar { display: none; }
+    .cat-nav-inner {
+      display: flex; gap: 0; max-width: 1300px; margin: 0 auto; padding: 0 24px;
+    }
+    .cat-btn {
+      padding: 12px 18px; font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,0.5); background: none; border: none;
+      cursor: pointer; white-space: nowrap; transition: all 0.2s;
+      border-bottom: 2px solid transparent; font-family: 'Inter', sans-serif;
+    }
+    .cat-btn:hover { color: #ff8a00; }
+    .cat-btn.active { color: #ff8a00; border-bottom-color: #ff8a00; }
+    @media(max-width:768px){ .cat-nav { top: 58px; } .cat-btn { padding: 10px 12px; font-size: 12px; } }
+
+    /* Hero Banner */
+    .store-hero {
+      background: linear-gradient(135deg, #0a0614 0%, #1a0a00 50%, #0a0614 100%);
+      padding: 40px 0 32px;
+    }
+    .hero-banner-inner {
+      max-width: 1300px; margin: 0 auto; padding: 0 24px;
+      display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+    }
+    .hero-tagline { font-size: 13px; font-weight: 700; color: #ff8a00; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .hero-heading { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 48px); color: #fff; line-height: 1.15; margin-bottom: 14px; }
+    .hero-heading span { color: #ff8a00; }
+    .hero-sub { color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.6; margin-bottom: 20px; max-width: 560px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+    .hbadge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 5px 14px; font-size: 12px; color: rgba(255,255,255,0.7);
+    }
+    .hbadge i { color: #ff8a00; }
+    .hero-stats { display: flex; flex-direction: column; gap: 12px; }
+    .hstat {
+      background: rgba(255,138,0,0.08); border: 1px solid rgba(255,138,0,0.2);
+      border-radius: 16px; padding: 16px 20px; text-align: center; min-width: 130px;
+    }
+    .hstat-num { font-size: 24px; font-weight: 800; color: #ff8a00; }
+    .hstat-lbl { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    @media(max-width:768px){
+      .hero-banner-inner { grid-template-columns: 1fr; gap: 20px; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .hstat { min-width: 100px; flex: 1; }
+      .store-hero { padding: 24px 0 20px; }
+    }
+
+    /* Main Store Layout */
+    .store-layout {
+      max-width: 1300px; margin: 0 auto; padding: 32px 24px;
+    }
+    @media(max-width:768px){ .store-layout { padding: 20px 14px; } }
+
+    /* Section Header */
+    .store-sec-head {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .store-sec-head h2 { font-size: clamp(18px, 3vw, 24px); color: #fff; font-weight: 700; }
+    .store-sec-head h2 span { color: #ff8a00; }
+    .store-sec-head a { font-size: 13px; color: #ff8a00; text-decoration: none; font-weight: 600; }
+
+    /* Featured Banner — Mega Bundle */
+    .featured-banner {
+      background: linear-gradient(135deg, #1a0800, #2d1200, #1a0800);
+      border: 1px solid rgba(255,138,0,0.3); border-radius: 20px;
+      padding: 28px; margin-bottom: 32px;
+      display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .featured-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(255,138,0,0.08) 0%, transparent 60%);
+    }
+    .fb-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #ff8a00; color: #000; border-radius: 8px;
+      padding: 4px 12px; font-size: 11px; font-weight: 800;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .fb-title { font-family: 'Playfair Display', serif; font-size: clamp(20px, 3vw, 32px); color: #fff; margin-bottom: 8px; line-height: 1.2; }
+    .fb-desc { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; line-height: 1.5; max-width: 500px; }
+    .fb-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .fb-feat {
+      background: rgba(255,255,255,0.06); border-radius: 8px;
+      padding: 4px 10px; font-size: 11px; color: rgba(255,255,255,0.7);
+    }
+    .fb-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .fb-price { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: line-through; }
+    .fb-price-main { font-size: 32px; font-weight: 800; color: #ff8a00; }
+    .fb-cta {
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000; border: none; border-radius: 12px; padding: 14px 28px;
+      font-size: 15px; font-weight: 800; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif; transition: all 0.2s;
+    }
+    .fb-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,138,0,0.4); }
+    .fb-img { width: 180px; height: 140px; object-fit: cover; border-radius: 14px; position: relative; z-index: 1; }
+    @media(max-width:768px){
+      .featured-banner { grid-template-columns: 1fr; }
+      .fb-img { width: 100%; height: 160px; }
+      .fb-price-main { font-size: 26px; }
+    }
+
+    /* Product Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px; margin-bottom: 40px;
+    }
+    @media(max-width:480px){ .products-grid { grid-template-columns: 1fr; } }
+
+    /* Product Card */
+    .prod-card {
+      background: rgba(20,12,5,0.8); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; overflow: hidden;
+      transition: all 0.25s; display: flex; flex-direction: column;
+      position: relative;
+    }
+    .prod-card:hover { border-color: rgba(255,138,0,0.35); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,138,0,0.1); }
+    .prod-badge {
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .badge-hot { background: #ff3b30; color: #fff; }
+    .badge-new { background: #34c759; color: #fff; }
+    .badge-sale { background: #ff8a00; color: #000; }
+    .badge-top { background: #5856d6; color: #fff; }
+    .prod-img-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+    .prod-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .prod-card:hover .prod-img-wrap img { transform: scale(1.05); }
+    .prod-quick-buy {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+      padding: 32px 16px 12px;
+      opacity: 0; transition: opacity 0.25s;
+      display: flex; gap: 8px;
+    }
+    .prod-card:hover .prod-quick-buy { opacity: 1; }
+    .quick-buy-btn {
+      flex: 1; background: #ff8a00; color: #000; border: none;
+      border-radius: 10px; padding: 10px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
       transition: background 0.2s;
-      white-space: nowrap;
     }
-    #limited-offer-banner .offer-cta-link:hover {
-      background: #1a1a1a;
+    .quick-buy-btn:hover { background: #ffb347; }
+    .quick-view-btn {
+      background: rgba(255,255,255,0.15); color: #fff; border: none;
+      border-radius: 10px; padding: 10px 14px; cursor: pointer;
+      font-family: 'Inter', sans-serif; text-decoration: none;
+      display: flex; align-items: center; transition: background 0.2s;
     }
-    #offer-close-btn {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: rgba(0,0,0,0.5);
-      cursor: pointer;
-      font-size: 18px;
-      line-height: 1;
-      padding: 0 4px;
-      transition: color 0.2s;
+    .quick-view-btn:hover { background: rgba(255,255,255,0.25); }
+    .prod-body { padding: 16px; display: flex; flex-direction: column; flex: 1; }
+    .prod-category { font-size: 10px; font-weight: 700; color: #ff8a00; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+    .prod-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+    .prod-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 12px; flex: 1; }
+    .prod-features { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .prod-feat-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.6); }
+    .prod-feat-item i { color: #ff8a00; flex-shrink: 0; }
+    .prod-footer { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .prod-price-block { display: flex; align-items: baseline; gap: 8px; }
+    .prod-original { font-size: 12px; color: rgba(255,255,255,0.35); text-decoration: line-through; }
+    .prod-price { font-size: 22px; font-weight: 800; color: #ff8a00; }
+    .prod-discount { background: rgba(52,199,89,0.15); color: #34c759; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+    .prod-add-btn {
+      background: linear-gradient(135deg, #ff8a00, #ffb347);
+      color: #000; border: none; border-radius: 10px;
+      padding: 10px 16px; font-size: 13px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      display: flex; align-items: center; gap: 6px;
+      transition: all 0.2s; white-space: nowrap;
     }
-    #offer-close-btn:hover { color: #000; }
-    
-    @media (max-width: 600px) {
-      #limited-offer-banner { font-size: 12px; padding: 8px 32px 8px 8px; }
-      #offer-countdown { font-size: 13px; }
+    .prod-add-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,138,0,0.4); }
+    .prod-add-btn.added { background: #34c759; color: #fff; }
+
+    /* Divider */
+    .sec-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 32px 0; }
+
+    /* Reviews Strip */
+    .reviews-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+    @media(max-width:768px){ .reviews-strip { grid-template-columns: 1fr; } }
+    .rev-card {
+      background: rgba(20,12,5,0.7); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 20px;
+    }
+    .rev-stars { color: #ff8a00; font-size: 14px; margin-bottom: 10px; }
+    .rev-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 14px; }
+    .rev-author { display: flex; align-items: center; gap: 10px; }
+    .rev-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #ff8a00, #b34500); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .rev-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .rev-role { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+    /* Trust Bar */
+    .trust-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+      padding: 24px; background: rgba(255,138,0,0.04);
+      border: 1px solid rgba(255,138,0,0.1); border-radius: 16px; margin-bottom: 32px;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.7); }
+    .trust-item i { color: #ff8a00; }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.5); padding: 40px 0 20px;
+    }
+    .footer-inner { max-width: 1300px; margin: 0 auto; padding: 0 24px; }
+    .footer-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+    @media(max-width:768px){ .footer-top { grid-template-columns: 1fr; gap: 20px; } }
+    .footer-logo img { height: 56px; object-fit: contain; margin-bottom: 12px; }
+    .footer-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; max-width: 260px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 8px; transition: color 0.2s; }
+    .footer-col a:hover { color: #ff8a00; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-whatsapp {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #25D366; color: #fff; border-radius: 10px; padding: 8px 16px;
+      font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.2s;
+    }
+    .footer-whatsapp:hover { background: #20bd5a; }
+
+    /* Mobile Quick Buy floating CTA for product pages */
+    @media(max-width:768px){
+      .prod-quick-buy { opacity: 1; position: static; background: none; padding: 0; margin-top: 10px; }
+      .quick-view-btn { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Top Offer Banner -->
-  <div id="limited-offer-banner">
-    <span>🔥 <strong>MEGA LAUNCH DEALS</strong> — Save up to 95% on our premium developer & creator resource packages!</span>
-    <span id="offer-countdown">⏳ Loading...</span>
-    <a href="#store" class="offer-cta-link">Shop Store →</a>
-    <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'" title="Close">✕</button>
+  <!-- Top Announcement Bar -->
+  <div id="top-bar">
+    <span>🔥 <strong>MEGA SALE</strong> — Up to 95% OFF on all digital packs!</span>
+    <span class="tb-timer" id="tb-timer">⏳ 24:00:00</span>
+    <a href="#products" class="tb-cta">Shop Now →</a>
+    <button id="top-bar-close" onclick="this.parentElement.style.display='none'">✕</button>
   </div>
 
-  <!-- Header Section -->
-  <header id="navbar">
-    <div class="header-container">
-      <a href="index.html" class="logo-wrapper" id="nav-logo">
-        <img src="primary-logo.png" alt="FutureWithAi Logo" class="logo-img">
+  <!-- Header / Navbar -->
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo-wrap" id="nav-logo">
+        <img src="primary-logo.png" alt="FutureWithAI Logo" class="logo-img">
       </a>
-      <nav id="nav-links">
-        <a href="#store">Digital Store</a>
-        <a href="n8n-pack.html">n8n Pack 🤖</a>
-        <a href="video-editing.html">Editing Pack 🎬</a>
-        <a href="web-apps.html">Web Apps 💻</a>
-        <a href="mega-reels.html">Mega Reels ⚡</a>
-        <a href="n8n-workflow-automation.html">Enterprise n8n ⚙️</a>
-      </nav>
-      <div style="display: flex; align-items: center; gap: 16px;">
-        <button class="cart-nav-btn cart-toggle-trigger" title="Open Cart">
-          <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
-          <span class="cart-badge">0</span>
+      <div class="search-bar">
+        <i data-lucide="search" style="width:16px;height:16px;"></i>
+        <input type="text" placeholder="Search products... (n8n, reels, editing...)" id="search-input" onkeyup="filterProducts(this.value)">
+      </div>
+      <div class="header-actions">
+        <button class="cart-btn cart-toggle-trigger" id="cart-nav-btn">
+          <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i>
+          Cart
+          <span class="cart-count cart-badge">0</span>
         </button>
-        <a href="#store" class="nav-cta" id="nav-cta-btn">
-          Explore Store <i data-lucide="arrow-down" style="width: 14px; height: 14px;"></i>
+        <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="whatsapp-btn">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+          <span>Join Community</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-grid" style="grid-template-columns: 1fr; text-align: center; max-width: 900px; margin: 0 auto;">
-        <div class="hero-content">
-          <span class="section-label">⚡ THE ULTIMATE DIGITAL SUITE FOR CREATORS & DEVELOPERS</span>
-          <h1 class="hero-title" style="font-size: 62px; line-height: 1.1; margin-bottom: 24px;">
-            Build Less. Automate More.
-            <span>Monetize Faster.</span>
-          </h1>
-          <p class="hero-subtitle" style="font-size: 20px; max-width: 760px; margin: 0 auto 40px auto; line-height: 1.6;">
-            Get instant access to developer boilerplates, enterprise n8n workflow systems, production-ready video editing libraries, and viral short-form contents. Elevate your delivery speed today.
-          </p>
-          <div class="hero-actions" style="justify-content: center; gap: 18px;">
-            <a href="#store" class="btn-primary" id="hero-cta-primary" style="font-size: 16px; padding: 16px 32px;">
-              Browse Packages <i data-lucide="arrow-right"></i>
+  <!-- Category Filter Nav -->
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-btn active" onclick="filterCat('all', this)">🏪 All Products</button>
+      <button class="cat-btn" onclick="filterCat('automation', this)">🤖 Automation</button>
+      <button class="cat-btn" onclick="filterCat('editing', this)">🎬 Video Editing</button>
+      <button class="cat-btn" onclick="filterCat('reels', this)">📱 Viral Reels</button>
+      <button class="cat-btn" onclick="filterCat('webapps', this)">💻 Web Apps</button>
+      <button class="cat-btn" onclick="filterCat('marketing', this)">📊 Digital Marketing</button>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="store-hero">
+    <div class="hero-banner-inner">
+      <div>
+        <div class="hero-tagline">⚡ FutureWithAI Premium Store</div>
+        <h1 class="hero-heading">India's Biggest <span>Digital Products</span> Store</h1>
+        <p class="hero-sub">Premium automation packs, video editing assets, viral reels, web app source codes & digital marketing bundles — all at one place. Instant delivery.</p>
+        <div class="hero-badges">
+          <span class="hbadge"><i data-lucide="shield-check" style="width:12px;height:12px;"></i> Secure Payment</span>
+          <span class="hbadge"><i data-lucide="zap" style="width:12px;height:12px;"></i> Instant Delivery</span>
+          <span class="hbadge"><i data-lucide="infinity" style="width:12px;height:12px;"></i> Lifetime Access</span>
+          <span class="hbadge"><i data-lucide="refresh-cw" style="width:12px;height:12px;"></i> 7-Day Refund</span>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-num">10K+</div><div class="hstat-lbl">Happy Buyers</div></div>
+        <div class="hstat"><div class="hstat-num">700+</div><div class="hstat-lbl">Products</div></div>
+        <div class="hstat"><div class="hstat-num">4.9★</div><div class="hstat-lbl">Rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Store Layout -->
+  <div class="store-layout" id="products">
+
+    <!-- Featured: Mega Bundle -->
+    <div class="featured-banner" id="feat-marketing" data-cat="marketing">
+      <div>
+        <div class="fb-tag">⭐ Most Popular · 700+ Items</div>
+        <h2 class="fb-title">Full Digital Marketing Resource Bundle</h2>
+        <p class="fb-desc">Everything a digital marketer needs — 700+ products including Canva templates, ChatGPT prompts, courses, ebooks, graphic design packs, reels, databases & more.</p>
+        <div class="fb-features">
+          <span class="fb-feat">📱 27K+ Canva Templates</span>
+          <span class="fb-feat">🤖 1L+ ChatGPT Prompts</span>
+          <span class="fb-feat">📚 3L+ Ebooks & PLR</span>
+          <span class="fb-feat">🎬 10K+ Viral Reels</span>
+          <span class="fb-feat">🎓 50+ DM Courses</span>
+          <span class="fb-feat">🖼️ 510GB Design Pack</span>
+        </div>
+        <div class="fb-actions">
+          <div>
+            <div class="fb-price">₹4,999</div>
+            <div class="fb-price-main">₹499</div>
+          </div>
+          <button class="fb-cta" onclick="addToCart('digital-marketing-bundle','Full Digital Marketing Resource Bundle',499,'digital-marketing-bundle/fwa-canva.png','digital-marketing-bundle.html')">
+            <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add to Cart
+          </button>
+          <a href="digital-marketing-bundle.html" class="fb-cta" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.15);">
+            View Details
+          </a>
+        </div>
+      </div>
+      <img src="digital-marketing-bundle/fwa-canva.png" alt="Digital Marketing Bundle" class="fb-img">
+    </div>
+
+    <!-- Section: All Products -->
+    <div class="store-sec-head">
+      <h2>All <span>Products</span></h2>
+      <a href="#products">Sort by: Popular ▾</a>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="products-grid">
+
+      <!-- 1. n8n Pack -->
+      <div class="prod-card" data-cat="automation" data-name="n8n automation pack 2000 workflows">
+        <div class="prod-badge badge-hot">🔥 Hot</div>
+        <div class="prod-img-wrap">
+          <img src="hero-image.png" alt="n8n Automation Pack" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('n8n-pack','n8n Automation Pack (2000+ Workflows)',99,'hero-image.png','n8n-pack.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹99
+            </button>
+            <a href="n8n-pack.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
             </a>
-            <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary); font-size: 16px; padding: 16px 32px;">
-              Join WhatsApp Community
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">🤖 Automation</div>
+          <h3 class="prod-title">n8n Automation Pack (2000+ Workflows)</h3>
+          <p class="prod-desc">2,000+ production-ready n8n JSON workflows for marketing, operations, AI tasks & CRM automation.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>2000+ Ready-to-import JSONs</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Full PLR/Resell License</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Private Slack Community</div>
+          </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹5,999</span>
+              <span class="prod-price">₹99</span>
+              <span class="prod-discount">98% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'n8n-pack','n8n Automation Pack (2000+ Workflows)',99,'hero-image.png','n8n-pack.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Enterprise n8n -->
+      <div class="prod-card" data-cat="automation" data-name="14000 n8n workflow automation enterprise">
+        <div class="prod-badge badge-top">⚡ Enterprise</div>
+        <div class="prod-img-wrap">
+          <img src="n8n_hero_mockup.png" alt="Enterprise n8n Automation" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('n8n-automation-enterprise','14000+ n8n Workflow Automation (Enterprise)',349,'n8n_hero_mockup.png','n8n-workflow-automation.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹349
+            </button>
+            <a href="n8n-workflow-automation.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
             </a>
           </div>
-          <div class="hero-trust-notes" style="justify-content: center; margin-top: 32px;">
-            <span><i data-lucide="shield-check" style="width: 14px; height: 14px; color: var(--primary-container);"></i> One-time purchase</span>
-            <div class="dot"></div>
-            <span><i data-lucide="infinity" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Lifetime access</span>
-            <div class="dot"></div>
-            <span><i data-lucide="zap" style="width: 14px; height: 14px; color: var(--primary-container);"></i> Instant file delivery</span>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">🤖 Automation</div>
+          <h3 class="prod-title">14,000+ n8n Workflow Automation (Enterprise)</h3>
+          <p class="prod-desc">Advanced AI agents, proxy scrapers, CRM connectors, looping systems & WhatsApp bots.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>14,000+ Enterprise Node Schemas</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Error-handling loop systems</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Video setup guides included</div>
           </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹9,999</span>
+              <span class="prod-price">₹349</span>
+              <span class="prod-discount">96% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'n8n-automation-enterprise','14000+ n8n Workflow Automation (Enterprise)',349,'n8n_hero_mockup.png','n8n-workflow-automation.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Video Editing -->
+      <div class="prod-card" data-cat="editing" data-name="ultimate video editing toolkit 500gb">
+        <div class="prod-badge badge-sale">🎬 Creator</div>
+        <div class="prod-img-wrap">
+          <img src="server-automation.png" alt="Ultimate Video Editing Toolkit" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('video-editing','Ultimate Video Editing Toolkit (500GB+)',199,'server-automation.png','video-editing.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹199
+            </button>
+            <a href="video-editing.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">🎬 Video Editing</div>
+          <h3 class="prod-title">Ultimate Video Editing Toolkit (500GB+)</h3>
+          <p class="prod-desc">Studio-grade transitions, LUTs, SFX, VFX overlays, fonts & wedding presets for Premiere, DaVinci & CapCut.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>500GB+ Premium Assets</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Works on all editors</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Includes editing course</div>
+          </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹2,999</span>
+              <span class="prod-price">₹199</span>
+              <span class="prod-discount">93% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'video-editing','Ultimate Video Editing Toolkit (500GB+)',199,'server-automation.png','video-editing.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Mega Reels -->
+      <div class="prod-card" data-cat="reels" data-name="100000 viral reels goldmine pack instagram">
+        <div class="prod-badge badge-new">📱 Viral</div>
+        <div class="prod-img-wrap">
+          <img src="reels_hero_mockup.png" alt="Viral Reels Goldmine Pack" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('mega-reels','100,000+ Viral Reels Goldmine Pack',99,'reels_hero_mockup.png','mega-reels.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹99
+            </button>
+            <a href="mega-reels.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">📱 Viral Reels</div>
+          <h3 class="prod-title">100,000+ Viral Reels Goldmine Pack</h3>
+          <p class="prod-desc">Ready-to-post HD reels covering cricket, AI anime, gym, fitness, art, DIY, woodwork, motivational & more.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>100,000+ Viral Edited Shorts</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Zero watermarks, Full HD</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Growth playbook included</div>
+          </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹1,599</span>
+              <span class="prod-price">₹99</span>
+              <span class="prod-discount">93% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'mega-reels','100,000+ Viral Reels Goldmine Pack',99,'reels_hero_mockup.png','mega-reels.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Web Apps -->
+      <div class="prod-card" data-cat="webapps" data-name="1500 manually tested web apps source code">
+        <div class="prod-badge badge-top">💻 Dev</div>
+        <div class="prod-img-wrap">
+          <img src="webapp_hero_mockup.png" alt="1500+ Tested Web Apps" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('web-apps','1500+ Manually Tested Web App Pack',199,'webapp_hero_mockup.png','web-apps.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹199
+            </button>
+            <a href="web-apps.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">💻 Web Apps</div>
+          <h3 class="prod-title">1500+ Manually Tested Web Apps</h3>
+          <p class="prod-desc">SaaS boilerplates, admin dashboards, CRM, POS & backend source codes in React, Laravel & Node.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>1500+ Complete Source Codes</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Deployable to Vercel/Docker</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>Commercial Agency License</div>
+          </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹4,999</span>
+              <span class="prod-price">₹199</span>
+              <span class="prod-discount">96% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'web-apps','1500+ Manually Tested Web App Pack',199,'webapp_hero_mockup.png','web-apps.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Digital Marketing Bundle -->
+      <div class="prod-card" data-cat="marketing" data-name="digital marketing resource bundle canva chatgpt">
+        <div class="prod-badge badge-hot">⭐ Best Value</div>
+        <div class="prod-img-wrap">
+          <img src="digital-marketing-bundle/fwa-chatgpt.png" alt="Digital Marketing Bundle" loading="lazy">
+          <div class="prod-quick-buy">
+            <button class="quick-buy-btn" onclick="quickBuy('digital-marketing-bundle','Full Digital Marketing Resource Bundle',499,'digital-marketing-bundle/fwa-canva.png','digital-marketing-bundle.html')">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹499
+            </button>
+            <a href="digital-marketing-bundle.html" class="quick-view-btn">
+              <i data-lucide="eye" style="width:16px;height:16px;"></i>
+            </a>
+          </div>
+        </div>
+        <div class="prod-body">
+          <div class="prod-category">📊 Digital Marketing</div>
+          <h3 class="prod-title">Full Digital Marketing Resource Bundle (700+)</h3>
+          <p class="prod-desc">700+ resources — Canva templates, ChatGPT prompts, courses, ebooks, graphic design packs & databases.</p>
+          <div class="prod-features">
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>27,000+ Canva Templates</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>1,00,000+ ChatGPT Prompts</div>
+            <div class="prod-feat-item"><i data-lucide="check" style="width:12px;height:12px;"></i>510GB+ Graphic Design Pack</div>
+          </div>
+          <div class="prod-footer">
+            <div class="prod-price-block">
+              <span class="prod-original">₹4,999</span>
+              <span class="prod-price">₹499</span>
+              <span class="prod-discount">90% OFF</span>
+            </div>
+            <button class="prod-add-btn" onclick="addToCartAnimated(this,'digital-marketing-bundle','Full Digital Marketing Resource Bundle',499,'digital-marketing-bundle/fwa-canva.png','digital-marketing-bundle.html')">
+              <i data-lucide="shopping-cart" style="width:14px;height:14px;"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /products-grid -->
+
+    <!-- Trust Row -->
+    <div class="trust-row">
+      <div class="trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;"></i> 100% Secure Payments</div>
+      <div class="trust-item"><i data-lucide="zap" style="width:16px;height:16px;"></i> Instant Google Drive Delivery</div>
+      <div class="trust-item"><i data-lucide="infinity" style="width:16px;height:16px;"></i> Lifetime Access</div>
+      <div class="trust-item"><i data-lucide="refresh-cw" style="width:16px;height:16px;"></i> 7-Day Refund Policy</div>
+      <div class="trust-item"><i data-lucide="users" style="width:16px;height:16px;"></i> 10,500+ Happy Buyers</div>
+    </div>
+
+    <!-- Customer Reviews -->
+    <div class="store-sec-head">
+      <h2>What Customers <span>Say</span></h2>
+      <span style="color:rgba(255,255,255,0.4);font-size:13px;">★★★★★ 4.9/5 (2,400+ reviews)</span>
+    </div>
+    <div class="reviews-strip">
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Incredible value! The n8n workflow pack alone saved us 3 months of development time. Launched our automation agency in 2 weeks."</p>
+        <div class="rev-author">
+          <div class="rev-avatar">KK</div>
+          <div><div class="rev-name">Kunal Kapoor</div><div class="rev-role">Automation Agency Founder</div></div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"The video editing toolkit is insane — 500GB of assets that work in CapCut, Premiere & DaVinci. My reels quality went from 0 to 100."</p>
+        <div class="rev-author">
+          <div class="rev-avatar">RS</div>
+          <div><div class="rev-name">Rohit Sharma</div><div class="rev-role">Content Creator, 500K followers</div></div>
+        </div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p class="rev-text">"Bought the DM bundle for ₹499 and got 700+ resources. The Canva templates alone would cost ₹5000+ elsewhere. Absolute steal!"</p>
+        <div class="rev-author">
+          <div class="rev-avatar">PA</div>
+          <div><div class="rev-name">Priya Agarwal</div><div class="rev-role">Digital Marketer, Delhi</div></div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Brand Trustbar -->
-  <section class="trustbar" style="padding: 24px 0;">
-    <div class="container">
-      <div class="trustbar-grid">
-        <div class="trustbar-card">
-          <i data-lucide="git-merge"></i>
-          <span>16,000+ n8n Workflows</span>
+  </div><!-- /store-layout -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">
+            <img src="primary-logo.png" alt="FutureWithAI Logo">
+          </div>
+          <p class="footer-desc">India's biggest digital product store — empowering creators, developers & agencies with premium resources.</p>
         </div>
-        <div class="trustbar-card">
-          <i data-lucide="laptop"></i>
-          <span>1500+ Tested Web Apps</span>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <a href="n8n-pack.html">n8n Automation Pack</a>
+          <a href="n8n-workflow-automation.html">Enterprise n8n</a>
+          <a href="video-editing.html">Video Editing Toolkit</a>
+          <a href="mega-reels.html">Viral Reels Pack</a>
+          <a href="web-apps.html">Web Apps Source Code</a>
+          <a href="digital-marketing-bundle.html">DM Bundle</a>
         </div>
-        <div class="trustbar-card">
-          <i data-lucide="video"></i>
-          <span>200 GB+ Video Assets</span>
-        </div>
-        <div class="trustbar-card">
-          <i data-lucide="zap"></i>
-          <span>100,000+ Viral Reels</span>
-        </div>
-        <div class="trustbar-card">
-          <i data-lucide="users"></i>
-          <span>10,500+ Happy Customers</span>
-        </div>
-        <div class="trustbar-card">
-          <i data-lucide="award"></i>
-          <span>Commercial Licenses</span>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="refund.html">Cancellation & Refund</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank">WhatsApp Community</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Digital Product Store Section -->
-  <section class="store-section" id="store">
-    <div class="container">
-      <div class="section-header" style="text-align: center; margin: 0 auto 64px auto; max-width: 700px;">
-        <span class="section-label">FUTUREWITHAI CATALOG</span>
-        <h2 class="section-title">Explore Premium Creator Packs</h2>
-        <p class="section-desc">
-          Add individual resource systems to your cart and check out securely. All items are delivered to your inbox instantly.
-        </p>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 FutureWithAI · Powered by Anshuman Enterprises · All Rights Reserved</p>
+        <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="footer-whatsapp">
+          💬 Join WhatsApp Community
+        </a>
       </div>
-
-      <div class="store-grid">
-        <!-- Product 1: Cinematic n8n Automation Pack -->
-        <div class="store-card">
-          <div class="store-tag">Bestseller</div>
-          <div class="store-card-image-wrap">
-            <img src="hero-image.png" alt="Cinematic n8n Automation Pack">
-          </div>
-          <div class="store-card-content">
-            <h3 class="store-card-title">n8n Automation Pack (2000+ Workflows)</h3>
-            <p class="store-card-desc">Our flagship automation pack containing 2,000+ production-ready workflows for marketing, operations, and AI tasks.</p>
-            <ul class="store-features-list">
-              <li><i data-lucide="check"></i> 2000+ Ready-to-import JSONs</li>
-              <li><i data-lucide="check"></i> Full PLR/Resell License</li>
-              <li><i data-lucide="check"></i> Private Slack Community access</li>
-            </ul>
-            <div class="store-card-price-row">
-              <span class="store-card-price-original">₹5,999</span>
-              <span class="store-card-price-promo">₹99</span>
-            </div>
-            <div class="store-card-actions">
-              <button class="btn-store-add" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.png', 'n8n-pack.html')">
-                <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i> Add to Cart
-              </button>
-              <a href="n8n-pack.html" class="btn-store-details">
-                Details <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2: Ultimate Video Editing Toolkit -->
-        <div class="store-card">
-          <div class="store-tag">Highly Rated</div>
-          <div class="store-card-image-wrap">
-            <img src="500%20gb%20editing%20Pack/500%20GB%20editing%20Pack/hero-toolkit-zkCHdDKW.png" alt="Ultimate Video Editing Toolkit">
-          </div>
-          <div class="store-card-content">
-            <h3 class="store-card-title">Ultimate Video Editing Toolkit</h3>
-            <p class="store-card-desc">200 GB+ of studio-grade visual effects, custom transitions, Cinematic LUTs, SFX libraries, and wedding presets.</p>
-            <ul class="store-features-list">
-              <li><i data-lucide="check"></i> 50,000+ Assets (Transitions, LUTs)</li>
-              <li><i data-lucide="check"></i> Premiere, AE, DaVinci, Filmora</li>
-              <li><i data-lucide="check"></i> Includes Video Editing Course</li>
-            </ul>
-            <div class="store-card-price-row">
-              <span class="store-card-price-original">₹2,999</span>
-              <span class="store-card-price-promo">₹199</span>
-            </div>
-            <div class="store-card-actions">
-              <button class="btn-store-add" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, '500 gb editing Pack/500 GB editing Pack/hero-toolkit-zkCHdDKW.png', 'video-editing.html')">
-                <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i> Add to Cart
-              </button>
-              <a href="video-editing.html" class="btn-store-details">
-                Details <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 3: 1500+ Manually Tested Web App Pack -->
-        <div class="store-card">
-          <div class="store-tag">Developer Choice</div>
-          <div class="store-card-image-wrap">
-            <img src="webapp_hero_mockup.png" alt="1500+ Tested Web Apps">
-          </div>
-          <div class="store-card-content">
-            <h3 class="store-card-title">1500+ Manually Tested Web Apps</h3>
-            <p class="store-card-desc">SaaS boilerplates, admin CRM dashboards, backend endpoints, and custom databases in React, Laravel, and Node.</p>
-            <ul class="store-features-list">
-              <li><i data-lucide="check"></i> 1500+ Complete Source Codes</li>
-              <li><i data-lucide="check"></i> Deployable to Vercel/Docker</li>
-              <li><i data-lucide="check"></i> Commercial Agency License</li>
-            </ul>
-            <div class="store-card-price-row">
-              <span class="store-card-price-original">₹4,999</span>
-              <span class="store-card-price-promo">₹199</span>
-            </div>
-            <div class="store-card-actions">
-              <button class="btn-store-add" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.png', 'web-apps.html')">
-                <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i> Add to Cart
-              </button>
-              <a href="web-apps.html" class="btn-store-details">
-                Details <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 4: 100,000+ Viral Reels Goldmine Pack -->
-        <div class="store-card">
-          <div class="store-tag">Viral Special</div>
-          <div class="store-card-image-wrap">
-            <img src="reels_hero_mockup.png" alt="100,000+ Viral Reels Goldmine Pack">
-          </div>
-          <div class="store-card-content">
-            <h3 class="store-card-title">100,000+ Viral Reels Goldmine Pack</h3>
-            <p class="store-card-desc">High-quality, ready-to-post vertical reels covering Cricket, AI Anime, Gym Fitness, Art DIY, Woodwork, and Luxury.</p>
-            <ul class="store-features-list">
-              <li><i data-lucide="check"></i> 100,000+ Viral Edited Shorts</li>
-              <li><i data-lucide="check"></i> 100K follower growth playbook</li>
-              <li><i data-lucide="check"></i> Zero watermarks, full HD</li>
-            </ul>
-            <div class="store-card-price-row">
-              <span class="store-card-price-original">₹1,599</span>
-              <span class="store-card-price-promo">₹99</span>
-            </div>
-            <div class="store-card-actions">
-              <button class="btn-store-add" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.png', 'mega-reels.html')">
-                <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i> Add to Cart
-              </button>
-              <a href="mega-reels.html" class="btn-store-details">
-                Details <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 5: 14000+ n8n Workflow Automation (Enterprise) -->
-        <div class="store-card">
-          <div class="store-tag">Enterprise Pack</div>
-          <div class="store-card-image-wrap">
-            <img src="n8n_hero_mockup.png" alt="14000+ n8n Workflow Automation">
-          </div>
-          <div class="store-card-content">
-            <h3 class="store-card-title">14,000+ n8n Workflow Automation</h3>
-            <p class="store-card-desc">Advanced looping systems, autonomous multi-stage AI agents, proxy scrapers, CRM connectors, and bot integrations.</p>
-            <ul class="store-features-list">
-              <li><i data-lucide="check"></i> 14,000+ Enterprise Node Schemas</li>
-              <li><i data-lucide="check"></i> Error-handling loop systems</li>
-              <li><i data-lucide="check"></i> Comprehensive video setup guides</li>
-            </ul>
-            <div class="store-card-price-row">
-              <span class="store-card-price-original">₹9,999</span>
-              <span class="store-card-price-promo">₹349</span>
-            </div>
-            <div class="store-card-actions">
-              <button class="btn-store-add" onclick="addToCart('n8n-automation-enterprise', '14000+ n8n Workflow Automation (Enterprise)', 349, 'n8n_hero_mockup.png', 'n8n-workflow-automation.html')">
-                <i data-lucide="shopping-cart" style="width:16px; height:16px;"></i> Add to Cart
-              </button>
-              <a href="n8n-workflow-automation.html" class="btn-store-details">
-                Details <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Customer Reviews Section -->
-  <section class="section" style="background: rgba(10, 10, 10, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
-    <div class="container">
-      <div class="section-header" style="text-align: center; margin: 0 auto 64px auto; max-width: 600px;">
-        <span class="section-label">CLIENT SATISFACTION</span>
-        <h2 class="section-title">Trusted by 10,500+ Creators & Agencies</h2>
-      </div>
-
-      <div class="review-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-        <!-- Review 1 -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"FutureWithAi has completely changed our development speed. We imported the 1500+ Web Apps package and launched two client SaaS dashboards in under a week. Absolutely insane value!"</p>
-          <div class="review-author">
-            <div class="review-avatar">KK</div>
-            <div class="review-author-info">
-              <span class="review-name">Kunal Kapoor</span>
-              <span class="review-role">Co-Founder, AutomationLabs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"The video editing toolkit is massive. 200 GB of assets that drag-and-drop right into Premiere. Saved me hundreds of hours of downloading individual transitions and SFX files."</p>
-          <div class="review-author">
-            <div class="review-avatar">RS</div>
-            <div class="review-author-info">
-              <span class="review-name">Rohit Sharma</span>
-              <span class="review-role">Freelance Video Editor</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="review-card">
-          <div class="review-stars">★★★★★</div>
-          <p class="review-text">"The enterprise n8n workflow pack is a goldmine for any operations lead. Loops, error handlers, and scraping configurations that work out of the box. Highly recommended."</p>
-          <div class="review-author">
-            <div class="review-avatar">AP</div>
-            <div class="review-author-info">
-              <span class="review-name">Aarav Patel</span>
-              <span class="review-role">Lead Ops Engineer, Zenith Retail</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Section -->
-  <footer style="border-top: 1px solid var(--border-color); padding: 48px 0; background: rgba(0,0,0,0.4);">
-    <div class="container" style="text-align: center; display: flex; flex-direction: column; gap: 20px;">
-      <a href="index.html" style="display: block; width: fit-content; margin: 0 auto;">
-        <img src="primary-logo.png" alt="FutureWithAi Logo" style="height:192px; width:auto; object-fit:contain;">
-      </a>
-      <p style="font-size: 13.5px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; line-height: 1.5;">
-        Empowering creators, developers, and agencies with production-ready digital resources and systems.
-      </p>
-      <div style="display: flex; justify-content: center; gap: 24px; font-size: 13px;">
-        <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About Us</a>
-        <a href="refund.html" style="color: var(--text-muted); text-decoration: none;">Cancellation & Refund</a>
-        <a href="privacy.html" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
-        <a href="terms.html" style="color: var(--text-muted); text-decoration: none;">Terms & Conditions</a>
-      </div>
-      <p style="font-size: 12px; color: var(--text-muted); margin-top: 16px;">
-        &copy; 2026 FutureWithAi. Powered by Anshuman Enterprises. All Rights Reserved.
-      </p>
     </div>
   </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) lucide.createIcons();
-      startCountdownTimer();
+      startTimer();
     });
 
-    function startCountdownTimer() {
-      // Launch countdown set to 1 day 14 hours
-      const endTime = Date.now() + (1 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000);
-      
+    // Countdown Timer
+    function startTimer() {
+      const end = Date.now() + (18 * 3600000);
       function tick() {
-        const remaining = endTime - Date.now();
-        if (remaining <= 0) {
-          clearInterval(timer);
-          return;
-        }
-        
-        const h = Math.floor((remaining % (24 * 3600000)) / 3600000);
-        const m = Math.floor((remaining % 3600000) / 60000);
-        const s = Math.floor((remaining % 60000) / 1000);
-        
-        const pad = (n) => String(n).padStart(2, '0');
-        
-        const bannerCD = document.getElementById('offer-countdown');
-        if (bannerCD) bannerCD.textContent = `⏳ ${pad(h)}:${pad(m)}:${pad(s)} left`;
+        const rem = end - Date.now();
+        if (rem <= 0) return;
+        const h = Math.floor(rem / 3600000);
+        const m = Math.floor((rem % 3600000) / 60000);
+        const s = Math.floor((rem % 60000) / 1000);
+        const pad = n => String(n).padStart(2, '0');
+        const el = document.getElementById('tb-timer');
+        if (el) el.textContent = `⏳ ${pad(h)}:${pad(m)}:${pad(s)}`;
       }
-      
-      tick();
-      const timer = setInterval(tick, 1000);
+      tick(); setInterval(tick, 1000);
+    }
+
+    // Category Filter
+    function filterCat(cat, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.prod-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+      });
+      const feat = document.getElementById('feat-marketing');
+      if (feat) feat.style.display = (cat === 'all' || cat === 'marketing') ? 'grid' : 'none';
+    }
+
+    // Search Filter
+    function filterProducts(query) {
+      const q = query.toLowerCase();
+      document.querySelectorAll('.prod-card').forEach(card => {
+        const name = card.dataset.name || '';
+        card.style.display = name.includes(q) ? 'flex' : 'none';
+      });
+      // Reset cat nav
+      if (!q) {
+        document.querySelectorAll('.prod-card').forEach(c => c.style.display = 'flex');
+      }
+    }
+
+    // Add to Cart with animation
+    function addToCartAnimated(btn, id, name, price, img, link) {
+      addToCart(id, name, price, img, link);
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<i data-lucide="check" style="width:14px;height:14px;"></i> Added!';
+      btn.classList.add('added');
+      if (window.lucide) lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.classList.remove('added');
+        if (window.lucide) lucide.createIcons();
+      }, 2000);
+    }
+
+    // Quick Buy = add to cart + open cart
+    function quickBuy(id, name, price, img, link) {
+      addToCart(id, name, price, img, link);
+      const cartDrawer = document.querySelector('.cart-drawer');
+      if (cartDrawer) {
+        cartDrawer.classList.add('open');
+        document.querySelector('.cart-overlay')?.classList.add('visible');
+      }
     }
   </script>
 </body>

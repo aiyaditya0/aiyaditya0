@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -293,25 +293,71 @@
     }
     .flash-close-btn:hover { color:var(--text-secondary); }
 
-    /* ── Purchase Toast ── */
+    /* ── Purchase Toast (CineVault-style) ── */
     #purchase-toast {
-      position:fixed; bottom:24px; left:24px; z-index:99999;
-      background:rgba(18,11,6,0.95); border:1px solid rgba(255,138,0,0.3);
-      border-radius:16px; padding:16px; width:320px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.5),var(--glow-primary);
-      display:flex; align-items:center; gap:16px;
-      transform:translateY(120px); opacity:0;
-      transition:all 0.5s cubic-bezier(0.175,0.885,0.32,1.275); pointer-events:none;
+      position:fixed; bottom:96px; left:18px; z-index:99999;
+      background:linear-gradient(135deg,rgba(14,9,4,0.97) 0%,rgba(24,15,7,0.97) 100%);
+      border:1px solid rgba(255,138,0,0.25);
+      border-radius:18px; padding:14px 16px; width:310px;
+      box-shadow:0 16px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(255,138,0,0.08);
+      display:flex; align-items:center; gap:14px;
+      transform:translateX(-340px); opacity:0;
+      transition:all 0.55s cubic-bezier(0.175,0.885,0.32,1.275); pointer-events:none;
     }
-    #purchase-toast.show { transform:translateY(0); opacity:1; }
-    .toast-avatar {
-      width:44px; height:44px; border-radius:50%;
-      background:var(--bg-surface-container-highest); display:flex; align-items:center;
-      justify-content:center; color:var(--primary-container); border:1.5px solid rgba(255,138,0,0.2); flex-shrink:0;
+    #purchase-toast.show { transform:translateX(0); opacity:1; }
+    .pt-avatar {
+      width:56px; height:56px; border-radius:16px; flex-shrink:0;
+      background:linear-gradient(135deg,#ff8a00,#b34500);
+      display:flex; align-items:center; justify-content:center;
+      font-size:28px; box-shadow:0 6px 20px rgba(255,138,0,0.4);
+      border:1.5px solid rgba(255,179,71,0.3);
     }
-    .toast-name { font-size:13.5px; font-weight:700; color:var(--text-white); }
-    .toast-msg { font-size:12px; color:var(--text-secondary); }
-    .toast-time { font-size:11px; color:var(--text-muted); margin-top:2px; }
+    .pt-body { flex:1; min-width:0; }
+    .pt-name { font-size:13px; font-weight:700; color:var(--text-white); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pt-product { font-size:12px; color:var(--text-secondary); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .pt-product strong { color:var(--primary); }
+    .pt-meta { display:flex; align-items:center; gap:8px; margin-top:5px; }
+    .pt-verified { font-size:10.5px; color:#27c93f; font-weight:700; display:flex; align-items:center; gap:3px; }
+    .pt-time { font-size:10.5px; color:var(--text-muted); }
+    .pt-sep { font-size:10px; color:var(--text-muted); }
+    .pt-close {
+      position:absolute; top:8px; right:10px; background:none; border:none;
+      color:var(--text-muted); cursor:pointer; font-size:14px; padding:0;
+      pointer-events:all; line-height:1;
+    }
+    .pt-close:hover { color:var(--text-white); }
+
+    /* ── Sticky Bottom CTA Bar ── */
+    #sticky-bottom-bar {
+      position:fixed; bottom:0; left:0; right:0; z-index:9998;
+      background:rgba(8,5,2,0.97); border-top:1px solid rgba(255,138,0,0.25);
+      backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+      padding:12px 20px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      transform:translateY(100%); transition:transform 0.4s cubic-bezier(0.22,0.61,0.36,1);
+      box-shadow:0 -4px 24px rgba(0,0,0,0.5);
+    }
+    #sticky-bottom-bar.visible { transform:translateY(0); }
+    .sbb-left { display:flex; flex-direction:column; gap:2px; }
+    .sbb-price { font-size:22px; font-weight:800; color:var(--primary-container); line-height:1; }
+    .sbb-price span { font-size:13px; text-decoration:line-through; color:var(--text-muted); margin-right:6px; font-weight:400; }
+    .sbb-sub { font-size:11px; color:var(--text-muted); }
+    .sbb-sub strong { color:#27c93f; font-weight:700; }
+    .sbb-timer { font-size:11px; color:var(--primary); margin-top:2px; }
+    .sbb-btn {
+      background:linear-gradient(135deg,#ff8a00,#ffb347); color:#000;
+      font-weight:800; font-size:14px; padding:14px 28px; border-radius:14px;
+      text-decoration:none; letter-spacing:0.4px; white-space:nowrap;
+      box-shadow:0 4px 20px rgba(255,138,0,0.45); transition:all 0.3s ease;
+      border:none; cursor:pointer; display:inline-flex; align-items:center; gap:8px;
+    }
+    .sbb-btn:hover { transform:scale(1.04); box-shadow:0 6px 28px rgba(255,138,0,0.6); }
+    @media(max-width:480px){
+      #sticky-bottom-bar { padding:10px 14px; }
+      .sbb-price { font-size:18px; }
+      .sbb-btn { font-size:13px; padding:12px 20px; }
+      #purchase-toast { width:calc(100vw - 32px); left:16px; bottom:84px; }
+    }
 
     /* ── Urgency Panel ── */
     .urgency-panel {
@@ -1041,16 +1087,31 @@
     </div>
   </div>
 
-  <!-- ══ PURCHASE TOAST ══ -->
+  <!-- ══ PURCHASE TOAST (CineVault-style) ══ -->
   <div id="purchase-toast">
-    <div class="toast-avatar">
-      <i data-lucide="shopping-bag" style="width:22px;height:22px;"></i>
+    <button class="pt-close" onclick="document.getElementById('purchase-toast').classList.remove('show')" title="Close">✕</button>
+    <div class="pt-avatar">📦</div>
+    <div class="pt-body">
+      <div class="pt-name" id="pt-buyer-name">Rahul – Delhi</div>
+      <div class="pt-product">purchased <strong>Digital Marketing Bundle (700+)</strong></div>
+      <div class="pt-meta">
+        <span class="pt-verified">✅ Verified Purchase</span>
+        <span class="pt-sep">·</span>
+        <span class="pt-time" id="pt-buyer-time">2 min ago</span>
+      </div>
     </div>
-    <div class="purchase-toast-content">
-      <div class="toast-name" id="toast-name">Rahul from Delhi</div>
-      <div class="toast-msg">just purchased Digital Marketing Bundle</div>
-      <div class="toast-time" id="toast-time">2 minutes ago</div>
+  </div>
+
+  <!-- ══ STICKY BOTTOM CTA BAR ══ -->
+  <div id="sticky-bottom-bar">
+    <div class="sbb-left">
+      <div class="sbb-price"><span>₹4,999</span>₹499 Only 🎁</div>
+      <div class="sbb-sub">700+ Digital Resources · Lifetime · <strong>PLR License</strong></div>
+      <div class="sbb-timer">⏱ Offer ends in: <span id="sbb-countdown">Loading...</span></div>
     </div>
+    <a href="#" onclick="addToCart('digital-marketing-bundle','Full Digital Marketing Resource Bundle (700+)',499,'digital-marketing-bundle/dm-hero-bundle.png','digital-marketing-bundle.html'); return false;" class="sbb-btn">
+      🛒 Get Now ⚡
+    </a>
   </div>
 
   <!-- ══ SCRIPTS ══ -->
@@ -1102,31 +1163,55 @@
       }
     }, 45000);
 
-    // ── Purchase Toast Notifications ─────────────────────────────────
-    const toastBuyers = [
-      {name:'Rahul from Delhi', time:'2 min ago'},
-      {name:'Priya from Mumbai', time:'5 min ago'},
-      {name:'Arjun from Bangalore', time:'8 min ago'},
-      {name:'Sneha from Pune', time:'11 min ago'},
-      {name:'Vikram from Chennai', time:'15 min ago'},
-      {name:'Anjali from Hyderabad', time:'18 min ago'},
-      {name:'Rohit from Kolkata', time:'22 min ago'},
-      {name:'Kavya from Ahmedabad', time:'25 min ago'},
+    // ── Purchase Toast Notifications (CineVault-style) ───────────────
+    const ptBuyers = [
+      {name:'Rahul – Delhi',      time:'2 min ago'},
+      {name:'Priya – Mumbai',     time:'4 min ago'},
+      {name:'Arjun – Bangalore',  time:'7 min ago'},
+      {name:'Sneha – Pune',       time:'10 min ago'},
+      {name:'Vikram – Chennai',   time:'13 min ago'},
+      {name:'Anjali – Hyderabad', time:'16 min ago'},
+      {name:'Rohit – Kolkata',    time:'20 min ago'},
+      {name:'Kavya – Ahmedabad',  time:'23 min ago'},
+      {name:'Nikhil – Surat',     time:'27 min ago'},
+      {name:'Pooja – Jaipur',     time:'31 min ago'},
     ];
-    let toastIdx = 0;
-    function showToast() {
+    let ptIdx = 0;
+    function showPurchaseToast() {
       const toast = document.getElementById('purchase-toast');
-      const buyer = toastBuyers[toastIdx % toastBuyers.length];
-      document.getElementById('toast-name').textContent = buyer.name;
-      document.getElementById('toast-time').textContent = buyer.time;
+      const buyer = ptBuyers[ptIdx % ptBuyers.length];
+      document.getElementById('pt-buyer-name').textContent = buyer.name;
+      document.getElementById('pt-buyer-time').textContent = buyer.time;
       toast.classList.add('show');
-      setTimeout(function() { toast.classList.remove('show'); }, 4000);
-      toastIdx++;
+      setTimeout(function() { toast.classList.remove('show'); }, 5000);
+      ptIdx++;
     }
     setTimeout(function() {
-      showToast();
-      setInterval(showToast, 18000);
-    }, 8000);
+      showPurchaseToast();
+      setInterval(showPurchaseToast, 20000);
+    }, 6000);
+
+    // ── Sticky Bottom Bar ────────────────────────────────────────────
+    (function() {
+      const bar = document.getElementById('sticky-bottom-bar');
+      const endTime = Date.now() + (12 * 60 * 60 * 1000);
+      function updateSbbCountdown() {
+        const diff = endTime - Date.now();
+        if (diff <= 0) { document.getElementById('sbb-countdown').textContent = 'Expired'; return; }
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('sbb-countdown').textContent =
+          h.toString().padStart(2,'0') + ':' + m.toString().padStart(2,'0') + ':' + s.toString().padStart(2,'0');
+        setTimeout(updateSbbCountdown, 1000);
+      }
+      updateSbbCountdown();
+      // Show bar after scrolling 300px
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) bar.classList.add('visible');
+        else bar.classList.remove('visible');
+      }, { passive: true });
+    })();
 
     // ── Urgency Counter Animation ────────────────────────────────────
     let slots = 17;
