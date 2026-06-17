@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureWithAI — Resell Rights License Agreement</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --bg:#060402; --surface:#0e0904; --card:#141008;
+      --primary:#ff8a00; --primary-glow:rgba(255,138,0,0.15);
+      --border:rgba(255,138,0,0.2); --text:#f3dfd1;
+      --muted:rgba(255,255,255,0.4); --green:#27c93f;
+    }
+    html{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;}
+    body{min-height:100vh;background:var(--bg);}
+
+    /* Print styles */
+    @media print {
+      body{background:#000 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+      .no-print{display:none !important;}
+      .page{box-shadow:none !important;margin:0 !important;border-radius:0 !important;max-width:100% !important;}
+    }
+
+    .print-bar{
+      background:rgba(255,138,0,0.08);border-bottom:1px solid var(--border);
+      padding:12px 24px;text-align:center;font-size:13px;color:var(--muted);
+    }
+    .print-bar button{
+      background:var(--primary);color:#000;border:none;padding:8px 20px;
+      border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;
+      margin-left:10px;font-family:'Inter',sans-serif;
+    }
+    .print-bar button:hover{opacity:0.9;}
+
+    .page{
+      max-width:800px;margin:40px auto;padding:48px;
+      background:linear-gradient(145deg,var(--card) 0%,var(--surface) 100%);
+      border:1px solid var(--border);border-radius:24px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.6),0 0 40px var(--primary-glow);
+    }
+
+    /* Header */
+    .doc-header{text-align:center;margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .doc-header img{height:80px;margin-bottom:16px;}
+    .doc-badge{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--primary-glow);border:1px solid var(--border);
+      border-radius:20px;padding:5px 16px;font-size:11px;font-weight:800;
+      color:var(--primary);letter-spacing:0.8px;text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    .doc-title{
+      font-family:'Playfair Display',serif;font-size:32px;font-weight:700;
+      color:#fff;margin-bottom:8px;line-height:1.2;
+    }
+    .doc-subtitle{font-size:14px;color:var(--muted);line-height:1.5;}
+    .doc-date{font-size:12px;color:var(--muted);margin-top:12px;}
+
+    /* Content */
+    .section{margin-bottom:32px;}
+    .section-num{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:28px;height:28px;border-radius:8px;
+      background:var(--primary-glow);border:1px solid rgba(255,138,0,0.25);
+      color:var(--primary);font-size:12px;font-weight:800;margin-right:10px;
+      flex-shrink:0;
+    }
+    .section-title{
+      font-size:18px;font-weight:700;color:#fff;margin-bottom:14px;
+      display:flex;align-items:center;
+    }
+    .section p{font-size:14px;line-height:1.7;color:var(--text);margin-bottom:10px;}
+
+    /* Lists */
+    .rights-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:14px 0;}
+    .rights-list li{
+      display:flex;align-items:flex-start;gap:10px;font-size:13.5px;
+      color:var(--text);line-height:1.5;
+      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+      border-radius:12px;padding:12px 16px;
+    }
+    .rights-list li .icon{flex-shrink:0;font-size:16px;margin-top:1px;}
+    .rights-list.allowed li .icon{color:var(--green);}
+    .rights-list.restricted li .icon{color:#ff3b30;}
+
+    /* Highlight box */
+    .highlight-box{
+      background:rgba(255,138,0,0.06);border:1px solid var(--border);
+      border-radius:16px;padding:20px 24px;margin:20px 0;
+    }
+    .highlight-box h4{font-size:14px;color:var(--primary);margin-bottom:8px;font-weight:700;}
+    .highlight-box p{font-size:13px;color:var(--text);line-height:1.6;}
+
+    /* Signature area */
+    .signature-area{
+      margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06);
+      display:grid;grid-template-columns:1fr 1fr;gap:32px;
+    }
+    .sig-block{text-align:center;}
+    .sig-line{
+      width:100%;height:1px;background:rgba(255,255,255,0.15);
+      margin:40px 0 10px;
+    }
+    .sig-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+    .sig-name{font-size:14px;color:#fff;font-weight:600;margin-top:4px;}
+
+    /* Footer */
+    .doc-footer{
+      text-align:center;margin-top:40px;padding-top:24px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+    .doc-footer p{font-size:11.5px;color:var(--muted);line-height:1.6;}
+    .doc-footer .brand{color:var(--primary);font-weight:700;}
+
+    /* Seal */
+    .seal{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:80px;height:80px;border-radius:50%;
+      border:2px solid var(--primary);
+      background:var(--primary-glow);
+      margin:16px auto 8px;
+    }
+    .seal-text{
+      font-size:10px;font-weight:800;color:var(--primary);
+      text-transform:uppercase;letter-spacing:0.5px;text-align:center;
+      line-height:1.3;
+    }
+
+    @media(max-width:600px){
+      .page{margin:16px;padding:28px 20px;border-radius:16px;}
+      .doc-title{font-size:24px;}
+      .signature-area{grid-template-columns:1fr;gap:24px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Print bar (hidden on print) -->
+  <div class="print-bar no-print">
+    📄 This is a digital license document.
+    <button onclick="window.print()">🖨️ Save as PDF / Print</button>
+  </div>
+
+  <div class="page">
+
+    <!-- ── Header ── -->
+    <div class="doc-header">
+      <img src="primary-logo.png" alt="FutureWithAI">
+      <div class="doc-badge">📜 Official License Document</div>
+      <h1 class="doc-title">Resell Rights License Agreement</h1>
+      <p class="doc-subtitle">Private Label Rights (PLR) & Resell Rights for all digital products purchased from FutureWithAI Store</p>
+      <p class="doc-date">Effective Date: June 2026 · Version 2.0</p>
+    </div>
+
+    <!-- ── Section 1 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">1</span>
+        License Overview
+      </div>
+      <p>
+        This Resell Rights License ("License") is granted to the purchaser ("Licensee") of any digital product from the <strong>FutureWithAI Store</strong> operated by <strong>Anshuman Enterprises</strong>. By completing your purchase, you agree to the terms outlined in this document.
+      </p>
+      <p>
+        This license grants you the right to resell, redistribute, and use the purchased digital products for both personal and commercial purposes, subject to the terms below.
+      </p>
+    </div>
+
+    <!-- ── Section 2: What You CAN Do ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">2</span>
+        What You CAN Do (Rights Granted)
+      </div>
+      <ul class="rights-list allowed">
+        <li><span class="icon">✅</span><div><strong>Resell the products</strong> — You can sell the digital resources to your own clients, customers, or audience and keep 100% of the profit.</div></li>
+        <li><span class="icon">✅</span><div><strong>Use for personal projects</strong> — Use templates, assets, and resources for your own business, social media, or personal brand.</div></li>
+        <li><span class="icon">✅</span><div><strong>Use for client work</strong> — Freelancers and agencies can use the resources for client deliverables and commercial projects.</div></li>
+        <li><span class="icon">✅</span><div><strong>Bundle & repackage</strong> — Combine resources with your own products or other items to create new bundles and sell them.</div></li>
+        <li><span class="icon">✅</span><div><strong>Offer as bonuses</strong> — Include these resources as bonuses, lead magnets, or course add-ons in your own offers.</div></li>
+        <li><span class="icon">✅</span><div><strong>Edit & modify</strong> — Customize, rebrand, and modify the resources (templates, documents, etc.) as needed for your use or resale.</div></li>
+        <li><span class="icon">✅</span><div><strong>Use across multiple devices</strong> — Install and access on unlimited personal devices.</div></li>
+      </ul>
+    </div>
+
+    <!-- ── Section 3: Restrictions ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">3</span>
+        Restrictions (What You CANNOT Do)
+      </div>
+      <ul class="rights-list restricted">
+        <li><span class="icon">🚫</span><div><strong>Claim original authorship</strong> — You may not claim to be the original creator of the base resources provided in this bundle.</div></li>
+        <li><span class="icon">🚫</span><div><strong>Sell the resell license itself</strong> — You cannot grant resell rights or PLR rights to your buyers. They receive end-user rights only.</div></li>
+        <li><span class="icon">🚫</span><div><strong>Upload to free sharing platforms</strong> — You may not upload resources to torrent sites, free download sites, or public file-sharing platforms.</div></li>
+        <li><span class="icon">🚫</span><div><strong>Use for illegal or harmful purposes</strong> — Resources must not be used for spam, fraud, defamation, or any unlawful activity.</div></li>
+        <li><span class="icon">🚫</span><div><strong>Misrepresent FutureWithAI</strong> — You cannot use FutureWithAI branding to falsely suggest official partnership or endorsement.</div></li>
+      </ul>
+    </div>
+
+    <!-- ── Section 4 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">4</span>
+        Intellectual Property
+      </div>
+      <p>
+        All original intellectual property rights in the base resources remain with their respective creators. This license grants usage and distribution rights only — not ownership of the underlying intellectual property.
+      </p>
+      <p>
+        Any modifications, customizations, or derivative works you create from these resources are your own property and may be sold or used as you see fit.
+      </p>
+    </div>
+
+    <!-- ── Section 5 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">5</span>
+        License Duration & Scope
+      </div>
+      <div class="highlight-box">
+        <h4>⚡ Lifetime License — No Expiry</h4>
+        <p>This license is perpetual. Once purchased, your rights do not expire. You retain full access and resell rights for as long as you wish. There are no monthly fees, renewal charges, or hidden costs.</p>
+      </div>
+      <p>
+        This license covers all digital resources included in your purchased product(s) as listed on the FutureWithAI Store at the time of your purchase.
+      </p>
+    </div>
+
+    <!-- ── Section 6 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">6</span>
+        Refund & Cancellation
+      </div>
+      <p>
+        As digital products are delivered instantly, refunds are handled on a case-by-case basis as per the <strong>FutureWithAI Refund Policy</strong>. Please refer to our website for the most up-to-date refund terms.
+      </p>
+      <p>
+        If a refund is processed, this license is immediately revoked and you must cease all use and distribution of the resources.
+      </p>
+    </div>
+
+    <!-- ── Section 7 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">7</span>
+        Disclaimer & Limitation of Liability
+      </div>
+      <p>
+        The digital resources are provided "as is" without warranty of any kind. FutureWithAI / Anshuman Enterprises shall not be held liable for any damages arising from the use, inability to use, or results obtained from these resources.
+      </p>
+      <p>
+        Any income claims or earnings potential mentioned in marketing materials are estimates only and do not guarantee results.
+      </p>
+    </div>
+
+    <!-- ── Section 8 ── -->
+    <div class="section">
+      <div class="section-title">
+        <span class="section-num">8</span>
+        Governing Law
+      </div>
+      <p>
+        This License Agreement is governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts in the relevant Indian jurisdiction.
+      </p>
+    </div>
+
+    <!-- ── Signature Area ── -->
+    <div class="signature-area">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-label">Licensor</div>
+        <div class="sig-name">FutureWithAI</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">Anshuman Enterprises</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <div class="sig-label">Licensee</div>
+        <div class="sig-name">Purchaser / Buyer</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px;">As per purchase record</div>
+      </div>
+    </div>
+
+    <!-- ── Footer / Seal ── -->
+    <div class="doc-footer">
+      <div class="seal">
+        <div class="seal-text">Official<br>License</div>
+      </div>
+      <p>This is an official digital license issued by <span class="brand">FutureWithAI</span> — Powered by Anshuman Enterprises.</p>
+      <p style="margin-top:8px;">For support, contact us via our <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" style="color:var(--primary);text-decoration:none;font-weight:600;">WhatsApp Community</a></p>
+      <p style="margin-top:12px;font-size:10px;color:rgba(255,255,255,0.2);">
+        © 2026 FutureWithAI · All Rights Reserved · Document ID: FWAI-PLR-2026
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
