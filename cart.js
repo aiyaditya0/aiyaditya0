@@ -435,7 +435,6 @@
     }, 3500);
   };
 
-  // ─── Checkout + Smart Upsell ──────────────────────────────────────────────────
   function doCheckout() {
     const cart = getCart();
     const amount = cart.reduce((s, i) => s + i.price, 0);
@@ -444,7 +443,8 @@
       sessionStorage.setItem('ae_pg_product_name', productNames);
       sessionStorage.setItem('ae_pg_amount', amount);
     } catch (e) {}
-    window.location.href = `checkout.html?amount=${amount}&products=${encodeURIComponent(productNames)}`;
+    // Redirect absolutely to the main domain checkout page with the cart content serialized in the URL
+    window.location.href = `https://anshumanenterprises.online/futurewithai/checkout.html?cart=${encodeURIComponent(JSON.stringify(cart))}`;
   }
 
   function handleCartCheckout() {

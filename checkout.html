@@ -326,6 +326,23 @@
   </div>
 
   <script>
+    // Parse cart from URL parameter if present and load it into localStorage immediately
+    (function() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const cartParam = params.get('cart');
+        if (cartParam) {
+          const decodedCart = decodeURIComponent(cartParam);
+          const parsedCart = JSON.parse(decodedCart);
+          if (Array.isArray(parsedCart) && parsedCart.length > 0) {
+            localStorage.setItem('fwai_cart_items', JSON.stringify(parsedCart));
+          }
+        }
+      } catch (e) {
+        console.error('Failed to pre-load cart from URL parameter:', e);
+      }
+    })();
+
     // ─── Product catalog (for upsell) ────────────────────────────────────────────
     const UPSELL_CATALOG = [];
 
