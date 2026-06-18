@@ -888,9 +888,15 @@ function doGet(e) {
           const products = data[i][5];
           const amount   = data[i][6];
           const status   = String(data[i][7]).trim().toUpperCase();
-          const token    = String(data[i][11]).trim();
+          let token      = String(data[i][11]).trim();
           
           const isPaid = (status === 'COMPLETED' || status === 'PAID' || status === 'SUCCESS');
+          
+          if (isPaid && (!token || token === '' || token === 'undefined')) {
+            token = generateToken();
+            sheet.getRange(i + 2, 12).setValue(token);
+            SpreadsheetApp.flush();
+          }
           
           // Get product links if paid
           let productLinks = {};

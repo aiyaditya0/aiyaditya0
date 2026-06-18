@@ -2582,4 +2582,33 @@ html, body {
   .prod-quick-buy {
     display: none !important;
   }
+  
+  /* Mobile buy button display */
+  .prod-mobile-buy-btn {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background: linear-gradient(135deg, #ff8a00, #ffb347) !important;
+    color: #000 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+    font-weight: 750 !important;
+    margin-top: auto !important;
+    cursor: pointer !important;
+    font-family: 'Inter', sans-serif !important;
+    transition: all 0.2s !important;
+  }
+  .prod-mobile-buy-btn.added {
+    background: #34c759 !important;
+    color: #fff !important;
+    cursor: default !important;
+  }
+}
+
+/* Desktop fallback/hiding styling for mobile buy button */
+.prod-mobile-buy-btn {
+  display: none !important;
 }

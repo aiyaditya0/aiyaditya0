@@ -454,41 +454,7 @@
       showToast('Add at least one product to check out!', 'error');
       return;
     }
-
-    const upsell = getUpsellProduct(cart);
-
-    if (!upsell) {
-      // No eligible upsell — go straight to checkout
-      doCheckout();
-      return;
-    }
-
-    // Close cart drawer, show upsell modal
-    closeCart();
-    showUpsellModal(
-      upsell,
-      // ✅ Accept: add upsell product at discounted price, then checkout
-      function onAccept(product, discountedPrice) {
-        const cart = getCart();
-        if (!cart.find(i => i.id === product.id)) {
-          cart.push({
-            id: product.id,
-            name: product.fullName,
-            price: discountedPrice,
-            img: product.img,
-            link: product.link,
-          });
-          saveCart(cart);
-          updateCartUI();
-          showToast(`Added "${product.name}" at ₹${discountedPrice}! 🎉`, 'success');
-        }
-        setTimeout(doCheckout, 600);
-      },
-      // ❌ Decline: go to checkout as-is
-      function onDecline() {
-        doCheckout();
-      }
-    );
+    doCheckout();
   }
 
   // ─── Initialization ───────────────────────────────────────────────────────────

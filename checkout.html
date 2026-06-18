@@ -106,73 +106,6 @@
     .order-row.total span:last-child{color:var(--primary);}
     .order-row .savings{color:var(--green);font-size:12px;font-weight:700;}
 
-    /* ── UPSELL CARD ── */
-    #upsellSection{display:none;}
-    #upsellSection.visible{display:block;}
-    .upsell-strip{
-      height:3px;width:100%;border-radius:3px 3px 0 0;
-      background:linear-gradient(90deg,#b34500,#ff8a00,#ffb347);
-    }
-    .upsell-card{
-      background:linear-gradient(145deg,rgba(24,12,2,0.99),rgba(10,6,2,0.99));
-      border:1.5px solid rgba(255,138,0,0.35); border-radius:0 0 20px 20px;
-      padding:22px 22px 20px; margin-bottom:28px;
-      box-shadow:0 8px 32px rgba(255,138,0,0.1);
-    }
-    .upsell-header-badge{
-      display:inline-flex;align-items:center;gap:6px;
-      background:rgba(255,59,48,0.15);border:1px solid rgba(255,59,48,0.3);
-      color:#ff5f52;border-radius:20px;padding:4px 12px;
-      font-size:10.5px;font-weight:800;letter-spacing:0.6px;margin-bottom:12px;
-    }
-    .upsell-title{
-      font-family:'Playfair Display',serif;
-      font-size:19px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.25;
-    }
-    .upsell-sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;}
-
-    .upsell-product-row{
-      display:flex;gap:14px;align-items:flex-start;
-      background:rgba(255,255,255,0.04);border:1px solid rgba(255,138,0,0.15);
-      border-radius:14px;padding:14px;margin-bottom:14px;
-    }
-    .upsell-prod-img{width:68px;height:68px;border-radius:10px;object-fit:cover;flex-shrink:0;}
-    .upsell-prod-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;}
-    .upsell-prod-desc{font-size:11.5px;color:var(--muted);line-height:1.5;}
-    .upsell-bullets{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:4px;}
-    .upsell-bullets li{font-size:11px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:5px;}
-    .upsell-bullets li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0;}
-
-    .upsell-price-bar{
-      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-      background:rgba(255,138,0,0.07);border:1px solid rgba(255,138,0,0.16);
-      border-radius:12px;padding:12px 14px;margin-bottom:14px;
-    }
-    .off-chip{
-      background:linear-gradient(135deg,#ff3b30,#ff6635);
-      color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:8px;
-    }
-    .orig-price{font-size:13px;color:var(--muted);text-decoration:line-through;}
-    .now-price{font-size:26px;font-weight:800;color:var(--primary);line-height:1;}
-    .save-chip{font-size:11.5px;color:var(--green);font-weight:700;margin-left:auto;}
-
-    .upsell-accept-btn{
-      width:100%;background:linear-gradient(135deg,#ff8a00,#ffb347);
-      color:#000;font-weight:800;font-size:15px;padding:16px;
-      border-radius:14px;border:none;cursor:pointer;
-      letter-spacing:0.3px;margin-bottom:10px;
-      box-shadow:0 6px 24px rgba(255,138,0,0.4);
-      transition:all 0.3s;font-family:'Inter',sans-serif;
-      display:flex;align-items:center;justify-content:center;gap:8px;
-    }
-    .upsell-accept-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,138,0,0.55);}
-    .upsell-decline-btn{
-      width:100%;background:none;border:none;color:var(--muted);
-      font-size:12px;cursor:pointer;padding:6px;text-align:center;
-      font-family:'Inter',sans-serif;transition:color 0.2s;
-    }
-    .upsell-decline-btn:hover{color:rgba(255,255,255,0.6);text-decoration:underline;}
-
     /* ── RIGHT SUMMARY CARD ── */
     .summary-card{position:sticky;top:24px;}
     .summary-card .total-big{
@@ -300,37 +233,40 @@
         </div>
       </div>
 
-      <!-- ── SMART UPSELL SECTION ── -->
-      <div id="upsellSection">
-        <div class="upsell-strip"></div>
-        <div class="upsell-card">
-          <div class="upsell-header-badge" id="upsellBadge">⚡ EXCLUSIVE CHECKOUT OFFER</div>
-          <div class="upsell-title" id="upsellTitle">Wait! Add one more at 30% off</div>
-          <div class="upsell-sub" id="upsellSub">Customers buying this also grab this — available at this price only right now:</div>
-
-          <div class="upsell-product-row">
-            <img class="upsell-prod-img" id="upsellImg" src="" alt="Upsell product">
-            <div>
-              <div class="upsell-prod-name" id="upsellName">Loading...</div>
-              <div class="upsell-prod-desc" id="upsellDesc"></div>
-              <ul class="upsell-bullets" id="upsellBullets"></ul>
-            </div>
+      <!-- Billing Details Card -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-title" style="color: var(--primary); display: flex; align-items: center; gap: 8px;">📋 Billing Details</div>
+        <p style="font-size: 13px; color: var(--muted); margin-bottom: 20px;">Fill in your details to proceed to secure payment via PhonePe.</p>
+        
+        <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)">
+          <div style="margin-bottom: 16px;">
+            <label for="checkout-name" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--muted);">Full Name *</label>
+            <input type="text" id="checkout-name" name="name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px;" autocomplete="name">
           </div>
-
-          <div class="upsell-price-bar">
-            <span class="off-chip">30% OFF</span>
-            <span class="orig-price" id="upsellOrig">₹99</span>
-            <span class="now-price" id="upsellNow">₹69</span>
-            <span class="save-chip" id="upsellSave">You save ₹30!</span>
+          
+          <div style="margin-bottom: 16px;">
+            <label for="checkout-email" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--muted);">Email Address *</label>
+            <input type="email" id="checkout-email" name="email" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px;" autocomplete="email">
           </div>
-
-          <button class="upsell-accept-btn" id="upsellAcceptBtn">
-            ✅ Yes! Add This &amp; Proceed to Payment →
-          </button>
-          <button class="upsell-decline-btn" id="upsellDeclineBtn">
-            No thanks, I'll skip this deal
-          </button>
-        </div>
+          
+          <div style="margin-bottom: 16px;">
+            <label for="checkout-phone" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--muted);">WhatsApp / Phone Number *</label>
+            <input type="tel" id="checkout-phone" name="phone" placeholder="e.g. +91 98765 43210" required style="width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px;" autocomplete="tel">
+          </div>
+          
+          <div style="margin-bottom: 8px;">
+            <label for="checkout-profession" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--muted);">Profession *</label>
+            <select id="checkout-profession" name="profession" required style="width: 100%; padding: 12px 16px; border-radius: 10px; background: rgba(18,10,3,0.97); border: 1px solid rgba(255,255,255,0.1); color: #fff; font-family: 'Inter', sans-serif; font-size: 14px; cursor: pointer; appearance: none; -webkit-appearance: none;">
+              <option value="" disabled selected>Select your profession</option>
+              <option value="Student">Student</option>
+              <option value="Freelancer">Freelancer</option>
+              <option value="Businessman">Businessman</option>
+              <option value="Content Creator">Content Creator</option>
+              <option value="Agency Owner">Agency Owner</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </form>
       </div>
 
       <!-- Trust signals -->
@@ -370,7 +306,7 @@
           <li>7-day refund policy</li>
         </ul>
 
-        <button class="checkout-cta" id="mainCheckoutBtn">
+        <button type="submit" form="checkout-form" class="checkout-cta" id="mainCheckoutBtn">
           🔐 Pay Securely → Proceed
         </button>
 
@@ -391,28 +327,7 @@
 
   <script>
     // ─── Product catalog (for upsell) ────────────────────────────────────────────
-    const UPSELL_CATALOG = [
-      {
-        id: 'n8n-pack',
-        name: 'n8n Automation Pack',
-        fullName: 'n8n Automation Pack (2000+ Workflows)',
-        desc: '2000+ ready-to-use automation workflows for marketing, CRM & operations.',
-        bullets: ['2000+ Production-ready JSONs', 'Slack + WhatsApp bots', 'Full PLR / Resell License'],
-        price: 99,
-        img: 'hero-image.webp',
-        link: 'n8n-pack.html',
-      },
-      {
-        id: 'mega-reels',
-        name: 'Viral Reels Goldmine Pack',
-        fullName: '100,000+ Viral Reels Goldmine Pack',
-        desc: 'Ready-to-post HD reels — cricket, gym, AI anime, motivation & more.',
-        bullets: ['100,000+ Viral Edited Shorts', 'Zero watermarks, Full HD', 'Instant Google Drive access'],
-        price: 99,
-        img: 'reels_hero_mockup.webp',
-        link: 'mega-reels.html',
-      },
-    ];
+    const UPSELL_CATALOG = [];
 
     // Original values for savings display (per product id)
     const ORIGINAL_VALUES = {
@@ -462,39 +377,36 @@
       try { localStorage.setItem('fwai_cart_items', JSON.stringify(cart)); } catch(e) {}
     }
 
-    // ─── Get eligible upsell ──────────────────────────────────────────────────────
-    function getUpsellProduct(cart) {
-      const cartIds = cart.map(i => i.id);
-      const eligible = UPSELL_CATALOG.filter(p => !cartIds.includes(p.id));
-      if (!eligible.length) return null;
-      return eligible[(cart.length - 1) % eligible.length] || eligible[0];
-    }
-
-    // ─── Go to real payment gateway ───────────────────────────────────────────────
-    function proceedToPayment() {
-      const cart = getCart();
-      const amount = cart.reduce((s, i) => s + i.price, 0);
-      const productNames = cart.map(i => i.name).join(', ');
-      const productIds = cart.map(i => i.id).join(',');
-      try {
-        sessionStorage.setItem('ae_pg_product_name', productNames);
-        sessionStorage.setItem('ae_pg_product_ids', productIds);
-        sessionStorage.setItem('ae_pg_amount', amount);
-      } catch(e) {}
-      // PhonePe payment gateway URL — replace with actual PG link
-      const pgUrl = `https://api.phonepe.com/checkout?amount=${amount * 100}&merchant_id=YOUR_MERCHANT_ID&products=${encodeURIComponent(productIds)}`;
-      // For now use PhonePe app link with amount
-      window.location.href = `payment-success.html?amount=${amount}&products=${encodeURIComponent(productIds)}&name=${encodeURIComponent(productNames)}`;
-    }
-
     // ─── Render page ──────────────────────────────────────────────────────────────
     window.addEventListener('DOMContentLoaded', function() {
       const loading  = document.getElementById('loadingState');
       const empty    = document.getElementById('emptyState');
       const main     = document.getElementById('checkoutMain');
 
-      // Also read URL params (cart may have been passed as query)
+      // Pre-fill form from URL query parameters if they exist
       const params   = new URLSearchParams(window.location.search);
+      const nameParam = params.get('name');
+      const emailParam = params.get('email');
+      const phoneParam = params.get('phone') || params.get('whatsapp');
+      const professionParam = params.get('profession');
+
+      if (nameParam) {
+        const nameEl = document.getElementById('checkout-name');
+        if (nameEl) nameEl.value = decodeURIComponent(nameParam);
+      }
+      if (emailParam) {
+        const emailEl = document.getElementById('checkout-email');
+        if (emailEl) emailEl.value = decodeURIComponent(emailParam);
+      }
+      if (phoneParam) {
+        const phoneEl = document.getElementById('checkout-phone');
+        if (phoneEl) phoneEl.value = decodeURIComponent(phoneParam);
+      }
+      if (professionParam) {
+        const professionEl = document.getElementById('checkout-profession');
+        if (professionEl) professionEl.value = decodeURIComponent(professionParam);
+      }
+
       const cart     = getCart();
 
       setTimeout(function() {
@@ -507,9 +419,7 @@
 
         main.style.display = 'grid';
         renderOrder(cart);
-        renderUpsell(cart);
         renderSummary(cart);
-        bindButtons(cart);
 
         if (window.lucide) lucide.createIcons();
       }, 400);
@@ -564,89 +474,107 @@
         `₹${saved.toLocaleString('en-IN')}`;
     }
 
-    function renderUpsell(cart) {
-      const product = getUpsellProduct(cart);
-      if (!product) return;
-
-      const discounted = Math.round(product.price * 0.7); // 30% off
-      const saved      = product.price - discounted;
-
-      const section = document.getElementById('upsellSection');
-      section.classList.add('visible');
-
-      // Badge & headline based on cart size
-      if (cart.length >= 2) {
-        document.getElementById('upsellBadge').textContent = '🎁 BUNDLE BONUS OFFER';
-        document.getElementById('upsellTitle').textContent =
-          `You're buying ${cart.length} products — here's your bonus deal!`;
-        document.getElementById('upsellSub').textContent =
-          'Complete your bundle with this add-on at 30% off — available at this price only at checkout:';
-      } else {
-        document.getElementById('upsellBadge').textContent = '⚡ ONE-TIME CHECKOUT OFFER';
-        document.getElementById('upsellTitle').textContent = 'Hold on! Add this at 30% off';
-        document.getElementById('upsellSub').textContent =
-          'Customers who buy this also grab this bestseller — available at this exclusive checkout price only:';
+    // ─── PhonePe Checkout Initiation Logic ──────────────────────────
+    async function handleCheckoutSubmit(event) {
+      event.preventDefault();
+      
+      const form = document.getElementById('checkout-form');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      
+      const name = document.getElementById('checkout-name').value.trim();
+      const email = document.getElementById('checkout-email').value.trim();
+      const phone = document.getElementById('checkout-phone').value.trim();
+      const profession = document.getElementById('checkout-profession').value;
+      
+      const submitBtn = document.getElementById('mainCheckoutBtn');
+      const originalText = submitBtn.innerHTML;
+      
+      // Loading State
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `🔐 Processing Payment...`;
+      
+      Array.from(form.elements).forEach(el => el.disabled = true);
+      
+      const cart = getCart();
+      const amount = cart.reduce((s, i) => s + i.price, 0);
+      const productNames = cart.map(i => i.name).join(', ');
+      const productIds = cart.map(i => i.id).join(',');
+      
+      // Save customer details and product details in sessionStorage
+      try {
+        sessionStorage.setItem('ae_pg_customer_name', name);
+        sessionStorage.setItem('ae_pg_customer_email', email);
+        sessionStorage.setItem('ae_pg_customer_phone', phone);
+        sessionStorage.setItem('ae_pg_product_name', productNames);
+        sessionStorage.setItem('ae_pg_product_ids', productIds);
+        sessionStorage.setItem('ae_pg_amount', amount);
+      } catch (e) {
+        console.warn('sessionStorage write failed:', e);
       }
 
-      document.getElementById('upsellImg').src       = product.img;
-      document.getElementById('upsellName').textContent = product.name;
-      document.getElementById('upsellDesc').textContent = product.desc;
-      document.getElementById('upsellBullets').innerHTML =
-        product.bullets.map(b => `<li>${b}</li>`).join('');
-      document.getElementById('upsellOrig').textContent = `₹${product.price}`;
-      document.getElementById('upsellNow').textContent  = `₹${discounted}`;
-      document.getElementById('upsellSave').textContent = `You save ₹${saved}!`;
-
-      // Store for button handlers
-      window._upsellProduct    = product;
-      window._upsellDiscounted = discounted;
-    }
-
-    function bindButtons(cart) {
-      // Main checkout button
-      document.getElementById('mainCheckoutBtn').addEventListener('click', proceedToPayment);
-
-      // Upsell Accept
-      const acceptBtn = document.getElementById('upsellAcceptBtn');
-      if (acceptBtn) {
-        acceptBtn.addEventListener('click', function() {
-          const p = window._upsellProduct;
-          const d = window._upsellDiscounted;
-          if (!p) { proceedToPayment(); return; }
-
-          // Add upsell to cart
-          const currentCart = getCart();
-          if (!currentCart.find(i => i.id === p.id)) {
-            currentCart.push({
-              id: p.id, name: p.fullName,
-              price: d, img: p.img, link: p.link,
-            });
-            saveCart(currentCart);
-          }
-
-          // Hide upsell section, update totals, then redirect
-          document.getElementById('upsellSection').style.display = 'none';
-
-          // Add upsell item to visible order list
-          const newCart = getCart();
-          renderOrder(newCart);
-          renderSummary(newCart);
-
-          // Brief success flash then proceed
-          acceptBtn.textContent = '✅ Added! Redirecting to payment...';
-          acceptBtn.style.background = '#27c93f';
-          acceptBtn.style.color = '#fff';
-          setTimeout(proceedToPayment, 1200);
+      // Log to Web3Forms
+      try {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: "2455552c-6b95-483c-96ee-65271c8719f3",
+            subject: `Checkout Page Submitted - ${name}`,
+            from_name: "FutureWithAi Checkout System",
+            name: name,
+            email: email,
+            whatsapp: phone,
+            profession: profession,
+            message: `User details submitted at main domain checkout:\n\nName: ${name}\nEmail: ${email}\nWhatsApp: ${phone}\nProfession: ${profession}\n\nRedirecting to PhonePe for completing the payment.`
+          })
         });
+      } catch (e) {
+        console.warn('Web3Forms checkout log failed:', e);
       }
 
-      // Upsell Decline
-      const declineBtn = document.getElementById('upsellDeclineBtn');
-      if (declineBtn) {
-        declineBtn.addEventListener('click', function() {
-          document.getElementById('upsellSection').style.display = 'none';
-          proceedToPayment();
+      // Initiate payment via backend server
+      try {
+        const response = await fetch('https://ae-payment-server.vercel.app/initiate-phonepe-payment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            whatsapp: phone,
+            bizType: profession,
+            goals: "",
+            amount: amount,
+            products: productNames,
+            productIds: productIds
+          })
         });
+        
+        const data = await response.json();
+        
+        if (data.success && data.redirectUrl) {
+          // Store Order ID in session
+          try { sessionStorage.setItem('ae_pg_order_id', data.merchantOrderId || ''); } catch(e){}
+          // Redirect to PhonePe payment gateway
+          window.location.href = data.redirectUrl;
+        } else {
+          throw new Error(data.message || 'Payment initiation failed.');
+        }
+      } catch (error) {
+        console.error('Error initiating payment:', error);
+        alert('Payment Error: ' + error.message + '\n\nPlease try again or contact support.');
+        
+        // Reset loading state
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+        Array.from(form.elements).forEach(el => el.disabled = false);
       }
     }
   </script>
