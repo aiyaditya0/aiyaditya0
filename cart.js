@@ -396,7 +396,6 @@
     } else {
       listEl.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img class="cart-item-img" src="${item.img}" alt="${item.name}">
           <div class="cart-item-details">
             <div class="cart-item-title">${item.name}</div>
             <div class="cart-item-price">₹${item.price}</div>
