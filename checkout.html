@@ -553,7 +553,8 @@
             goals: "",
             amount: amount,
             products: productNames,
-            productIds: productIds
+            productIds: productIds,
+            redirectUrl: window.location.origin + window.location.pathname.replace('checkout.html', 'payment-success.html')
           })
         });
         
