@@ -160,11 +160,16 @@ def generate_access_page():
     }
 
     .assets-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 32px; margin-bottom: 48px;
     }
     @media (max-width: 768px) {
-      .assets-grid { grid-template-columns: 1fr; gap: 20px; }
+      .assets-grid { gap: 20px; }
+      .asset-card { padding: 20px; }
+      .portal-container { padding: 0 16px; }
+      .welcome-card { padding: 24px; margin-bottom: 32px; }
+      .bonus-card { padding: 24px; margin-bottom: 32px; }
     }
 
     .asset-card {
@@ -445,7 +450,7 @@ def generate_access_page():
       // Render bonuses
       if (matchedCount > 0) {
         const bonusHeader = document.createElement('h3');
-        bonusHeader.style.cssText = "font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-white); margin: 40px 0 24px 0; padding-left: 4px; grid-column: span 2;";
+        bonusHeader.style.cssText = "font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-white); margin: 40px 0 24px 0; padding-left: 4px; grid-column: 1 / -1;";
         bonusHeader.innerHTML = "🎁 Free Bonuses Included with Your Purchase";
         container.appendChild(bonusHeader);
 

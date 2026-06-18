@@ -69,11 +69,16 @@
     }
 
     .assets-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 32px; margin-bottom: 48px;
     }
     @media (max-width: 768px) {
-      .assets-grid { grid-template-columns: 1fr; gap: 20px; }
+      .assets-grid { gap: 20px; }
+      .asset-card { padding: 20px; }
+      .portal-container { padding: 0 16px; }
+      .welcome-card { padding: 24px; margin-bottom: 32px; }
+      .bonus-card { padding: 24px; margin-bottom: 32px; }
     }
 
     .asset-card {
@@ -395,12 +400,12 @@
   },
   '400-php-scripts': {
     name: "400+ PHP scripts",
-    link: "https://mega.nz/folder/It4RVKAQ#DIh5_Axo7CiYabcL5IB3Eg",
+    link: "400+ Php Scripts-20240730T043321Z-001.zip - Google Drive",
     desc: "Direct access link for 400+ PHP scripts. Download or bookmark files for offline usage."
   },
   '200-ultimate-web-applications-theme-plugins': {
     name: "200+ Ultimate Web Applications Theme & Plugins",
-    link: "https://mega.nz/folder/It4RVKAQ#DIh5_Axo7CiYabcL5IB3Eg/folder/h1JxxYjD",
+    link: "File folder on MEGA",
     desc: "Direct access link for 200+ Ultimate Web Applications Theme & Plugins. Download or bookmark files for offline usage."
   },
   '21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app': {
@@ -425,17 +430,17 @@
   },
   'igital-marketing-bundle': {
     name: "igital Marketing Bundle",
-    link: "https://mega.nz/folder/It4RVKAQ#DIh5_Axo7CiYabcL5IB3Eg",
+    link: "MEGA",
     desc: "Direct access link for igital Marketing Bundle. Download or bookmark files for offline usage."
   },
   '2700-elementor-pro-templates-forwordpresssite': {
     name: "2700+ Elementor Pro Templates Forwordpresssite",
-    link: "https://mega.nz/folder/It4RVKAQ#DIh5_Axo7CiYabcL5IB3Eg",
+    link: "MEGA",
     desc: "Direct access link for 2700+ Elementor Pro Templates Forwordpresssite. Download or bookmark files for offline usage."
   },
   '37tb-all-money-making-courses-bundle': {
     name: "1.37tb All Money Making Courses Bundle",
-    link: "https://mega.nz/folder/It4RVKAQ#DIh5_Axo7CiYabcL5IB3Eg",
+    link: "MEGA",
     desc: "Direct access link for 1.37tb All Money Making Courses Bundle. Download or bookmark files for offline usage."
   },
 };
@@ -454,14 +459,13 @@
     function initIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); else setTimeout(initIcons, 50); }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initIcons); else initIcons();
 
-    // Verification check — supports both ?token= and ?orderId=
+    // Verification check
     window.addEventListener('DOMContentLoaded', async () => {
       const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzLJxvjXfqXF10N1YIju5pihlp3OgjjJtGl9bqNr2uHvn94cKodeS2U0kB0yNTieFuV/exec";
       const params = new URLSearchParams(window.location.search);
-      const token = params.get('token');
       const orderId = params.get('orderId') || sessionStorage.getItem('ae_verified_order_id');
 
-      if (!token && !orderId) {
+      if (!orderId) {
         window.location.replace('index.html');
         return;
       }
@@ -472,8 +476,7 @@
         const cached = sessionStorage.getItem('ae_payment_data');
         if (cached) {
           const parsed = JSON.parse(cached);
-          const cacheMatch = (token && parsed.accessToken === token) || (orderId && parsed.merchantOrderId === orderId);
-          if (cacheMatch) {
+          if (parsed.merchantOrderId === orderId) {
             cachedData = parsed;
           }
         }
@@ -482,21 +485,13 @@
       let orderData = cachedData;
       if (!orderData) {
         try {
-          let apiUrl;
-          if (token) {
-            apiUrl = `${APPS_SCRIPT_URL}?action=verify_token&token=${encodeURIComponent(token)}`;
-          } else {
-            apiUrl = `${APPS_SCRIPT_URL}?action=check_status&orderId=${encodeURIComponent(orderId)}`;
-          }
-          
-          const response = await fetch(apiUrl);
+          const response = await fetch(`${APPS_SCRIPT_URL}?action=check_status&orderId=${encodeURIComponent(orderId)}`);
           const data = await response.json();
 
           if (response.ok && data.success && data.isPaid) {
             orderData = data;
             sessionStorage.setItem('ae_payment_verified', 'true');
-            if (data.merchantOrderId) sessionStorage.setItem('ae_verified_order_id', data.merchantOrderId);
-            if (data.accessToken) sessionStorage.setItem('ae_access_token', data.accessToken);
+            sessionStorage.setItem('ae_verified_order_id', orderId);
             sessionStorage.setItem('ae_payment_data', JSON.stringify(data));
           } else {
             window.location.replace('index.html');
@@ -509,21 +504,7 @@
         }
       }
 
-      // Update welcome message with token info
-      if (orderData.accessToken) {
-        const welcomeText = document.getElementById('welcome-message-text');
-        if (welcomeText) {
-          welcomeText.innerHTML = `
-            Thank you for your purchase! Below are your download links.<br>
-            <span style="display:inline-block;margin-top:12px;background:rgba(255,138,0,0.1);border:1px solid rgba(255,138,0,0.3);border-radius:10px;padding:8px 16px;">
-              🔑 <strong>Your Access Token:</strong> <code style="font-size:16px;font-weight:800;color:var(--primary-container);letter-spacing:2px;">${orderData.accessToken}</code>
-            </span>
-            <br><span style="font-size:12px;color:var(--text-muted);margin-top:6px;display:block;">Bookmark this page or save your token to revisit anytime.</span>
-          `;
-        }
-      }
-
-      // Render purchased products — use productLinks from API if available
+      // Render purchased products
       renderPurchasedAssets(orderData);
       document.body.style.display = 'block';
     });
@@ -579,7 +560,7 @@
       // Render bonuses
       if (matchedCount > 0) {
         const bonusHeader = document.createElement('h3');
-        bonusHeader.style.cssText = "font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-white); margin: 40px 0 24px 0; padding-left: 4px; grid-column: span 2;";
+        bonusHeader.style.cssText = "font-family: 'Playfair Display', serif; font-size: 22px; color: var(--text-white); margin: 40px 0 24px 0; padding-left: 4px; grid-column: 1 / -1;";
         bonusHeader.innerHTML = "🎁 Free Bonuses Included with Your Purchase";
         container.appendChild(bonusHeader);
 

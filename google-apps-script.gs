@@ -479,7 +479,7 @@ function buildProductLinksText(productIds) {
 // ══════════════════════════════════════════════════════════════
 //  Deliver Order (Email + PDF + Direct Links)
 // ══════════════════════════════════════════════════════════════
-function deliverOrder(email, name, rawProducts, orderId, accessToken) {
+function deliverOrder(email, name, rawProducts, orderId, accessToken, phone, amount) {
   Logger.log('Starting delivery for Order: ' + (orderId || 'N/A') + ' to ' + email);
   if (!email || !email.includes('@')) {
     throw new Error('Invalid email address provided: ' + email);
@@ -520,6 +520,36 @@ function deliverOrder(email, name, rawProducts, orderId, accessToken) {
       matchedDisplayNames.push(id);
     }
   });
+
+  // ── Invoice Generation & Google Drive Save ────────────────
+  let invoicePdf = null;
+  try {
+    const ss = getActiveSpreadsheetHelper();
+    if (ss) {
+      const templateSheet = ss.getSheetByName("Invoice Template") || ss.getSheetByName("Invoice");
+      if (templateSheet) {
+        Logger.log("Generating Invoice PDF for token: " + accessToken);
+        const tempSheet = templateSheet.copyTo(ss);
+        tempSheet.setName("Temp_Invoice_" + accessToken);
+        
+        fillInvoiceData(ss, tempSheet, accessToken, orderId, name, email, phone, rawProducts, amount);
+        SpreadsheetApp.flush();
+        
+        invoicePdf = exportSheetToPdf(ss, tempSheet, accessToken);
+        attachments.push(invoicePdf);
+        
+        saveInvoiceToDrive(invoicePdf, accessToken);
+        
+        ss.deleteSheet(tempSheet);
+        SpreadsheetApp.flush();
+        Logger.log("Invoice generated and archived successfully.");
+      } else {
+        Logger.log("No sheet named 'Invoice Template' or 'Invoice' found. Skipping invoice generation.");
+      }
+    }
+  } catch (invoiceErr) {
+    Logger.log("ERROR in invoice generation/archiving: " + invoiceErr.toString());
+  }
   
   const productsString = matchedDisplayNames.join(', ');
   
@@ -761,7 +791,9 @@ function processNewSheetRows() {
     const orderId = data[i][1];
     const name    = data[i][2];
     const email   = data[i][3];
+    const phone   = data[i][4];
     const rawProd = data[i][5];
+    const amount  = Number(data[i][6]) || 0;
     const status  = String(data[i][7]).trim().toUpperCase();
     const deliv   = String(data[i][8]).trim().toUpperCase();
     let token     = String(data[i][11]).trim();
@@ -778,7 +810,7 @@ function processNewSheetRows() {
       }
       
       try {
-        const result = deliverOrder(email, name, String(rawProd), String(orderId), token);
+        const result = deliverOrder(email, name, String(rawProd), String(orderId), token, phone, amount);
         sheet.getRange(rowNum, 9).setValue('SENT');
         sheet.getRange(rowNum, 10).setValue(new Date());
         sheet.getRange(rowNum, 11).setValue(result.emailBody);
@@ -875,49 +907,55 @@ function doGet(e) {
       if (!sheet) throw new Error('Orders sheet not found');
       
       const lastRow = sheet.getLastRow();
-      if (lastRow <= 1) {
-        return jsonResponse({ success: false, message: 'No orders found' });
+      let foundIndex = -1;
+      let existingRowData = null;
+      
+      if (lastRow > 1) {
+        const data = sheet.getRange(2, 1, lastRow - 1, 12).getValues();
+        for (let i = 0; i < data.length; i++) {
+          const rowOrderId = String(data[i][1]).trim();
+          if (rowOrderId === String(orderId).trim()) {
+            foundIndex = i + 2; // row number in sheet (1-based, +1 header, +1 array offset)
+            existingRowData = data[i];
+            break;
+          }
+        }
       }
       
-      const data = sheet.getRange(2, 1, lastRow - 1, 12).getValues();
-      for (let i = 0; i < data.length; i++) {
-        const rowOrderId = String(data[i][1]).trim();
-        if (rowOrderId === String(orderId).trim()) {
-          const name     = data[i][2];
-          const email    = data[i][3];
-          const products = data[i][5];
-          const amount   = data[i][6];
-          const status   = String(data[i][7]).trim().toUpperCase();
-          let token      = String(data[i][11]).trim();
-          
-          const isPaid = (status === 'COMPLETED' || status === 'PAID' || status === 'SUCCESS');
-          
-          if (isPaid && (!token || token === '' || token === 'undefined')) {
+      if (existingRowData) {
+        const name     = existingRowData[2];
+        const email    = existingRowData[3];
+        const products = existingRowData[5];
+        const amount   = existingRowData[6];
+        const status   = String(existingRowData[7]).trim().toUpperCase();
+        let token      = String(existingRowData[11]).trim();
+        
+        const isPaid = (status === 'COMPLETED' || status === 'PAID' || status === 'SUCCESS');
+        
+        if (isPaid) {
+          if (!token || token === '' || token === 'undefined') {
             token = generateToken();
-            sheet.getRange(i + 2, 12).setValue(token);
+            sheet.getRange(foundIndex, 12).setValue(token);
             SpreadsheetApp.flush();
           }
           
-          // Get product links if paid
           let productLinks = {};
-          if (isPaid) {
-            const productIds = resolveProductIds(String(products));
-            productIds.forEach(id => {
-              if (PRODUCT_LINKS[id]) {
-                productLinks[id] = PRODUCT_LINKS[id];
-              }
-            });
-          }
+          const productIds = resolveProductIds(String(products));
+          productIds.forEach(id => {
+            if (PRODUCT_LINKS[id]) {
+              productLinks[id] = PRODUCT_LINKS[id];
+            }
+          });
           
           return jsonResponse({
             success: true,
-            state: isPaid ? 'COMPLETED' : status,
-            isPaid: isPaid,
+            state: 'COMPLETED',
+            isPaid: true,
             amount: amount,
             merchantOrderId: orderId,
             products: products,
-            accessToken: isPaid ? token : '',
-            productLinks: isPaid ? productLinks : {},
+            accessToken: token,
+            productLinks: productLinks,
             successPayment: {
               amount: amount,
               paymentMode: 'UPI',
@@ -927,11 +965,108 @@ function doGet(e) {
         }
       }
       
+      // Fallback: Check PhonePe Status API directly
+      try {
+        const raw = checkPhonePeOrderStatus(orderId);
+        const state = (raw.state || 'UNKNOWN').toUpperCase();
+        const isPaid = state === 'COMPLETED';
+        
+        if (isPaid) {
+          const name = (raw.metaInfo && raw.metaInfo.udf1) || 'Customer';
+          const email = (raw.metaInfo && raw.metaInfo.udf2) || '';
+          const phone = (raw.metaInfo && raw.metaInfo.udf3) || '';
+          const rawProducts = (raw.metaInfo && raw.metaInfo.udf4) || 'mega-reels';
+          const amount = raw.amount ? (raw.amount / 100) : 349;
+          
+          const token = generateToken();
+          
+          if (existingRowData) {
+            sheet.getRange(foundIndex, 8).setValue('PAID'); // status
+            sheet.getRange(foundIndex, 12).setValue(token); // token
+            sheet.getRange(foundIndex, 9).setValue('PROCESSING'); // delivery status
+            SpreadsheetApp.flush();
+            
+            try {
+              const result = deliverOrder(email, name, rawProducts, orderId, token, phone, amount);
+              sheet.getRange(foundIndex, 9).setValue('SENT');
+              sheet.getRange(foundIndex, 10).setValue(new Date());
+              sheet.getRange(foundIndex, 11).setValue(result.emailBody);
+              SpreadsheetApp.flush();
+            } catch (err) {
+              sheet.getRange(foundIndex, 9).setValue('FAILED: ' + err.message);
+              SpreadsheetApp.flush();
+            }
+          } else {
+            // Append new row: Date | OrderId | Name | Email | Phone | Products | Amount | Status | Delivery | DeliveryDate | EmailBody | AccessToken
+            sheet.appendRow([new Date(), orderId, name, email, phone, rawProducts, amount, 'PAID', 'PROCESSING', '', '', token]);
+            SpreadsheetApp.flush();
+            
+            const newLastRow = sheet.getLastRow();
+            try {
+              const result = deliverOrder(email, name, rawProducts, orderId, token, phone, amount);
+              sheet.getRange(newLastRow, 9).setValue('SENT');
+              sheet.getRange(newLastRow, 10).setValue(new Date());
+              sheet.getRange(newLastRow, 11).setValue(result.emailBody);
+              SpreadsheetApp.flush();
+            } catch (err) {
+              sheet.getRange(newLastRow, 9).setValue('FAILED: ' + err.message);
+              SpreadsheetApp.flush();
+            }
+          }
+          
+          let productLinks = {};
+          const productIds = resolveProductIds(String(rawProducts));
+          productIds.forEach(id => {
+            if (PRODUCT_LINKS[id]) {
+              productLinks[id] = PRODUCT_LINKS[id];
+            }
+          });
+          
+          return jsonResponse({
+            success: true,
+            state: 'COMPLETED',
+            isPaid: true,
+            amount: amount,
+            merchantOrderId: orderId,
+            products: rawProducts,
+            accessToken: token,
+            productLinks: productLinks,
+            successPayment: {
+              amount: amount,
+              paymentMode: 'UPI',
+              transactionId: orderId
+            }
+          });
+        } else if (state === 'FAILED') {
+          if (existingRowData) {
+            sheet.getRange(foundIndex, 8).setValue('FAILED');
+            SpreadsheetApp.flush();
+          } else {
+            const name = (raw.metaInfo && raw.metaInfo.udf1) || 'Customer';
+            const email = (raw.metaInfo && raw.metaInfo.udf2) || '';
+            const phone = (raw.metaInfo && raw.metaInfo.udf3) || '';
+            const rawProducts = (raw.metaInfo && raw.metaInfo.udf4) || '';
+            const amount = raw.amount ? (raw.amount / 100) : 349;
+            sheet.appendRow([new Date(), orderId, name, email, phone, rawProducts, amount, 'FAILED', '', '', '', '']);
+            SpreadsheetApp.flush();
+          }
+          
+          return jsonResponse({
+            success: true,
+            state: 'FAILED',
+            isPaid: false,
+            merchantOrderId: orderId
+          });
+        }
+      } catch (phonePeErr) {
+        Logger.log("PhonePe Direct Query Failed: " + phonePeErr.toString());
+      }
+      
       return jsonResponse({
         success: true,
-        state: 'PENDING',
+        state: existingRowData ? String(existingRowData[7]).toUpperCase() : 'PENDING',
         isPaid: false,
-        message: 'Order not found, checking...'
+        message: 'Order status checked. Payment is not confirmed yet.'
       });
     }
     
@@ -1075,11 +1210,13 @@ function testDelivery() {
   const testProducts = "mega-reels, n7n-pack"; 
   const testOrderId = "TEST-ORDER-" + Math.floor(Math.random() * 99999);
   const testToken = generateToken();
+  const testPhone = "+91 70658 15743";
+  const testAmount = 136; // two items scaled to 68 + 68
   
   Logger.log("Running manual test...");
   Logger.log("Generated token: " + testToken);
   try {
-    const result = deliverOrder(testEmail, testName, testProducts, testOrderId, testToken);
+    const result = deliverOrder(testEmail, testName, testProducts, testOrderId, testToken, testPhone, testAmount);
     Logger.log("SUCCESS! Test report:");
     Logger.log("- Products identified: " + result.products);
     Logger.log("- Gemini AI utilized: " + (result.usedGemini ? "Yes" : "No"));
@@ -1160,4 +1297,303 @@ function getActiveSpreadsheetHelper() {
 
   return ss;
 }
+
+// ── PHONEPE API FALLBACK FOR STATUS CHECK ──────────────────────────
+function getPhonePeAccessToken() {
+  const props = PropertiesService.getScriptProperties();
+  const clientId = props.getProperty("PHONEPE_CLIENT_ID") || "SU2606121430539550011305";
+  const clientSecret = props.getProperty("PHONEPE_CLIENT_SECRET") || "7814af7d-d5ac-4afa-9a8e-5abb10936373";
+  
+  const cache = CacheService.getScriptCache();
+  const cachedToken = cache.get("phonepe_access_token");
+  if (cachedToken) {
+    return cachedToken;
+  }
+  
+  const url = "https://api.phonepe.com/apis/identity-manager/v1/oauth/token";
+  const payload = {
+    client_id: clientId,
+    client_secret: clientSecret,
+    client_version: "1",
+    grant_type: "client_credentials"
+  };
+  
+  const options = {
+    method: "post",
+    payload: payload,
+    muteHttpExceptions: true
+  };
+  
+  const response = UrlFetchApp.fetch(url, options);
+  const data = JSON.parse(response.getContentText());
+  
+  if (data.access_token) {
+    cache.put("phonepe_access_token", data.access_token, 3000); // cache for 50 mins
+    return data.access_token;
+  } else {
+    throw new Error("PhonePe OAuth failed: " + JSON.stringify(data));
+  }
+}
+
+function checkPhonePeOrderStatus(merchantOrderId) {
+  const accessToken = getPhonePeAccessToken();
+  const url = "https://api.phonepe.com/apis/pg/checkout/v2/order/" + merchantOrderId + "/status";
+  
+  const headers = {
+    "Authorization": "O-Bearer " + accessToken,
+    "Content-Type": "application/json"
+  };
+  
+  const options = {
+    method: "get",
+    headers: headers,
+    muteHttpExceptions: true
+  };
+  
+  const response = UrlFetchApp.fetch(url, options);
+  return JSON.parse(response.getContentText());
+}
+
+// ══════════════════════════════════════════════════════════════
+//  Invoice Generation Helper Functions
+// ══════════════════════════════════════════════════════════════
+
+/**
+ * Calculates individual rates for items so they sum up to the total paid amount.
+ */
+function getProductRates(productIds, totalAmount) {
+  const prices = {
+    'mega-reels': 68,
+    'n8n-automation-enterprise': 138,
+    'web-apps': 138,
+    'video-editing': 138,
+    'digital-marketing-bundle': 348,
+    'n8n-pack': 68
+  };
+  
+  const defaultPrice = 68;
+  let sumPrices = 0;
+  
+  const itemPrices = productIds.map(id => {
+    const p = prices[id] || defaultPrice;
+    sumPrices += p;
+    return p;
+  });
+  
+  if (sumPrices === 0 || totalAmount <= 0) {
+    return productIds.map(() => Math.round((totalAmount / productIds.length) * 100) / 100);
+  }
+  
+  const factor = totalAmount / sumPrices;
+  const scaledRates = itemPrices.map(p => Math.round(p * factor * 100) / 100);
+  
+  // Adjust rounding differences so sum is exactly totalAmount
+  let currentSum = scaledRates.reduce((a, b) => a + b, 0);
+  let diff = Math.round((totalAmount - currentSum) * 100) / 100;
+  if (diff !== 0 && scaledRates.length > 0) {
+    scaledRates[scaledRates.length - 1] = Math.round((scaledRates[scaledRates.length - 1] + diff) * 100) / 100;
+  }
+  
+  return scaledRates;
+}
+
+/**
+ * Finds or creates the "FutureWithAI Invoices" folder in Google Drive.
+ */
+function getInvoicesFolder() {
+  const folderName = "FutureWithAI Invoices";
+  const folders = DriveApp.getFoldersByName(folderName);
+  if (folders.hasNext()) {
+    return folders.next();
+  }
+  
+  const scriptProperties = PropertiesService.getScriptProperties();
+  const parentFolderId = scriptProperties.getProperty('DRIVE_FOLDER_ID');
+  if (parentFolderId) {
+    try {
+      const parentFolder = DriveApp.getFolderById(parentFolderId);
+      return parentFolder.createFolder(folderName);
+    } catch (e) {
+      Logger.log("Could not create invoices folder in parent folder, using Root: " + e.toString());
+    }
+  }
+  return DriveApp.createFolder(folderName);
+}
+
+/**
+ * Dynamically fills customer and item data into the copied invoice sheet.
+ */
+function fillInvoiceData(ss, sheet, token, orderId, name, email, phone, rawProducts, amount) {
+  const range = sheet.getDataRange();
+  const values = range.getValues();
+  
+  const today = new Date();
+  const formattedDate = Utilities.formatDate(today, Session.getScriptTimeZone() || "GMT+5:30", "dd/MM/yyyy");
+  
+  let tableHeaderRow = -1;
+  let subtotalRow = -1;
+  
+  for (let r = 0; r < values.length; r++) {
+    for (let c = 0; c < values[r].length; c++) {
+      let val = String(values[r][c]).trim();
+      
+      // Invoice No cell
+      if (val.includes("Invoice No") || val.includes("ice No")) {
+        const cleanVal = val.split(":")[0].split("-")[0].trim();
+        sheet.getRange(r + 1, c + 1).setValue(cleanVal + ": " + token);
+      }
+      
+      // Invoice Date cell
+      if (val.includes("Invoice Date")) {
+        const cleanVal = val.split(":")[0].split("-")[0].trim();
+        sheet.getRange(r + 1, c + 1).setValue(cleanVal + ":- " + formattedDate);
+      }
+      
+      // Bill To details
+      if (val === "To" || val === "Bill To") {
+        sheet.getRange(r + 2, c + 1).setValue(name);
+        sheet.getRange(r + 3, c + 1).setValue(email);
+      }
+      
+      // Ship To details
+      if (val === "Ship To") {
+        sheet.getRange(r + 2, c + 1).setValue(name);
+        if (phone) {
+          sheet.getRange(r + 3, c + 1).setValue("Mobile:- " + phone);
+        } else {
+          sheet.getRange(r + 3, c + 1).setValue("");
+        }
+      }
+      
+      // Items table header row
+      if (val === "Items" || val === "Item Description") {
+        tableHeaderRow = r;
+      }
+      
+      // SUBTOTAL row
+      if (val === "SUBTOTAL") {
+        subtotalRow = r;
+      }
+    }
+  }
+  
+  // Fill the items and formulas
+  if (tableHeaderRow !== -1) {
+    const productIds = resolveProductIds(rawProducts);
+    const itemRates = getProductRates(productIds, amount);
+    let insertRow = tableHeaderRow + 1;
+    
+    productIds.forEach((id, index) => {
+      const linkData = PRODUCT_LINKS[id];
+      const catalogData = PRODUCT_CATALOG[id];
+      const displayName = catalogData ? catalogData.displayName : (linkData ? linkData.name : id);
+      
+      const itemNo = index + 1;
+      const rate = itemRates[index];
+      const qty = 1;
+      const sheetRow = insertRow + index + 1; // 1-based row number
+      
+      sheet.getRange(sheetRow, 1).setValue(itemNo);
+      sheet.getRange(sheetRow, 2).setValue(displayName);
+      sheet.getRange(sheetRow, 3).setValue(qty);
+      sheet.getRange(sheetRow, 5).setValue("Pack");
+      sheet.getRange(sheetRow, 6).setValue(rate);
+      sheet.getRange(sheetRow, 7).setFormula("=C" + sheetRow + "*F" + sheetRow);
+    });
+    
+    // Clear remaining template empty rows
+    const startClearRow = tableHeaderRow + productIds.length + 2;
+    const endClearRow = subtotalRow;
+    if (startClearRow <= endClearRow) {
+      for (let r = startClearRow; r <= endClearRow; r++) {
+        sheet.getRange(r, 1).setValue("");
+        sheet.getRange(r, 2).setValue("");
+        sheet.getRange(r, 3).setValue("");
+        sheet.getRange(r, 5).setValue("");
+        sheet.getRange(r, 6).setValue("");
+        sheet.getRange(r, 7).setValue("");
+      }
+    }
+  }
+}
+
+/**
+ * Exports the sheet to PDF blob.
+ */
+function exportSheetToPdf(ss, sheet, token) {
+  const sheetId = sheet.getSheetId();
+  const url = ss.getUrl().replace(/edit$/, "") + "export?" +
+    "exportFormat=pdf&format=pdf" +
+    "&size=A4" +
+    "&portrait=true" +
+    "&fitw=true" +
+    "&gridlines=false" +
+    "&printtitle=false" +
+    "&sheetnames=false" +
+    "&fzr=false" +
+    "&gid=" + sheetId;
+    
+  const oauthToken = ScriptApp.getOAuthToken();
+  const response = UrlFetchApp.fetch(url, {
+    headers: {
+      'Authorization': 'Bearer ' + oauthToken
+    },
+    muteHttpExceptions: true
+  });
+  
+  if (response.getResponseCode() !== 200) {
+    throw new Error("PDF export failed with status code " + response.getResponseCode());
+  }
+  
+  return response.getBlob().setName("Invoice_" + token + ".pdf");
+}
+
+/**
+ * Saves a copy of the PDF to the Drive folder.
+ */
+function saveInvoiceToDrive(pdfBlob, token) {
+  try {
+    const folder = getInvoicesFolder();
+    // Check if file already exists to prevent duplicates
+    const files = folder.getFilesByName("Invoice_" + token + ".pdf");
+    if (files.hasNext()) {
+      const oldFile = files.next();
+      oldFile.setTrashed(true);
+    }
+    folder.createFile(pdfBlob);
+  } catch (e) {
+    Logger.log("Error saving PDF to Drive: " + e.toString());
+  }
+}
+
+/**
+ * Logs details about the Invoice Template sheet to help debug structural and calculation issues.
+ */
+function debugInvoiceTemplate() {
+  const ss = getActiveSpreadsheetHelper();
+  const sheet = ss.getSheetByName("Invoice Template") || ss.getSheetByName("Invoice");
+  if (!sheet) {
+    Logger.log("Invoice Template sheet not found!");
+    return;
+  }
+  Logger.log("Scanning Invoice Template rows 1 to 35:");
+  const range = sheet.getRange(1, 1, 35, 8);
+  const values = range.getValues();
+  const formulas = range.getFormulas();
+  for (let r = 0; r < values.length; r++) {
+    const rowNum = r + 1;
+    const cols = [];
+    for (let c = 0; c < values[r].length; c++) {
+      const val = values[r][c];
+      const form = formulas[r][c];
+      if (val !== "" || form !== "") {
+        cols.push("Col" + (c + 1) + " (" + String.fromCharCode(65 + c) + "): " + val + (form ? " [Formula: " + form + "]" : ""));
+      }
+    }
+    if (cols.length > 0) {
+      Logger.log("Row " + rowNum + ": " + cols.join(" | "));
+    }
+  }
+}
+
 
