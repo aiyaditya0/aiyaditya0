@@ -162,6 +162,44 @@
       box-shadow: 0 8px 24px rgba(39,201,63,0.3); text-decoration: none;
     }
     .btn-buy-free:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(39,201,63,0.45); }
+
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    .btn-buy-now {
+      flex: 1.5; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px; border: none;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ffb347); color: #000;
+      box-shadow: 0 8px 24px rgba(255,138,0,0.3);
+    }
+    .btn-buy-now:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,138,0,0.45); }
+    
+    .btn-add-cart-detail {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px;
+      border: 1.5px solid rgba(255, 138, 0, 0.4);
+      background: rgba(255, 138, 0, 0.06);
+      color: #ff8a00;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-add-cart-detail:hover {
+      background: rgba(255, 138, 0, 0.12);
+      border-color: rgba(255, 138, 0, 0.7);
+      transform: translateY(-2px);
+    }
+    .btn-add-cart-detail.added {
+      background: rgba(39, 201, 63, 0.15);
+      border-color: rgba(39, 201, 63, 0.6);
+      color: #27c93f;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column;
+      }
+    }
     
     .trust-notes { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
     .trust-note { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
@@ -445,7 +483,16 @@
             <div class="price-row">
               <span class="price-now">₹49</span><span class="price-orig">₹299</span><span style="color:#27c93f; font-size:13px; font-weight:700;">(84% OFF Launch Deal)</span>
             </div>
-            <button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,'igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>
+            
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,'igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')" data-product-id="igital-marketing-bundle">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow('igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            
             <div class="trust-notes">
               <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payments</div>
               <div class="trust-note"><i data-lucide="zap" style="width:14px;height:14px;color:#ff8a00;"></i> Instant Download Link</div>
@@ -744,7 +791,16 @@
           <div class="pay-today-label">You Pay Today:</div>
           <div class="pay-today-price">₹49</div>
           <div class="pay-today-badge">84% Discount Applied</div>
-          <button class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;" onclick="addToCartAnimated(this,'igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')"><i data-lucide="shopping-cart"></i> Add To Cart</button>
+          
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,'igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')" data-product-id="igital-marketing-bundle">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow('igital-marketing-bundle','igital Marketing Bundle',49,'ecommerce_portal_mockup.webp','product-igital-marketing-bundle.html')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            
         </div>
       </div>
     </div>
@@ -885,47 +941,47 @@
         </div>
         <div class="suggest-card">
           <div class="prod-img-wrap">
-            <img class="suggest-img" src="ChatGPT Image Jun 17, 2026, 08_01_16 PM.webp" alt="400+ PHP scripts" loading="lazy">
+            <img class="suggest-img" src="48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.webp" alt="1500+ GLowing motion graphics reels bundle:" loading="lazy">
             <div class="prod-quick-buy">
               
-                <button class="quick-buy-btn" onclick="quickBuy('400-php-scripts','400+ PHP scripts',69,'ChatGPT Image Jun 17, 2026, 08_01_16 PM.webp','product-400-php-scripts.html')">
-                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹69
+                <button class="quick-buy-btn" onclick="quickBuy('1500-glowing-motion-graphics-reels-bundle','1500+ GLowing motion graphics reels bundle:',39,'48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.webp','product-1500-glowing-motion-graphics-reels-bundle.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
                 </button>
                 
-              <a href="product-400-php-scripts.html" class="quick-view-btn">
+              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="quick-view-btn">
                 <i data-lucide="eye" style="width:16px;height:16px;"></i>
               </a>
             </div>
           </div>
           <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-400-php-scripts.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">400+ PHP scripts</a></h3>
-            <p class="suggest-desc">400+ working PHP source code scripts for building SaaS platforms, utility directories, tools, booking websites, and portals.</p>
+            <h3 class="suggest-title"><a href="product-1500-glowing-motion-graphics-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">1500+ GLowing motion graphics reels bundle:</a></h3>
+            <p class="suggest-desc">1500+ trending glowing line animations, neon overlays, and motion graphics assets. Level up your editing instantly.</p>
             <div class="suggest-footer">
-              <span class="suggest-price">₹69</span>
-              <a href="product-400-php-scripts.html" class="suggest-action">Details →</a>
+              <span class="suggest-price">₹39</span>
+              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="suggest-action">Details →</a>
             </div>
           </div>
         </div>
         <div class="suggest-card">
           <div class="prod-img-wrap">
-            <img class="suggest-img" src="laptop-workspace.webp" alt="1.37tb All Money Making Courses Bundle" loading="lazy">
+            <img class="suggest-img" src="8537458a-8df9-4489-8f8f-6b6a64ddc03e.webp" alt="9. 200+ Mega Car Reels Bundle" loading="lazy">
             <div class="prod-quick-buy">
               
-                <button class="quick-buy-btn" onclick="quickBuy('37tb-all-money-making-courses-bundle','1.37tb All Money Making Courses Bundle',29,'laptop-workspace.webp','product-37tb-all-money-making-courses-bundle.html')">
+                <button class="quick-buy-btn" onclick="quickBuy('200-mega-car-reels-bundle','9. 200+ Mega Car Reels Bundle',29,'8537458a-8df9-4489-8f8f-6b6a64ddc03e.webp','product-200-mega-car-reels-bundle.html')">
                   <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹29
                 </button>
                 
-              <a href="product-37tb-all-money-making-courses-bundle.html" class="quick-view-btn">
+              <a href="product-200-mega-car-reels-bundle.html" class="quick-view-btn">
                 <i data-lucide="eye" style="width:16px;height:16px;"></i>
               </a>
             </div>
           </div>
           <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-37tb-all-money-making-courses-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">1.37tb All Money Making Courses Bundle</a></h3>
-            <p class="suggest-desc">A massive 1.37 Terabyte catalog of courses on dropshipping, coding, copywriting, organic marketing, and agency scaling.</p>
+            <h3 class="suggest-title"><a href="product-200-mega-car-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">9. 200+ Mega Car Reels Bundle</a></h3>
+            <p class="suggest-desc">200+ cinematic luxury & sports car reels. Experience engine roars, drift clips, and ultra-high-quality luxury aesthetics.</p>
             <div class="suggest-footer">
               <span class="suggest-price">₹29</span>
-              <a href="product-37tb-all-money-making-courses-bundle.html" class="suggest-action">Details →</a>
+              <a href="product-200-mega-car-reels-bundle.html" class="suggest-action">Details →</a>
             </div>
           </div>
         </div>
@@ -992,41 +1048,7 @@
 
     // Simulated Purchases
     function startPurchaseSimulation() {
-      const buyers = [
-        { name: 'Rahul Sharma', city: 'Delhi' },
-        { name: 'Aniket Patel', city: 'Ahmedabad' },
-        { name: 'Vikram Rao', city: 'Bengaluru' },
-        { name: 'Priya Sen', city: 'Kolkata' },
-        { name: 'Sanjay Deshmukh', city: 'Mumbai' },
-        { name: 'Amit Tiwari', city: 'Indore' },
-        { name: 'Jayesh Dave', city: 'Pune' },
-        { name: 'Sneha Reddy', city: 'Hyderabad' },
-        { name: 'Kunal Kapoor', city: 'Chandigarh' },
-        { name: 'Meera Nair', city: 'Kochi' }
-      ];
-      
-      const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('toast-avatar');
-      const buyerName = document.getElementById('toast-buyer-name');
-      const prodName = document.getElementById('toast-prod-name');
-      
-      function showNextToast() {
-        const b = buyers[Math.floor(Math.random() * buyers.length)];
-        buyerName.textContent = `${b.name} (${b.city})`;
-        prodName.textContent = "igital Marketing Bundle";
-        avatar.textContent = b.name.charAt(0);
-        
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 4000);
-      }
-
-      // Start after random 8-15 seconds, repeat every 20-30 seconds
-      setTimeout(() => {
-        showNextToast();
-        setInterval(showNextToast, 25000);
-      }, 8000 + Math.random() * 7000);
+      // Handled globally by cart.js
     }
 
     // Quick Buy helper

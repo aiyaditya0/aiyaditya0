@@ -266,6 +266,16 @@
       }
     }
   </style>
+  <style>
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -295,8 +305,8 @@
           <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
           <span class="cart-badge">0</span>
         </button>
-        <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.webp', 'n8n-pack.html'); return false;" class="nav-cta" id="nav-cta-btn">
-          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        <a href="#" onclick="buyNow('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.webp', 'n8n-pack.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Buy Now <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
         </a>
       </div>
     </div>
@@ -352,7 +362,7 @@
           </div>
 
           <div class="hero-actions">
-            <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.webp', 'n8n-pack.html'); return false;" class="btn-primary" id="hero-cta-primary">
+            <a href="#" onclick="buyNow('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.webp', 'n8n-pack.html'); return false;" class="btn-primary" id="hero-cta-primary">
               Add To Cart <i data-lucide="shopping-cart"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
@@ -780,7 +790,7 @@
           </ul>
 
           <a href="#" onclick="addToCart('n8n-pack', 'n8n Automation Pack (2000+ Workflows)', 99, 'hero-image.webp', 'n8n-pack.html'); return false;" class="btn-primary" id="pricing-cta-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
-            ADD TO CART @ ₹99 <i data-lucide="shopping-cart"></i>
+            BUY NOW @ ₹99 <i data-lucide="zap"></i>
           </a>
         </div>
       </div>
@@ -2396,21 +2406,21 @@ The product should feel like having an executive team that researches, plans, or
         // Update offer banner CTA
         const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
         if (bannerCta) {
-          bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
+          bannerCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
         }
 
         // Update navbar CTA button
         const navCta = document.getElementById('nav-cta-btn');
         if (navCta) {
-          navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
-          navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+          navCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
+          navCta.innerHTML = `Buy Now @ ₹${tier.price} <i data-lucide="zap" style="width: 14px; height: 14px;"></i>` // <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
           if (window.lucide) lucide.createIcons();
         }
 
         // Update hero CTA button
         const heroCta = document.getElementById('hero-cta-primary');
         if (heroCta) {
-          heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
+          heroCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
           heroCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
           if (window.lucide) lucide.createIcons();
         }
@@ -2424,7 +2434,7 @@ The product should feel like having an executive team that researches, plans, or
 
         const ctaBtn = document.getElementById('pricing-cta-btn');
         if (ctaBtn) {
-          ctaBtn.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
+          ctaBtn.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'hero-image.webp', 'n8n-pack.html'); return false;`);
             ctaBtn.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
           if (window.lucide) lucide.createIcons();
         }

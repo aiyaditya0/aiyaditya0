@@ -453,12 +453,152 @@
       showToast('Add at least one product to check out!', 'error');
       return;
     }
-    doCheckout();
+    
+    // Upselling Trick: Intercept with checkout upsell modal if eligible
+    const upsellProd = getUpsellProduct(cart);
+    if (upsellProd) {
+      showUpsellModal(
+        upsellProd,
+        (product, discountedPrice) => {
+          // Accept: add discounted upsell product to cart and checkout
+          const currentCart = getCart();
+          currentCart.push({
+            id: product.id,
+            name: `${product.name} (30% Checkout Offer)`,
+            price: discountedPrice,
+            img: product.img,
+            link: product.link
+          });
+          saveCart(currentCart);
+          doCheckout();
+        },
+        () => {
+          // Decline: proceed directly to checkout
+          doCheckout();
+        }
+      );
+    } else {
+      doCheckout();
+    }
   }
+
+  // Direct Buy Now function
+  window.buyNow = function (id, name, price, img, link) {
+    const cart = getCart();
+    if (!cart.find(item => item.id === id)) {
+      cart.push({ id, name, price, img, link });
+      saveCart(cart);
+      updateCartUI();
+    }
+    handleCartCheckout();
+  };
+
+  // Continuous Social Proof Purchase Toast Simulation
+  window.startGlobalPurchaseSimulation = function () {
+    const toast = document.getElementById('purchase-toast');
+    if (!toast) return;
+
+    const buyers = [
+      { name: 'Rahul Sharma', city: 'Delhi' },
+      { name: 'Aniket Patel', city: 'Ahmedabad' },
+      { name: 'Vikram Rao', city: 'Bengaluru' },
+      { name: 'Priya Sen', city: 'Kolkata' },
+      { name: 'Sanjay Deshmukh', city: 'Mumbai' },
+      { name: 'Amit Tiwari', city: 'Indore' },
+      { name: 'Jayesh Dave', city: 'Pune' },
+      { name: 'Sneha Reddy', city: 'Hyderabad' },
+      { name: 'Kunal Kapoor', city: 'Chandigarh' },
+      { name: 'Meera Nair', city: 'Kochi' },
+      { name: 'Rohan Verma', city: 'Lucknow' },
+      { name: 'Divya Joshi', city: 'Jaipur' },
+      { name: 'Suresh Kumar', city: 'Chennai' },
+      { name: 'Aditya Gupta', city: 'Noida' },
+      { name: 'Neha Sharma', city: 'Gurugram' },
+      { name: 'Arjun Mehta', city: 'Surat' },
+      { name: 'Ritu Kapoor', city: 'Bhopal' }
+    ];
+
+    // Catalog bestsellers list for cross-selling
+    const catalogProducts = [
+      { name: 'n8n Automation Pack (2000+ Workflows)', price: 99, link: 'n8n-pack.html' },
+      { name: '100,000+ Viral Reels Goldmine Pack', price: 99, link: 'mega-reels.html' },
+      { name: 'Ultimate Video Editing Toolkit (500GB)', price: 199, link: 'video-editing.html' },
+      { name: '1500+ Manually Tested Web Apps Pack', price: 199, link: 'web-apps.html' },
+      { name: 'Full Digital Marketing Resource Bundle', price: 499, link: 'digital-marketing-bundle.html' },
+      { name: '2700+ Elementor Pro Templates', price: 59, link: 'product-2700-elementor-pro-templates-forwordpresssite.html' },
+      { name: '1.37tb All Money Making Courses Bundle', price: 29, link: 'product-37tb-all-money-making-courses-bundle.html' },
+      { name: '700+ AI English Reels Bundle', price: 29, link: 'product-700-ai-english-reelsshort.html' },
+      { name: '1500+ Glowing Motion Graphics Reels', price: 39, link: 'product-1500-glowing-motion-graphics-reels-bundle.html' }
+    ];
+
+    const avatar = document.getElementById('purchase-toast-avatar') || document.getElementById('toast-avatar');
+    const buyerName = document.getElementById('purchase-toast-name') || document.getElementById('toast-buyer-name');
+    const prodName = document.getElementById('purchase-toast-prod') || document.getElementById('toast-prod-name') || document.getElementById('toast-product-name');
+    const timeEl = document.getElementById('purchase-toast-time') || document.getElementById('toast-time');
+
+    let currentIdx = 0;
+
+    // Detect if we are on a specific product detail page to highlight that product
+    const heroTitleEl = document.querySelector('h1');
+    const currentPageProduct = heroTitleEl ? heroTitleEl.textContent.trim() : '';
+
+    function showNextToast() {
+      const b = buyers[currentIdx];
+      let selectedProduct;
+
+      // 60% chance to show the current page product if available, otherwise random catalog cross-sell
+      if (currentPageProduct && Math.random() < 0.6) {
+        selectedProduct = { name: currentPageProduct, price: 99, link: window.location.pathname };
+        // Attempt to find exact price if shown on page
+        const priceEl = document.querySelector('.price-now, .prod-price, .pay-today-price');
+        if (priceEl) {
+          const matchedPrice = priceEl.textContent.match(/\d+/);
+          if (matchedPrice) selectedProduct.price = parseInt(matchedPrice[0], 10);
+        }
+      } else {
+        selectedProduct = catalogProducts[Math.floor(Math.random() * catalogProducts.length)];
+      }
+
+      // Upselling Trick: Make simulated toast notifications clickable links to the product pages!
+      toast.style.cursor = 'pointer';
+      toast.onclick = () => {
+        window.location.href = selectedProduct.link;
+      };
+
+      if (avatar) {
+        const initials = b.name.split(' ').map(n => n[0]).join('');
+        avatar.textContent = initials || b.name.charAt(0);
+      }
+      if (buyerName) {
+        buyerName.textContent = `${b.name} (${b.city})`;
+      }
+      if (prodName) {
+        prodName.innerHTML = `purchased <strong>${selectedProduct.name}</strong> <span style="color:#ff8a00; font-weight:bold; margin-left:4px;">for ₹${selectedProduct.price}</span>`;
+      }
+      if (timeEl) {
+        timeEl.textContent = ["Just now", "1 min ago", "2 mins ago", "3 mins ago"][Math.floor(Math.random() * 4)];
+      }
+
+      toast.classList.add('show');
+
+      // Hide after 5 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+        currentIdx = (currentIdx + 1) % buyers.length;
+        // Schedule next toast after 8 seconds of silence for a continuous flowing loop
+        setTimeout(showNextToast, 8000);
+      }, 5000);
+    }
+
+    // Start simulation after 4 seconds
+    setTimeout(showNextToast, 4000);
+  };
 
   // ─── Initialization ───────────────────────────────────────────────────────────
   window.addEventListener('DOMContentLoaded', () => {
     injectCartUI();
     updateCartUI();
+    // Start global purchase simulation automatically if the toast container is present
+    setTimeout(window.startGlobalPurchaseSimulation, 1000);
   });
 })();

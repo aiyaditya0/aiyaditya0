@@ -162,6 +162,44 @@
       box-shadow: 0 8px 24px rgba(39,201,63,0.3); text-decoration: none;
     }
     .btn-buy-free:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(39,201,63,0.45); }
+
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    .btn-buy-now {
+      flex: 1.5; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px; border: none;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ffb347); color: #000;
+      box-shadow: 0 8px 24px rgba(255,138,0,0.3);
+    }
+    .btn-buy-now:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,138,0,0.45); }
+    
+    .btn-add-cart-detail {
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px;
+      border: 1.5px solid rgba(255, 138, 0, 0.4);
+      background: rgba(255, 138, 0, 0.06);
+      color: #ff8a00;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-add-cart-detail:hover {
+      background: rgba(255, 138, 0, 0.12);
+      border-color: rgba(255, 138, 0, 0.7);
+      transform: translateY(-2px);
+    }
+    .btn-add-cart-detail.added {
+      background: rgba(39, 201, 63, 0.15);
+      border-color: rgba(39, 201, 63, 0.6);
+      color: #27c93f;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column;
+      }
+    }
     
     .trust-notes { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
     .trust-note { font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
@@ -445,7 +483,16 @@
             <div class="price-row">
               <span class="price-now">₹79</span><span class="price-orig">₹499</span><span style="color:#27c93f; font-size:13px; font-weight:700;">(84% OFF Launch Deal)</span>
             </div>
-            <button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,'21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>
+            
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,'21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')" data-product-id="21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow('21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            
             <div class="trust-notes">
               <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payments</div>
               <div class="trust-note"><i data-lucide="zap" style="width:14px;height:14px;color:#ff8a00;"></i> Instant Download Link</div>
@@ -744,7 +791,16 @@
           <div class="pay-today-label">You Pay Today:</div>
           <div class="pay-today-price">₹79</div>
           <div class="pay-today-badge">84% Discount Applied</div>
-          <button class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;" onclick="addToCartAnimated(this,'21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')"><i data-lucide="shopping-cart"></i> Add To Cart</button>
+          
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,'21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')" data-product-id="21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow('21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app','21 Hrs Content of How to Work on 1500+ Manually Tested Web App:',79,'saas_dashboard_mockup.webp','product-21-hrs-content-of-how-to-work-on-1500-manually-tested-web-app.html')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            
         </div>
       </div>
     </div>
@@ -908,24 +964,24 @@
         </div>
         <div class="suggest-card">
           <div class="prod-img-wrap">
-            <img class="suggest-img" src="b578e47f-4c4a-420c-b59a-3bbc90470abf.webp" alt="10. 2200+ Gym_ Fitness Reels Bundle" loading="lazy">
+            <img class="suggest-img" src="ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.webp" alt="13. 1000 Natures Reels Bundle" loading="lazy">
             <div class="prod-quick-buy">
               
-                <button class="quick-buy-btn" onclick="quickBuy('2200-gym-fitness-reels-bundle','10. 2200+ Gym_ Fitness Reels Bundle',59,'b578e47f-4c4a-420c-b59a-3bbc90470abf.webp','product-2200-gym-fitness-reels-bundle.html')">
+                <button class="quick-buy-btn" onclick="quickBuy('1000-natures-reels-bundle','13. 1000 Natures Reels Bundle',59,'ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.webp','product-1000-natures-reels-bundle.html')">
                   <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹59
                 </button>
                 
-              <a href="product-2200-gym-fitness-reels-bundle.html" class="quick-view-btn">
+              <a href="product-1000-natures-reels-bundle.html" class="quick-view-btn">
                 <i data-lucide="eye" style="width:16px;height:16px;"></i>
               </a>
             </div>
           </div>
           <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-2200-gym-fitness-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">10. 2200+ Gym_ Fitness Reels Bundle</a></h3>
-            <p class="suggest-desc">2200+ high-intensity workout routines, gym motivation, and athletic clips. Perfect for building a massive fitness community.</p>
+            <h3 class="suggest-title"><a href="product-1000-natures-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">13. 1000 Natures Reels Bundle</a></h3>
+            <p class="suggest-desc">1000+ satisfying, peaceful nature reels. Ideal for meditation channels, relaxing background loops, and aesthetic pages.</p>
             <div class="suggest-footer">
               <span class="suggest-price">₹59</span>
-              <a href="product-2200-gym-fitness-reels-bundle.html" class="suggest-action">Details →</a>
+              <a href="product-1000-natures-reels-bundle.html" class="suggest-action">Details →</a>
             </div>
           </div>
         </div>
@@ -992,41 +1048,7 @@
 
     // Simulated Purchases
     function startPurchaseSimulation() {
-      const buyers = [
-        { name: 'Rahul Sharma', city: 'Delhi' },
-        { name: 'Aniket Patel', city: 'Ahmedabad' },
-        { name: 'Vikram Rao', city: 'Bengaluru' },
-        { name: 'Priya Sen', city: 'Kolkata' },
-        { name: 'Sanjay Deshmukh', city: 'Mumbai' },
-        { name: 'Amit Tiwari', city: 'Indore' },
-        { name: 'Jayesh Dave', city: 'Pune' },
-        { name: 'Sneha Reddy', city: 'Hyderabad' },
-        { name: 'Kunal Kapoor', city: 'Chandigarh' },
-        { name: 'Meera Nair', city: 'Kochi' }
-      ];
-      
-      const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('toast-avatar');
-      const buyerName = document.getElementById('toast-buyer-name');
-      const prodName = document.getElementById('toast-prod-name');
-      
-      function showNextToast() {
-        const b = buyers[Math.floor(Math.random() * buyers.length)];
-        buyerName.textContent = `${b.name} (${b.city})`;
-        prodName.textContent = "21 Hrs Content of How to Work on 1500+ Manually Tested Web App:";
-        avatar.textContent = b.name.charAt(0);
-        
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 4000);
-      }
-
-      // Start after random 8-15 seconds, repeat every 20-30 seconds
-      setTimeout(() => {
-        showNextToast();
-        setInterval(showNextToast, 25000);
-      }, 8000 + Math.random() * 7000);
+      // Handled globally by cart.js
     }
 
     // Quick Buy helper

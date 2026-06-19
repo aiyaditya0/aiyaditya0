@@ -769,6 +769,16 @@
       }
     }
   </style>
+  <style>
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -799,8 +809,8 @@
           <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
           <span class="cart-badge">0</span>
         </button>
-        <a href="#" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="nav-cta" id="nav-cta-btn">
-          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        <a href="#" onclick="buyNow('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Buy Now <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
         </a>
       </div>
     </div>
@@ -881,8 +891,8 @@
           </div>
 
           <div class="hero-actions">
-            <a href="#" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="btn-primary" id="hero-cta-primary">
-              ADD TO CART @ ₹99 <i data-lucide="shopping-cart"></i>
+            <a href="#" onclick="buyNow('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              BUY NOW @ ₹99 <i data-lucide="zap"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
               Join WhatsApp Community
@@ -1236,7 +1246,7 @@
           <div class="pay-today-price">₹99</div>
           <div class="pay-today-badge">SAVE 98% ON LAUNCH</div>
           <a href="#" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;">
-            ADD TO CART @ ₹99 <i data-lucide="shopping-cart"></i>
+            BUY NOW @ ₹99 <i data-lucide="zap"></i>
           </a>
         </div>
       </div>
@@ -1353,7 +1363,7 @@
         <p class="section-desc" style="font-size: 15px; margin-bottom: 24px;">Lifetime access to the Google Drive content vault. Commercial PLR rights included.</p>
         
         <a href="#" onclick="addToCart('mega-reels', '100,000+ Viral Reels Goldmine Pack', 99, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 16px; padding: 18px;">
-          🎬 ADD TO CART NOW @ ₹99 →
+          ⚡ BUY NOW @ ₹99 →
         </a>
         
         <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
@@ -1408,38 +1418,41 @@
       // Update limited offer banner button
       const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
       if (bannerCta) {
-        bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+        bannerCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
       }
 
       // Update navbar CTA button
       const navCta = document.getElementById('nav-cta-btn');
       if (navCta) {
-        navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
-        navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+        navCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+        navCta.innerHTML = `Buy Now @ ₹${tier.price} <i data-lucide="zap" style="width: 14px; height: 14px;"></i>` // <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
         if (window.lucide) lucide.createIcons();
       }
 
       // Update hero CTA button
       const heroCta = document.getElementById('hero-cta-primary');
       if (heroCta) {
-        heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
-        heroCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        heroCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+        heroCta.innerHTML = `BUY NOW @ ₹${tier.price} <i data-lucide="zap"></i>` // <i data-lucide="shopping-cart"></i>`;
         if (window.lucide) lucide.createIcons();
       }
 
-      // Update value comparison CTA button
-      const valCta = document.querySelector('.value-pay-today .btn-primary');
-      if (valCta) {
-        valCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
-        valCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
-        if (window.lucide) lucide.createIcons();
+      // Update pricing comparison buttons
+      const pricingAddBtn = document.querySelector('.btn-add-cart-detail');
+      if (pricingAddBtn) {
+        pricingAddBtn.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+      }
+      const pricingBuyBtn = document.querySelector('.btn-buy-now-detail');
+      if (pricingBuyBtn) {
+        pricingBuyBtn.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+        pricingBuyBtn.innerHTML = `⚡ Buy Now @ ₹${tier.price}`;
       }
 
       // Update final checkout CTA button
       const finalCta = document.querySelector('.final-box .btn-primary');
       if (finalCta) {
-        finalCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
-        finalCta.innerHTML = `🎬 ADD TO CART NOW @ ₹${tier.price} →`;
+        finalCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'reels_hero_mockup.webp', 'mega-reels.html'); return false;`);
+        finalCta.innerHTML = `⚡ BUY NOW @ ₹${tier.price} →` //;
       }
 
       // Update value comparison box price display

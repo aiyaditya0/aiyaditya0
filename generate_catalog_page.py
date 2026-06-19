@@ -243,41 +243,51 @@ def generate_catalog_html():
     # Build HTML string
     product_cards_html = ""
     for p in products:
-        if p["is_free"]:
-            badge_html = '<div class="prod-badge badge-free">🎁 Free</div>'
-            price_display = '<span class="prod-price">FREE</span>'
-            quick_buy_html = f"""
-            <a href="{p["link"]}" target="_blank" class="quick-buy-btn free-btn">
-              <i data-lucide="download" style="width:14px;height:14px;"></i> Download Free
-            </a>
-            <a href="product-{p["id"]}.html" class="quick-view-btn">
-              <i data-lucide="eye" style="width:16px;height:16px;"></i>
-            </a>
-            """
-            action_btn = f'<a href="{p["link"]}" target="_blank" class="prod-add-btn free-btn" style="flex:1.2; padding:10px; justify-content:center; text-decoration:none;"><i data-lucide="download" style="width:14px;height:14px;margin-right:4px;"></i> Download</a>'
-            features_html = f'<div class="prod-feat-item"><i data-lucide="zap" style="width:12px;height:12px;"></i>Instant direct access</div>'
-        else:
-            badge_html = '<div class="prod-badge badge-sale">🔥 Paid</div>'
-            orig_price = 499 if p["price"] > 50 else 299
-            discount = int(round((1.0 - float(p["price"]) / float(orig_price)) * 100))
-            price_display = f"""
-              <span class="prod-original">₹{orig_price}</span>
-              <span class="prod-price">₹{p["price"]}</span>
-              <span class="prod-discount">{discount}% OFF</span>
-            """
-            p_name_escaped = p["name"].replace("'", "\\'")
-            quick_buy_html = f"""
-            <button class="quick-buy-btn" onclick="quickBuy(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
-              <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹{p["price"]}
-            </button>
-            <a href="product-{p["id"]}.html" class="quick-view-btn">
-              <i data-lucide="eye" style="width:16px;height:16px;"></i>
-            </a>
-            """
-            action_btn = f'<button class="prod-add-btn" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1.2; padding:10px; justify-content:center;"><i data-lucide="shopping-cart" style="width:14px;height:14px;margin-right:4px;"></i> Add</button>'
-            features_html = f'<div class="prod-feat-item"><i data-lucide="shield-check" style="width:12px;height:12px;"></i>Secure link delivery</div>'
+      if p["is_free"]:
+        badge_html = '<div class="prod-badge badge-free">🎁 Free</div>'
+        price_display = '<span class="prod-price">FREE</span>'
+        quick_buy_html = f"""
+        <a href="{p["link"]}" target="_blank" class="quick-buy-btn free-btn">
+          <i data-lucide="download" style="width:14px;height:14px;"></i> Download Free
+        </a>
+        <a href="product-{p["id"]}.html" class="quick-view-btn">
+          <i data-lucide="eye" style="width:16px;height:16px;"></i>
+        </a>
+        """
+        action_btn = f"""
+          <a href="product-{p["id"]}.html" class="prod-add-btn" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-align:center; text-decoration:none; flex:1; justify-content:center; font-size:12px; padding:10px;"><i data-lucide="info" style="width:13px;height:13px;margin-right:4px;"></i> Details</a>
+          <a href="{p["link"]}" target="_blank" class="prod-add-btn free-btn" style="flex:1.2; padding:10px; justify-content:center; text-decoration:none;"><i data-lucide="download" style="width:14px;height:14px;margin-right:4px;"></i> Download</a>
+        """
+        features_html = f'<div class="prod-feat-item"><i data-lucide="zap" style="width:12px;height:12px;"></i>Instant direct access</div>'
+      else:
+        badge_html = '<div class="prod-badge badge-sale">🔥 Paid</div>'
+        orig_price = 499 if p["price"] > 50 else 299
+        discount = int(round((1.0 - float(p["price"]) / float(orig_price)) * 100))
+        price_display = f"""
+          <span class="prod-original">₹{orig_price}</span>
+          <span class="prod-price">₹{p["price"]}</span>
+          <span class="prod-discount">{discount}% OFF</span>
+        """
+        p_name_escaped = p["name"].replace("'", "\\'")
+        quick_buy_html = f"""
+        <button class="quick-buy-btn" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
+          <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹{p["price"]}
+        </button>
+        <a href="product-{p["id"]}.html" class="quick-view-btn">
+          <i data-lucide="eye" style="width:16px;height:16px;"></i>
+        </a>
+        """
+        action_btn = f"""
+          <button class="prod-add-btn" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; justify-content:center; padding:10px;" title="Add to Cart" data-product-id="{p["id"]}">
+            <i data-lucide="shopping-cart" style="width:15px;height:15px;"></i>
+          </button>
+          <button class="prod-add-btn" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:2.2; background:linear-gradient(135deg,#ff8a00,#ffb347); border:none; color:#000; font-weight:800; justify-content:center; padding:10px; box-shadow:0 4px 12px rgba(255,138,0,0.25);">
+            <i data-lucide="zap" style="width:14px;height:14px;margin-right:4px;"></i> Buy Now
+          </button>
+        """
+        features_html = f'<div class="prod-feat-item"><i data-lucide="shield-check" style="width:12px;height:12px;"></i>Secure link delivery</div>'
 
-        product_cards_html += f"""
+      product_cards_html += f"""
       <div class="prod-card" data-cat="{p["category_id"]}" data-name="{p["name"].lower()}" data-free="{"true" if p["is_free"] else "false"}">
         {badge_html}
         <div class="prod-img-wrap">
@@ -299,7 +309,6 @@ def generate_catalog_html():
               {price_display}
             </div>
             <div style="display:flex; gap:8px; width:100%; margin-top: 8px;">
-              <a href="product-{p["id"]}.html" class="prod-add-btn" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-align:center; text-decoration:none; flex:1; justify-content:center; font-size:12px; padding:10px;"><i data-lucide="info" style="width:13px;height:13px;margin-right:4px;"></i> Details</a>
               {action_btn}
             </div>
           </div>

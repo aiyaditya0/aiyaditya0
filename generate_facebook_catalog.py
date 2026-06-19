@@ -3,6 +3,9 @@ import openpyxl
 import csv
 import re
 import hashlib
+import urllib.parse
+import json
+
 
 def make_product_id(name):
     clean = re.sub(r'^\d+\.\s*', '', name)
@@ -188,6 +191,70 @@ def get_deterministic_rating(p_id):
     count = 150 + (h % 35) * 20  # between 150 and 850
     return round(rating, 1), count
 
+def get_google_category(cat_id):
+    if cat_id == "webapps":
+        return "318" # Multimedia & Design Software
+    elif cat_id == "marketing":
+        return "313" # Business & Productivity Software
+    elif cat_id in ["editing", "reels"]:
+        return "5613" # Media > Video / Arts & Entertainment
+    return "9560" # Computer Software
+
+def get_additional_images(cat_id, domain):
+    # Base images that exist in project
+    reels_images = [
+        f"{domain}/reels_hero_mockup.webp",
+        f"{domain}/reels_playbook_preview.webp",
+        f"{domain}/laptop-workspace.webp"
+    ]
+    webapps_images = [
+        f"{domain}/webapp_hero_mockup.webp",
+        f"{domain}/saas_dashboard_mockup.webp",
+        f"{domain}/laptop-workspace.webp"
+    ]
+    marketing_images = [
+        f"{domain}/ecommerce_portal_mockup.webp",
+        f"{domain}/laptop-workspace.webp",
+        f"{domain}/saas_dashboard_mockup.webp"
+    ]
+    
+    if cat_id == "webapps":
+        return ",".join(webapps_images)
+    elif cat_id == "marketing":
+        return ",".join(marketing_images)
+    else:
+        return ",".join(reels_images)
+
+def get_rich_description(name, plain_desc):
+    html = f"<p><strong>{name}</strong></p>"
+    html += f"<p>{plain_desc}</p>"
+    html += "<p>🎁 <strong>BUMPER LAUNCH OFFER:</strong> Buy this pack today and get 9 Premium Bonus Rewards Bundles (Worth &amp;#8377;19,491) completely FREE:</p>"
+    html += "<ul>"
+    html += "<li>5000+ MEGA REELS BUNDLE (Worth &amp;#8377;4,999)</li>"
+    html += "<li>Caravan Life Travel Reels (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Dog Reels Bundle (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Funny &amp; Cute Cat Bundle (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Health Infographic Post Canva (Worth &amp;#8377;1,499)</li>"
+    html += "<li>Lifestyle Reels Bundle (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Luxury Hotels &amp; Resorts (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Travel Reels Bundle (Worth &amp;#8377;1,999)</li>"
+    html += "<li>Black Word Quotes (Worth &amp;#8377;999)</li>"
+    html += "</ul>"
+    return html
+
+def get_checkout_url(p_id, name, price_val, img_file, page_name):
+    # Construct serialized cart JSON object matching cart.js format
+    cart_item = {
+        "id": p_id,
+        "name": name,
+        "price": price_val,
+        "img": img_file,
+        "link": page_name
+    }
+    cart_json = json.dumps([cart_item])
+    return f"https://anshumanenterprises.online/futurewithai/checkout.html?cart={urllib.parse.quote(cart_json)}"
+
+
 def main():
     root_dir = r"c:\Users\aditya tiwari\Downloads\FUTUREWITHAI WEB"
     excel_path = os.path.join(root_dir, "PRODUCT.xlsx")
@@ -215,10 +282,12 @@ def main():
 
     # Meta catalog header columns
     headers = [
-        'id', 'title', 'description', 'availability', 'condition', 'price', 
-        'link', 'image_link', 'brand', 'google_product_category', 'fb_product_category', 
-        'product_type', 'age_group', 'gender', 'rating_average', 'rating_count',
-        'custom_label_0', 'custom_label_1', 'custom_label_2'
+        'id', 'title', 'description', 'rich_text_description', 'availability', 'condition', 
+        'price', 'sale_price', 'sale_price_effective_date', 'link', 'checkout_url', 
+        'image_link', 'additional_image_link', 'brand', 'google_product_category', 
+        'fb_product_category', 'product_type', 'age_group', 'gender', 
+        'rating_average', 'rating_count', 'custom_label_0', 'custom_label_1', 
+        'custom_label_2', 'custom_label_3'
     ]
 
     with open(facebook_catalog_path, mode='w', newline='', encoding='utf-8') as f:
@@ -280,7 +349,11 @@ def main():
                 price_val = float(price)
             except ValueError:
                 price_val = 199.0
-            price_formatted = f"{price_val:.2f} INR"
+            
+            # Original price calculation for strikethrough styling in Meta Ads
+            orig_price = 499.0 if price_val > 50.0 else 299.0
+            price_original_formatted = f"{orig_price:.2f} INR"
+            price_sale_formatted = f"{price_val:.2f} INR"
             
             # Link mapping
             page_name = f"product-{p_id}.html"
@@ -299,12 +372,20 @@ def main():
                 img_url = f"{domain}/{img_file}"
                 
             # Description + Bumper Offer
-            desc = get_custom_description(name)
-            desc += "\n\n🎁 BUMPER LAUNCH OFFER: Buy this pack today and get 9 Premium Bonus Rewards Bundles (Worth ₹19,491) completely FREE:\n1. 5000+ MEGA REELS BUNDLE (Worth ₹4,999)\n2. Caravan Life Travel Reels (Worth ₹1,999)\n3. Dog Reels Bundle (Worth ₹1,999)\n4. Funny & Cute Cat Bundle (Worth ₹1,999)\n5. Health Infographic Post Canva (Worth ₹1,499)\n6. Lifestyle Reels Bundle (Worth ₹1,999)\n7. Luxury Hotels & Resorts (Worth ₹1,999)\n8. Travel Reels Bundle (Worth ₹1,999)\n9. Black Word Quotes (Worth ₹999)"
+            plain_custom_desc = get_custom_description(name)
+            desc = plain_custom_desc + "\n\n🎁 BUMPER LAUNCH OFFER: Buy this pack today and get 9 Premium Bonus Rewards Bundles (Worth ₹19,491) completely FREE:\n1. 5000+ MEGA REELS BUNDLE (Worth ₹4,999)\n2. Caravan Life Travel Reels (Worth ₹1,999)\n3. Dog Reels Bundle (Worth ₹1,999)\n4. Funny & Cute Cat Bundle (Worth ₹1,999)\n5. Health Infographic Post Canva (Worth ₹1,499)\n6. Lifestyle Reels Bundle (Worth ₹1,999)\n7. Luxury Hotels & Resorts (Worth ₹1,999)\n8. Travel Reels Bundle (Worth ₹1,999)\n9. Black Word Quotes (Worth ₹999)"
             
-            # Google Product Category (digital computer software/goods code: 9560)
-            google_cat = "9560"
-            fb_cat = "9560"
+            rich_desc = get_rich_description(name, plain_custom_desc)
+            
+            # Google Product Category (numerical code mapped dynamically)
+            google_cat = get_google_category(cat_id)
+            fb_cat = google_cat
+            
+            # Additional image links (galleries)
+            additional_img_urls = get_additional_images(cat_id, domain)
+            
+            # Direct Checkout URL
+            checkout_link = get_checkout_url(p_id, name, price_val, img_file, page_name)
             
             # Ratings
             rating_avg, rating_cnt = get_deterministic_rating(p_id)
@@ -320,25 +401,31 @@ def main():
             
             # Write catalog row
             writer.writerow([
-                p_id,                 # id
-                name,                 # title
-                desc,                 # description
-                'in stock',           # availability
-                'new',                # condition
-                price_formatted,      # price
-                product_url,          # link
-                img_url,              # image_link
-                'FutureWithAI',       # brand
-                google_cat,           # google_product_category
-                fb_cat,               # fb_product_category
-                prod_type,            # product_type
-                'adult',              # age_group
-                'unisex',             # gender
-                rating_avg,           # rating_average
-                rating_cnt,           # rating_count
-                cat_display,          # custom_label_0 (Category)
-                status_label,         # custom_label_1 (Status tag)
-                price_tier_label      # custom_label_2 (Price range tag)
+                p_id,                      # id
+                name,                      # title
+                desc,                      # description
+                rich_desc,                 # rich_text_description
+                'in stock',                # availability
+                'new',                     # condition
+                price_original_formatted,  # price (original MSRP)
+                price_sale_formatted,      # sale_price (discounted offer price)
+                '2026-01-01T00:00+00:00/2030-01-01T00:00+00:00', # sale_price_effective_date
+                product_url,               # link
+                checkout_link,             # checkout_url
+                img_url,                   # image_link
+                additional_img_urls,       # additional_image_link
+                'FutureWithAI',            # brand
+                google_cat,                # google_product_category
+                fb_cat,                    # fb_product_category
+                prod_type,                 # product_type
+                'adult',                   # age_group
+                'unisex',                  # gender
+                rating_avg,                # rating_average
+                rating_cnt,                # rating_count
+                cat_display,               # custom_label_0 (Category)
+                status_label,              # custom_label_1 (Status tag)
+                price_tier_label,          # custom_label_2 (Price range tag)
+                'instant_download'         # custom_label_3 (Delivery type tag)
             ])
             count += 1
             

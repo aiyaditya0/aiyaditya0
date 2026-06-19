@@ -693,6 +693,16 @@
       }
     
   </style>
+  <style>
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -724,8 +734,8 @@
           <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
           <span class="cart-badge">0</span>
         </button>
-        <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="nav-cta" id="nav-cta-btn">
-          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        <a href="#" onclick="buyNow('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Buy Now <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
         </a>
       </div>
     </div>
@@ -745,8 +755,8 @@
             Skip months of development setup. Get instant access to a curated repository of 1,500+ manually tested, deploy-ready web apps, admin dashboards, and SaaS boilerplates (PHP, Laravel, MySQL, CodeIgniter).
           </p>
           <div class="hero-actions">
-            <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="btn-primary" id="hero-cta-primary">
-              ADD TO CART @ ₹199 <i data-lucide="shopping-cart"></i>
+            <a href="#" onclick="buyNow('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              BUY NOW @ ₹199 <i data-lucide="zap"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
               Join WhatsApp Community
@@ -1043,7 +1053,7 @@
           <div class="pay-today-price">₹199</div>
           <div class="pay-today-badge">SAVE 98% ON LAUNCH</div>
           <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;">
-            ADD TO CART @ ₹199 <i data-lucide="shopping-cart"></i>
+            BUY NOW @ ₹199 <i data-lucide="zap"></i>
           </a>
         </div>
       </div>
@@ -1122,7 +1132,7 @@
         <p class="section-desc" style="font-size: 15px; margin-bottom: 24px;">Lifetime commercial developer license + Google Drive access. Deploy in minutes.</p>
         
         <a href="#" onclick="addToCart('web-apps', '1500+ Manually Tested Web App Pack', 199, 'webapp_hero_mockup.webp', 'web-apps.html'); return false;" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 16px; padding: 18px;">
-          🎬 ADD TO CART NOW @ ₹199 →
+          ⚡ BUY NOW @ ₹199 →
         </a>
         
         <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
@@ -1232,50 +1242,8 @@
     ];
 
     function startPurchaseNotifs() {
-      const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('purchase-toast-avatar') || document.getElementById('toast-avatar');
-      const nameEl = document.getElementById('purchase-toast-name') || document.getElementById('toast-buyer-name');
-      const prodEl = document.getElementById('purchase-toast-prod') || document.getElementById('toast-product-name');
-      const timeEl = document.getElementById('purchase-toast-time') || document.getElementById('toast-time');
-      
-      if (!toast || !avatar || !nameEl || !prodEl || !timeEl) return;
-      
-      const purchaseProductsList = [
-        "n8n Automation Pack (2000+ Workflows)",
-        "Ultimate Video Editing Toolkit (500GB)",
-        "100,000+ Viral Reels Goldmine Pack",
-        "1500+ Manually Tested Web Apps Source Code",
-        "Full Digital Marketing Resource Bundle",
-        "Enterprise n8n Automation System",
-        "2700+ Elementor Pro Templates",
-        "1.37tb All Money Making Courses Bundle"
-      ];
-
-      let index = 0;
-      
-      function showNext() {
-        const item = purchaseData[index];
-        const prod = purchaseProductsList[Math.floor(Math.random() * purchaseProductsList.length)];
-        
-        // Set values
-        const initials = item.name.split(' ').map(n => n[0]).join('');
-        avatar.textContent = initials;
-        nameEl.textContent = `${item.name} (${item.city})`;
-        prodEl.textContent = `purchased ${prod}`;
-        timeEl.textContent = ["Just now", "1 min ago", "2 mins ago", "3 mins ago"][Math.floor(Math.random() * 4)];
-        
-        // Slide in
-        toast.classList.add('show');
-        if (window.lucide) lucide.createIcons();
-        
-        // Slide out after 6 seconds
-        setTimeout(() => {
-          toast.classList.remove('show');
-          index = (index + 1) % purchaseData.length;
-          
-          // Wait 20 seconds before showing next
-          setTimeout(showNext, 20000);
-        }, 6000);
+      // Handled globally by cart.js
+    }, 6000);
       }
       
       // Delay first notification by 4s

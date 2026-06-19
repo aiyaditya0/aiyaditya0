@@ -1049,8 +1049,8 @@
           <i data-lucide="shopping-cart" style="width: 20px; height: 20px;"></i>
           <span class="cart-badge">0</span>
         </button>
-        <a href="#" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;" class="nav-cta" id="nav-cta-btn">
-          Add To Cart <i data-lucide="plus" style="width: 14px; height: 14px;"></i>
+        <a href="#" onclick="buyNow('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;" class="nav-cta" id="nav-cta-btn">
+          Buy Now <i data-lucide="zap" style="width: 14px; height: 14px;"></i>
         </a>
       </div>
     </div>
@@ -1131,8 +1131,8 @@
           </div>
 
           <div class="hero-actions">
-            <a href="#" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;" class="btn-primary" id="hero-cta-primary">
-              ADD TO CART @ ₹199 <i data-lucide="shopping-cart"></i>
+            <a href="#" onclick="buyNow('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;" class="btn-primary" id="hero-cta-primary">
+              BUY NOW @ ₹199 <i data-lucide="zap"></i>
             </a>
             <a href="https://chat.whatsapp.com/L7M5r6mMdoKEh3cvM5F1xr" target="_blank" class="btn-secondary" id="hero-cta-secondary" style="animation: pulseGlow 3s infinite; border-color: var(--primary-container); color: var(--primary);">
               Join WhatsApp Community
@@ -2165,9 +2165,14 @@
           <div style="font-size: 64px; font-weight: 800; color: var(--primary-container); text-shadow: var(--glow-primary); line-height: 1;">₹199</div>
         </div>
 
-        <a href="#" class="btn-primary" style="width: 100%; justify-content: center; gap: 8px; font-size: 16px; padding: 18px;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
-          🎬 ADD TO CART @ ₹199 →
-        </a>
+        <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
+          <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
+            🛒 Add to Cart
+          </a>
+          <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
+            ⚡ Buy Now @ ₹199
+          </a>
+        </div>
         
         <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px; line-height: 1.4;">
           🔒 Secure Checkout · Instant PDF Access · UPI · Card · NetBanking<br>
@@ -2235,38 +2240,41 @@
       // Update offer banner CTA
       const bannerCta = document.querySelector('#limited-offer-banner .offer-cta-link');
       if (bannerCta) {
-        bannerCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+        bannerCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
       }
 
       // Update navbar CTA button
       const navCta = document.getElementById('nav-cta-btn');
       if (navCta) {
-        navCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
-        navCta.innerHTML = `Add To Cart @ ₹${tier.price} <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
+        navCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+        navCta.innerHTML = `Buy Now @ ₹${tier.price} <i data-lucide="zap" style="width: 14px; height: 14px;"></i>` // <i data-lucide="plus" style="width: 14px; height: 14px;"></i>`;
         if (window.lucide) lucide.createIcons();
       }
 
       // Update hero CTA button
       const heroCta = document.getElementById('hero-cta-primary');
       if (heroCta) {
-        heroCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
-        heroCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
+        heroCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+        heroCta.innerHTML = `BUY NOW @ ₹${tier.price} <i data-lucide="zap"></i>` // <i data-lucide="shopping-cart"></i>`;
         if (window.lucide) lucide.createIcons();
       }
 
-      // Update value comparison CTA button
-      const valCta = document.querySelector('.value-pay-today .btn-primary');
-      if (valCta) {
-        valCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
-        valCta.innerHTML = `ADD TO CART @ ₹${tier.price} <i data-lucide="shopping-cart"></i>`;
-        if (window.lucide) lucide.createIcons();
+      // Update pricing comparison buttons
+      const pricingAddBtn = document.querySelector('.btn-add-cart-detail');
+      if (pricingAddBtn) {
+        pricingAddBtn.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+      }
+      const pricingBuyBtn = document.querySelector('.btn-buy-now-detail');
+      if (pricingBuyBtn) {
+        pricingBuyBtn.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+        pricingBuyBtn.innerHTML = `⚡ Buy Now @ ₹${tier.price}`;
       }
 
       // Update final checkout CTA button
       const finalCta = document.querySelector('.final-box .btn-primary');
       if (finalCta) {
-        finalCta.setAttribute('onclick', `addToCart('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
-        finalCta.innerHTML = `🎬 ADD TO CART NOW @ ₹${tier.price} →`;
+        finalCta.setAttribute('onclick', `buyNow('${tier.id}', '${tier.name}', ${tier.price}, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;`);
+        finalCta.innerHTML = `⚡ BUY NOW @ ₹${tier.price} →` //;
       }
 
       // Update value comparison box price display
@@ -2369,50 +2377,8 @@
     ];
 
     function startPurchaseNotifs() {
-      const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('purchase-toast-avatar') || document.getElementById('toast-avatar');
-      const nameEl = document.getElementById('purchase-toast-name') || document.getElementById('toast-buyer-name');
-      const prodEl = document.getElementById('purchase-toast-prod') || document.getElementById('toast-product-name');
-      const timeEl = document.getElementById('purchase-toast-time') || document.getElementById('toast-time');
-      
-      if (!toast || !avatar || !nameEl || !prodEl || !timeEl) return;
-      
-      const purchaseProductsList = [
-        "n8n Automation Pack (2000+ Workflows)",
-        "Ultimate Video Editing Toolkit (500GB)",
-        "100,000+ Viral Reels Goldmine Pack",
-        "1500+ Manually Tested Web Apps Source Code",
-        "Full Digital Marketing Resource Bundle",
-        "Enterprise n8n Automation System",
-        "2700+ Elementor Pro Templates",
-        "1.37tb All Money Making Courses Bundle"
-      ];
-
-      let index = 0;
-      
-      function showNext() {
-        const item = purchaseData[index];
-        const prod = purchaseProductsList[Math.floor(Math.random() * purchaseProductsList.length)];
-        
-        // Set values
-        const initials = item.name.split(' ').map(n => n[0]).join('');
-        avatar.textContent = initials;
-        nameEl.textContent = `${item.name} (${item.city})`;
-        prodEl.textContent = `purchased ${prod}`;
-        timeEl.textContent = ["Just now", "1 min ago", "2 mins ago", "3 mins ago"][Math.floor(Math.random() * 4)];
-        
-        // Slide in
-        toast.classList.add('show');
-        if (window.lucide) lucide.createIcons();
-        
-        // Slide out after 6 seconds
-        setTimeout(() => {
-          toast.classList.remove('show');
-          index = (index + 1) % purchaseData.length;
-          
-          // Wait 20 seconds before showing next
-          setTimeout(showNext, 20000);
-        }, 6000);
+      // Handled globally by cart.js
+    }, 6000);
       }
       
       // Delay first notification by 4s

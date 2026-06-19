@@ -429,6 +429,16 @@
     .highlight-strip-text { font-size:15px; color:var(--text-white); font-weight:600; }
     .highlight-strip-sub { font-size:13px; color:var(--text-secondary); margin-top:2px; }
   </style>
+  <style>
+    .buy-actions-wrapper {
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }
+    @media (max-width: 480px) {
+      .buy-actions-wrapper {
+        flex-direction: column !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -855,7 +865,7 @@
           </ul>
 
           <a href="#" onclick="addToCart('digital-marketing-bundle','Full Digital Marketing Resource Bundle (700+)',499,'laptop-workspace.webp','digital-marketing-bundle.html'); return false;" class="btn-primary" id="pricing-cta-btn" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;">
-            ADD TO CART @ ₹499 <i data-lucide="shopping-cart"></i>
+            BUY NOW @ ₹499 <i data-lucide="zap"></i>
           </a>
         </div>
       </div>

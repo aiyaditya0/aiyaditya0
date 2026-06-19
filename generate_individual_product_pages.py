@@ -1038,7 +1038,16 @@ def generate_product_landing_pages():
             orig_price = 499 if p["price"] > 50 else 299
             discount = int(round((1.0 - float(p["price"]) / float(orig_price)) * 100))
             price_row_html = f'<span class="price-now">₹{p["price"]}</span><span class="price-orig">₹{orig_price}</span><span style="color:#27c93f; font-size:13px; font-weight:700;">({discount}% OFF Launch Deal)</span>'
-            buy_button_html = f'<button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>'
+            buy_button_html = f'''
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            '''
             val_pay_today_badge = f'<div class="pay-today-badge">{discount}% Discount Applied</div>'
             val_pay_today_price = f'<div class="pay-today-price">₹{p["price"]}</div>'
             # Build Value Items List
@@ -1068,7 +1077,16 @@ def generate_product_landing_pages():
                 <span>₹{grand_total:,}</span>
               </div>'''
 
-            value_block_actions = f'<button class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')"><i data-lucide="shopping-cart"></i> Add To Cart</button>'
+            value_block_actions = f'''
+            <div class="buy-actions-wrapper">
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
+              </button>
+              <button class="btn-buy-now" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
+                <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+            </div>
+            '''
 
         # Build Page HTML
         page_html = f"""<!DOCTYPE html>
@@ -1235,6 +1253,44 @@ def generate_product_landing_pages():
       box-shadow: 0 8px 24px rgba(39,201,63,0.3); text-decoration: none;
     }}
     .btn-buy-free:hover {{ transform: translateY(-2px); box-shadow: 0 12px 32px rgba(39,201,63,0.45); }}
+
+    .buy-actions-wrapper {{
+      display: flex; gap: 12px; margin-top: 8px; width: 100%;
+    }}
+    .btn-buy-now {{
+      flex: 1.5; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px; border: none;
+      font-size: 16px; font-weight: 800; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ff8a00, #ffb347); color: #000;
+      box-shadow: 0 8px 24px rgba(255,138,0,0.3);
+    }}
+    .btn-buy-now:hover {{ transform: translateY(-2px); box-shadow: 0 12px 32px rgba(255,138,0,0.45); }}
+    
+    .btn-add-cart-detail {{
+      flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 16px; border-radius: 14px;
+      border: 1.5px solid rgba(255, 138, 0, 0.4);
+      background: rgba(255, 138, 0, 0.06);
+      color: #ff8a00;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.25s;
+      font-family: 'Inter', sans-serif;
+    }}
+    .btn-add-cart-detail:hover {{
+      background: rgba(255, 138, 0, 0.12);
+      border-color: rgba(255, 138, 0, 0.7);
+      transform: translateY(-2px);
+    }}
+    .btn-add-cart-detail.added {{
+      background: rgba(39, 201, 63, 0.15);
+      border-color: rgba(39, 201, 63, 0.6);
+      color: #27c93f;
+    }}
+    @media (max-width: 480px) {{
+      .buy-actions-wrapper {{
+        flex-direction: column;
+      }}
+    }}
     
     .trust-notes {{ display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }}
     .trust-note {{ font-size: 12px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }}
@@ -1698,41 +1754,7 @@ def generate_product_landing_pages():
 
     // Simulated Purchases
     function startPurchaseSimulation() {{
-      const buyers = [
-        {{ name: 'Rahul Sharma', city: 'Delhi' }},
-        {{ name: 'Aniket Patel', city: 'Ahmedabad' }},
-        {{ name: 'Vikram Rao', city: 'Bengaluru' }},
-        {{ name: 'Priya Sen', city: 'Kolkata' }},
-        {{ name: 'Sanjay Deshmukh', city: 'Mumbai' }},
-        {{ name: 'Amit Tiwari', city: 'Indore' }},
-        {{ name: 'Jayesh Dave', city: 'Pune' }},
-        {{ name: 'Sneha Reddy', city: 'Hyderabad' }},
-        {{ name: 'Kunal Kapoor', city: 'Chandigarh' }},
-        {{ name: 'Meera Nair', city: 'Kochi' }}
-      ];
-      
-      const toast = document.getElementById('purchase-toast');
-      const avatar = document.getElementById('toast-avatar');
-      const buyerName = document.getElementById('toast-buyer-name');
-      const prodName = document.getElementById('toast-prod-name');
-      
-      function showNextToast() {{
-        const b = buyers[Math.floor(Math.random() * buyers.length)];
-        buyerName.textContent = `${{b.name}} (${{b.city}})`;
-        prodName.textContent = "{p["name"]}";
-        avatar.textContent = b.name.charAt(0);
-        
-        toast.classList.add('show');
-        setTimeout(() => {{
-          toast.classList.remove('show');
-        }}, 4000);
-      }}
-
-      // Start after random 8-15 seconds, repeat every 20-30 seconds
-      setTimeout(() => {{
-        showNextToast();
-        setInterval(showNextToast, 25000);
-      }}, 8000 + Math.random() * 7000);
+      // Handled globally by cart.js
     }}
 
     // Quick Buy helper
