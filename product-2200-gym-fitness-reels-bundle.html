@@ -62,8 +62,12 @@
     
     #offer-countdown {
       display: inline-flex; align-items: center; gap: 4px;
-      background: rgba(0,0,0,0.18); border-radius: 8px;
-      padding: 3px 12px; font-size: 14px; font-weight: 800; color: #fff;
+      background: rgba(0,0,0,0.3) !important; border-radius: 8px;
+      padding: 4px 12px; font-size: 14.5px; font-weight: 800; color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 1px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
     }
     .offer-cta-link {
       background: #000; color: #ff8a00; padding: 4px 14px;
@@ -79,8 +83,9 @@
 
     header {
       position: sticky; top: 42px; z-index: 1000;
-      background: rgba(5,5,5,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(10, 6, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important; -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
     .header-inner {
       max-width: 1200px; margin: 0 auto;
@@ -256,15 +261,59 @@
     /* Calculator Section */
     .calc-sec { padding: 80px 0; background: rgba(10, 10, 10, 0.3); border-bottom: 1px solid var(--border-color); }
     .calculator-container {
-      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
-      border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 28px; padding: 40px;
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 138, 0, 0.2) !important; border-radius: 28px; padding: 40px;
       max-width: 760px; margin: 0 auto; box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary);
     }
     .calculator-title { font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; margin: 0 0 12px; display: flex; align-items: center; justify-content: center; gap: 10px; }
     .calc-slider-group { margin-bottom: 30px; text-align: left; }
     .calc-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14.5px; color: #fff; }
     .calc-val-bubble { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 12px; font-weight: 700; color: #ff8a00; }
-    .calc-slider { width: 100%; height: 6px; border-radius: 4px; outline: none; -webkit-appearance: none; accent-color: #ff8a00; background: rgba(255,255,255,0.08); }
+    .calc-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 99px;
+      outline: none;
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.1) !important;
+      transition: background 0.3s;
+    }
+    .calc-slider:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ff8a00 !important;
+      cursor: pointer;
+      border: 2px solid #fff !important;
+      box-shadow: 0 0 10px rgba(255, 138, 0, 0.5) !important;
+      transition: transform 0.1s, background 0.3s;
+    }
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: #ffb347 !important;
+      box-shadow: 0 0 15px rgba(255, 138, 0, 0.8) !important;
+    }
+    .calc-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ff8a00 !important;
+      cursor: pointer;
+      border: 2px solid #fff !important;
+      box-shadow: 0 0 10px rgba(255, 138, 0, 0.5) !important;
+      transition: transform 0.1s, background 0.3s;
+    }
+    .calc-slider::-moz-range-thumb:hover {
+      transform: scale(1.15);
+      background: #ffb347 !important;
+      box-shadow: 0 0 15px rgba(255, 138, 0, 0.8) !important;
+    }
     .calc-result-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 32px; text-align: center; }
     .calc-result-label { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }
     .calc-result-value { font-size: 48px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); margin-bottom: 4px; }
@@ -281,8 +330,10 @@
     /* Value Box */
     .value-sec { padding: 80px 0; background: rgba(10,10,10,0.3); border-bottom: 1px solid var(--border-color); }
     .value-box {
-      background: linear-gradient(135deg, rgba(30, 18, 10, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
-      border: 1.5px solid rgba(255, 138, 0, 0.3); border-radius: 24px; padding: 40px;
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1.5px solid rgba(255, 138, 0, 0.3) !important; border-radius: 24px; padding: 40px;
       max-width: 900px; margin: 0 auto; box-shadow: var(--glow-primary);
       display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
     }
@@ -297,8 +348,14 @@
     /* Testimonials */
     .reviews-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
     .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .review-card { background: rgba(20, 12, 5, 0.6); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; transition: var(--transition-smooth); }
-    .review-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .review-card {
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; transition: var(--transition-smooth);
+    }
+    .review-card:hover { border-color: var(--border-hover); transform: translateY(-4px) scale(1.015); box-shadow: 0 15px 30px rgba(0,0,0,0.5), var(--glow-primary); }
     .review-stars { color: #ffb300; font-size: 13px; display: flex; gap: 2px; }
     .review-text { font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }
     .review-author { display: flex; align-items: center; gap: 12px; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; }
@@ -309,12 +366,18 @@
     /* FAQ Section */
     .faq-sec { padding: 80px 0; border-bottom: 1px solid var(--border-color); }
     .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-    .faq-item { background: rgba(20, 20, 20, 0.4); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-smooth); }
-    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-item {
+      background: rgba(255, 255, 255, 0.03) !important;
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 16px; overflow: hidden; transition: var(--transition-smooth);
+    }
+    .faq-item:hover { border-color: rgba(255, 138, 0, 0.45) !important; }
     .faq-header { padding: 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
     .faq-question { font-size: 15px; font-weight: 600; color: #fff; padding-right: 20px; }
     .faq-icon { color: #ff8a00; transition: transform 0.3s ease; flex-shrink: 0; }
-    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important; }
     .faq-content { padding: 0 24px 24px 24px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 16px; }
     .faq-item.active .faq-body { max-height: 300px; }
     .faq-item.active .faq-icon { transform: rotate(45deg); }
@@ -323,7 +386,10 @@
     .suggestions-sec { padding: 80px 0; }
     .suggestions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .suggest-card {
-      background: rgba(20,12,5,0.8); border: 1px solid var(--border-color);
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
       border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;
       transition: var(--transition-smooth);
     }
@@ -918,70 +984,70 @@
         
         <div class="suggest-card">
           <div class="prod-img-wrap">
-            <img class="suggest-img" src="0592048c-f88b-41a6-bc23-0eaff4e60064.webp" alt="11. 550+ Fitness Health Infographic Post Canva" loading="lazy">
+            <img class="suggest-img" src="reels_hero_mockup.webp" alt="Animation Visual Reels Bundle" loading="lazy">
             <div class="prod-quick-buy">
               
-                <button class="quick-buy-btn" onclick="quickBuy('550-fitness-health-infographic-post-canva','11. 550+ Fitness Health Infographic Post Canva',59,'0592048c-f88b-41a6-bc23-0eaff4e60064.webp','product-550-fitness-health-infographic-post-canva.html')">
+                <button class="quick-buy-btn" onclick="quickBuy('animation-visual-reels-bundle','Animation Visual Reels Bundle',39,'reels_hero_mockup.webp','product-animation-visual-reels-bundle.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
+                </button>
+                
+              <a href="product-animation-visual-reels-bundle.html" class="quick-view-btn">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="suggest-body">
+            <h3 class="suggest-title"><a href="product-animation-visual-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">Animation Visual Reels Bundle</a></h3>
+            <p class="suggest-desc">Satisfying 3D loops, abstract physics simulations, and colorful animation reels designed for maximum viewer retention.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price">₹39</span>
+              <a href="product-animation-visual-reels-bundle.html" class="suggest-action">Details →</a>
+            </div>
+          </div>
+        </div>
+        <div class="suggest-card">
+          <div class="prod-img-wrap">
+            <img class="suggest-img" src="fa8550fe-ca58-442a-8906-7d9b4454eb88.webp" alt="AI Reels Bundle" loading="lazy">
+            <div class="prod-quick-buy">
+              
+                <button class="quick-buy-btn" onclick="quickBuy('ai-reels-bundle','AI Reels Bundle',29,'fa8550fe-ca58-442a-8906-7d9b4454eb88.webp','product-ai-reels-bundle.html')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹29
+                </button>
+                
+              <a href="product-ai-reels-bundle.html" class="quick-view-btn">
+                <i data-lucide="eye" style="width:16px;height:16px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="suggest-body">
+            <h3 class="suggest-title"><a href="product-ai-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">AI Reels Bundle</a></h3>
+            <p class="suggest-desc">Futuristic AI Avatar reels pack. Ready-to-publish educational and self-help videos featuring high-retention AI speakers.</p>
+            <div class="suggest-footer">
+              <span class="suggest-price">₹29</span>
+              <a href="product-ai-reels-bundle.html" class="suggest-action">Details →</a>
+            </div>
+          </div>
+        </div>
+        <div class="suggest-card">
+          <div class="prod-img-wrap">
+            <img class="suggest-img" src="ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.webp" alt="13. 1000 Natures Reels Bundle" loading="lazy">
+            <div class="prod-quick-buy">
+              
+                <button class="quick-buy-btn" onclick="quickBuy('1000-natures-reels-bundle','13. 1000 Natures Reels Bundle',59,'ea545e56-e4a6-4551-ab1f-8aa0e1593fc5.webp','product-1000-natures-reels-bundle.html')">
                   <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹59
                 </button>
                 
-              <a href="product-550-fitness-health-infographic-post-canva.html" class="quick-view-btn">
+              <a href="product-1000-natures-reels-bundle.html" class="quick-view-btn">
                 <i data-lucide="eye" style="width:16px;height:16px;"></i>
               </a>
             </div>
           </div>
           <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-550-fitness-health-infographic-post-canva.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">11. 550+ Fitness Health Infographic Post Canva</a></h3>
-            <p class="suggest-desc">550+ fully editable health & fitness infographics for Canva. Customize colors, fonts, and logos to post viral slide content.</p>
+            <h3 class="suggest-title"><a href="product-1000-natures-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">13. 1000 Natures Reels Bundle</a></h3>
+            <p class="suggest-desc">1000+ satisfying, peaceful nature reels. Ideal for meditation channels, relaxing background loops, and aesthetic pages.</p>
             <div class="suggest-footer">
               <span class="suggest-price">₹59</span>
-              <a href="product-550-fitness-health-infographic-post-canva.html" class="suggest-action">Details →</a>
-            </div>
-          </div>
-        </div>
-        <div class="suggest-card">
-          <div class="prod-img-wrap">
-            <img class="suggest-img" src="48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.webp" alt="1500+ GLowing motion graphics reels bundle:" loading="lazy">
-            <div class="prod-quick-buy">
-              
-                <button class="quick-buy-btn" onclick="quickBuy('1500-glowing-motion-graphics-reels-bundle','1500+ GLowing motion graphics reels bundle:',39,'48e15f8f-547e-4ee6-b3a6-beaa52bbc7ae.webp','product-1500-glowing-motion-graphics-reels-bundle.html')">
-                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
-                </button>
-                
-              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="quick-view-btn">
-                <i data-lucide="eye" style="width:16px;height:16px;"></i>
-              </a>
-            </div>
-          </div>
-          <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-1500-glowing-motion-graphics-reels-bundle.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">1500+ GLowing motion graphics reels bundle:</a></h3>
-            <p class="suggest-desc">1500+ trending glowing line animations, neon overlays, and motion graphics assets. Level up your editing instantly.</p>
-            <div class="suggest-footer">
-              <span class="suggest-price">₹39</span>
-              <a href="product-1500-glowing-motion-graphics-reels-bundle.html" class="suggest-action">Details →</a>
-            </div>
-          </div>
-        </div>
-        <div class="suggest-card">
-          <div class="prod-img-wrap">
-            <img class="suggest-img" src="d1afab38-4733-4fbb-b4d8-0710b238de74.webp" alt="4. 700+ AI (ENGLISH) Reelsshort" loading="lazy">
-            <div class="prod-quick-buy">
-              
-                <button class="quick-buy-btn" onclick="quickBuy('700-ai-english-reelsshort','4. 700+ AI (ENGLISH) Reelsshort',39,'d1afab38-4733-4fbb-b4d8-0710b238de74.webp','product-700-ai-english-reelsshort.html')">
-                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Buy Now ₹39
-                </button>
-                
-              <a href="product-700-ai-english-reelsshort.html" class="quick-view-btn">
-                <i data-lucide="eye" style="width:16px;height:16px;"></i>
-              </a>
-            </div>
-          </div>
-          <div class="suggest-body">
-            <h3 class="suggest-title"><a href="product-700-ai-english-reelsshort.html" style="color:inherit; text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#ff8a00'" onmouseout="this.style.color='inherit'">4. 700+ AI (ENGLISH) Reelsshort</a></h3>
-            <p class="suggest-desc">700+ futuristic AI-narrated English reels. High-quality visuals, auto-generated subtitles, and viral potential built-in.</p>
-            <div class="suggest-footer">
-              <span class="suggest-price">₹39</span>
-              <a href="product-700-ai-english-reelsshort.html" class="suggest-action">Details →</a>
+              <a href="product-1000-natures-reels-bundle.html" class="suggest-action">Details →</a>
             </div>
           </div>
         </div>

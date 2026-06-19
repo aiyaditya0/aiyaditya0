@@ -62,8 +62,11 @@
 
     /* ── CARD ── */
     .card{
-      background:linear-gradient(145deg,rgba(18,10,3,0.97) 0%,rgba(10,6,2,0.99) 100%);
-      border:1px solid var(--border); border-radius:20px; padding:28px;
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 20px; padding: 28px;
     }
     .card-title{
       font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em;
@@ -75,8 +78,9 @@
     #orderItemsList{display:flex; flex-direction:column; gap:10px; margin-bottom:20px;}
     .order-item{
       display:flex; align-items:center; gap:14px;
-      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
-      border-radius:14px; padding:14px 16px;
+      background: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 14px; padding: 14px 16px;
       position:relative;
     }
     .order-item-icon{
@@ -95,6 +99,20 @@
       background:rgba(39,201,63,0.15); border:1px solid rgba(39,201,63,0.3);
       color:var(--green); font-size:9px; font-weight:800; padding:2px 7px;
       border-radius:20px; letter-spacing:0.5px; text-transform:uppercase;
+    }
+
+    /* Input Focus Glows */
+    input:focus {
+      border-color: #ff8a00 !important;
+      box-shadow: 0 0 12px rgba(255, 138, 0, 0.3) !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      outline: none !important;
+    }
+    select:focus {
+      border-color: #ff8a00 !important;
+      box-shadow: 0 0 12px rgba(255, 138, 0, 0.3) !important;
+      background: rgba(18, 10, 3, 0.97) !important;
+      outline: none !important;
     }
 
     .divider{height:1px;background:rgba(255,255,255,0.06);margin:16px 0;}

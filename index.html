@@ -103,9 +103,9 @@
     /* Header */
     header {
       position: sticky; top: 42px; z-index: 1000;
-      background: rgba(5,5,5,0.92);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(10, 6, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important; -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
     .header-inner {
       max-width: 1300px; margin: 0 auto;
@@ -156,10 +156,12 @@
       .whatsapp-btn span { display: none; }
       .whatsapp-btn { padding: 10px; }
     }
-
+ 
     /* Category Nav */
     .cat-nav {
-      background: rgba(0,0,0,0.6); border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10, 6, 3, 0.6) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important; -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
       position: sticky; top: 92px; z-index: 900; overflow-x: auto;
     }
     .cat-nav::-webkit-scrollbar { display: none; }
@@ -170,14 +172,33 @@
       padding: 12px 18px; font-size: 13px; font-weight: 600;
       color: rgba(255,255,255,0.5); background: none; border: none;
       cursor: pointer; white-space: nowrap; transition: all 0.2s;
-      border-bottom: 2px solid transparent; font-family: 'Inter', sans-serif;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+    }
+    .cat-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ff8a00;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cat-btn:hover::after, .cat-btn.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
     .cat-btn:hover { color: #ff8a00; }
-    .cat-btn.active { color: #ff8a00; border-bottom-color: #ff8a00; }
+    .cat-btn.active { color: #ff8a00; }
     @media(max-width:768px){ .cat-nav { top: 58px; } .cat-btn { padding: 10px 12px; font-size: 12px; } }
-
+ 
     /* Hero Banner */
     .store-hero {
+      position: relative;
+      overflow: hidden;
       background: linear-gradient(135deg, #0a0614 0%, #1a0a00 50%, #0a0614 100%);
       padding: 40px 0 32px;
     }
@@ -209,13 +230,13 @@
       .hstat { min-width: 100px; flex: 1; }
       .store-hero { padding: 24px 0 20px; }
     }
-
+ 
     /* Main Store Layout */
     .store-layout {
       max-width: 1300px; margin: 0 auto; padding: 32px 24px;
     }
     @media(max-width:768px){ .store-layout { padding: 20px 14px; } }
-
+ 
     /* Section Header */
     .store-sec-head {
       display: flex; align-items: center; justify-content: space-between;
@@ -224,7 +245,7 @@
     .store-sec-head h2 { font-size: clamp(18px, 3vw, 24px); color: #fff; font-weight: 700; }
     .store-sec-head h2 span { color: #ff8a00; }
     .store-sec-head a { font-size: 13px; color: #ff8a00; text-decoration: none; font-weight: 600; }
-
+ 
     /* Featured Banner — Mega Bundle */
     .featured-banner {
       background: linear-gradient(135deg, #1a0800, #2d1200, #1a0800);
@@ -244,6 +265,7 @@
       text-transform: uppercase; margin-bottom: 10px;
     }
     .fb-title { font-family: 'Playfair Display', serif; font-size: clamp(20px, 3vw, 32px); color: #fff; margin-bottom: 8px; line-height: 1.2; }
+    .fb-title span { color: #ff8a00; }
     .fb-desc { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; line-height: 1.5; max-width: 500px; }
     .fb-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
     .fb-feat {
@@ -267,7 +289,7 @@
       .fb-img { width: 100%; height: 160px; }
       .fb-price-main { font-size: 26px; }
     }
-
+ 
     /* Product Grid */
     .products-grid {
       display: grid;
@@ -275,15 +297,15 @@
       gap: 20px; margin-bottom: 40px;
     }
     @media(max-width:480px){ .products-grid { grid-template-columns: 1fr; } }
-
+ 
     /* Product Card */
     .prod-card {
-      background: rgba(20,12,5,0.8); border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(15, 9, 4, 0.75); border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px; overflow: hidden;
-      transition: all 0.25s; display: flex; flex-direction: column;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column;
       position: relative;
     }
-    .prod-card:hover { border-color: rgba(255,138,0,0.35); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255,138,0,0.1); }
+    .prod-card:hover { border-color: rgba(255,138,0,0.45); transform: translateY(-5px) scale(1.015); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 25px rgba(255,138,0,0.2); }
     .prod-badge {
       position: absolute; top: 12px; left: 12px; z-index: 2;
       padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 800;
@@ -704,7 +726,9 @@
 
   <!-- Hero Banner -->
   <section class="store-hero">
-    <div class="hero-banner-inner">
+    <div class="glow-orb-backdrop" style="top: -10%; left: -10%; background: radial-gradient(circle, rgba(255, 138, 0, 0.15) 0%, transparent 70%);"></div>
+    <div class="glow-orb-backdrop" style="bottom: -15%; right: -10%; background: radial-gradient(circle, rgba(255, 183, 127, 0.1) 0%, transparent 70%);"></div>
+    <div class="hero-banner-inner" style="position: relative; z-index: 1;">
       <div>
         <div class="hero-tagline">⚡ FutureWithAI Premium Store</div>
         <h1 class="hero-heading">India's Biggest <span>Digital Products</span> Store</h1>

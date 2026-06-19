@@ -1153,8 +1153,12 @@ def generate_product_landing_pages():
     
     #offer-countdown {{
       display: inline-flex; align-items: center; gap: 4px;
-      background: rgba(0,0,0,0.18); border-radius: 8px;
-      padding: 3px 12px; font-size: 14px; font-weight: 800; color: #fff;
+      background: rgba(0,0,0,0.3) !important; border-radius: 8px;
+      padding: 4px 12px; font-size: 14.5px; font-weight: 800; color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      letter-spacing: 1px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.5);
     }}
     .offer-cta-link {{
       background: #000; color: #ff8a00; padding: 4px 14px;
@@ -1170,8 +1174,9 @@ def generate_product_landing_pages():
 
     header {{
       position: sticky; top: 42px; z-index: 1000;
-      background: rgba(5,5,5,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(10, 6, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important; -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     }}
     .header-inner {{
       max-width: 1200px; margin: 0 auto;
@@ -1347,15 +1352,59 @@ def generate_product_landing_pages():
     /* Calculator Section */
     .calc-sec {{ padding: 80px 0; background: rgba(10, 10, 10, 0.3); border-bottom: 1px solid var(--border-color); }}
     .calculator-container {{
-      background: linear-gradient(135deg, rgba(27, 17, 10, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
-      border: 1px solid rgba(255, 138, 0, 0.2); border-radius: 28px; padding: 40px;
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 138, 0, 0.2) !important; border-radius: 28px; padding: 40px;
       max-width: 760px; margin: 0 auto; box-shadow: 0 12px 40px rgba(0,0,0,0.6), var(--glow-primary);
     }}
     .calculator-title {{ font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; margin: 0 0 12px; display: flex; align-items: center; justify-content: center; gap: 10px; }}
     .calc-slider-group {{ margin-bottom: 30px; text-align: left; }}
     .calc-label-row {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 14.5px; color: #fff; }}
     .calc-val-bubble {{ background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color); border-radius: 8px; padding: 4px 12px; font-weight: 700; color: #ff8a00; }}
-    .calc-slider {{ width: 100%; height: 6px; border-radius: 4px; outline: none; -webkit-appearance: none; accent-color: #ff8a00; background: rgba(255,255,255,0.08); }}
+    .calc-slider {{
+      width: 100%;
+      height: 8px;
+      border-radius: 99px;
+      outline: none;
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.1) !important;
+      transition: background 0.3s;
+    }}
+    .calc-slider:hover {{
+      background: rgba(255, 255, 255, 0.15) !important;
+    }}
+    .calc-slider::-webkit-slider-thumb {{
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ff8a00 !important;
+      cursor: pointer;
+      border: 2px solid #fff !important;
+      box-shadow: 0 0 10px rgba(255, 138, 0, 0.5) !important;
+      transition: transform 0.1s, background 0.3s;
+    }}
+    .calc-slider::-webkit-slider-thumb:hover {{
+      transform: scale(1.15);
+      background: #ffb347 !important;
+      box-shadow: 0 0 15px rgba(255, 138, 0, 0.8) !important;
+    }}
+    .calc-slider::-moz-range-thumb {{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ff8a00 !important;
+      cursor: pointer;
+      border: 2px solid #fff !important;
+      box-shadow: 0 0 10px rgba(255, 138, 0, 0.5) !important;
+      transition: transform 0.1s, background 0.3s;
+    }}
+    .calc-slider::-moz-range-thumb:hover {{
+      transform: scale(1.15);
+      background: #ffb347 !important;
+      box-shadow: 0 0 15px rgba(255, 138, 0, 0.8) !important;
+    }}
     .calc-result-box {{ background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 32px; text-align: center; }}
     .calc-result-label {{ font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; }}
     .calc-result-value {{ font-size: 48px; font-weight: 800; color: #ff8a00; text-shadow: var(--glow-primary); margin-bottom: 4px; }}
@@ -1372,8 +1421,10 @@ def generate_product_landing_pages():
     /* Value Box */
     .value-sec {{ padding: 80px 0; background: rgba(10,10,10,0.3); border-bottom: 1px solid var(--border-color); }}
     .value-box {{
-      background: linear-gradient(135deg, rgba(30, 18, 10, 0.98) 0%, rgba(5, 5, 5, 0.99) 100%);
-      border: 1.5px solid rgba(255, 138, 0, 0.3); border-radius: 24px; padding: 40px;
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1.5px solid rgba(255, 138, 0, 0.3) !important; border-radius: 24px; padding: 40px;
       max-width: 900px; margin: 0 auto; box-shadow: var(--glow-primary);
       display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
     }}
@@ -1388,8 +1439,14 @@ def generate_product_landing_pages():
     /* Testimonials */
     .reviews-sec {{ padding: 80px 0; border-bottom: 1px solid var(--border-color); }}
     .review-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }}
-    .review-card {{ background: rgba(20, 12, 5, 0.6); border: 1px solid var(--border-color); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; transition: var(--transition-smooth); }}
-    .review-card:hover {{ border-color: var(--border-hover); transform: translateY(-2px); }}
+    .review-card {{
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; transition: var(--transition-smooth);
+    }}
+    .review-card:hover {{ border-color: var(--border-hover); transform: translateY(-4px) scale(1.015); box-shadow: 0 15px 30px rgba(0,0,0,0.5), var(--glow-primary); }}
     .review-stars {{ color: #ffb300; font-size: 13px; display: flex; gap: 2px; }}
     .review-text {{ font-size: 13.5px; color: var(--text-secondary); line-height: 1.55; font-style: italic; }}
     .review-author {{ display: flex; align-items: center; gap: 12px; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px; }}
@@ -1400,12 +1457,18 @@ def generate_product_landing_pages():
     /* FAQ Section */
     .faq-sec {{ padding: 80px 0; border-bottom: 1px solid var(--border-color); }}
     .faq-container {{ max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }}
-    .faq-item {{ background: rgba(20, 20, 20, 0.4); border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; transition: var(--transition-smooth); }}
-    .faq-item:hover {{ border-color: var(--border-hover); }}
+    .faq-item {{
+      background: rgba(255, 255, 255, 0.03) !important;
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 16px; overflow: hidden; transition: var(--transition-smooth);
+    }}
+    .faq-item:hover {{ border-color: rgba(255, 138, 0, 0.45) !important; }}
     .faq-header {{ padding: 24px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }}
     .faq-question {{ font-size: 15px; font-weight: 600; color: #fff; padding-right: 20px; }}
     .faq-icon {{ color: #ff8a00; transition: transform 0.3s ease; flex-shrink: 0; }}
-    .faq-body {{ max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }}
+    .faq-body {{ max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important; }}
     .faq-content {{ padding: 0 24px 24px 24px; font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; border-top: 1px solid rgba(255,255,255,0.02); padding-top: 16px; }}
     .faq-item.active .faq-body {{ max-height: 300px; }}
     .faq-item.active .faq-icon {{ transform: rotate(45deg); }}
@@ -1414,7 +1477,10 @@ def generate_product_landing_pages():
     .suggestions-sec {{ padding: 80px 0; }}
     .suggestions-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }}
     .suggest-card {{
-      background: rgba(20,12,5,0.8); border: 1px solid var(--border-color);
+      background: rgba(18, 10, 3, 0.7) !important;
+      backdrop-filter: blur(16px) saturate(190%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
       border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;
       transition: var(--transition-smooth);
     }}
