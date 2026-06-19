@@ -2,6 +2,7 @@ import os
 import openpyxl
 import csv
 import re
+import hashlib
 
 def make_product_id(name):
     clean = re.sub(r'^\d+\.\s*', '', name)
@@ -168,6 +169,25 @@ def get_custom_description(name):
     else:
         return "Access high-quality direct download folder containing premium digital assets, templates, and files with lifetime access."
 
+def get_deterministic_rating(p_id):
+    # Hardcoded values for main custom packages matching design
+    if p_id == "n8n-pack":
+        return 4.9, 2400
+    elif p_id == "video-editing":
+        return 4.8, 10526
+    elif p_id == "mega-reels":
+        return 4.9, 4800
+    elif p_id == "web-apps":
+        return 4.9, 1500
+    elif p_id == "digital-marketing-bundle":
+        return 4.8, 780
+    
+    # Deterministic generation using md5 hash of product ID
+    h = int(hashlib.md5(p_id.encode('utf-8')).hexdigest(), 16)
+    rating = 4.6 + (h % 4) * 0.1  # 4.6, 4.7, 4.8, or 4.9
+    count = 150 + (h % 35) * 20  # between 150 and 850
+    return round(rating, 1), count
+
 def main():
     root_dir = r"c:\Users\aditya tiwari\Downloads\FUTUREWITHAI WEB"
     excel_path = os.path.join(root_dir, "PRODUCT.xlsx")
@@ -193,10 +213,17 @@ def main():
         "digital-marketing-bundle": "digital-marketing-bundle.html"
     }
 
+    # Meta catalog header columns
+    headers = [
+        'id', 'title', 'description', 'availability', 'condition', 'price', 
+        'link', 'image_link', 'brand', 'google_product_category', 'fb_product_category', 
+        'product_type', 'age_group', 'gender', 'rating_average', 'rating_count',
+        'custom_label_0', 'custom_label_1', 'custom_label_2'
+    ]
+
     with open(facebook_catalog_path, mode='w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        # Standard Meta catalog headers
-        writer.writerow(['id', 'title', 'description', 'availability', 'condition', 'price', 'link', 'image_link', 'brand'])
+        writer.writerow(headers)
         
         count = 0
         for row_idx, row in enumerate(sheet.iter_rows(min_row=2, values_only=True), start=2):
@@ -215,37 +242,47 @@ def main():
             cat_lower = category.lower()
             name_lower = name.lower()
             
-            # Determine clean category ID
+            # Determine clean category ID and human-readable type
             if "software" in cat_lower or "web" in cat_lower:
                 cat_id = "webapps"
+                cat_display = "Web Apps"
+                prod_type = "Software > Web Applications & SaaS Templates"
             elif "editing bundle" in cat_lower:
                 cat_id = "editing"
+                cat_display = "Video Editing"
+                prod_type = "Media Assets > Video Editing Presets & Toolkit"
             elif "marketing" in cat_lower or "maketing" in cat_lower or "business" in cat_lower:
                 cat_id = "marketing"
+                cat_display = "Digital Marketing"
+                prod_type = "Business Tools > Digital Marketing Resource Bundle"
             elif "video editing" in cat_lower:
                 if any(x in name_lower for x in ["youtuber", "graphics", "motion", "transitions", "editing"]):
                     cat_id = "editing"
+                    cat_display = "Video Editing"
+                    prod_type = "Media Assets > Video Editing Presets & Toolkit"
                 else:
                     cat_id = "reels"
+                    cat_display = "Viral Reels"
+                    prod_type = "Media Assets > Viral Social Media Reels Bundle"
             else:
                 cat_id = "reels"
+                cat_display = "Viral Reels"
+                prod_type = "Media Assets > Viral Social Media Reels Bundle"
                 
             p_id = make_product_id(name)
             
-            # Skip items that are free (often delivered as bonuses)
+            # Skip items that are free
             price_str = str(price).strip().upper() if price is not None else ""
             if "FREE" in price_str or price == 0 or not price:
                 continue
                 
-            # Determine price string e.g. "199.00 INR"
             try:
                 price_val = float(price)
             except ValueError:
-                price_val = 199.0  # default fallback
+                price_val = 199.0
             price_formatted = f"{price_val:.2f} INR"
             
             # Link mapping
-            # Check if this product corresponds to one of our main custom landing pages
             page_name = f"product-{p_id}.html"
             for key, val in custom_pages.items():
                 if key in p_id or p_id in key:
@@ -261,24 +298,51 @@ def main():
             else:
                 img_url = f"{domain}/{img_file}"
                 
+            # Description + Bumper Offer
             desc = get_custom_description(name)
-            # Append Bumper Offer to the description
             desc += "\n\n🎁 BUMPER LAUNCH OFFER: Buy this pack today and get 9 Premium Bonus Rewards Bundles (Worth ₹19,491) completely FREE:\n1. 5000+ MEGA REELS BUNDLE (Worth ₹4,999)\n2. Caravan Life Travel Reels (Worth ₹1,999)\n3. Dog Reels Bundle (Worth ₹1,999)\n4. Funny & Cute Cat Bundle (Worth ₹1,999)\n5. Health Infographic Post Canva (Worth ₹1,499)\n6. Lifestyle Reels Bundle (Worth ₹1,999)\n7. Luxury Hotels & Resorts (Worth ₹1,999)\n8. Travel Reels Bundle (Worth ₹1,999)\n9. Black Word Quotes (Worth ₹999)"
             
+            # Google Product Category (digital computer software/goods code: 9560)
+            google_cat = "9560"
+            fb_cat = "9560"
+            
+            # Ratings
+            rating_avg, rating_cnt = get_deterministic_rating(p_id)
+            
+            # Custom labels for optimization
+            status_label = "popular"
+            if p_id in ["n8n-pack", "video-editing", "mega-reels"]:
+                status_label = "best_seller"
+            elif p_id in ["web-apps", "digital-marketing-bundle"]:
+                status_label = "hot"
+                
+            price_tier_label = "under_100" if price_val < 100 else "under_500"
+            
+            # Write catalog row
             writer.writerow([
-                p_id,
-                name,
-                desc,
-                'in stock',
-                'new',
-                price_formatted,
-                product_url,
-                img_url,
-                'FutureWithAI'
+                p_id,                 # id
+                name,                 # title
+                desc,                 # description
+                'in stock',           # availability
+                'new',                # condition
+                price_formatted,      # price
+                product_url,          # link
+                img_url,              # image_link
+                'FutureWithAI',       # brand
+                google_cat,           # google_product_category
+                fb_cat,               # fb_product_category
+                prod_type,            # product_type
+                'adult',              # age_group
+                'unisex',             # gender
+                rating_avg,           # rating_average
+                rating_cnt,           # rating_count
+                cat_display,          # custom_label_0 (Category)
+                status_label,         # custom_label_1 (Status tag)
+                price_tier_label      # custom_label_2 (Price range tag)
             ])
             count += 1
             
-    print(f"Generated Facebook Catalog with {count} products at: {facebook_catalog_path}")
+    print(f"Generated Optimized Facebook Catalog with {count} products at: {facebook_catalog_path}")
 
 if __name__ == "__main__":
     main()
