@@ -810,36 +810,17 @@ def get_bonuses_html_and_values(category_id, name):
     # 8. "Travel Reels Bundle" - Value: 1999
     # 9. "5000+ MEGA REELS BUNDLE" - Value: 4999
     
-    bonuses = []
-    cat_lower = category_id.lower()
-    name_lower = name.lower()
-    
-    if "video-editing" in cat_lower or "editing-bundle" in cat_lower or "editing" in cat_lower:
-        bonuses = [
-            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "A massive collection of ready-to-use reels across fitness, motivation, luxury, and business niches to explode your social media growth."},
-            {"name": "Caravan Life Travel Reels", "value": 1999, "desc": "Stunning cinematic travel reels of camper vans, road trips, and beautiful landscape scenery. 100% royalty-free."},
-            {"name": "Dog & Cat Funny Reels", "value": 1999, "desc": "Adorable and funny dog/cat compilation video clips. Tap into the highly viral and profitable pet page page niche."},
-            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Minimalist text quotes on solid white & black backgrounds, perfect for stories, reels text, and highlighting cover pages."}
-        ]
-    elif "web-software" in cat_lower or "software" in cat_lower:
-        bonuses = [
-            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "Use these high-converting viral shorts to promote your web applications and SaaS products on Instagram & TikTok."},
-            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "Fully editable infographics for Canva to post informative slide content, build authority, and drive premium traffic."},
-            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Sleek minimalist quote images on solid black and white background. Excellent for professional branding updates."}
-        ]
-    elif "digital-marketing" in cat_lower or "marketing" in cat_lower:
-        bonuses = [
-            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "550+ fully customizable Canva infographic templates. Change fonts, colors, and branding details with a free Canva account."},
-            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "A premium archive of 5000+ viral edited reels to create automated theme pages and run high-converting ad campaigns."},
-            {"name": "Lifestyle & Travel Reels Bundle", "value": 1999, "desc": "Premium aesthetic travel walkthroughs, luxury hotels, and sports car reels to build high-end personal brands."},
-            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Clean minimalist text graphics to maintain visual consistency and post professional design content daily."}
-        ]
-    else: # business / courses / other
-        bonuses = [
-            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "Build massive organic traffic for your courses or dropshipping store using these ready-to-publish high-retention shorts."},
-            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "Fully customizable Canva templates to design and share educational slides and promote your products easily."},
-            {"name": "Lifestyle Reels Bundle", "value": 1999, "desc": "Stunning luxury lifestyle, supercar, and hotel walkthrough reels to establish authority and trust on theme pages."}
-        ]
+    bonuses = [
+        {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "A massive collection of ready-to-use reels across fitness, motivation, luxury, and business niches to explode your social media growth."},
+        {"name": "Caravan Life Travel Reels", "value": 1999, "desc": "Stunning cinematic travel reels of camper vans, road trips, and beautiful landscape scenery. 100% royalty-free."},
+        {"name": "Dog Reels Bundle", "value": 1999, "desc": "Adorable and funny dog compilation video clips. Tap into the highly profitable pet page niche."},
+        {"name": "Funny and Cute Cat Bundle", "value": 1999, "desc": "Hundreds of viral, cute cat videos and reels. Instant engagement boosters that gather millions of views."},
+        {"name": "Health Infographic Post Canva", "value": 1499, "desc": "Fully customizable Canva templates to design and share educational slides and promote your products easily."},
+        {"name": "Lifestyle Reels Bundle", "value": 1999, "desc": "Stunning luxury lifestyle, supercar, and hotel walkthrough reels to establish authority and trust on theme pages."},
+        {"name": "Luxury Hotels and Resorts", "value": 1999, "desc": "Scenic walkthrough videos of 5-star hotels, infinity pools, and villas worldwide. Perfect for travel niches."},
+        {"name": "Travel Reels Bundle", "value": 1999, "desc": "Cinematic landscape clips, tropical islands, and mountain views from around the world. Excellent for travel and lifestyle pages."},
+        {"name": "Black Word with White Background Images", "value": 999, "desc": "Minimalist text quotes on solid white & black backgrounds, perfect for stories, reels text, and highlight cover pages."}
+    ]
         
     num_bonuses = len(bonuses)
     total_val = sum(b["value"] for b in bonuses)
@@ -849,7 +830,7 @@ def get_bonuses_html_and_values(category_id, name):
   <section class="section" id="bonuses">
     <div class="container">
       <div class="section-header" style="text-align: center; margin: 0 auto 48px auto; max-width: 700px;">
-        <span class="section-label">{chr(0x1F381)} EXCLUSIVE BONUS INCLUSIONS</span>
+        <span class="section-label">{chr(0x1F381)} EXCLUSIVE BUMPER OFFER</span>
         <h2 class="section-title">{num_bonuses} FREE Bonuses Included</h2>
         <p class="section-desc">
           Get ₹{total_val:,} worth of premium creator resources for zero extra cost.

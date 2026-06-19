@@ -262,6 +262,8 @@ def main():
                 img_url = f"{domain}/{img_file}"
                 
             desc = get_custom_description(name)
+            # Append Bumper Offer to the description
+            desc += "\n\n🎁 BUMPER LAUNCH OFFER: Buy this pack today and get 9 Premium Bonus Rewards Bundles (Worth ₹19,491) completely FREE:\n1. 5000+ MEGA REELS BUNDLE (Worth ₹4,999)\n2. Caravan Life Travel Reels (Worth ₹1,999)\n3. Dog Reels Bundle (Worth ₹1,999)\n4. Funny & Cute Cat Bundle (Worth ₹1,999)\n5. Health Infographic Post Canva (Worth ₹1,499)\n6. Lifestyle Reels Bundle (Worth ₹1,999)\n7. Luxury Hotels & Resorts (Worth ₹1,999)\n8. Travel Reels Bundle (Worth ₹1,999)\n9. Black Word Quotes (Worth ₹999)"
             
             writer.writerow([
                 p_id,
