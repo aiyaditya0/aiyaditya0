@@ -2612,3 +2612,64 @@ html, body {
 .prod-mobile-buy-btn {
   display: none !important;
 }
+
+/* ── Conversion Optimization: Trust Strip ── */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  background: linear-gradient(90deg, rgba(255,138,0,0.06) 0%, rgba(5,5,5,0) 100%);
+  border-top: 1px solid rgba(255,138,0,0.12);
+  border-bottom: 1px solid rgba(255,138,0,0.12);
+  padding: 14px 24px;
+}
+.trust-strip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4a373;
+  white-space: nowrap;
+}
+.trust-strip-item svg {
+  width: 16px;
+  height: 16px;
+  color: #ff8a00;
+  flex-shrink: 0;
+}
+.trust-sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,138,0,0.3);
+}
+@media (max-width: 600px) {
+  .trust-strip { gap: 6px 12px; padding: 10px 16px; }
+  .trust-strip-item { font-size: 12px; }
+  .trust-sep { display: none; }
+}
+
+/* ── Badge Contrast Fix (PageSpeed flagged) ── */
+.prod-badge.badge-hot {
+  background: linear-gradient(135deg, #c94f00, #ff6b00) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+.prod-badge.badge-new {
+  background: linear-gradient(135deg, #0a5c0a, #19a319) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+.prod-badge.badge-sale {
+  background: linear-gradient(135deg, #7c2d12, #dc4400) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+}
+.prod-badge.badge-top {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb) !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+}

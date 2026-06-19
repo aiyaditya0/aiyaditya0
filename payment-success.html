@@ -906,7 +906,7 @@
       const btnAccess = document.getElementById('btnAccessPortal');
       if (btnAccess) {
         const tokenParam = accessToken ? `token=${encodeURIComponent(accessToken)}` : `orderId=${encodeURIComponent(orderId || data.merchantOrderId || '')}`;
-        btnAccess.href = `https://futurewithai.anshumanenterprises.online/access.html?${tokenParam}`;
+        btnAccess.href = `https://anshumanenterprises.online/access.html?${tokenParam}`;
         btnAccess.style.display = 'inline-flex';
       }
 

@@ -12,4 +12,4 @@ Disallow: /payment-success.html
 Disallow: /payment-failure.html
 Disallow: /404.html
 
-Sitemap: https://futurewithai.anshumanenterprises.online/sitemap.xml
+Sitemap: https://anshumanenterprises.online/sitemap.xml
