@@ -797,6 +797,85 @@ def get_premium_content_for_category(category_id, price):
         """
     return stats_ribbon_html, benefits_grid_html, calculator_html, calculator_js, db_inclusions_html, faq_html
 
+def get_bonuses_html_and_values(category_id, name):
+    # Mapping of categories/keywords to free bundles
+    # Available Free Bundles from access.html:
+    # 1. "Black Word with White Background Images" - Value: 999
+    # 2. "Caravan Life Travel Reels" - Value: 1999
+    # 3. "Dog Reels Bundle" - Value: 1999
+    # 4. "Funny and Cute Cat Bundle" - Value: 1999
+    # 5. "Health Infographic Post Canva" - Value: 1499
+    # 6. "Lifestyle Reels Bundle" - Value: 1999
+    # 7. "Luxury Hotels and Resorts" - Value: 1999
+    # 8. "Travel Reels Bundle" - Value: 1999
+    # 9. "5000+ MEGA REELS BUNDLE" - Value: 4999
+    
+    bonuses = []
+    cat_lower = category_id.lower()
+    name_lower = name.lower()
+    
+    if "video-editing" in cat_lower or "editing-bundle" in cat_lower or "editing" in cat_lower:
+        bonuses = [
+            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "A massive collection of ready-to-use reels across fitness, motivation, luxury, and business niches to explode your social media growth."},
+            {"name": "Caravan Life Travel Reels", "value": 1999, "desc": "Stunning cinematic travel reels of camper vans, road trips, and beautiful landscape scenery. 100% royalty-free."},
+            {"name": "Dog & Cat Funny Reels", "value": 1999, "desc": "Adorable and funny dog/cat compilation video clips. Tap into the highly viral and profitable pet page page niche."},
+            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Minimalist text quotes on solid white & black backgrounds, perfect for stories, reels text, and highlighting cover pages."}
+        ]
+    elif "web-software" in cat_lower or "software" in cat_lower:
+        bonuses = [
+            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "Use these high-converting viral shorts to promote your web applications and SaaS products on Instagram & TikTok."},
+            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "Fully editable infographics for Canva to post informative slide content, build authority, and drive premium traffic."},
+            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Sleek minimalist quote images on solid black and white background. Excellent for professional branding updates."}
+        ]
+    elif "digital-marketing" in cat_lower or "marketing" in cat_lower:
+        bonuses = [
+            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "550+ fully customizable Canva infographic templates. Change fonts, colors, and branding details with a free Canva account."},
+            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "A premium archive of 5000+ viral edited reels to create automated theme pages and run high-converting ad campaigns."},
+            {"name": "Lifestyle & Travel Reels Bundle", "value": 1999, "desc": "Premium aesthetic travel walkthroughs, luxury hotels, and sports car reels to build high-end personal brands."},
+            {"name": "Black Word Minimalist Quotes", "value": 999, "desc": "Clean minimalist text graphics to maintain visual consistency and post professional design content daily."}
+        ]
+    else: # business / courses / other
+        bonuses = [
+            {"name": "5000+ MEGA REELS BUNDLE", "value": 4999, "desc": "Build massive organic traffic for your courses or dropshipping store using these ready-to-publish high-retention shorts."},
+            {"name": "Health Infographic Post Canva", "value": 1499, "desc": "Fully customizable Canva templates to design and share educational slides and promote your products easily."},
+            {"name": "Lifestyle Reels Bundle", "value": 1999, "desc": "Stunning luxury lifestyle, supercar, and hotel walkthrough reels to establish authority and trust on theme pages."}
+        ]
+        
+    num_bonuses = len(bonuses)
+    total_val = sum(b["value"] for b in bonuses)
+    
+    html = f'''
+  <!-- {num_bonuses} FREE Bonuses Included Section -->
+  <section class="section" id="bonuses">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 48px auto; max-width: 700px;">
+        <span class="section-label">{chr(0x1F381)} EXCLUSIVE BONUS INCLUSIONS</span>
+        <h2 class="section-title">{num_bonuses} FREE Bonuses Included</h2>
+        <p class="section-desc">
+          Get ₹{total_val:,} worth of premium creator resources for zero extra cost.
+        </p>
+      </div>
+
+      <div class="bonuses-container">'''
+      
+    for idx, b in enumerate(bonuses, 1):
+        html += f'''
+        <!-- Bonus {idx} -->
+        <div class="bonus-card" style="border-color: rgba(255, 138, 0, 0.25);">
+          <span class="bonus-tag">BONUS #{idx}</span>
+          <span class="bonus-value-badge">Worth ₹{b["value"]:,} - FREE</span>
+          <h3 class="bonus-card-title">{b["name"]}</h3>
+          <p class="bonus-card-desc">{b["desc"]}</p>
+        </div>'''
+        
+    html += '''
+      </div>
+    </div>
+  </section>
+'''
+    return html, bonuses, total_val
+
+
 def generate_product_landing_pages():
     excel_path = "PRODUCT.xlsx"
     wb = openpyxl.load_workbook(excel_path, data_only=True)
@@ -876,6 +955,7 @@ def generate_product_landing_pages():
         
         # Category specific layouts
         stats_ribbon_html, benefits_grid_html, calculator_html, calculator_js, db_inclusions_html, faq_html = get_premium_content_for_category(p["category_id"], p["price"])
+        bonuses_section_html, bonuses_list, bonuses_total_value = get_bonuses_html_and_values(p["category_id"], p["name"])
         
         # Testimonial reviews
         reviews_html = """
@@ -980,6 +1060,33 @@ def generate_product_landing_pages():
             buy_button_html = f'<button class="btn-buy btn-buy-paid" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')"><i data-lucide="shopping-cart" style="width:20px;height:20px;"></i> Add To Cart</button>'
             val_pay_today_badge = f'<div class="pay-today-badge">{discount}% Discount Applied</div>'
             val_pay_today_price = f'<div class="pay-today-price">₹{p["price"]}</div>'
+            # Build Value Items List
+            value_items_html = f'''
+              <div class=\"value-item\">
+                <span>Premium Asset Pack ({p["name"]})</span>
+                <span style=\"text-decoration:line-through;color:var(--text-muted);\">₹2,999</span>
+              </div>
+              <div class=\"value-item\">
+                <span>Commercial Resell License</span>
+                <span style=\"text-decoration:line-through;color:var(--text-muted);\">₹1,499</span>
+              </div>
+              <div class=\"value-item\">
+                <span>Lifetime Storage Sync Updates</span>
+                <span style=\"text-decoration:line-through;color:var(--text-muted);\">₹999</span>
+              </div>'''
+            for b in bonuses_list:
+                value_items_html += f'''
+              <div class=\"value-item\">
+                <span>{b["name"]} (Bonus)</span>
+                <span style=\"text-decoration:line-through;color:var(--text-muted);\">₹{b["value"]:,}</span>
+              </div>'''
+            grand_total = 2999 + 1499 + 999 + bonuses_total_value
+            value_items_html += f'''
+              <div class=\"value-item total\">
+                <span>Total Estimated Value:</span>
+                <span>₹{grand_total:,}</span>
+              </div>'''
+
             value_block_actions = f'<button class="btn-primary" style="width: 100%; justify-content: center; gap: 8px;" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')"><i data-lucide="shopping-cart"></i> Add To Cart</button>'
 
         # Build Page HTML
@@ -1305,6 +1412,60 @@ def generate_product_landing_pages():
     .purchase-toast-prod {{ font-size: 11px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px; }}
     .purchase-toast-meta {{ font-size: 10px; color: #27c93f; font-weight: 600; display: flex; align-items: center; gap: 4px; }}
 
+    /* Bonuses Section */
+    .bonuses-container {{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }}
+    .bonus-card {{
+      background: rgba(20, 20, 20, 0.55);
+      border: 1.5px solid var(--border-color);
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }}
+    .bonus-card:hover {{
+      border-color: var(--border-hover);
+      box-shadow: var(--glow-primary);
+      transform: translateY(-2px);
+    }}
+    .bonus-tag {{
+      align-self: flex-start;
+      background: linear-gradient(90deg, #ff8a00, #ffb347);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }}
+    .bonus-value-badge {{
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+    }}
+    .bonus-card-title {{
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: var(--text-white);
+      margin-top: 4px;
+    }}
+    .bonus-card-desc {{
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }}
+
     /* Footer */
     footer {{ border-top: 1px solid var(--border-color); padding: 40px 0; text-align: center; background: #020202; }}
     .footer-text {{ font-size: 13px; color: var(--text-muted); margin: 0; }}
@@ -1320,6 +1481,7 @@ def generate_product_landing_pages():
       .suggestions-grid {{ grid-template-columns: repeat(2, 1fr); }}
       .review-grid {{ grid-template-columns: repeat(2, 1fr); }}
       #purchase-toast {{ width: calc(100% - 48px); left: 24px; }}
+      .bonuses-container {{ grid-template-columns: 1fr; }}
     }}
     @media (max-width: 768px) {{
       header {{ top: 58px; }}
@@ -1432,28 +1594,15 @@ def generate_product_landing_pages():
     </div>
   </section>
 
+  {bonuses_section_html}
+
   <!-- Value Box Section -->
   <section class="value-sec">
     <div class="container">
       <div class="value-box">
         <div class="value-list">
           <h3 style="font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:12px;">What This Deal Saves You:</h3>
-          <div class="value-item">
-            <span>Premium Asset Archive</span>
-            <span style="text-decoration:line-through;color:var(--text-muted);">₹2,999</span>
-          </div>
-          <div class="value-item">
-            <span>Commercial Resell License</span>
-            <span style="text-decoration:line-through;color:var(--text-muted);">₹1,499</span>
-          </div>
-          <div class="value-item">
-            <span>Lifetime Storage Sync Updates</span>
-            <span style="text-decoration:line-through;color:var(--text-muted);">₹999</span>
-          </div>
-          <div class="value-item total">
-            <span>Total Estimated Value:</span>
-            <span>₹5,497</span>
-          </div>
+          {value_items_html}
         </div>
         
         <div class="value-pay-today">
