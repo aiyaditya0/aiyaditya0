@@ -268,7 +268,7 @@ def main():
     
     facebook_catalog_path = os.path.join(root_dir, "facebook_catalog.csv")
     
-    domain = "https://futurewithai.anshumanenterprises.online"
+    domain = "https://anshumanenterprises.online/futurewithai"
     
     # Custom pages mapping
     custom_pages = {

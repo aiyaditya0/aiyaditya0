@@ -29,7 +29,7 @@ class BeautifulPDF(FPDF):
             self.set_y(-15)
             self.set_font('helvetica', 'I', 8)
             self.set_text_color(165, 140, 123)
-            self.cell(0, 10, 'futurewithai.anshumanenterprises.online', new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
+            self.cell(0, 10, 'anshumanenterprises.online/futurewithai', new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
 
 def sanitize_text(text):
     text = text.replace('→', ' -> ')

@@ -417,7 +417,7 @@ const UPSELL_PRODUCTS = [
 ];
 
 const SHEET_NAME = 'Orders';
-const SITE_URL = 'https://futurewithai.anshumanenterprises.online';
+const SITE_URL = 'https://anshumanenterprises.online/futurewithai';
 
 // ══════════════════════════════════════════════════════════════
 //  Token Generation
@@ -557,7 +557,7 @@ function deliverOrder(email, name, rawProducts, orderId, accessToken, phone, amo
   // Try Gemini for personalized email
   let emailIntro = '';
   let usedGemini = false;
-  const prompt = 'You are a customer success AI for \'FutureWithAi\' (futurewithai.anshumanenterprises.online), a premium digital products store. Write a polite, exciting, and professional post-purchase delivery email in Hinglish (Hindi written in English alphabets) for a customer named \'' + name + '\'. They have successfully purchased: ' + productsString + '. Keep it SHORT (4-6 lines max). Mention that download links and access token are below. Mention WhatsApp Support (+91 70658 15743) for help. Output ONLY the greeting paragraph.';
+  const prompt = 'You are a customer success AI for \'FutureWithAi\' (anshumanenterprises.online/futurewithai), a premium digital products store. Write a polite, exciting, and professional post-purchase delivery email in Hinglish (Hindi written in English alphabets) for a customer named \'' + name + '\'. They have successfully purchased: ' + productsString + '. Keep it SHORT (4-6 lines max). Mention that download links and access token are below. Mention WhatsApp Support (+91 70658 15743) for help. Output ONLY the greeting paragraph.';
   
   try {
     const geminiText = callGemini(prompt);
