@@ -279,9 +279,9 @@ def generate_catalog_html():
         """
         action_btn = f"""
           <button class="prod-add-btn" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; justify-content:center; padding:10px;" title="Add to Cart" data-product-id="{p["id"]}">
-            <i data-lucide="shopping-cart" style="width:15px;height:15px;"></i>
+            <i data-lucide="shopping-cart" style="width:14px;height:14px;margin-right:4px;"></i> Add
           </button>
-          <button class="prod-add-btn" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:2.2; background:linear-gradient(135deg,#ff8a00,#ffb347); border:none; color:#000; font-weight:800; justify-content:center; padding:10px; box-shadow:0 4px 12px rgba(255,138,0,0.25);">
+          <button class="prod-add-btn" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" style="flex:1.8; background:linear-gradient(135deg,#ff8a00,#ffb347); border:none; color:#000; font-weight:800; justify-content:center; padding:10px; box-shadow:0 4px 12px rgba(255,138,0,0.25);">
             <i data-lucide="zap" style="width:14px;height:14px;margin-right:4px;"></i> Buy Now
           </button>
         """
@@ -543,7 +543,7 @@ def generate_catalog_html():
 
   <!-- Top Announcement Bar -->
   <div id="top-bar">
-    <span>🔥 <strong>STORE CATALOG</strong> — Access individual packs at premium discounts!</span>
+    <span>🎁 <strong>LIMITED TIME OFFER</strong> — Buy any product & get 9+ Premium Bonus Products (Worth ₹19,491) completely FREE!</span>
     <button id="top-bar-close" onclick="this.parentElement.style.display='none'">✕</button>
   </div>
 

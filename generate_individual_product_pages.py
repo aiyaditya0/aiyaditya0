@@ -1032,12 +1032,18 @@ def generate_product_landing_pages():
             val_pay_today_price = '<div class="pay-today-price">FREE</div>'
             value_block_actions = f'<a href="{p["link"]}" target="_blank" class="btn-primary" style="width:100%; justify-content:center; text-decoration:none;"><i data-lucide="download"></i> Download Free</a>'
             discount = 100
+            promo_badge_html = ""
         else:
             badge_class = "badge-sale"
             badge_text = "🔥 Premium Resource"
             orig_price = 499 if p["price"] > 50 else 299
             discount = int(round((1.0 - float(p["price"]) / float(orig_price)) * 100))
             price_row_html = f'<span class="price-now">₹{p["price"]}</span><span class="price-orig">₹{orig_price}</span><span style="color:#27c93f; font-size:13px; font-weight:700;">({discount}% OFF Launch Deal)</span>'
+            promo_badge_html = '''
+            <div class="promo-badge-detail" style="display: flex; align-items: center; gap: 6px; background: rgba(39, 201, 63, 0.1); border: 1px solid rgba(39, 201, 63, 0.25); color: #27c93f; padding: 10px 14px; border-radius: 12px; font-size: 13px; font-weight: 700; margin-bottom: 20px; font-family: 'Inter', sans-serif;">
+              <span>🎁 Buy 1 Get 9+ Bonus Digital Products (Worth ₹19,491) FREE!</span>
+            </div>
+            '''
             buy_button_html = f'''
             <div class="buy-actions-wrapper">
               <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
@@ -1602,7 +1608,7 @@ def generate_product_landing_pages():
 <body>
   <!-- Countdown Announcement Banner -->
   <div id="limited-offer-banner">
-    <span>🔥 <strong>LAUNCH OFFER</strong> — Get this pack today at {discount}% off before the price increases!</span>
+    <span>🎁 <strong>LIMITED TIME OFFER</strong> — Buy this pack today & get 9+ Premium Bonus Digital Products (Worth ₹19,491) completely FREE! ⚡</span>
     <span id="offer-countdown">⏳ Loading...</span>
     <a href="#" onclick="quickBuy('{p["id"]}', '{p_name_escaped}', {p["price"]}, '{p["img"]}', 'product-{p["id"]}.html'); return false;" class="offer-cta-link">Grab Deal →</a>
     <button id="offer-close-btn" onclick="document.getElementById('limited-offer-banner').style.display='none'">✕</button>
@@ -1640,6 +1646,7 @@ def generate_product_landing_pages():
             <div class="price-row">
               {price_row_html}
             </div>
+            {promo_badge_html}
             {buy_button_html}
             <div class="trust-notes">
               <div class="trust-note"><i data-lucide="shield-check" style="width:14px;height:14px;color:#ff8a00;"></i> Secure Payments</div>
@@ -1712,6 +1719,7 @@ def generate_product_landing_pages():
           <div class="pay-today-label">You Pay Today:</div>
           {val_pay_today_price}
           {val_pay_today_badge}
+          {promo_badge_html}
           {value_block_actions}
         </div>
       </div>
