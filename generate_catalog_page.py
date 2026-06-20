@@ -426,6 +426,7 @@ def generate_catalog_html():
       border: 1px solid rgba(255,255,255,0.06);
       border-radius: 18px; display: flex; flex-direction: column;
       position: relative; transition: all 0.25s; overflow: hidden;
+      cursor: pointer;
     }
     .prod-card:hover {
       border-color: rgba(255,138,0,0.35);

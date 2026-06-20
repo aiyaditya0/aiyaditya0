@@ -1482,7 +1482,7 @@ def generate_product_landing_pages():
       -webkit-backdrop-filter: blur(16px) saturate(190%) !important;
       border: 1px solid rgba(255, 255, 255, 0.08) !important;
       border-radius: 18px; display: flex; flex-direction: column; overflow: hidden;
-      transition: var(--transition-smooth);
+      transition: var(--transition-smooth); cursor: pointer;
     }}
     .suggest-card:hover {{ border-color: var(--border-hover); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.5), var(--glow-primary); }}
     .suggest-img {{ width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.05); }}

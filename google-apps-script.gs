@@ -746,7 +746,7 @@ function callGemini(prompt) {
   }
   
   const cleanKey = apiKey.replace(/\s+/g, '');
-  const url = 'https://generativelanguage.googleapis.com/v0beta/models/gemini-1.5-flash:generateContent?key=' + cleanKey;
+  const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + cleanKey;
   
   const payload = {
     contents: [{ parts: [{ text: prompt }] }]
