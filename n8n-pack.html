@@ -2283,17 +2283,10 @@ The product should feel like having an executive team that researches, plans, or
 
       // Track Lead Event in Meta Pixel
       if (window.fbq) {
-        const trackOpts = {};
-        try {
-          const testCode = sessionStorage.getItem('fb_test_event_code');
-          if (testCode) {
-            trackOpts.test_event_code = testCode;
-          }
-        } catch(e) {}
         fbq('track', 'Lead', {
           content_category: 'Gift Vault',
           content_name: 'Premium AI Digital Gifts'
-        }, trackOpts);
+        });
       }
 
       // Transition directly to Success view

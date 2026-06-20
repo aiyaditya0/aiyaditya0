@@ -28,28 +28,11 @@
     logDebug('init', PIXEL_ID);
   }
 
-  // Capture test_event_code from URL and persist in sessionStorage
-  let testCode = null;
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const urlTestCode = params.get('test_event_code');
-    if (urlTestCode) {
-      testCode = urlTestCode;
-      sessionStorage.setItem('fb_test_event_code', urlTestCode);
-    } else {
-      testCode = sessionStorage.getItem('fb_test_event_code');
-    }
-  } catch (e) {}
-
-  // Central tracking function that automatically attaches test_event_code
+  // Central tracking function
   function trackEvent(eventName, eventParams) {
     if (window.fbq) {
-      const options = {};
-      if (testCode) {
-        options.test_event_code = testCode;
-      }
-      fbq('track', eventName, eventParams || {}, options);
-      logDebug(eventName, { params: eventParams, options: options });
+      fbq('track', eventName, eventParams || {});
+      logDebug(eventName, { params: eventParams });
     }
   }
 

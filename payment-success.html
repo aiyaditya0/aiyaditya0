@@ -545,14 +545,6 @@
       if (window.fbq) {
         const purchaseFiredKey = `fb_purchase_fired_${orderId}`;
         if (!localStorage.getItem(purchaseFiredKey)) {
-          const trackOpts = {};
-          try {
-            const testCode = sessionStorage.getItem('fb_test_event_code');
-            if (testCode) {
-              trackOpts.test_event_code = testCode;
-            }
-          } catch(e) {}
-
           fbq('track', 'Purchase', {
             value: value,
             currency: 'INR',
@@ -561,7 +553,7 @@
                     quantity: 1
                 }
             ],
-          }, trackOpts);
+          });
           localStorage.setItem(purchaseFiredKey, 'true');
           
           // Debug Logging (development only)
@@ -570,7 +562,7 @@
                         window.location.hostname.includes('192.168.') ||
                         window.location.search.includes('debug=true');
           if (isDev) {
-            console.log('%c[Meta Pixel Debug] Event: Purchase', 'color: #ff8a00; font-weight: bold;', { value: value, currency: 'INR', orderId: orderId, options: trackOpts });
+            console.log('%c[Meta Pixel Debug] Event: Purchase', 'color: #ff8a00; font-weight: bold;', { value: value, currency: 'INR', orderId: orderId });
           }
         } else {
           // Debug Logging for skipped duplicates
