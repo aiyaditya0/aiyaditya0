@@ -1046,11 +1046,11 @@ def generate_product_landing_pages():
             '''
             buy_button_html = f'''
             <div class="buy-actions-wrapper">
-              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
-                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
-              </button>
               <button class="btn-buy-now" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
                 <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
               </button>
             </div>
             '''
@@ -1085,11 +1085,11 @@ def generate_product_landing_pages():
 
             value_block_actions = f'''
             <div class="buy-actions-wrapper">
-              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
-                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
-              </button>
               <button class="btn-buy-now" onclick="buyNow(\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')">
                 <i data-lucide="zap" style="width:18px;height:18px;"></i> Buy Now
+              </button>
+              <button class="btn-add-cart-detail" onclick="addToCartAnimated(this,\'{p["id"]}\',\'{p_name_escaped}\',{p["price"]},\'{p["img"]}\',\'product-{p["id"]}.html\')" data-product-id="{p["id"]}">
+                <i data-lucide="shopping-cart" style="width:18px;height:18px;"></i> Add To Cart
               </button>
             </div>
             '''

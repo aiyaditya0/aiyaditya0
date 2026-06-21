@@ -2166,11 +2166,11 @@
         </div>
 
         <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
-          <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
-            🛒 Add to Cart
-          </a>
           <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
             ⚡ Buy Now @ ₹199
+          </a>
+          <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
+            🛒 Add to Cart
           </a>
         </div>
         
@@ -2378,11 +2378,6 @@
 
     function startPurchaseNotifs() {
       // Handled globally by cart.js
-    }, 6000);
-      }
-      
-      // Delay first notification by 4s
-      setTimeout(showNext, 4000);
     }
 
     // ── Save Product Info & Redirect ──────────────────────────────────

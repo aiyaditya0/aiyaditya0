@@ -103,11 +103,11 @@ def patch_page(filepath, filename):
           </a>"""
     if old_pricing_cta in content:
         new_pricing_cta = f"""          <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
-            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
-              🛒 Add to Cart
-            </a>
             <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
               ⚡ Buy Now @ ₹{p_price}
+            </a>
+            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
+              🛒 Add to Cart
             </a>
           </div>"""
         content = content.replace(old_pricing_cta, new_pricing_cta)
@@ -118,11 +118,11 @@ def patch_page(filepath, filename):
           </a>"""
     if old_pricing_cta_alt in content:
         new_pricing_cta_alt = f"""          <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
-            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
-              🛒 Add to Cart
-            </a>
             <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
               ⚡ Buy Now @ ₹{p_price}
+            </a>
+            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('{p_id}', '{p_name}', {p_price}, '{img}', '{filename}'); return false;">
+              🛒 Add to Cart
             </a>
           </div>"""
         content = content.replace(old_pricing_cta_alt, new_pricing_cta_alt)
@@ -132,11 +132,11 @@ def patch_page(filepath, filename):
           🎬 ADD TO CART @ ₹199 →
         </a>"""
     new_ve_pricing = """        <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
-          <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
-            🛒 Add to Cart
-          </a>
           <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
             ⚡ Buy Now @ ₹199
+          </a>
+          <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('video-editing', 'Ultimate Video Editing Toolkit', 199, 'video-editing-assets/hero-toolkit-zkCHdDKW.webp', 'video-editing.html'); return false;">
+            🛒 Add to Cart
           </a>
         </div>"""
     content = content.replace(old_ve_pricing, new_ve_pricing)
@@ -146,11 +146,11 @@ def patch_page(filepath, filename):
             🛒 ADD TO CART @ ₹499 →
           </a>"""
     new_dm_pricing = """          <div class="buy-actions-wrapper" style="display:flex; gap:12px; width:100%; margin-top:8px;">
-            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('digital-marketing-bundle', 'Full Digital Marketing Resource Bundle (700+)', 499, 'laptop-workspace.webp', 'digital-marketing-bundle.html'); return false;">
-              🛒 Add to Cart
-            </a>
             <a href="#" class="btn-primary btn-buy-now-detail" style="flex:1.8; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: linear-gradient(135deg, #ff8a00, #ffb347); border: none; color: #000; font-weight: 800; text-decoration:none; box-shadow:0 4px 12px rgba(255,138,0,0.2);" onclick="buyNow('digital-marketing-bundle', 'Full Digital Marketing Resource Bundle (700+)', 499, 'laptop-workspace.webp', 'digital-marketing-bundle.html'); return false;">
               ⚡ Buy Now @ ₹499
+            </a>
+            <a href="#" class="btn-primary btn-add-cart-detail" style="flex:1; justify-content: center; gap: 8px; font-size: 15px; padding: 16px; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none;" onclick="addToCart('digital-marketing-bundle', 'Full Digital Marketing Resource Bundle (700+)', 499, 'laptop-workspace.webp', 'digital-marketing-bundle.html'); return false;">
+              🛒 Add to Cart
             </a>
           </div>"""
     content = content.replace(old_dm_pricing, new_dm_pricing)

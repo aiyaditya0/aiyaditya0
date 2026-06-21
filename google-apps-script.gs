@@ -409,7 +409,7 @@ const UPSELL_PRODUCTS = [
     name: 'Full Digital Marketing Bundle',
     price: 498,
     discountedPrice: 348,
-    img: 'digital-marketing-bundle/fwa-canva.webp',
+    img: 'digital-marketing-bundle/dm_hero_mockup.webp',
     link: 'digital-marketing-bundle.html',
     desc: '699+ resources: Canva templates, ChatGPT prompts, courses, ebooks.',
     bullets: ['26K+ Canva Templates', '1L+ ChatGPT Prompts', '50+ DM Courses']
