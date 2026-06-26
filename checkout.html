@@ -576,11 +576,15 @@
 
       // Initiate payment via backend server
       try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+
         const response = await fetch('https://ae-payment-server.vercel.app/initiate-phonepe-payment', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
+          signal: controller.signal,
           body: JSON.stringify({
             name: name,
             email: email,
@@ -593,6 +597,7 @@
             redirectUrl: window.location.origin + window.location.pathname.replace('checkout.html', 'payment-success.html')
           })
         });
+        clearTimeout(timeoutId);
         
         const data = await response.json();
         
@@ -605,13 +610,35 @@
           throw new Error(data.message || 'Payment initiation failed.');
         }
       } catch (error) {
-        console.error('Error initiating payment:', error);
-        alert('Payment Error: ' + error.message + '\n\nPlease try again or contact support.');
+        console.error('Payment server error, using WhatsApp fallback:', error);
         
-        // Reset loading state
+        // ── WhatsApp Fallback — Payment server down होने पर ──
+        const waMsg = encodeURIComponent(
+          `🛒 *New Order — FutureWithAI*\n\n` +
+          `👤 Name: ${name}\n` +
+          `📧 Email: ${email}\n` +
+          `📱 Phone: ${phone}\n` +
+          `💼 Profession: ${profession}\n\n` +
+          `🛍️ Products: ${productNames}\n` +
+          `💰 Amount: ₹${amount}\n\n` +
+          `Please share UPI QR or payment link to complete this order.`
+        );
+        
+        // WhatsApp number — अपना WhatsApp number यहाँ डालें
+        const waNumber = '919131017930'; // Format: country code + number (no +)
+        
         submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-        Array.from(form.elements).forEach(el => el.disabled = false);
+        submitBtn.innerHTML = '📲 Complete via WhatsApp';
+        submitBtn.style.background = 'linear-gradient(135deg, #25D366, #128C7E)';
+        
+        // Open WhatsApp
+        window.open(`https://wa.me/${waNumber}?text=${waMsg}`, '_blank');
+
+        // Also show message
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = 'background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.3);border-radius:12px;padding:14px;margin-top:12px;font-size:13px;color:#25D366;text-align:center;';
+        errorDiv.innerHTML = '✅ WhatsApp खुल गया! Order details share होंगी — payment वहाँ complete करें।<br><small style="color:rgba(255,255,255,0.4);">अगर WhatsApp न खुले तो refresh करके दोबारा try करें।</small>';
+        submitBtn.parentNode.insertBefore(errorDiv, submitBtn.nextSibling);
       }
     }
   </script>
